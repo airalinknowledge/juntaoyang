@@ -1,0 +1,79 @@
+ {
+	"responsive": true,
+	"glyph-icons": true,
+	"description": "Squared is a bold, image-first theme. With layouts designed to showcase your photo and styling that features some extra design polish, Squared really stands out. Special eCommerce design features give your products a beautiful home and extra space for a dramatic storefront. Squared is the perfect theme for any creative looking to make an impression.",
+	"enableEditorJS": true,
+	"features": [
+		"responsive",
+		"css-buttons",
+		"social-icons",
+		"navigation-side",
+		"color-palettes"
+	],
+	"color-support": {
+		"primary": "#558E74",
+		"accent": "#000000"
+	},
+	"color-presets": [
+		{
+			"primary": "#ed5448",
+			"accent": "#000000",
+			"variation": "coral"
+		},
+		{
+			"primary": "#ff867a",
+			"accent": "#ffffff",
+			"variation": "lightcoral"
+		},
+		{
+			"primary": "#30bdbe",
+			"accent": "#000000",
+			"variation": "turquoise"
+		},
+		{
+			"primary": "#76e6e7",
+			"accent": "#ffffff",
+			"variation": "lightturquoise"
+		},
+		{
+			"primary": "#07a355",
+			"accent": "#000000",
+			"variation": "kelly"
+		},
+		{
+			"primary": "#3fcd86",
+			"accent": "#ffffff",
+			"variation": "lightkelly"
+		},
+		{
+			"primary": "#c94fe2",
+			"accent": "#000000",
+			"variation": "orchid"
+		},
+		{
+			"primary": "#e288f5",
+			"accent": "#ffffff",
+			"variation": "lightorchid"
+		},
+		{
+			"primary": "#faa732",
+			"accent": "#000000",
+			"variation": "orange"
+		},
+		{
+			"primary": "#fcce75",
+			"accent": "#ffffff",
+			"variation": "lightorange"
+		},
+		{
+			"primary": "#b3b3b3",
+			"accent": "#000000",
+			"variation": "gray"
+		},
+		{
+			"primary": "#b3b3b3",
+			"accent": "#ffffff",
+			"variation": "lightgray"
+		}
+	]
+}
