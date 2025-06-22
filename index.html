@@ -276,7 +276,50 @@
       );
     }
   </script>
+
+
+
+  <!-- 在这里拷入 ↓ -->
+  <style>
+    :root {
+      /* 全局可调的三种颜色 */
+      --main-color:    #333333;  /* 正文文字 */
+      --heading-color: #222222;  /* 各级标题 */
+      --link-color:    #333333;  /* 超链接 */
+    }
+
+    /* 正文默认文字色 */
+    body, 
+    .paragraph, 
+    p, 
+    .conference-item, 
+    .exhibition-item {
+      color: var(--main-color) !important;
+    }
+
+    /* 各级标题色 */
+    h1, h2, h3, h4, h5, h6,
+    .section-title,
+    u, em {
+      color: var(--heading-color) !important;
+    }
+
+    /* 链接色 */
+    a, a:visited {
+      color: var(--link-color) !important;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+  <!-- 拷入结束 ↑ -->
+
 </head>
+
+
+
+
+
 <body class="no-header-page  wsite-page-index wsite-theme-light">
   <div id="wrapper">
     <div id="navigation">
@@ -376,7 +419,7 @@
                       <div style="height: 40px; overflow: hidden; width: 100%;"></div>
                     </div>
                     <div class="paragraph">
-                      <font size="4">Juntao Yang is a critic, curator, and artist.</font><br /><br />
+                   <font size="4">Juntao Yang is a critic, curator, and artist.</font><br /><br />
                       <font size="4">Yang's critical writings and artistic practices focus on the traces of the operations of micro power in the specific field of visual and material culture, the visible or invisible conflicts and violence in daily existence, and the organization and fluid of the proxy of power. Yang is committed to resorting to Speech, sometimes hysterically, counteracts the silent power of ideology and the pervasive political apathy. Yang's current research focuses on planetary cinema and geological thinking, as well as toxicity and catastrophe media. Yang is currently based in New York and Nanjing.<br />&#8203;</font>
                     </div>
                     <div class="wsite-spacer" style="height:10px;"></div>
@@ -405,18 +448,17 @@ Honourable Mention&nbsp;<span>for&nbsp;&#8203;</span><em>Light and Cold Conversa
                     <div class="paragraph">
                       <u><font size="5">Conferences &amp; Workshops</font></u><br />
                       <div id="conferences">
-                        <div class="conference-item"><em>Big Stuff 2025</em>, Theme: "Skills and Machines: A Living Partnership", Big Stuff Heritage community, Australia, 2025/10</div>
+
                         <div class="conference-item"><em>Taboo-Transgression-Transcendence in Art &amp; Science 2025, Interdisciplinary Conference</em>, Slovenia, 2025/9</div>
                         <div class="conference-item"><em>The International Committee for the Conservation of the Industrial Heritage Congress 2025</em>, Theme: "Heritage in action: Legacies of industry in future making", Sweden, 2025/8</div>
                         <div class="conference-item"><em>SEAA-SNU Anthropology 2025 Conference</em>, Theme: "Shaping Futures: East Asia as Practice", Seoul National University, South Korea, 2025/7</div>
-                        <div class="conference-item"><em>The Society for Industrial Archeology's 53rd Annual Conference</em>, USA, 2025/5</div>
+                        <div class="conference-item"><em>Xiamen University School of Film 2025 Youth Forum</em>, Theme: "The Death of Cinema, The Love for Film: From Aesthetic Traditions to Digital Intelligence Revolution", Xiamen University, China, 2025/7</div>
                         <div class="conference-item"><em>The 20th annual Cinema and Media Studies Graduate Student Conference</em>, Theme: "Failing Media", The University of Chicago, USA, 2025/4</div>
                         <div class="conference-item"><em>Beijing International Film Festival · The 32nd College Student Film Festival: 2025 International Young Scholars Conference</em>, Beijing Normal University, China, 2025/4</div>
                         <div class="conference-item"><em>Mediated Futures: Graduate Student Interdisciplinary Conference on Environment, Space, Future, and Media in Southeast and East Asian Cultural and Art Practices</em>, University of California, Irvine, USA, 2025/4</div>
                         <div class="conference-item"><em>6th Media Materiality Forum</em>, Theme: "Digital Intelligence, Cosmotechnics, and Planetary Future", Tsinghua University, China, 2025/3</div>
                         <div class="conference-item"><em>Common Ground Graduate Conference 2025</em>, Theme: "Media Studies in/at/from the Margins", Indiana University Bloomington, USA, 2025/3</div>
                         <div class="conference-item"><em>2025 NYU Cinema Studies Student Conference</em>, Theme: "Template", New York University, USA, 2025/2 - 2025/3</div>
-                        <div class="conference-item"><em>The 16th Annual CUHK Anthropology Postgraduate Student Forum</em>, Theme: "Disturbance and Reverberation", The Chinese University of Hong Kong, Hong Kong, 2025/2</div>
                         <div class="conference-item"><em>The 2nd Gansu Graduate Student Forum on Journalism and Communication</em>, Lanzhou University, China, 2025/1</div>
                         <div class="conference-item"><em>The 16th Anhui Graduate Student Forum on Journalism and Communication</em>, Theme: "Transmutation · Integration · Innovation: Media Boundaries and Communication Imagination in the Age of Digital Intelligence", Anhui University, China, 2024/12</div>
                         <div class="conference-item"><em>International Symposium on the Development of Artistic Disciplines in the Era of Digital Intelligence</em>, Sub-forum Theme: "Art Media, Art Institutions and Art Landscape in the Era of Digital Intelligence", Wuhan University of Technology, China, 2024/12</div>
@@ -438,7 +480,8 @@ Honourable Mention&nbsp;<span>for&nbsp;&#8203;</span><em>Light and Cold Conversa
                     <div class="paragraph">
                       <u><font size="5">Exhibitions (selection)</font></u><br />
                       <div id="exhibitions">
-                        <div class="exhibition-item"><em>City in the Mirror: The Creative Narratives of AIGC's Future Imagery, Center for Digital Innovation and Humanities Education, Macau University of Science and Technology, Macau, 2025</em></div>
+                        <div class="exhibition-item"><em>The Great Rupture: Archaeology of the Apocalyptic Future</em>, Central Art Museum, Hangzhou, 2025</div>
+                        <div class="exhibition-item"><em>City in the Mirror: The Creative Narratives of AIGC's Future Imagery</em>, Center for Digital Innovation and Humanities Education, Macau University of Science and Technology, Macau, 2025</div>
                         <div class="exhibition-item"><em>Notes, solitude or the canceled, Blanchot airdrops through the wavy lines that advance in parallel</em>, Cooling Gallery, Nanjing, China, 2024</div>
                         <div class="exhibition-item"><em>Perceiving: The Body of Group Ritual, and the Resonant Memories</em>, Acute Angle Gallery, Guangzhou, China, 2024</div>
                         <div class="exhibition-item"><em>Synthetic Wilderness</em>, John Molly Gallery, New York, USA, 2024</div>
@@ -457,10 +500,24 @@ Honourable Mention&nbsp;<span>for&nbsp;&#8203;</span><em>Light and Cold Conversa
                         <div class="exhibition-item"><em>GOOGOL</em>, Online ( Powerer by <em>New Art City</em> ), 2024</div>
                         <div class="exhibition-item"><em>The Logic of Sensation</em>, Ivory Gate Gallery, Shanghai, China, 2024</div>
                         <div class="exhibition-item"><em>Language Babel</em>, Art Lift Art Space, Shenyang, China, 2024</div>
-                        <div class="exhibition-item"><em>Together For Future</em>, Qingdao Art Museum, Qingdao, China, 2024</div>
+                        <div class="exhibition-item"><em>Together For Future</em>, Atom Space, SeeDliNG Fair, Shenzhen, China, 2024</div>
+                        <div class="exhibition-item"><em>The Realm of Time and Space</em>, Qingdao Art Museum, Qingdao, China, 2024</div>
+                        <div class="exhibition-item"><em>Wuer · Fun · Concept Exhibition</em>, InnovArt Space, Pazhou, China, 2024</div>
+                        <div class="exhibition-item"><em>Code Reconstruction: Artistic Exploration in the Age of AIGC</em>, Art Museum of Luxun Academy of Fine Arts, Shenyang, China, 2024</div>
+                        <div class="exhibition-item"><em>Wonde Room: Art Exploration in the Web3, Metaverse, and AIGC Era</em>, Advance Art Museum, Changsha, China, 2023</div>
+                        <div class="exhibition-item"><em>Migratory Bird 300</em>, Zone out Space 2.0, Aranya Theatre Festival, Qinhuangdao, China, 2023</div>
+                        <div class="exhibition-item"><em>The Atmosphere of Growing Art</em>, Line Stones Gallery, Jingdezhen, China, 2023</div>
+                        <div class="exhibition-item"><em>De wereld Wat Met Handvat getembi Ik? – Rituals, Oracles, and Artistic spirit mediums
+</em>, 798CUBE, Beijing, China, 2023</div>
+                        <div class="exhibition-item"><em>Luohu Shenzhen-Hongkong Culture Festival</em>, Line Stones Gallery, Jingdezhen, 2023</div>
+                        <div class="exhibition-item"><em>Cold and Light Conversation: Agency and Technology</em>, Imaginary Z, Hangzhou, China, 2023</div>
+                        <div class="exhibition-item"><em>Plant-generated Images</em>, Wuhan Photography Art Centre, Wuhan, China, 2023</div>
+                        <div class="exhibition-item"><em>Under the Current: The Hidden World in the Surface Water</em>, HEZUO SPACE, Shenyang, China, 2023</div>
+                        <div class="exhibition-item"><em>Doves and Magpies Sharing a Nest</em>, The Forge Art Gallery, London, UK, 2023</div>
+                        <div class="exhibition-item"><em>AI & NI</em>, 4C Gallery, Los Angeles, USA, 2023</div>
                       </div>
                       <button id="toggle-exhibitions">Show More</button>
-<br /><br />
+                      <br /><br />
                     </div>
 
 
@@ -497,17 +554,19 @@ Honourable Mention&nbsp;<span>for&nbsp;&#8203;</span><em>Light and Cold Conversa
                     <div class="paragraph">
                       <u><font size="5">Screenings</font></u><br />
                       <div id="screenings">
-                        <div class="screening-item"><em><u><a href="https://www.instagram.com/reel/DIhTOWRpmfN/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="_blank"><font color="#2a2a2a">"Memorias ocultas: territorios y cuerpos que gritan", "Entre los seres y la tierra, fuego"Seis cortometrajes</font></a></u></em>, Faculty of Arts of the Universidad Nacional de Colombia, Bogotá, Colombia, 2025</div>
-                        <div class="screening-item"><em><u><a href="https://mp.weixin.qq.com/s/pQrMXlqDrw24a1HtoL9JzQ" target="_blank"><font color="#2a2a2a">"Multi-screen Images" Short Film Theme Screening</font></a></em></u>, China Academy of Art, Hangzhou, China, 2025</div>
-                        <div class="screening-item"><em><u><a href="https://mp.weixin.qq.com/s/2eJPbRy5onttHqb3tvY00Q" target="_blank"><font color="#2a2a2a">Wuhan University Graduate Student Academic Science and Technology Festival “Distorted Imagination: Technological Rethinking under the Annotation of Cinema”</font></a></u></em>, School of Arts, Wuhan University, Wuhan, China, 2024</div>
-                        <div class="screening-item"><em><u><a href="https://mp.weixin.qq.com/s/Ap6ifFvuRDjMwyRNi-s6Cw" target="_blank"><font color="#000000">Experimental Film Night</font></a></u></em>, The Delta INST + GODOWN, Hangzhou, China, 2024</div>
-                        <div class="screening-item"><em><u><a href="https://mp.weixin.qq.com/s/2m4KOOK_9bZTcjshwPC73Q" target="_blank"><font color="#000000">ONED Film Festival China Touring Screening Program</font></a></u></em>, Lanzhou / Suzhou / Shanghai / Tianjin / Yangshuo / Yichang / Chengdu, China, 2024</div>
-                        <div class="screening-item"><em><u><a href="https://mp.weixin.qq.com/s/Uw2rS5Uk5JADzRAvFa4KbQ" target="_blank"><font color="#000000">The 8th abC Art Book Fair</font></a></u></em>, OōEli, Hangzhou, China, 2023</div>
-                        <div class="screening-item"><em><u><a href="https://mp.weixin.qq.com/s/RWMzt2DKmVaVpEY2Rgkxxg" target="_blank"><font color="#000000">Jetty Screening</font></a></u></em>, Dali, China, 2023</div>
-                        <div class="screening-item"><em><u><a href="https://mp.weixin.qq.com/s/oAricm9WS5m2XtCShSG4tQ" target="_blank"><font color="#000000">C-POP Theatre</font></a></u></em>, Beijing, China, 2023</div>
-                        <div class="screening-item"><em><u><a href="https://mp.weixin.qq.com/s/NTp_wqKoNgdeY2TsnEd1og" target="_blank"><font color="#000000">Ferry</font></a></u></em>, Chengdu, China, 2023<br /><br /></div>
+
+                        <div class="screening-item"><em><u><a href="https://www.lakesidefilmfestival.com/films2025/la-sur-real-shorts">Curated Short Film Program, La Sur Real: Edition IV</a></u></em>, Lakeside Film Festival, Berlin, German, 2025</div>
+                        <div class="screening-item"><em><u><a href="https://www.instagram.com/reel/DIhTOWRpmfN/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="_blank">"Memorias ocultas: territorios y cuerpos que gritan", "Entre los seres y la tierra, fuego"Seis cortometrajes</a></u></em>, Faculty of Arts of the Universidad Nacional de Colombia, Bogotá, Colombia, 2025</div>
+                        <div class="screening-item"><em><u><a href="https://mp.weixin.qq.com/s/pQrMXlqDrw24a1HtoL9JzQ" target="_blank">"Multi-screen Images" Short Film Theme Screening</a></em></u>, China Academy of Art, Hangzhou, China, 2025</div>
+                        <div class="screening-item"><em><u><a href="https://mp.weixin.qq.com/s/2eJPbRy5onttHqb3tvY00Q" target="_blank">Wuhan University Graduate Student Academic Science and Technology Festival “Distorted Imagination: Technological Rethinking under the Annotation of Cinema”</a></u></em>, School of Arts, Wuhan University, Wuhan, China, 2024</div>
+                        <div class="screening-item"><em><u><a href="https://mp.weixin.qq.com/s/Ap6ifFvuRDjMwyRNi-s6Cw" target="_blank">Experimental Film Night</a></u></em>, The Delta INST + GODOWN, Hangzhou, China, 2024</div>
+                        <div class="screening-item"><em><u><a href="https://mp.weixin.qq.com/s/2m4KOOK_9bZTcjshwPC73Q" target="_blank">ONED Film Festival China Touring Screening Program</a></u></em>, Lanzhou / Suzhou / Shanghai / Tianjin / Yangshuo / Yichang / Chengdu, China, 2024</div>
+                        <div class="screening-item"><em><u><a href="https://mp.weixin.qq.com/s/Uw2rS5Uk5JADzRAvFa4KbQ" target="_blank">The 8th abC Art Book Fair</a></u></em>, OōEli, Hangzhou, China, 2023</div>
+                        <div class="screening-item"><em><u><a href="https://mp.weixin.qq.com/s/RWMzt2DKmVaVpEY2Rgkxxg" target="_blank">Jetty Screening</a></u></em>, Dali, China, 2023</div>
+                        <div class="screening-item"><em><u><a href="https://mp.weixin.qq.com/s/oAricm9WS5m2XtCShSG4tQ" target="_blank">C-POP Theatre</a></u></em>, Beijing, China, 2023</div>
+                        <div class="screening-item"><em><u><a href="https://mp.weixin.qq.com/s/NTp_wqKoNgdeY2TsnEd1og" target="_blank">Ferry</a></u></em>, Chengdu, China, 2023<br /><br /></div>
                       </div>
-                      <button id="toggle-screenings">Show More</button>
+
                     </div>
 
 
@@ -520,26 +579,26 @@ Honourable Mention&nbsp;<span>for&nbsp;&#8203;</span><em>Light and Cold Conversa
 
                     <div class="paragraph">
                       <u><font size="5">Teaching Experience</font></u><br />
-                      "Texture of the Earth and Skin We're In: Geological Thinking, Anthropocene Cinema, and the Imaginations Beyond Humanbeing" courses, Radiance Academy, online, 2024&nbsp;&nbsp;&nbsp; (<em>at high school &amp; undergraduate levels, <u><a href="syllabus.html" target="_blank"><font color="#000000">click here for the syllabus</font></a></u></em>)<br />&#8203;
+                      "Texture of the Earth and Skin We're In: Geological Thinking, Anthropocene Cinema, and the Imaginations Beyond Humanbeing" courses, Radiance Academy, online, 2024&nbsp;&nbsp;&nbsp; (<em>at high school &amp; undergraduate levels, <u><a href="syllabus.html" target="_blank">click here for the syllabus</a></u></em>)<br />&#8203;
                     </div>
 
 
                     <div class="paragraph">
                       <u><font size="5">Talks &amp; Interviews</font></u><br />
 
-                      <u><a href="https://mp.weixin.qq.com/s/pQrMXlqDrw24a1HtoL9JzQ" target="_blank"><font color="#000000">Panel Talk</font></a></u>, <em>Thematic Screening of Multi-Screen Video Short Films</em>, China Academy of Art, Hangzhou, 2025<br />
+                      <u><a href="https://mp.weixin.qq.com/s/emznMENbR0EbiGNm2IyYyQ" target="_blank">Panel Talk</a></u>, <em>Thematic Screening of Multi-Screen Video Short Films</em>, China Academy of Art, Hangzhou, 2025<br />
 
-                      <u><a href="https://mp.weixin.qq.com/s/FxY6OtlHM6bSdNDa7oV9DA" target="_blank"><font color="#000000">Panel Talk</font></a></u>, <em>Wuhan University Graduate Student Academic Science and Technology Festival "Distorted Imagination: Technological Rethinking under the Annotation of Cinema”</em>, School of Arts, Wuhan University, Wuhan, 202<br />
+                      <u><a href="https://mp.weixin.qq.com/s/FxY6OtlHM6bSdNDa7oV9DA" target="_blank">Panel Talk</a></u>, <em>Wuhan University Graduate Student Academic Science and Technology Festival "Distorted Imagination: Technological Rethinking under the Annotation of Cinema”</em>, School of Arts, Wuhan University, Wuhan, 202<br />
 
-                      <u><a href="https://044artstudio.com/artists" target="_blank"><font color="#000000">Artists Interview</font></a></u>, 044 ART STUDIO, Online, 2024<br />
-                      <font color="#000000">Artists Interview</font>, Jiangsu Business Daily, Nanjing, 2024<br />
-                      <u><a href="GOOGOLtalk.html" target="_blank"><font color="#000000">Artist Panel Talk</font></a></u>, <em>GOOGOL</em>, Online, 2024<br />
-                      <u><a href="https://www.xiaohongshu.com/explore/66619b2f000000000c01b3fb?app_platform=android&amp;ignoreEngage=true&amp;app_version=8.39.0&amp;share_from_user_hidden=true&amp;type=normal&amp;author_share=1&amp;xhsshare=WeixinSession&amp;shareRedId=N0xHMDM9RUE2NzUyOTgwNjY0OTc9NTxO&amp;apptime=1717687112&amp;share_id=4f70ca260d5848adb599a2d74a239521" target="_blank"><font color="#000000">Artist Interview</font></a></u>, <em>"Breathe With the Plants"</em>, Xì | Collective, 2024<br />
+                      <u><a href="https://044artstudio.com/artists" target="_blank">Artists Interview</a></u>, 044 ART STUDIO, Online, 2024<br />
+                      Artists Interview, Jiangsu Business Daily, Nanjing, 2024<br />
+                      <u><a href="GOOGOLtalk.html" target="_blank">Artist Panel Talk</a></u>, <em>GOOGOL</em>, Online, 2024<br />
+                      <u><a href="https://www.xiaohongshu.com/explore/66619b2f000000000c01b3fb?app_platform=android&amp;ignoreEngage=true&amp;app_version=8.39.0&amp;share_from_user_hidden=true&amp;type=normal&amp;author_share=1&amp;xhsshare=WeixinSession&amp;shareRedId=N0xHMDM9RUE2NzUyOTgwNjY0OTc9NTxO&amp;apptime=1717687112&amp;share_id=4f70ca260d5848adb599a2d74a239521" target="_blank">Artist Interview</a></u>, <em>"Breathe With the Plants"</em>, Xì | Collective, 2024<br />
                       <span style="color:rgb(0, 0, 0)">Artist talk, </span>Wuhan Photography Art Centre, Wuhan, China, 2023<br />
-                      <u><a href="https://mp.weixin.qq.com/s/LceWwIAWW9sofBra7_AgKA" target="_blank"><font color="#000000">Invited lecture</font></a></u>, "How did it start?" The First Round Table of the Occulf, Umay Art Project, Online, 2023<br />
+                      <u><a href="https://mp.weixin.qq.com/s/LceWwIAWW9sofBra7_AgKA" target="_blank">Invited lecture</a></u>, "How did it start?" The First Round Table of the Occulf, Umay Art Project, Online, 2023<br />
                       Invited Lecture, Advance Art Museum, Changsha, China, 2023<br />
-                      <u><a href="https://mp.weixin.qq.com/s/XgwA910JrW2Ra7zy_YppLQ" target="_blank"><font color="#000000">Artist Interview</font></a></u>, <em>"Independent Artists, in Nanjing"</em>, Nanjing Cultural Life Guide, 2023<br />
-                      <u><a href="https://mp.weixin.qq.com/s/oAricm9WS5m2XtCShSG4tQ" target="_blank"><font color="#000000">Artist talk</font></a></u>, C-POP Theatre, Beijing, China, 2023<br /><br />
+                      <u><a href="https://mp.weixin.qq.com/s/XgwA910JrW2Ra7zy_YppLQ" target="_blank">Artist Interview</a></u>, <em>"Independent Artists, in Nanjing"</em>, Nanjing Cultural Life Guide, 2023<br />
+                      <u><a href="https://mp.weixin.qq.com/s/oAricm9WS5m2XtCShSG4tQ" target="_blank">Artist talk</a></u>, C-POP Theatre, Beijing, China, 2023<br /><br />
                     </div>
                     <div class="paragraph">
                       <u><font size="5">Professional Affiliations</font></u><br />
@@ -563,6 +622,7 @@ Honourable Mention&nbsp;<span>for&nbsp;&#8203;</span><em>Light and Cold Conversa
       </div>
     </div>
   </div>
+
 
   <script type="text/javascript" src="files/theme/plugins.js"></script>
   <script type="text/javascript" src="files/theme/custom.js"></script>
