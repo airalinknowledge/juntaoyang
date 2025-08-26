@@ -85,6 +85,29 @@
 <style>
 .wsite-background {background-image: url("/uploads/1/4/8/1/148137552/background-images/1199586110.jpg") !important;background-repeat: no-repeat !important;background-position: 50% 50% !important;background-size: 100% !important;background-color: transparent !important;background: inherit;}
 body.wsite-background {background-attachment: fixed !important;}.wsite-background.wsite-custom-background{ background-size: cover !important}
+
+/* 正文区域：链接颜色继承正文颜色 */
+.main-content-column a,
+.main-content-column a:visited,
+.main-content-column a:hover,
+.main-content-column a:active {
+  color: inherit !important;
+}
+
+/* 链接里的子元素也继承（防止再被覆盖） */
+.main-content-column a * { color: inherit !important; }
+
+/* 失效化旧式 <font color>，避免把文字固定成灰色 */
+.main-content-column font[color] { color: inherit !important; }
+
+/* 可选：给链接保留轻微的可识别性（按需保留/删除） */
+.main-content-column a {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.main-content-column a:hover { text-decoration-thickness: 2px; }
+
+
 </style>
 		<script src='files/templateArtifacts.js?1714489756'></script>
 <script>

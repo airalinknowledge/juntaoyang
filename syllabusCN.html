@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 	<head>
-		<title>Juntao Yang 杨君陶的个人网站</title>
+		<title>课程大纲 - 杨君陶</title>
 <meta name="description" content="juntaoyang" />
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -68,6 +68,54 @@
 .wsite-background {background-image: url("/uploads/1/4/8/1/148137552/background-images/1199586110.jpg") !important;background-repeat: no-repeat !important;background-position: 50% 50% !important;background-size: 100% !important;background-color: transparent !important;background: inherit;}
 body.wsite-background {background-attachment: fixed !important;}.wsite-background.wsite-custom-background{ background-size: cover !important}
 </style>
+<!-- 在这里拷入 ↓ -->
+<style>
+    :root {
+      /* 全局可调的三种颜色 */
+      --main-color:    #333333;  /* 正文文字 */
+      --heading-color: #222222;  /* 各级标题 */
+      --link-color:    #333333;  /* 超链接 */
+    }
+
+    /* 正文默认文字色 */
+    body, 
+    .paragraph, 
+    p {
+      color: var(--main-color) !important;
+    }
+
+    /* 各级标题色 */
+    h1, h2, h3, h4, h5, h6,
+    .section-title,
+    u, em {
+      color: var(--heading-color) !important;
+    }
+
+    /* 链接色 */
+    a, a:visited {
+      color: var(--link-color) !important;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .main-content-area {
+        max-width: 90%; /* 可以调整这个值来改变内容宽度 */
+        margin-left: 0%;
+        margin-right: 10%;
+    }
+
+    @media screen and (max-width: 767px) {
+        .main-content-area {
+            max-width: 100%;
+            margin-left: 0;
+            margin-right: 0;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+    }
+  </style>
+  <!-- 拷入结束 ↑ -->
 		<script src='files/templateArtifacts.js?1714489756'></script>
 <script>
 var STATIC_BASE = '//cdn1.editmysite.com/';
@@ -76,7 +124,7 @@ var STYLE_PREFIX = 'wsite';
 </script>
 <script src='https://cdn2.editmysite.com/js/jquery-1.8.3.min.js'></script>
 
-<script type="text/javascript" src="http://cdn2.editmysite.com/js/lang/en/stl.js?buildTime=1234&"></script>
+<script type="text/javascript" src="http://cdn2.editmysite.com/js/lang/zh/stl.js?buildTime=1234&"></script>
 <script src="http://cdn2.editmysite.com/js/site/main.js?buildTime=1234"></script><script type="text/javascript">
 		function initCustomerAccountsModels() {
 					(function(){_W.setup_rpc({"url":"\/ajax\/api\/JsonRPC\/CustomerAccounts\/","actions":{"CustomerAccounts":[{"name":"login","len":2,"multiple":false,"standalone":false},{"name":"logout","len":0,"multiple":false,"standalone":false},{"name":"getSessionDetails","len":0,"multiple":false,"standalone":false},{"name":"getAccountDetails","len":0,"multiple":false,"standalone":false},{"name":"getOrders","len":0,"multiple":false,"standalone":false},{"name":"register","len":4,"multiple":false,"standalone":false},{"name":"emailExists","len":1,"multiple":false,"standalone":false},{"name":"passwordReset","len":1,"multiple":false,"standalone":false},{"name":"passwordUpdate","len":3,"multiple":false,"standalone":false},{"name":"validateSession","len":1,"multiple":false,"standalone":false}]},"namespace":"_W.CustomerAccounts.RPC"});
@@ -100,12 +148,12 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 			_W.storeEuPrivacyPolicyUrl = "";
 			com_currentSite = "713576850827693055";
 			com_userID = "148137552";</script><script type="text/javascript">_W.configDomain = "www.weebly.com";</script><script>_W.relinquish && _W.relinquish()</script>
-<script type="text/javascript" src="http://cdn2.editmysite.com/js/lang/en/stl.js?buildTime=1234&"></script><script> _W.themePlugins = [];</script><script type="text/javascript"> _W.recaptchaUrl = "https://www.google.com/recaptcha/api.js"; </script><script type="text/javascript"><!--
+<script type="text/javascript" src="http://cdn2.editmysite.com/js/lang/zh/stl.js?buildTime=1234&"></script><script> _W.themePlugins = [];</script><script type="text/javascript"> _W.recaptchaUrl = "https://www.google.com/recaptcha/api.js"; </script><script type="text/javascript"><!--
 	var IS_ARCHIVE = 1;
 	
 	function initFlyouts(){
 		initPublishedFlyoutMenus(
-			[{"id":"356461667194310790","title":"About","url":"index.html","target":"","nav_menu":false,"nonclickable":false},{"id":"444862601486980856","title":"ARTWORKS","url":"artworks.html","target":"","nav_menu":false,"nonclickable":false},{"id":"864040464600617228","title":"Writings","url":"writings.html","target":"","nav_menu":false,"nonclickable":false},{"id":"361237216236019909","title":"Projects","url":"projects.html","target":"","nav_menu":false,"nonclickable":false},{"id":"497557010409593207","title":"NEWS","url":"news.html","target":"","nav_menu":false,"nonclickable":false}],
+			[{"id":"356461667194310790","title":"About","url":"index.html","target":"","nav_menu":false,"nonclickable":false},{"id":"444862601486980856","title":"ARTWORKS","url":"artworks.html","target":"","nav_menu":false,"nonclickable":false},{"id":"864040464600617228","title":"Writings","url":"writings.html","target":"","nav_menu":false,"nonclickable":false},{"id":"361237216236019909","title":"Projects","url":"projects.html","target":"","nav_menu":false,"nonclickable":false},{"id":"497557010409593207","title":"POSTS","url":"posts.html","target":"","nav_menu":false,"nonclickable":false}],
 			"488020263907845360",
 			'',
 			'active',
@@ -135,97 +183,37 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 </span></div>
 				<ul class="wsite-menu-default">
 						<li id="pg356461667194310790" class="wsite-menu-item-wrap">
-							<a
-										href="index.html"
-								class="wsite-menu-item"
-								>
-								About
-							</a>
-							
+							<a href="guanyu.html" class="wsite-menu-item">关于</a>
 						</li>
 						<li id="pg444862601486980856" class="wsite-menu-item-wrap">
-							<a
-										href="artworks.html"
-								class="wsite-menu-item"
-								>
-								ARTWORKS
-							</a>
-							
+							<a href="chuangzuo.html" class="wsite-menu-item">创作</a>
 						</li>
 						<li id="pg864040464600617228" class="wsite-menu-item-wrap">
-							<a
-										href="writings.html"
-								class="wsite-menu-item"
-								>
-								Writings
-							</a>
-							
+							<a href="chuban.html" class="wsite-menu-item">出版</a>
 						</li>
 						<li id="pg361237216236019909" class="wsite-menu-item-wrap">
-							<a
-										href="projects.html"
-								class="wsite-menu-item"
-								>
-								Projects
-							</a>
-							
+							<a href="xiangmu.html" class="wsite-menu-item">项目</a>
 						</li>
 						<li id="pg497557010409593207" class="wsite-menu-item-wrap">
-							<a
-										href="news.html"
-								class="wsite-menu-item"
-								>
-								NEWS
-							</a>
-							
+							<a href="fabu.html" class="wsite-menu-item">发布</a>
 						</li>
 				</ul>
 			</div>
    	 	<div id="navmobile"><ul class="wsite-menu-default">
 		<li id="pg356461667194310790" class="wsite-menu-item-wrap">
-			<a
-						href="index.html"
-				class="wsite-menu-item"
-				>
-				About
-			</a>
-			
+			<a href="guanyu.html" class="wsite-menu-item">关于</a>
 		</li>
 		<li id="pg444862601486980856" class="wsite-menu-item-wrap">
-			<a
-						href="artworks.html"
-				class="wsite-menu-item"
-				>
-				ARTWORKS
-			</a>
-			
+			<a href="chuangzuo.html" class="wsite-menu-item">创作</a>
 		</li>
 		<li id="pg864040464600617228" class="wsite-menu-item-wrap">
-			<a
-						href="writings.html"
-				class="wsite-menu-item"
-				>
-				Writings
-			</a>
-			
+			<a href="chuban.html" class="wsite-menu-item">出版</a>
 		</li>
 		<li id="pg361237216236019909" class="wsite-menu-item-wrap">
-			<a
-						href="projects.html"
-				class="wsite-menu-item"
-				>
-				Projects
-			</a>
-			
+			<a href="xiangmu.html" class="wsite-menu-item">项目</a>
 		</li>
 		<li id="pg497557010409593207" class="wsite-menu-item-wrap">
-			<a
-						href="news.html"
-				class="wsite-menu-item"
-				>
-				NEWS
-			</a>
-			
+			<a href="fabu.html" class="wsite-menu-item">发布</a>
 		</li>
 </ul>
 </div>
@@ -265,7 +253,7 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 
 
 
-<div class="paragraph" style="text-align:left;"><font size="3"><strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</strong><u><a href="syllabus.html"><font color="#2a2a2a">English</font></a></u>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<strong>&#20013;&#25991;</strong><br />&#8203;&nbsp; &nbsp; &nbsp; airalinknowledge@gmail.com</font></div>
+<div class="paragraph" style="text-align:left;"><font size="3"><strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</strong><u><a href="syllabus.html"><font color="#2a2a2a">English</font></a></u>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<strong>&#20013;&#25991;</strong><br />&#8203;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;juntao.yang@columbia.edu</font></div>
 
 
 
@@ -274,7 +262,7 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 					
 						
 
-<div class="paragraph" style="text-align:right;"><font size="4"><u><a href="guanyu.html"><font color="#2a2a2a">&#20851;&#20110;</font></a></u>&nbsp; &nbsp;<u><a href="chuangzuo.html"><font color="#2a2a2a">&#21019;&#20316;</font></a></u><font color="#2a2a2a">&nbsp; &nbsp;</font><u><a href="chuban.html"><font color="#2a2a2a">&#20986;&#29256;</font></a></u><font color="#2a2a2a">&nbsp; &nbsp;</font><u><a href="xiangmu.html"><font color="#2a2a2a">&#39033;&#30446;</font></a></u>&nbsp; &nbsp;<u><a href="xinwen.html"><font color="#2a2a2a">&#26032;&#38395;</font></a></u></font></div>
+<div class="paragraph" style="text-align:right;"><font size="4"><u><a href="guanyu.html"><font color="#2a2a2a">关于</font></a></u>&nbsp; &nbsp;<u><a href="chuangzuo.html"><font color="#2a2a2a">创作</font></a></u><font color="#2a2a2a">&nbsp; &nbsp;</font><u><a href="chuban.html"><font color="#2a2a2a">出版</font></a></u><font color="#2a2a2a">&nbsp; &nbsp;</font><u><a href="xiangmu.html"><font color="#2a2a2a">项目</font></a></u>&nbsp; &nbsp;<u><a href="fabu.html"><font color="#2a2a2a">发布</font></a></u></font></div>
 
 
 
@@ -287,199 +275,178 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 <div class="wsite-spacer" style="height:50px;"></div>
 
 
+<div class="main-content-area">
+    <div class="paragraph">
 
 
+    <font size="6">我们的皮囊与大地的肌理：<br/>地质学思维，人类世的电影，以及超越人类的想象力 </font><br /><font size="5"><br/>系列课程 - 课程大纲</font><br />
+    <br />
+    <br />
 
+    <font size="4"><b>关键主题</b>：人类世；资本世；环境人文；非人类能动性；地质学电影</font><br/>
+    <font size="4"><b>Key Themes</b>: Anthropocene; Capitalocene; Environmental Humanities; Non-human Agency; Geological Film</font><br /><br />
 
+    <br />
 
 
-<div class="paragraph">
+    <div><div style="height: 20px; overflow: hidden; width: 100%;"></div>
+    <hr class="styled-hr" style="width:100%;"></hr>
+    <div style="height: 20px; overflow: hidden; width: 100%;"></div></div>
+    <br/><br/>
 
+    <font size="5"><b><u>课程简介</u></b></font><br /><br />
+    <font size="4">电影艺术常常被理解为言说的延伸，对话的场所，想象的场域。那么，当所关涉的对象是“自然”时，电影又会呈现何种特殊形态，激发哪些能量，创造哪些价值？
+    在12课时的深度交流中，学员将与导师一同探索生态电影的前世今生，并理解电影作为一种思辨未来的艺术形式，如何有助于我们更新有关人类自身、自然环境、生态灾难等事项的既定概念，甚至帮助我们在“生态末日”之中生存下去。</b>
+    课程将结合文献思辨和影像细读，给予学员有关生态电影的丰富知识，并视学员兴趣导向论文写作或短片创作。</font>
+    <br />
 
-<font size="6">我们的皮囊与大地的肌理：<br/>地质学思维，人类世的电影，以及超越人类的想象力 </font><br /><font size="5"><br/>系列课程 - 课程大纲</font><br />
-<br />
-<br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
 
-<font size="4"><b>关键主题</b>：人类世；资本世；环境人文；非人类能动性；地质学电影</font><br/>
-<font size="4"><b>Key Themes</b>: Anthropocene; Capitalocene; Environmental Humanities; Non-human Agency; Geological Film</font><br /><br />
 
-<br />
+    <font size="5"><b><u>课程内容</u></b></font><br /><br />
+    <font size="5">Course 1 导论：栖居或寄生？——初识人类世</font><br />
+    <font size="4">从很早以前，我们就开始认识到人类生活与自然环境的密切关系，然而这种关系究竟是一种怎样的关系？历史上的人类依存在自然的广博浩瀚之中，有时宣称将要征服自然，有时则匍匐在天灾的威能之下。我们的问题是，今天的人类是否已经获得了凌驾于自然之上的技术力量？这种主宰性的力量是否已经让地球迈入了“人类世”的史无前例的地质阶段？这种不对等的权力关系对自然、其它物种、非生物乃至人类自身有何影响？</font>
+    这节课将会与学生一起回顾“人类世”最初被提议的情景，尝试思考这一学术词汇所蕴含的思辨能量。课程还将引导学生思考围绕“人类世”这一概念的争议，并尝试寻找替代性的描述方法。
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
 
+    <font size="5">Course 2 作为棱镜的电影：媒介艺术如何描绘和介入人类世的境遇？</font><br />
+    <font size="4">不论人类世的概念如何存在争议，毋庸置疑的是，人类全体与自然已然处于相当紧张的关系之中：气候变化，水土流失，全球变暖，海平面上升，大流行…然而由于这些生态现实在空间尺度上的分散和在时间尺度上的漫长，如何恰如其分地描绘它们/承认它们将是急需解决的难题。</b>
+    这节课将会带领学生思考电影和其他媒介艺术介入我们所面对的生态危机的能力：电影，以及其他媒介艺术，如何克服时空的离散，带来表征的可能性？而表征，又在何种意义上，有助于问题得到解决？
+    </font>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
 
-<div><div style="height: 20px; overflow: hidden; width: 100%;"></div>
-<hr class="styled-hr" style="width:100%;"></hr>
-<div style="height: 20px; overflow: hidden; width: 100%;"></div></div>
-<br/><br/>
 
-<font size="5"><b><u>课程简介</u></b></font><br /><br />
-<font size="4">电影艺术常常被理解为言说的延伸，对话的场所，想象的场域。那么，当所关涉的对象是“自然”时，电影又会呈现何种特殊形态，激发哪些能量，创造哪些价值？
-在12课时的深度交流中，学员将与导师一同探索生态电影的前世今生，并理解电影作为一种思辨未来的艺术形式，如何有助于我们更新有关人类自身、自然环境、生态灾难等事项的既定概念，甚至帮助我们在“生态末日”之中生存下去。</b>
-课程将结合文献思辨和影像细读，给予学员有关生态电影的丰富知识，并视学员兴趣导向论文写作或短片创作。</font>
-<br />
 
-<br />
-<br />
-<br />
-<br />
-<br />
 
+    <font size="5">Course 3 表征自然/再造自然：早期民族志影像的真诚与虚伪</font><br />
+    <font size="4">如果我们把《水浇园丁》视作一种隐喻，那么可以说，电影从诞生之初就就不可避免地直指人类与自然的各种关系：培育、反哺、规训、挣扎和反叛。通过关注早期电影，尤其是与“民族志影像”密切相关的那些，我们是否有可能在影像中重构人类对于自身与自然关系的思考？进一步说，是否有可能从那些质朴的电影语言的角落里，发现自然/非人类能动者对自身的言说？</b>
+    这节课将引领学员们前往电影史的开端，并希望从中发现自然的痕迹。学员们被期望思考以下问题：这些非人类事物得到忠实的再现了吗？或者如同早期民族志影像普遍存在的搬演痕迹和殖民倾向一样，这些事物也遭到了某种扭曲和再造？
 
-<font size="5"><b><u>课程内容</u></b></font><br /><br />
-<font size="5">Course 1 导论：栖居或寄生？——初识人类世</font><br />
-<font size="4">从很早以前，我们就开始认识到人类生活与自然环境的密切关系，然而这种关系究竟是一种怎样的关系？历史上的人类依存在自然的广博浩瀚之中，有时宣称将要征服自然，有时则匍匐在天灾的威能之下。我们的问题是，今天的人类是否已经获得了凌驾于自然之上的技术力量？这种主宰性的力量是否已经让地球迈入了“人类世”的史无前例的地质阶段？这种不对等的权力关系对自然、其它物种、非生物乃至人类自身有何影响？</font>
-这节课将会与学生一起回顾“人类世”最初被提议的情景，尝试思考这一学术词汇所蕴含的思辨能量。课程还将引导学生思考围绕“人类世”这一概念的争议，并尝试寻找替代性的描述方法。
-<br />
-<br />
-<br />
-<br />
-<br />
+    </font>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
 
-<font size="5">Course 2 作为棱镜的电影：媒介艺术如何描绘和介入人类世的境遇？</font><br />
-<font size="4">不论人类世的概念如何存在争议，毋庸置疑的是，人类全体与自然已然处于相当紧张的关系之中：气候变化，水土流失，全球变暖，海平面上升，大流行…然而由于这些生态现实在空间尺度上的分散和在时间尺度上的漫长，如何恰如其分地描绘它们/承认它们将是急需解决的难题。</b>
-这节课将会带领学生思考电影和其他媒介艺术介入我们所面对的生态危机的能力：电影，以及其他媒介艺术，如何克服时空的离散，带来表征的可能性？而表征，又在何种意义上，有助于问题得到解决？
-</font>
-<br />
-<br />
-<br />
-<br />
-<br />
 
 
 
 
-<font size="5">Course 3 表征自然/再造自然：早期民族志影像的真诚与虚伪</font><br />
-<font size="4">如果我们把《水浇园丁》视作一种隐喻，那么可以说，电影从诞生之初就就不可避免地直指人类与自然的各种关系：培育、反哺、规训、挣扎和反叛。通过关注早期电影，尤其是与“民族志影像”密切相关的那些，我们是否有可能在影像中重构人类对于自身与自然关系的思考？进一步说，是否有可能从那些质朴的电影语言的角落里，发现自然/非人类能动者对自身的言说？</b>
-这节课将引领学员们前往电影史的开端，并希望从中发现自然的痕迹。学员们被期望思考以下问题：这些非人类事物得到忠实的再现了吗？或者如同早期民族志影像普遍存在的搬演痕迹和殖民倾向一样，这些事物也遭到了某种扭曲和再造？
+    <font size="5">Course 4 我们时代的生态灾难（1）：石油，毒物，后殖民时代的地质创伤</font><br />
+    <font size="4">将视线从影史开端转到当下，我们如今面临的自然是怎样的自然，而我们又如何用电影去言说和解释这些状况？</b>
+    这节课中，学员们将在带领下通过当代影像“重新发现”生态灾难的面貌，以及它们浅层表象之下的复杂性。石油带来的危机仅仅关于碳排放吗，亦或这只是更宏大的故事的区区一环？有毒物质仅仅在化工厂的失误中被泄露吗，如果说我们家中就存在有各种不可见的毒物呢？我们所面临的满目疮痍的地球表面，又是如何与数百年的殖民史紧密相连的？最重要的是，学员将被引导思考，如何通过影像手段去诠释这些复杂性。
 
-</font>
-<br />
-<br />
-<br />
-<br />
-<br />
 
+    </font>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
 
 
 
+    <font size="5">Course 5 我们时代的生态灾难（2）：（反）灾难论的困境，或我们如何突围？</font><br />
+    <font size="4">紧接着上节课程的内容，如果说一部分生态灾难影像确乎有助于我们去呈现和理解当今困境的复杂背景，那么是否存在另一部分不同的叙事，它们同样旨在承认生态灾难，却反而可能引发反作用？</b>
+    通过选定的几部纪录片，这节课将引导学员反思市场流行的“灾难论”叙事。学员们被期待辩证地思考“灾难论”的启示性和抑制性，并探索在自身创作过程中，能否运用替代性的叙述策略，以规避“灾难论”的风险？
 
-<font size="5">Course 4 我们时代的生态灾难（1）：石油，毒物，后殖民时代的地质创伤</font><br />
-<font size="4">将视线从影史开端转到当下，我们如今面临的自然是怎样的自然，而我们又如何用电影去言说和解释这些状况？</b>
-这节课中，学员们将在带领下通过当代影像“重新发现”生态灾难的面貌，以及它们浅层表象之下的复杂性。石油带来的危机仅仅关于碳排放吗，亦或这只是更宏大的故事的区区一环？有毒物质仅仅在化工厂的失误中被泄露吗，如果说我们家中就存在有各种不可见的毒物呢？我们所面临的满目疮痍的地球表面，又是如何与数百年的殖民史紧密相连的？最重要的是，学员将被引导思考，如何通过影像手段去诠释这些复杂性。
 
 
-</font>
-<br />
-<br />
-<br />
-<br />
-<br />
+    </font>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
 
 
 
-<font size="5">Course 5 我们时代的生态灾难（2）：（反）灾难论的困境，或我们如何突围？</font><br />
-<font size="4">紧接着上节课程的内容，如果说一部分生态灾难影像确乎有助于我们去呈现和理解当今困境的复杂背景，那么是否存在另一部分不同的叙事，它们同样旨在承认生态灾难，却反而可能引发反作用？</b>
-通过选定的几部纪录片，这节课将引导学员反思市场流行的“灾难论”叙事。学员们被期待辩证地思考“灾难论”的启示性和抑制性，并探索在自身创作过程中，能否运用替代性的叙述策略，以规避“灾难论”的风险？
+    <font size="5">Course 6 - 7 不安的大地，耸动的星球：新物质主义影像与万物纠缠</font><br />
+    <font size="4">我们常常称人的一生“尘归尘，土归土”，这或许引发我们的思考：人与尘土是否本来就是一体的？人类与其他物种和非生物，是否从长久的时间看来，从分子甚至原子的视角看来，并没有本质的区别？人类文明所有的思考和表达，是否都依赖于那些与尘土并无二致的物质成分？如果上述说法成立，这对于我们创作和分析生态电影有何启发？</b>
+    这两节课将引导学员探索人文领域的前沿思想，尤其是“新物质主义”学说。学员们将在带领下触碰一些艰深的话题，包括人类与地质的一体性，生物与非生物的不可分割，电影介质与自然环境的密切关系等等。学员们将研究当代生态影像与地质学电影如何在美学和伦理学上尝试描摹上述哲思，甚至将其用于自己的创作之中。
 
 
 
-</font>
-<br />
-<br />
-<br />
-<br />
-<br />
 
+    </font>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
 
 
-<font size="5">Course 6 - 7 不安的大地，耸动的星球：新物质主义影像与万物纠缠</font><br />
-<font size="4">我们常常称人的一生“尘归尘，土归土”，这或许引发我们的思考：人与尘土是否本来就是一体的？人类与其他物种和非生物，是否从长久的时间看来，从分子甚至原子的视角看来，并没有本质的区别？人类文明所有的思考和表达，是否都依赖于那些与尘土并无二致的物质成分？如果上述说法成立，这对于我们创作和分析生态电影有何启发？</b>
-这两节课将引导学员探索人文领域的前沿思想，尤其是“新物质主义”学说。学员们将在带领下触碰一些艰深的话题，包括人类与地质的一体性，生物与非生物的不可分割，电影介质与自然环境的密切关系等等。学员们将研究当代生态影像与地质学电影如何在美学和伦理学上尝试描摹上述哲思，甚至将其用于自己的创作之中。
+    <font size="5">Course  8 就在此刻，森林在抗议：与非人类能动性相协商的影像艺术</font><br />
+    <font size="4">生态危机的故事不止由人类谱写，而且也由其他物种乃至非生命物质共同演绎。仅仅允许人类言说不仅是不公允的，甚至可能在电影叙事中重现造成了生态危机的“人类中心主义”。</b>
+    本节课中，几部重要的当代艺术影像将被介绍给学员们，它们的共同之处在于破除了由人类主导（更多时候是由白人男性主导）的有关生态的叙事模式，而将媒介艺术视作人类、非人类生命、非生命物质相互协商的场所：言说者彼此对话，最终生发出众声喧哗的场域。课程提请学员注意这些影像承认他者声音的态度，也期待学员将之有效用于自己的写作与创作之中。
 
 
 
 
-</font>
-<br />
-<br />
-<br />
-<br />
-<br />
+    </font>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
 
 
-<font size="5">Course  8 就在此刻，森林在抗议：与非人类能动性相协商的影像艺术</font><br />
-<font size="4">生态危机的故事不止由人类谱写，而且也由其他物种乃至非生命物质共同演绎。仅仅允许人类言说不仅是不公允的，甚至可能在电影叙事中重现造成了生态危机的“人类中心主义”。</b>
-本节课中，几部重要的当代艺术影像将被介绍给学员们，它们的共同之处在于破除了由人类主导（更多时候是由白人男性主导）的有关生态的叙事模式，而将媒介艺术视作人类、非人类生命、非生命物质相互协商的场所：言说者彼此对话，最终生发出众声喧哗的场域。课程提请学员注意这些影像承认他者声音的态度，也期待学员将之有效用于自己的写作与创作之中。
 
 
 
+    <font size="5">Course 9 中国生态电影专题：从东方出发</font><br />
+    <font size="4">在课程中已经讨论了许多影像作品，大多源于西方作者，或有着深厚的西方背景。然而，人类共同身处于生态系统之中，并因为不同的社会政治文化地理等因素而有着不同的境遇，这意味着我们需要各种不同的声音，才能完善这一全球在地背景下的复杂故事。</b>
+    本节课将引领学员思考中国在全球性生态变化中的特殊位置，它的历史语境，以及发展背景。课程将以数部中国生态电影为例，揭露主流生态话语中的西方中心主义，并提请注意非西方生态电影在全球去殖民进程中的重要作用。学员还将探索生态影像与东方哲学相结合的可能性，并尝试将其活用于写作和创作之中。
 
-</font>
-<br />
-<br />
-<br />
-<br />
-<br />
 
 
 
 
+    </font>
+    <br />
 
-<font size="5">Course 9 中国生态电影专题：从东方出发</font><br />
-<font size="4">在课程中已经讨论了许多影像作品，大多源于西方作者，或有着深厚的西方背景。然而，人类共同身处于生态系统之中，并因为不同的社会政治文化地理等因素而有着不同的境遇，这意味着我们需要各种不同的声音，才能完善这一全球在地背景下的复杂故事。</b>
-本节课将引领学员思考中国在全球性生态变化中的特殊位置，它的历史语境，以及发展背景。课程将以数部中国生态电影为例，揭露主流生态话语中的西方中心主义，并提请注意非西方生态电影在全球去殖民进程中的重要作用。学员还将探索生态影像与东方哲学相结合的可能性，并尝试将其活用于写作和创作之中。
+    <br />
+    <br />
 
 
+    <br />
+    <br />
 
 
+    <font size="5">Course 10 末日生存法则：思辨未来，以影像，以他者</font><br />
+    <font size="4">我们生活在末日之中吗？当然，我们希望能够坚定地说出，“不！”然而，面对愈发紧迫的生态变化，我们必须认识到，探索多物种共存的形态将是一个事关全体人类和“超乎人类”事物的重要举措。我们需要放宽自己的视野，让自己的眼睛沾染上他者的气息；我们还需要将自己的思考延展至未来，在我们之后许多年。</b>
+    本节课将引领学员思考电影和其他媒介艺术在思辨未来方面的潜力。电影是否有可能企及他者，照见未来？如果它们确乎如此，又有哪些具体的方法论使电影抵达这些品质？
 
-</font>
-<br />
 
-<br />
-<br />
 
 
-<br />
-<br />
 
 
-<font size="5">Course 10 末日生存法则：思辨未来，以影像，以他者</font><br />
-<font size="4">我们生活在末日之中吗？当然，我们希望能够坚定地说出，“不！”然而，面对愈发紧迫的生态变化，我们必须认识到，探索多物种共存的形态将是一个事关全体人类和“超乎人类”事物的重要举措。我们需要放宽自己的视野，让自己的眼睛沾染上他者的气息；我们还需要将自己的思考延展至未来，在我们之后许多年。</b>
-本节课将引领学员思考电影和其他媒介艺术在思辨未来方面的潜力。电影是否有可能企及他者，照见未来？如果它们确乎如此，又有哪些具体的方法论使电影抵达这些品质？
 
+    </font>
+    <br />
 
+    <br />
+    <br />
 
 
-
-
-
-</font>
-<br />
-
-<br />
-<br />
-
-
-<br />
-<br />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    <br />
+    <br />
+    </div>
+</div>
 			</div>
 		</div>
       </div>

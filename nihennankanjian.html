@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 	<head>
-		<title>Juntao Yang 杨君陶的个人网站</title>
+		<title>你很难看见... - 杨君陶</title>
 <meta name="description" content="juntaoyang" />
 <meta name="keywords" content="juntaoyang" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -64,6 +64,54 @@
 #wsite-content h2.wsite-product-title {}
 .wsite-product .wsite-product-price a {}
 }</style>
+<!-- 在这里拷入 ↓ -->
+<style>
+    :root {
+      /* 全局可调的三种颜色 */
+      --main-color:    #333333;  /* 正文文字 */
+      --heading-color: #222222;  /* 各级标题 */
+      --link-color:    #333333;  /* 超链接 */
+    }
+
+    /* 正文默认文字色 */
+    body, 
+    .paragraph, 
+    p {
+      color: var(--main-color) !important;
+    }
+
+    /* 各级标题色 */
+    h1, h2, h3, h4, h5, h6,
+    .section-title,
+    u, em {
+      color: var(--heading-color) !important;
+    }
+
+    /* 链接色 */
+    a, a:visited {
+      color: var(--link-color) !important;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .main-content-area {
+        max-width: 90%; /* 可以调整这个值来改变内容宽度 */
+        margin-left: 0%;
+        margin-right: 10%;
+    }
+
+    @media screen and (max-width: 767px) {
+        .main-content-area {
+            max-width: 100%;
+            margin-left: 0;
+            margin-right: 0;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+    }
+  </style>
+  <!-- 拷入结束 ↑ -->
 <style>
 .wsite-background {background-image: url("/uploads/1/4/8/1/148137552/background-images/1199586110.jpg") !important;background-repeat: no-repeat !important;background-position: 50% 50% !important;background-size: 100% !important;background-color: transparent !important;background: inherit;}
 body.wsite-background {background-attachment: fixed !important;}.wsite-background.wsite-custom-background{ background-size: cover !important}
@@ -76,7 +124,7 @@ var STYLE_PREFIX = 'wsite';
 </script>
 <script src='https://cdn2.editmysite.com/js/jquery-1.8.3.min.js'></script>
 
-<script type="text/javascript" src="http://cdn2.editmysite.com/js/lang/en/stl.js?buildTime=1234&"></script>
+<script type="text/javascript" src="http://cdn2.editmysite.com/js/lang/zh/stl.js?buildTime=1234&"></script>
 <script src="http://cdn2.editmysite.com/js/site/main.js?buildTime=1234"></script><script type="text/javascript">
 		function initCustomerAccountsModels() {
 					(function(){_W.setup_rpc({"url":"\/ajax\/api\/JsonRPC\/CustomerAccounts\/","actions":{"CustomerAccounts":[{"name":"login","len":2,"multiple":false,"standalone":false},{"name":"logout","len":0,"multiple":false,"standalone":false},{"name":"getSessionDetails","len":0,"multiple":false,"standalone":false},{"name":"getAccountDetails","len":0,"multiple":false,"standalone":false},{"name":"getOrders","len":0,"multiple":false,"standalone":false},{"name":"register","len":4,"multiple":false,"standalone":false},{"name":"emailExists","len":1,"multiple":false,"standalone":false},{"name":"passwordReset","len":1,"multiple":false,"standalone":false},{"name":"passwordUpdate","len":3,"multiple":false,"standalone":false},{"name":"validateSession","len":1,"multiple":false,"standalone":false}]},"namespace":"_W.CustomerAccounts.RPC"});
@@ -100,12 +148,12 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 			_W.storeEuPrivacyPolicyUrl = "";
 			com_currentSite = "713576850827693055";
 			com_userID = "148137552";</script><script type="text/javascript">_W.configDomain = "www.weebly.com";</script><script>_W.relinquish && _W.relinquish()</script>
-<script type="text/javascript" src="http://cdn2.editmysite.com/js/lang/en/stl.js?buildTime=1234&"></script><script> _W.themePlugins = [];</script><script type="text/javascript"> _W.recaptchaUrl = "https://www.google.com/recaptcha/api.js"; </script><script type="text/javascript"><!--
+<script type="text/javascript" src="http://cdn2.editmysite.com/js/lang/zh/stl.js?buildTime=1234&"></script><script> _W.themePlugins = [];</script><script type="text/javascript"> _W.recaptchaUrl = "https://www.google.com/recaptcha/api.js"; </script><script type="text/javascript"><!--
 	var IS_ARCHIVE = 1;
 	
 	function initFlyouts(){
 		initPublishedFlyoutMenus(
-			[{"id":"356461667194310790","title":"About","url":"index.html","target":"","nav_menu":false,"nonclickable":false},{"id":"444862601486980856","title":"ARTWORKS","url":"artworks.html","target":"","nav_menu":false,"nonclickable":false},{"id":"864040464600617228","title":"Writings","url":"writings.html","target":"","nav_menu":false,"nonclickable":false},{"id":"361237216236019909","title":"Projects","url":"projects.html","target":"","nav_menu":false,"nonclickable":false},{"id":"497557010409593207","title":"NEWS","url":"news.html","target":"","nav_menu":false,"nonclickable":false}],
+			[{"id":"356461667194310790","title":"About","url":"index.html","target":"","nav_menu":false,"nonclickable":false},{"id":"444862601486980856","title":"ARTWORKS","url":"artworks.html","target":"","nav_menu":false,"nonclickable":false},{"id":"864040464600617228","title":"Writings","url":"writings.html","target":"","nav_menu":false,"nonclickable":false},{"id":"361237216236019909","title":"Projects","url":"projects.html","target":"","nav_menu":false,"nonclickable":false},{"id":"497557010409593207","title":"POSTS","url":"posts.html","target":"","nav_menu":false,"nonclickable":false}],
 			"602838301542353077",
 			'',
 			'active',
@@ -135,97 +183,37 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 </span></div>
 				<ul class="wsite-menu-default">
 						<li id="pg356461667194310790" class="wsite-menu-item-wrap">
-							<a
-										href="index.html"
-								class="wsite-menu-item"
-								>
-								About
-							</a>
-							
+							<a href="guanyu.html" class="wsite-menu-item">关于</a>
 						</li>
 						<li id="pg444862601486980856" class="wsite-menu-item-wrap">
-							<a
-										href="artworks.html"
-								class="wsite-menu-item"
-								>
-								ARTWORKS
-							</a>
-							
+							<a href="chuangzuo.html" class="wsite-menu-item">创作</a>
 						</li>
 						<li id="pg864040464600617228" class="wsite-menu-item-wrap">
-							<a
-										href="writings.html"
-								class="wsite-menu-item"
-								>
-								Writings
-							</a>
-							
+							<a href="chuban.html" class="wsite-menu-item">出版</a>
 						</li>
 						<li id="pg361237216236019909" class="wsite-menu-item-wrap">
-							<a
-										href="projects.html"
-								class="wsite-menu-item"
-								>
-								Projects
-							</a>
-							
+							<a href="xiangmu.html" class="wsite-menu-item">项目</a>
 						</li>
 						<li id="pg497557010409593207" class="wsite-menu-item-wrap">
-							<a
-										href="news.html"
-								class="wsite-menu-item"
-								>
-								NEWS
-							</a>
-							
+							<a href="fabu.html" class="wsite-menu-item">发布</a>
 						</li>
 				</ul>
 			</div>
    	 	<div id="navmobile"><ul class="wsite-menu-default">
 		<li id="pg356461667194310790" class="wsite-menu-item-wrap">
-			<a
-						href="index.html"
-				class="wsite-menu-item"
-				>
-				About
-			</a>
-			
+			<a href="guanyu.html" class="wsite-menu-item">关于</a>
 		</li>
 		<li id="pg444862601486980856" class="wsite-menu-item-wrap">
-			<a
-						href="artworks.html"
-				class="wsite-menu-item"
-				>
-				ARTWORKS
-			</a>
-			
+			<a href="chuangzuo.html" class="wsite-menu-item">创作</a>
 		</li>
 		<li id="pg864040464600617228" class="wsite-menu-item-wrap">
-			<a
-						href="writings.html"
-				class="wsite-menu-item"
-				>
-				Writings
-			</a>
-			
+			<a href="chuban.html" class="wsite-menu-item">出版</a>
 		</li>
 		<li id="pg361237216236019909" class="wsite-menu-item-wrap">
-			<a
-						href="projects.html"
-				class="wsite-menu-item"
-				>
-				Projects
-			</a>
-			
+			<a href="xiangmu.html" class="wsite-menu-item">项目</a>
 		</li>
 		<li id="pg497557010409593207" class="wsite-menu-item-wrap">
-			<a
-						href="news.html"
-				class="wsite-menu-item"
-				>
-				NEWS
-			</a>
-			
+			<a href="fabu.html" class="wsite-menu-item">发布</a>
 		</li>
 </ul>
 </div>
@@ -263,15 +251,15 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 					
 						
 
-<div class="paragraph" style="text-align:left;"><font size="3"><strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</strong><u><a href="you-can-hardly-see.html"><font color="#2a2a2a">English</font></a></u>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<strong>&#20013;&#25991;</strong><br />&#8203;&nbsp; &nbsp; &nbsp; airalinknowledge@gmail.com</font></div>
 
+<div class="paragraph" style="text-align:left;"><font size="3"><strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</strong><u><a href="you-can-hardly-see.html"><font color="#2a2a2a">English</font></a></u>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<strong>&#20013;&#25991;</strong><br />&#8203;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;juntao.yang@columbia.edu</font></div>
 
 					
 				</td>				<td class="wsite-multicol-col" style="width:63.105726872247%; padding:0 15px;">
 					
 						
 
-<div class="paragraph" style="text-align:right;"><font size="4"><u><a href="guanyu.html"><font color="#2a2a2a">&#20851;&#20110;</font></a></u>&nbsp; &nbsp;<u><a href="chuangzuo.html"><font color="#2a2a2a">&#21019;&#20316;</font></a></u><font color="#2a2a2a">&nbsp; &nbsp;</font><u><a href="chuban.html"><font color="#2a2a2a">&#20986;&#29256;</font></a></u><font color="#2a2a2a">&nbsp; &nbsp;</font><u><a href="xiangmu.html"><font color="#2a2a2a">&#39033;&#30446;</font></a></u>&nbsp; &nbsp;<u><a href="xinwen.html"><font color="#2a2a2a">&#26032;&#38395;</font></a></u></font></div>
+<div class="paragraph" style="text-align:right;"><font size="4"><u><a href="guanyu.html"><font color="#2a2a2a">关于</font></a></u>&nbsp; &nbsp;<u><a href="chuangzuo.html"><font color="#2a2a2a">创作</font></a></u><font color="#2a2a2a">&nbsp; &nbsp;</font><u><a href="chuban.html"><font color="#2a2a2a">出版</font></a></u><font color="#2a2a2a">&nbsp; &nbsp;</font><u><a href="xiangmu.html"><font color="#2a2a2a">项目</font></a></u>&nbsp; &nbsp;<u><a href="fabu.html"><font color="#2a2a2a">发布</font></a></u></font></div>
 
 
 					
@@ -282,15 +270,16 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 
 <div class="wsite-spacer" style="height:50px;"></div>
 
-<h2 class="wsite-content-title">&#21019;&#20316;</h2>
+<div class="main-content-area">
+<h2 class="wsite-content-title">创作</h2>
 
 <div class="paragraph"><font size="5"><strong>你很难看见...</strong></font><br /><strong><font size="6">&nbsp;</font></strong><br />灯箱摄影，数字影像<br />2024</div>
 
-<span class='imgPusher' style='float:left;height:0px'></span><span style='display: table;width:auto;position:relative;float:left;max-width:100%;;clear:left;margin-top:0px;*margin-top:0px'><a><img src="uploads/你很难看见....png" style="margin-top: 10px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; border-width:1px;padding:3px; max-width:100%" alt="Picture" class="galleryImageBorder wsite-image" /></a><span style="display: table-caption; caption-side: bottom; font-size: 90%; margin-top: -0px; margin-bottom: 0px; text-align: center;" class="wsite-caption"></span></span>
+<span class='imgPusher' style='float:left;height:0px'></span><span style='display: table;width:auto;position:relative;float:left;max-width:100%;;clear:left;margin-top:0px;*margin-top:0px'><a><img src="uploads/你很难看见....png" style="margin-top: 10px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; border-width:1px;padding:3px; max-width:100%" alt="图片" class="galleryImageBorder wsite-image" /></a><span style="display: table-caption; caption-side: bottom; font-size: 90%; margin-top: -0px; margin-bottom: 0px; text-align: center;" class="wsite-caption"></span></span>
 <div class="paragraph" style="text-align:center;display:block;"><span><font size="2">“你很难看见...”，灯箱摄影，2024</font></span></div>
 <hr style="width:100%;clear:both;visibility:hidden;"></hr>
 
-<div class="paragraph"><br />&#8203;<br /><u><font size="5">&#31616;&#20171;:&nbsp;</font></u><br />
+<div class="paragraph"><br />&#8203;<br /><u><font size="5">简介:&nbsp;</font></u><br />
 
 <span>解放桥（Ponte della Libertà）是游客和艺术家从Mestre地区登陆威尼斯岛的必经之路，因其悠久的历史和周遭如画的风景而备受赞誉。然而，当经由解放桥所承载的铁路和公共交通快速经过该地区时，海洋对岸Moranzani地区和Fusina港口的现代工业设施往往也被一带而过，被优美的海洋风光所遮蔽。值得注意的是，正是这些容易遭到忽略的工业景观才是真正奠定了威尼斯今日面貌的基础：不仅持续生产着现代威尼斯赖以维系的社会经济命脉，也因其对地下水的大肆攫取而被认为是威尼斯土地沉降的罪魁祸首之一。现代威尼斯的工业背景以一种看似强调的方式被刻意隐去了：尽管闻名遐迩的威尼斯双年展以威尼斯的工业重镇“军械库”作为主展馆，这些工业基础设施却往往隐居幕后，躲藏在如画景观/生态末日景观的角落之中，沦为通往艺术圣殿的快速道路上的匆匆一瞥。<br /><br />
 我们能够真正看见被藏匿起来的工业现实吗？如果可以的话，这势必意味着一种洞穿景观表象的观看方法：也许我们需要一场视觉技术的密谋......<br />
@@ -301,11 +290,11 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 
 
 
-<span class='imgPusher' style='float:left;height:0px'></span><span style='display: table;width:auto;position:relative;float:left;max-width:100%;;clear:left;margin-top:0px;*margin-top:0px'><a><img src="uploads/谷歌地图拼接.png" style="margin-top: 10px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; border-width:1px;padding:3px; max-width:100%" alt="Picture" class="galleryImageBorder wsite-image" /></a><span style="display: table-caption; caption-side: bottom; font-size: 90%; margin-top: -0px; margin-bottom: 0px; text-align: center;" class="wsite-caption"></span></span>
+<span class='imgPusher' style='float:left;height:0px'></span><span style='display: table;width:auto;position:relative;float:left;max-width:100%;;clear:left;margin-top:0px;*margin-top:0px'><a><img src="uploads/谷歌地图拼接.png" style="margin-top: 10px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; border-width:1px;padding:3px; max-width:100%" alt="图片" class="galleryImageBorder wsite-image" /></a><span style="display: table-caption; caption-side: bottom; font-size: 90%; margin-top: -0px; margin-bottom: 0px; text-align: center;" class="wsite-caption"></span></span>
 <div class="paragraph" style="text-align:center;display:block;"><span><font size="2">“你很难看见...”，谷歌地图数字影像，2024</font></span></div>
 <hr style="width:100%;clear:both;visibility:hidden;"></hr>
 
-<span class='imgPusher' style='float:left;height:0px'></span><span style='display: table;width:auto;position:relative;float:left;max-width:100%;;clear:left;margin-top:0px;*margin-top:0px'><a><img src="uploads/D91.jpg" style="margin-top: 10px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; border-width:1px;padding:3px; max-width:100%" alt="Picture" class="galleryImageBorder wsite-image" /></a><span style="display: table-caption; caption-side: bottom; font-size: 90%; margin-top: -0px; margin-bottom: 0px; text-align: center;" class="wsite-caption"></span></span>
+<span class='imgPusher' style='float:left;height:0px'></span><span style='display: table;width:auto;position:relative;float:left;max-width:100%;;clear:left;margin-top:0px;*margin-top:0px'><a><img src="uploads/D91.jpg" style="margin-top: 10px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; border-width:1px;padding:3px; max-width:100%" alt="图片" class="galleryImageBorder wsite-image" /></a><span style="display: table-caption; caption-side: bottom; font-size: 90%; margin-top: -0px; margin-bottom: 0px; text-align: center;" class="wsite-caption"></span></span>
 <div class="paragraph" style="text-align:center;display:block;"><span><font size="2">作为摄影装置作品于南京D9街区，“D9艺术驻留计划” 展出，2024</font></span></div>
 <hr style="width:100%;clear:both;visibility:hidden;"></hr>
 
