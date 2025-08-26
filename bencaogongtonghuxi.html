@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 	<head>
-		<title>Juntao Yang 杨君陶的个人网站</title>
+		<title>本草：共同呼吸 - 杨君陶</title>
 <meta name="description" content="juntaoyang" />
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -64,6 +64,24 @@
 #wsite-content h2.wsite-product-title {}
 .wsite-product .wsite-product-price a {}
 }</style>
+<!-- 新增样式：限制正文内容宽度 -->
+<style>
+    /* 限制正文内容区域宽度 */
+    .main-content-area {
+        max-width: 90%; /* 可以调整这个值来改变内容宽度 */
+        margin-left: 0%;
+        margin-right: 10%;
+    }
+
+    /* 针对移动设备，取消宽度限制，让内容全宽显示 */
+    @media screen and (max-width: 767px) {
+        .main-content-area {
+            max-width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+</style>
 <style>
 .wsite-background {background-image: url("/uploads/1/4/8/1/148137552/background-images/1199586110.jpg") !important;background-repeat: no-repeat !important;background-position: 50% 50% !important;background-size: 100% !important;background-color: transparent !important;background: inherit;}
 body.wsite-background {background-attachment: fixed !important;}.wsite-background.wsite-custom-background{ background-size: cover !important}
@@ -76,7 +94,7 @@ var STYLE_PREFIX = 'wsite';
 </script>
 <script src='https://cdn2.editmysite.com/js/jquery-1.8.3.min.js'></script>
 
-<script type="text/javascript" src="http://cdn2.editmysite.com/js/lang/en/stl.js?buildTime=1234&"></script>
+<script type="text/javascript" src="http://cdn2.editmysite.com/js/lang/zh/stl.js?buildTime=1234&"></script>
 <script src="http://cdn2.editmysite.com/js/site/main.js?buildTime=1234"></script><script type="text/javascript">
 		function initCustomerAccountsModels() {
 					(function(){_W.setup_rpc({"url":"\/ajax\/api\/JsonRPC\/CustomerAccounts\/","actions":{"CustomerAccounts":[{"name":"login","len":2,"multiple":false,"standalone":false},{"name":"logout","len":0,"multiple":false,"standalone":false},{"name":"getSessionDetails","len":0,"multiple":false,"standalone":false},{"name":"getAccountDetails","len":0,"multiple":false,"standalone":false},{"name":"getOrders","len":0,"multiple":false,"standalone":false},{"name":"register","len":4,"multiple":false,"standalone":false},{"name":"emailExists","len":1,"multiple":false,"standalone":false},{"name":"passwordReset","len":1,"multiple":false,"standalone":false},{"name":"passwordUpdate","len":3,"multiple":false,"standalone":false},{"name":"validateSession","len":1,"multiple":false,"standalone":false}]},"namespace":"_W.CustomerAccounts.RPC"});
@@ -100,12 +118,12 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 			_W.storeEuPrivacyPolicyUrl = "";
 			com_currentSite = "713576850827693055";
 			com_userID = "148137552";</script><script type="text/javascript">_W.configDomain = "www.weebly.com";</script><script>_W.relinquish && _W.relinquish()</script>
-<script type="text/javascript" src="http://cdn2.editmysite.com/js/lang/en/stl.js?buildTime=1234&"></script><script> _W.themePlugins = [];</script><script type="text/javascript"> _W.recaptchaUrl = "https://www.google.com/recaptcha/api.js"; </script><script type="text/javascript"><!--
+<script type="text/javascript" src="http://cdn2.editmysite.com/js/lang/zh/stl.js?buildTime=1234&"></script><script> _W.themePlugins = [];</script><script type="text/javascript"> _W.recaptchaUrl = "https://www.google.com/recaptcha/api.js"; </script><script type="text/javascript"><!--
 	var IS_ARCHIVE = 1;
 	
 	function initFlyouts(){
 		initPublishedFlyoutMenus(
-			[{"id":"356461667194310790","title":"About","url":"index.html","target":"","nav_menu":false,"nonclickable":false},{"id":"444862601486980856","title":"ARTWORKS","url":"artworks.html","target":"","nav_menu":false,"nonclickable":false},{"id":"864040464600617228","title":"Writings","url":"writings.html","target":"","nav_menu":false,"nonclickable":false},{"id":"361237216236019909","title":"Projects","url":"projects.html","target":"","nav_menu":false,"nonclickable":false},{"id":"497557010409593207","title":"NEWS","url":"news.html","target":"","nav_menu":false,"nonclickable":false}],
+			[{"id":"356461667194310790","title":"About","url":"index.html","target":"","nav_menu":false,"nonclickable":false},{"id":"444862601486980856","title":"ARTWORKS","url":"artworks.html","target":"","nav_menu":false,"nonclickable":false},{"id":"864040464600617228","title":"Writings","url":"writings.html","target":"","nav_menu":false,"nonclickable":false},{"id":"361237216236019909","title":"Projects","url":"projects.html","target":"","nav_menu":false,"nonclickable":false},{"id":"497557010409593207","title":"POSTS","url":"posts.html","target":"","nav_menu":false,"nonclickable":false}],
 			"519532465645168966",
 			'',
 			'active',
@@ -135,97 +153,37 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 </span></div>
 				<ul class="wsite-menu-default">
 						<li id="pg356461667194310790" class="wsite-menu-item-wrap">
-							<a
-										href="index.html"
-								class="wsite-menu-item"
-								>
-								About
-							</a>
-							
+							<a href="guanyu.html" class="wsite-menu-item">关于</a>
 						</li>
 						<li id="pg444862601486980856" class="wsite-menu-item-wrap">
-							<a
-										href="artworks.html"
-								class="wsite-menu-item"
-								>
-								ARTWORKS
-							</a>
-							
+							<a href="chuangzuo.html" class="wsite-menu-item">创作</a>
 						</li>
 						<li id="pg864040464600617228" class="wsite-menu-item-wrap">
-							<a
-										href="writings.html"
-								class="wsite-menu-item"
-								>
-								Writings
-							</a>
-							
+							<a href="chuban.html" class="wsite-menu-item">出版</a>
 						</li>
 						<li id="pg361237216236019909" class="wsite-menu-item-wrap">
-							<a
-										href="projects.html"
-								class="wsite-menu-item"
-								>
-								Projects
-							</a>
-							
+							<a href="xiangmu.html" class="wsite-menu-item">项目</a>
 						</li>
 						<li id="pg497557010409593207" class="wsite-menu-item-wrap">
-							<a
-										href="news.html"
-								class="wsite-menu-item"
-								>
-								NEWS
-							</a>
-							
+							<a href="fabu.html" class="wsite-menu-item">发布</a>
 						</li>
 				</ul>
 			</div>
    	 	<div id="navmobile"><ul class="wsite-menu-default">
 		<li id="pg356461667194310790" class="wsite-menu-item-wrap">
-			<a
-						href="index.html"
-				class="wsite-menu-item"
-				>
-				About
-			</a>
-			
+			<a href="guanyu.html" class="wsite-menu-item">关于</a>
 		</li>
 		<li id="pg444862601486980856" class="wsite-menu-item-wrap">
-			<a
-						href="artworks.html"
-				class="wsite-menu-item"
-				>
-				ARTWORKS
-			</a>
-			
+			<a href="chuangzuo.html" class="wsite-menu-item">创作</a>
 		</li>
 		<li id="pg864040464600617228" class="wsite-menu-item-wrap">
-			<a
-						href="writings.html"
-				class="wsite-menu-item"
-				>
-				Writings
-			</a>
-			
+			<a href="chuban.html" class="wsite-menu-item">出版</a>
 		</li>
 		<li id="pg361237216236019909" class="wsite-menu-item-wrap">
-			<a
-						href="projects.html"
-				class="wsite-menu-item"
-				>
-				Projects
-			</a>
-			
+			<a href="xiangmu.html" class="wsite-menu-item">项目</a>
 		</li>
 		<li id="pg497557010409593207" class="wsite-menu-item-wrap">
-			<a
-						href="news.html"
-				class="wsite-menu-item"
-				>
-				NEWS
-			</a>
-			
+			<a href="fabu.html" class="wsite-menu-item">发布</a>
 		</li>
 </ul>
 </div>
@@ -263,7 +221,7 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 					
 						
 
-<div class="paragraph" style="text-align:left;"><font size="3"><strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</strong><u><a href="herbary-co-respiration.html"><font color="#2a2a2a">English</font></a></u>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<strong>&#20013;&#25991;</strong><br />&#8203;&nbsp; &nbsp; &nbsp; airalinknowledge@gmail.com</font></div>
+<div class="paragraph" style="text-align:left;"><font size="3"><strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</strong><u><a href="herbary-co-respiration.html"><font color="#2a2a2a">English</font></a></u>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<strong>&#20013;&#25991;</strong><br />&#8203;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;juntao.yang@columbia.edu</font></div>
 
 
 					
@@ -271,7 +229,7 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 					
 						
 
-<div class="paragraph" style="text-align:right;"><font size="4"><u><a href="guanyu.html"><font color="#2a2a2a">&#20851;&#20110;</font></a></u><font color="#2a2a2a">&nbsp; &nbsp;</font><u><a href="chuangzuo.html"><font color="#2a2a2a">&#21019;&#20316;</font></a></u><font color="#2a2a2a">&nbsp; &nbsp;</font><u><a href="chuban.html"><font color="#2a2a2a">&#20986;&#29256;</font></a></u><font color="#2a2a2a">&nbsp; &nbsp;</font><u><a href="xiangmu.html"><font color="#2a2a2a">&#39033;&#30446;</font></a></u>&nbsp; &nbsp;<u><a href="xinwen.html"><font color="#2a2a2a">&#26032;&#38395;</font></a></u></font></div>
+<div class="paragraph" style="text-align:right;"><font size="4"><u><a href="guanyu.html"><font color="#2a2a2a">&#20851;&#20110;</font></a></u><font color="#2a2a2a">&nbsp; &nbsp;</font><u><a href="chuangzuo.html"><font color="#2a2a2a">&#21019;&#20316;</font></a></u><font color="#2a2a2a">&nbsp; &nbsp;</font><u><a href="chuban.html"><font color="#2a2a2a">&#20986;&#29256;</font></a></u><font color="#2a2a2a">&nbsp; &nbsp;</font><u><a href="xiangmu.html"><font color="#2a2a2a">&#39033;&#30446;</font></a></u>&nbsp; &nbsp;<u><a href="fabu.html"><font color="#2a2a2a">发布</font></a></u></font></div>
 
 
 					
@@ -282,20 +240,21 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 
 <div class="wsite-spacer" style="height:50px;"></div>
 
-<h2 class="wsite-content-title">&#21019;&#20316;</h2>
+<div class="main-content-area">
+<h2 class="wsite-content-title">创作</h2>
 
-<div class="paragraph"><strong><font size="5">&#26412;&#33609;&#65306;&#20849;&#21516;&#21628;&#21560;</font></strong><br /><strong><font size="6">&nbsp;</font></strong><br />&#21333;&#23631;&#39640;&#28165;&#25968;&#23383;&#24433;&#20687;&#65288;4&#20998;&#38047;19&#31186;&#65289;&#65292;&#33609;&#33647;&#65288;&#19977;&#19971;&#65292;&#36828;&#24535;&#65292;&#29281;&#20025;&#30382;&#65289;&#65292;&#24070;&#24067;&#65292;&#34892;&#20026;&#65288;&#33258;&#30001;&#21628;&#21560;&#65292;&#25299;&#26579;&#65289;<br /><em>&#23610;&#23544;&#21487;&#21464;</em><br />&#8203;2023</div>
+<div class="paragraph"><strong><font size="5">本草：共同呼吸</font></strong><br /><strong><font size="6">&nbsp;</font></strong><br />单频高清数字影像（4分19秒），草药（三七、远志、牡丹皮），帆布，行为（自由呼吸，拓染）<br /><em>展览可变</em><br />&#8203;2023</div>
 
-<div><div style="height: 0px; overflow: hidden;"></div>
+<div><div style="height: 30px; overflow: hidden;"></div>
 				<div id='422712393449305799-gallery' class='imageGallery' style='line-height: 0px; padding: 0; margin: 0'>
 <div id='422712393449305799-imageContainer0' style='float:left;width:49.95%;margin:0;'><div id='422712393449305799-insideImageContainer0' style='position:relative;margin:5px;'><div class='galleryImageHolder' style='position:relative; width:100%; padding:0 0 75.08%;'><div class='galleryInnerImageHolder'><a href='uploads/1/4/8/1/148137552/1_1_orig.png' rel='lightbox[gallery422712393449305799]'><img src='uploads/1/4/8/1/148137552/1_1.png' class='galleryImage' _width='800' _height='450' style='position:absolute;border:0;width:100%;top:12.54%;left:0%' /></a></div></div></div></div><div id='422712393449305799-imageContainer1' style='float:left;width:49.95%;margin:0;'><div id='422712393449305799-insideImageContainer1' style='position:relative;margin:5px;'><div class='galleryImageHolder' style='position:relative; width:100%; padding:0 0 75.08%;'><div class='galleryInnerImageHolder'><a href='uploads/1/4/8/1/148137552/2_1_orig.png' rel='lightbox[gallery422712393449305799]'><img src='uploads/1/4/8/1/148137552/2_1.png' class='galleryImage' _width='800' _height='450' style='position:absolute;border:0;width:100%;top:12.54%;left:0%' /></a></div></div></div></div><div id='422712393449305799-imageContainer2' style='float:left;width:49.95%;margin:0;'><div id='422712393449305799-insideImageContainer2' style='position:relative;margin:5px;'><div class='galleryImageHolder' style='position:relative; width:100%; padding:0 0 75.08%;'><div class='galleryInnerImageHolder'><a href='uploads/1/4/8/1/148137552/3_1_orig.png' rel='lightbox[gallery422712393449305799]'><img src='uploads/1/4/8/1/148137552/3_1.png' class='galleryImage' _width='800' _height='450' style='position:absolute;border:0;width:100%;top:12.54%;left:0%' /></a></div></div></div></div><div id='422712393449305799-imageContainer3' style='float:left;width:49.95%;margin:0;'><div id='422712393449305799-insideImageContainer3' style='position:relative;margin:5px;'><div class='galleryImageHolder' style='position:relative; width:100%; padding:0 0 75.08%;'><div class='galleryInnerImageHolder'><a href='uploads/1/4/8/1/148137552/4_1_orig.png' rel='lightbox[gallery422712393449305799]'><img src='uploads/1/4/8/1/148137552/4_1.png' class='galleryImage' _width='800' _height='450' style='position:absolute;border:0;width:100%;top:12.54%;left:0%' /></a></div></div></div></div><span style='display: block; clear: both; height: 0px; overflow: hidden;'></span>
 </div>
-
+<div class="paragraph" style="text-align:center;"><font size="2">静帧</font></div>
 				<div style="height: 0px; overflow: hidden;"></div></div>
 
-<div class="paragraph" style="text-align:center;"><font size="2">&#38745;&#24103;</font></div>
 
-<div class="paragraph"><u><font size="5">&#31616;&#20171;:&nbsp;</font></u><br />&#12298;&#26412;&#33609;&#65306;&#20849;&#21516;&#21628;&#21560;&#12299;&#21457;&#29983;&#22312;&#19968;&#20010;&#20855;&#26377;&#33268;&#24187;&#25928;&#26524;&#19982;&#33609;&#33647;&#27668;&#21619;&#30340;&#20020;&#26102;&#25645;&#24314;&#30340;&#22330;&#25152;&#20013;&#65292;&#20197;&#27867;&#28789;&#35770;&#20202;&#24335;&#30340;&#35270;&#35282;&#65292;&#26088;&#22312;&#25551;&#32472;&#33609;&#26412;&#26893;&#29289;&#19982;&#20154;&#31867;&#25919;&#27835;&#25991;&#21270;&#36827;&#31243;&#23494;&#19981;&#21487;&#20998;&#30340;&#32416;&#32544;&#20851;&#31995;&#12290;&#36890;&#36807;&#32771;&#23519;&#24182;&#24341;&#20837;&#23545;&#31070;&#32463;&#36864;&#34892;&#24615;&#30142;&#30149;&#26377;&#28508;&#22312;&#27835;&#24840;&#33021;&#21147;&#30340;&#27665;&#38388;&#33609;&#33647;&#65292;&#20316;&#21697;&#23558;&#25269;&#25239;&#36951;&#24536;&#30340;&#22320;&#26041;&#24615;&#65288;&#33609;&#26412;&#65289;&#30693;&#35782;&#19982;&#38598;&#20307;&#28798;&#38590;&#19979;&#30340;&#21475;&#36848;&#35760;&#24518;&#32852;&#31995;&#36215;&#26469;&#12290;&#27900;&#27922;&#33647;&#28195;&#20316;&#20026;&#19968;&#31181;&#20256;&#32479;&#20202;&#24335;&#65292;&#39044;&#31034;&#30528;&#30142;&#30149;&#30340;&#36864;&#25955;&#21644;&#20849;&#21516;&#20307;&#25104;&#21592;&#20043;&#38388;&#24444;&#27492;&#31069;&#31119;&#30340;&#33021;&#21147;&#65292;&#36825;&#31181;&#20202;&#24335;&#24102;&#26469;&#30340;&#33021;&#37327;&#34987;&#35748;&#20026;&#36275;&#20197;&#39537;&#25955;&#30142;&#30149;&#19982;&#37034;&#31071;&#65306;&#20849;&#21516;&#21628;&#21560;&#34987;&#36171;&#20104;&#31361;&#22260;&#30340;&#33021;&#37327;&#65292;&#24182;&#37325;&#26032;&#38125;&#21051;&#22312;&#20844;&#20849;&#35760;&#24518;&#20043;&#20013;&#65292;&#20202;&#24335;&#20316;&#20026;&#38598;&#20307;&#30103;&#24840;&#30340;&#26041;&#26415;&#65292;&#19981;&#20165;&#25351;&#21521;&#30528;&#30239;&#30123;&#30340;&#36864;&#36991;&#65292;&#20063;&#23581;&#35797;&#25242;&#24179;&#21628;&#21560;&#31105;&#20196;&#19982;&#24378;&#21046;&#36951;&#24536;&#30340;&#26292;&#21147;&#23039;&#24577;&#25152;&#36951;&#30041;&#19979;&#30340;&#25345;&#20037;&#30340;&#25991;&#21270;&#21019;&#30165;&#65288;cultural trauma&#65289;&#12290;<br />&#8203;<br />&#12298;&#26412;&#33609;&#65306;&#20849;&#21516;&#21628;&#21560;&#12299;&#22312;&#25968;&#23383;&#29615;&#22659;&#20013;&#37325;&#24314;&#24182;&#24378;&#35843;&#20102;&#19968;&#31995;&#21015;&#20855;&#22791;&#28151;&#26434;&#19982;&#20849;&#29983;&#29305;&#24449;&#30340;&#26893;&#29289;&#20154;&#31867;&#23398;&#24418;&#35937;&#65292;&#24341;&#23548;&#21442;&#19982;&#32773;&#20851;&#27880;&#26893;&#29289;&#21628;&#21560;&#30340;&#20849;&#21516;&#24615;&#19982;&#24517;&#35201;&#24615;&#12290;&#26377;&#24863;&#20110;&#22303;&#33879;&#23621;&#27665;&#26377;&#20851;&#33258;&#28982;&#19982;&#26893;&#29289;&#30340;&#33832;&#28385;&#25945;&#31095;&#35789;&#65292;&#33402;&#26415;&#23478;&#33609;&#25311;&#20102;&#19968;&#31687;&#36190;&#39042;&#27835;&#24840;&#36951;&#24536;&#30340;&#33609;&#33647;&#30340;&#39042;&#27468;&#65292;&#36741;&#20197;&#24847;&#21619;&#28145;&#36828;&#30340;&#26080;&#35843;&#24615;&#38899;&#20048;&#65292;&#35797;&#22270;&#25551;&#25721;&#20154;&#31867;&#21382;&#21490;&#20013;&#26080;&#23380;&#19981;&#20837;&#30340;&#33609;&#26412;&#21147;&#37327;&#12290;&#21442;&#19982;&#32773;&#34987;&#40723;&#21169;&#32858;&#28966;&#20110;&#33258;&#24049;&#19982;&#20182;&#32773;&#30340;&#21628;&#21560;&#65292;&#37325;&#26032;&#21457;&#29616;&#36523;&#20307;&#30340;&#22810;&#23380;&#24615;&#65306;&#21628;&#21560;&#25152;&#24102;&#26469;&#30340;&#20307;&#28082;&#20132;&#25442;&#65292;&#19982;&#22823;&#27668;&#29615;&#22659;&#20013;&#30340;&#27700;&#20307;&#20849;&#21516;&#25351;&#21521;&#22522;&#20110;&#27700;&#20849;&#21516;&#20307;&#65288;hydrocommons&#65289;&#30340;&#30456;&#20114;&#32544;&#32469;&#65288;entanglement&#65289;&#65307;&#22797;&#35843;&#24335;&#30340;&#29983;&#24577;&#29615;&#22659;&#36143;&#36890;&#22810;&#31181;&#24863;&#23448;&#65292;&#20351;&#36523;&#20307;&#20869;&#37096;&#12289;&#22806;&#37096;&#19982;&#22823;&#27668;&#23618;&#20043;&#38388;&#30340;&#30028;&#38480;&#21464;&#24471;&#27169;&#31946;&#19981;&#28165;&#65292;&#39044;&#31034;&#30528;&#19981;&#21487;&#20998;&#21106;&#12289;&#30456;&#20114;&#20381;&#36182;&#30340;&#36328;&#31181;&#32676;&#32852;&#30431;&#12290;<br></div>
+
+<div class="paragraph"><br><u><font size="5">简介:</font></u><br />《本草：共同呼吸》发生在一个具有致幻效果与草药气味的临时搭建的场所中，以泛灵论仪式的视角，旨在描绘草本植物与人类政治文化进程密不可分的纠缠关系。通过考察并引入对神经退行性疾病有潜在治愈能力的民间草药，作品将抵抗遗忘的地方性（草本）知识与集体灾难下的口述记忆联系起来。泼洒药渣作为一种传统仪式，预示着疾病的退散和共同体成员之间彼此祝福的能力，这种仪式带来的能量被认为足以驱散疾病与邪祟：共同呼吸被赋予突围的能量，并重新铭刻在公共记忆之中，仪式作为集体疗愈的方术，不仅指向着瘟疫的退避，也尝试抚平呼吸禁令与强制遗忘的暴力姿态所遗留下的持久的文化创痕（cultural trauma）。<br />‍<br />《本草：共同呼吸》在数字环境中重建并强调了一系列具备混杂与共生特征的植物人类学形象，引导参与者关注植物呼吸的共同性与必要性。有感于土著居民有关自然与植物的萨满教祷词，艺术家草拟了一篇赞颂治愈遗忘的草药的颂歌，辅以意味深远的无调性音乐，试图描摹人类历史中无孔不入的草本力量。参与者被鼓励聚焦于自己与他者的呼吸，重新发现身体的多孔性：呼吸所带来的体液交换，与大气环境中的水体共同指向基于水共同体（hydrocommons）的相互缠绕（entanglement）；复调式的生态环境贯通多种感官，使身体内部、外部与大气层之间的界限变得模糊不清，预示着不可分割、相互依赖的跨种群联盟。</div>
 
 <div><div style="height: 20px; overflow: hidden;"></div>
 				<div id='808203250857377754-gallery' class='imageGallery' style='line-height: 0px; padding: 0; margin: 0'>
@@ -304,10 +263,9 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 
 				<div style="height: 10px; overflow: hidden;"></div></div>
 
-<div class="paragraph" style="text-align:center;"><font size="2"><font color="#000000">&#20316;&#20026;&#35013;&#32622;&#20316;&#21697;&#20110;&#31206;&#30343;&#23707;&#38463;&#37027;&#20122;&#25103;&#21095;&#33410;&ldquo;&#20505;&#40479;300&rdquo;&ldquo;&#26179;&#31070;&#20799;&#31354;&#38388;2.0&rdquo;&#23637;&#20986;&#65292;2023</font><br />&#8203;</font></div>
+<div class="paragraph" style="text-align:center;"><font size="2"><font color="#000000">作为装置作品于秦皇岛阿那亚戏剧节“候鸟300”“霎时涌现”单元展出，2023</font><br />&#8203;</font></div>
 
-<div class="paragraph"><u><font size="5">&#21442;&#23637;&#23653;&#21382;:</font></u><br/>
-
+<div class="paragraph"><u><font size="5">参展履历:</font></u><br/>
 
 <span>“被叙述的，作为他者的自身”，Third Street Gallery，上海，中国，2024</span><br/>
 <span>“无法归类”，新桥美术馆，上海，中国，2024</span><br/>
@@ -316,36 +274,35 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 <span>“感觉的逻辑”，象牙门画廊，上海，中国，2024</span><br/>
 <span>“语言巴别塔”，Art Lift 艺术升降梯艺术空间，沈阳，中国，2024</span><br/>
 <span>“向未来”，青岛市美术馆，青岛，中国，2024</span><br/>
-
-
-<span>&ldquo;&#19990;&#20154;&#20309;&#20197;&#21796;&#37266;&#25105;&#65311;&mdash;&mdash;&#20202;&#24335;&#12289;&#31070;&#35861;&#19982;&#33402;&#26415;&#28789;&#23186;&rdquo;&#65292;798CUBE&#65292;&#21271;&#20140;&#65292;&#20013;&#22269;&#65292;2023</span><br/>
-<span>&ldquo;&#26893;&#29289;&#29983;&#25104;&#24433;&#20687;&rdquo;&#65292;&#27494;&#27721;&#24433;&#20687;&#33402;&#26415;&#20013;&#24515;&#65292;&#27494;&#27721;&#65292;&#20013;&#22269;&#65292;2023</span><br/>
-<span>&ldquo;&#27700;&#27969;&#20043;&#19979;&#65306;&#22478;&#24066;&#22320;&#34920;&#27700;&#31995;&#20013;&#38544;&#34255;&#30340;&#19990;&#30028;&rdquo;&#65292;&#21512;&#20316;&#31354;&#38388;&#65292;&#27784;&#38451;&#65292;2023<br />
-<span>&ldquo;&#20505;&#40479;300&rdquo;&#65292;&#26179;&#31070;&#20799;&#31354;&#38388;2.0&#65292;&#38463;&#37027;&#20122;&#25103;&#21095;&#33410;&#65292;&#31206;&#30343;&#23707;&#65292;&#20013;&#22269;&#65292;2023</span><br/>
+<span>“世人何以唤醒我？——仪式、神谕和艺术灵媒”，798CUBE，北京，中国，2023</span><br/>
+<span>“植物生成影像”，武汉影像艺术中心，武汉，中国，2023</span><br/>
+<span>“水流之下：表层水域中的隐秘世界”，合作空间，沈阳，2023<br />
+<span>“候鸟300”，晃神儿空间2.0，阿那亚戏剧节，秦皇岛，中国，2023</span><br/>
 
 &#8203;</span></div>
 
-<div class="paragraph" style="text-align:left;"><u><font size="5">&#35780;&#35770;&#65288;&#33410;&#36873;&#65289;:</font></u><br />"......&nbsp;<span style="color:rgb(0, 0, 0)">&#24149;&#24067;&#19979;&#30340;&#26408;&#36136;&#22320;&#26495;&#19978;&#25918;&#32622;&#30528;&#21516;&#23646;&#19968;&#30452;&#31687;&#31456;&#30340;&#12298;<span>&#26412;&#33609;:&#20849;&#21516;&#21628;&#21560;</span>&#12299;&#65292;&#33647;&#33609;&#30340;&#39321;&#27668;&#20174;&#26408;&#36136;&#22320;&#26495;&#19978;&#32531;&#32531;&#21319;&#36215;&#65292;&#21448;&#24357;&#28459;&#20110;&#25972;&#20010;&#31354;&#38388;&#12290;&#36825;&#20214;&#20316;&#21697;&#30340;&#27010;&#24565;&#19982;&ldquo;&#24515;&#26234;&#25216;&#26415;&rdquo;&#30340;&#27010;&#24565;&#19981;&#35851;&#32780;&#21512;&#65292;&#24515;&#26234;&#25216;&#26415;&#34893;&#29983;&#20110;&#20256;&#25773;&#23398;&#40763;&#31062;</span><span style="color:rgb(0, 0, 0)">Wilbur schramm</span><span style="color:rgb(0, 0, 0)">&#30340;</span><span style="color:rgb(0, 0, 0)">instructional technology</span><span style="color:rgb(0, 0, 0)">&#65292;&#20182;&#35748;&#20026;&#25216;&#26415;&#21487;&#20197;&#25945;&#21270;&#21644;&#24341;&#23548;&#20154;&#65292;&#20063;&#21487;&#20197;&#27835;&#24840;&#20154;&#12290;&#32780;&#27668;&#21619;&#23646;&#20110;&#24515;&#26234;&#25216;&#26415;&#30340;&#19968;&#37096;&#20998;&#65292;&#12298;<span>&#26412;&#33609;:&#20849;&#21516;&#21628;&#21560;</span>&#12299;&#21033;&#29992;</span><span style="color:rgb(0, 0, 0)">proust effect</span><span style="color:rgb(0, 0, 0)">&#35753;&#35266;&#20247;&#22312;&#21957;&#21040;&#33647;&#33609;&#27668;&#21619;&#26102;&#32852;&#24819;&#21040;&ldquo;&#33647;&#25151;&rdquo;&#65292;&#20174;&#32780;&#21796;&#37266;&#35266;&#20247;&#35760;&#24518;&#20013;&#26377;&#20851;&ldquo;&#27835;&#24840;&rdquo;&#30340;&#27010;&#24565;&#19982;&#30456;&#20851;&#35760;&#24518;&#12290;&#22320;&#19978;&#30340;&#33970;&#22242;&#38169;&#33853;&#26377;&#33268;&#65292;&#35266;&#20247;&#21487;&#20197;&#22312;&#27492;&#22788;&#20241;&#24687;&#65292;&#25110;&#36538;&#25110;&#22352;&#12290;&#33609;&#26408;&#30340;&#36136;&#22320;&#19982;&#27668;&#21619;&#24341;&#23548;&#35266;&#20247;&#22238;&#21040;&#21407;&#22987;&#19990;&#30028;&#65292;&#21476;&#32769;&#30340;&#22825;&#31354;&#19982;&#22320;&#38754;&#65292;&#24191;&#38420;&#33258;&#28982;&#12290;&#19968;&#20999;&#35780;&#21028;&#19982;&#20658;&#24930;&#37117;&#22312;&#36825;&#37324;&#38543;&#30528;&#24433;&#20687;&#30340;&#28040;&#22833;&#19982;&#27668;&#21619;&#30340;&#24357;&#25955;&#28040;&#36893;&#12290;&#20208;&#22836;&#30475;&#30528;&#30103;&#24840;&#20154;&#24515;&#30340;&#24433;&#30456;&#65292;&#21957;&#30528;&#24102;&#26377;&#33268;&#24187;&#25928;&#26524;&#30340;&#33609;&#33647;&#27668;&#65292;&#27668;&#21619;&#19982;&#22768;&#38899;&#36825;&#20004;&#31181;&#20171;&#36136;&#65292;&#25215;&#36733;&#30528;&#25105;&#20204;&#23545;&#39537;&#25955;&#30142;&#30149;&#19982;&#36861;&#23547;&#24184;&#31119;&#30340;&#24515;&#24895;&#65292;&#27492;&#21051;&#65292;&#30103;&#24840;&#30340;&#25928;&#26524;&#21040;&#36798;&#20102;&#39030;&#23792;&#12290;"</span></div>
+<div class="paragraph" style="text-align:left;"><u><font size="5">评论（节选）:</font></u><br />"...... 幕布下的木质地板上放置着同属一直篇章的《本草:共同呼吸》，药草的香气从木质地板上缓缓升起，又弥漫于整个空间。这件作品的概念与“心智技术”的概念不谋而合，心智技术衍生于传播学鼻祖Wilbur schramm的instructional technology，他认为技术可以教化和引导人，也可以治愈人。而气味属于心智技术的一部分，《本草:共同呼吸》利用proust effect让观众在嗅到药草气味时联想到“药房”，从而唤醒观众记忆中有关“治愈”的概念与相关记忆。地上的蒲团错落有致，观众可以在此处休息，或躺或坐。草木的质地与气味引导观众回到原始世界，古老的天空与地面，广阔自然。一切评判与傲慢都在这里随着影像的消失与气味的弥散消逝。仰头看着疗愈人心的影相，嗅着带有致幻效果的草药气，气味与声音这两种介质，承载着我们对驱散疾病与追寻幸福的心愿，此刻，疗愈的效果到达了顶峰。"</div>
 
-<div class="paragraph" style="text-align:right;"><font color="#2a2a2a">&mdash;&mdash; <u><a href="https://mp.weixin.qq.com/s/YdNNX-y9jJBfkdhJ3bQJ3g" target="_blank"><font color="#2a2a2a">&#12298;&#22833;&#24207;&#20043;&#19979;&#65292;&#26102;&#20195;&#30340;&#31048;&#24895;&#12299;</font></a></u>&nbsp;&nbsp;</font><span style="color:rgb(0, 0, 0)">&#29579;&#23431;</span></div>
+<div class="paragraph" style="text-align:right;"><font color="#2a2a2a">— — <u><a href="https://mp.weixin.qq.com/s/YdNNX-y9jJBfkdhJ3bQJ3g" target="_blank"><font color="#2a2a2a">《失序之下，时代的祈愿》</font></a></u>&nbsp;&nbsp;</font><span style="color:rgb(0, 0, 0)">王宇</span></div>
 
 <div><div class="wsite-image wsite-image-border-none " style="padding-top:10px;padding-bottom:0px;margin-left:0px;margin-right:0px;text-align:center">
 <a>
-<img src="uploads/1/4/8/1/148137552/20230803093907_1.jpg" alt="Picture" style="width:auto;max-width:100%" />
+<img src="uploads/1/4/8/1/148137552/20230803093907_1.jpg" alt="图片" style="width:auto;max-width:100%" />
 </a>
 <div style="display:block;font-size:90%"></div>
 </div></div>
 
-<div class="paragraph" style="text-align:center;"><span style="color:rgb(0, 0, 0)"><font size="2">&#20316;&#20026;&#35013;&#32622;&#20316;&#21697;&#20110;&#21512;&#20316;&#31354;&#38388;&ldquo;&#27700;&#27969;&#20043;&#19979;&rdquo;&#32676;&#23637;&#23637;&#20986;&#65292;2023</font></span></div>
+<div class="paragraph" style="text-align:center;"><span style="color:rgb(0, 0, 0)"><font size="2">作为装置作品于合作空间“水流之下”群展展出，2023</font></span></div>
 
 <div><div class="wsite-image wsite-image-border-none " style="padding-top:10px;padding-bottom:0px;margin-left:0px;margin-right:0px;text-align:center">
 <a>
-<img src="uploads/1/4/8/1/148137552/798cube_1.png" alt="Picture" style="width:auto;max-width:100%" />
+<img src="uploads/1/4/8/1/148137552/798cube_1.png" alt="图片" style="width:auto;max-width:100%" />
 </a>
 <div style="display:block;font-size:90%"></div>
 </div></div>
 
-<div class="paragraph" style="text-align:center;"><font size="2"><span style="color: rgb(0, 0, 0);">&#20316;&#20026;&#35013;&#32622;&#20316;&#21697;&#20110;&#21271;&#20140;798 CUBE&nbsp;</span>&ldquo;&#19990;&#20154;&#20309;&#20197;&#21796;&#37266;&#25105;&#65311;&mdash;&mdash;&#20202;&#24335;&#12289;&#31070;&#35861;&#19982;&#33402;&#26415;&#28789;&#23186;&rdquo;&nbsp;<span style="color: rgb(0, 0, 0);">&#23637;&#20986;&#65292;2023</span></font></div>
+<div class="paragraph" style="text-align:center;"><font size="2"><span style="color: rgb(0, 0, 0);">作为装置作品于北京798 CUBE “世人何以唤醒我？——仪式、神谕和艺术灵媒” 展出，2023</span></font></div>
+</div>
 			</div>
 		</div>
       </div>
@@ -358,7 +315,6 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
   	</div>
 
   	
-
   </div>
 
 </div>

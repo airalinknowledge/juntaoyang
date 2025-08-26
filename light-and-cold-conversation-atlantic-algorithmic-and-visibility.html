@@ -68,6 +68,54 @@
 .wsite-background {background-image: url("/uploads/1/4/8/1/148137552/background-images/1199586110.jpg") !important;background-repeat: no-repeat !important;background-position: 50% 50% !important;background-size: 100% !important;background-color: transparent !important;background: inherit;}
 body.wsite-background {background-attachment: fixed !important;}.wsite-background.wsite-custom-background{ background-size: cover !important}
 </style>
+<!-- 在这里拷入 ↓ -->
+<style>
+    :root {
+      /* 全局可调的三种颜色 */
+      --main-color:    #333333;  /* 正文文字 */
+      --heading-color: #222222;  /* 各级标题 */
+      --link-color:    #333333;  /* 超链接 */
+    }
+
+    /* 正文默认文字色 */
+    body, 
+    .paragraph, 
+    p {
+      color: var(--main-color) !important;
+    }
+
+    /* 各级标题色 */
+    h1, h2, h3, h4, h5, h6,
+    .section-title,
+    u, em {
+      color: var(--heading-color) !important;
+    }
+
+    /* 链接色 */
+    a, a:visited {
+      color: var(--link-color) !important;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .main-content-area {
+        max-width: 90%; /* 可以调整这个值来改变内容宽度 */
+        margin-left: 0%;
+        margin-right: 10%;
+    }
+
+    @media screen and (max-width: 767px) {
+        .main-content-area {
+            max-width: 100%;
+            margin-left: 0;
+            margin-right: 0;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+    }
+  </style>
+  <!-- 拷入结束 ↑ -->
 		<script src='files/templateArtifacts.js?1714489756'></script>
 <script>
 var STATIC_BASE = '//cdn1.editmysite.com/';
@@ -105,7 +153,7 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 	
 	function initFlyouts(){
 		initPublishedFlyoutMenus(
-			[{"id":"356461667194310790","title":"About","url":"index.html","target":"","nav_menu":false,"nonclickable":false},{"id":"444862601486980856","title":"ARTWORKS","url":"artworks.html","target":"","nav_menu":false,"nonclickable":false},{"id":"864040464600617228","title":"Writings","url":"writings.html","target":"","nav_menu":false,"nonclickable":false},{"id":"361237216236019909","title":"Projects","url":"projects.html","target":"","nav_menu":false,"nonclickable":false},{"id":"497557010409593207","title":"NEWS","url":"news.html","target":"","nav_menu":false,"nonclickable":false}],
+			[{"id":"356461667194310790","title":"About","url":"index.html","target":"","nav_menu":false,"nonclickable":false},{"id":"444862601486980856","title":"ARTWORKS","url":"artworks.html","target":"","nav_menu":false,"nonclickable":false},{"id":"864040464600617228","title":"Writings","url":"writings.html","target":"","nav_menu":false,"nonclickable":false},{"id":"361237216236019909","title":"Projects","url":"projects.html","target":"","nav_menu":false,"nonclickable":false},{"id":"497557010409593207","title":"POSTS","url":"posts.html","target":"","nav_menu":false,"nonclickable":false}],
 			"184004660799277826",
 			'',
 			'active',
@@ -172,10 +220,10 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 						</li>
 						<li id="pg497557010409593207" class="wsite-menu-item-wrap">
 							<a
-										href="news.html"
+										href="posts.html"
 								class="wsite-menu-item"
 								>
-								NEWS
+								POSTS
 							</a>
 							
 						</li>
@@ -220,10 +268,10 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 		</li>
 		<li id="pg497557010409593207" class="wsite-menu-item-wrap">
 			<a
-						href="news.html"
+						href="posts.html"
 				class="wsite-menu-item"
 				>
-				NEWS
+				POSTS
 			</a>
 			
 		</li>
@@ -263,7 +311,7 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 					
 						
 
-<div class="paragraph" style="text-align:left;"><font size="3"><strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</strong><strong>English</strong>&nbsp; &nbsp; &nbsp; &nbsp;<font color="#2a2a2a">&nbsp;</font><u><a href="qingqiaoerlengdandeduitan.html"><font color="#2a2a2a">&#20013;&#25991;</font></a></u><br />&#8203;&nbsp; &nbsp; &nbsp; airalinknowledge@gmail.com</font></div>
+<div class="paragraph" style="text-align:left;"><font size="3"><strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</strong><strong>English</strong>&nbsp; &nbsp; &nbsp; &nbsp;<font color="#2a2a2a">&nbsp;</font><u><a href="qingqiaoerlengdandeduitan.html"><font color="#2a2a2a">&#20013;&#25991;</font></a></u><br />&#8203;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; juntao.yang@columbia.edu</font></div>
 
 
 					
@@ -271,7 +319,7 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 					
 						
 
-<div class="paragraph" style="text-align:right;"><font size="4"><u><a href="http://juntaoyang.site"><font color="#2a2a2a">ABOUT</font></a></u><font color="#2a2a2a">&nbsp; &nbsp; </font><u><a href="artworks.html"><font color="#2a2a2a">ARTWORKS</font></a></u><font color="#2a2a2a">&nbsp; &nbsp;&nbsp;</font><u><a href="writings.html"><font color="#2a2a2a">WRITINGS</font></a></u><font color="#2a2a2a">&nbsp; &nbsp; </font><u><a href="projects.html"><font color="#2a2a2a">PROJECTS</font></a></u><font color="#2a2a2a">&nbsp;</font>&nbsp; &nbsp;<u><a href="news.html"><font color="#2a2a2a">NEWS</font></a></u>&nbsp;&nbsp;</font></div>
+<div class="paragraph" style="text-align:right;"><font size="4"><u><a href="http://juntaoyang.site"><font color="#2a2a2a">ABOUT</font></a></u><font color="#2a2a2a">&nbsp; &nbsp; </font><u><a href="artworks.html"><font color="#2a2a2a">ARTWORKS</font></a></u><font color="#2a2a2a">&nbsp; &nbsp;&nbsp;</font><u><a href="writings.html"><font color="#2a2a2a">WRITINGS</font></a></u><font color="#2a2a2a">&nbsp; &nbsp; </font><u><a href="projects.html"><font color="#2a2a2a">PROJECTS</font></a></u><font color="#2a2a2a">&nbsp;</font>&nbsp; &nbsp;<u><a href="posts.html"><font color="#2a2a2a">POSTS</font></a></u>&nbsp;&nbsp;</font></div>
 
 
 					
@@ -282,149 +330,154 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 
 <div class="wsite-spacer" style="height:50px;"></div>
 
-<h2 class="wsite-content-title">artworks</h2>
+<div class="main-content-area">
+    <h2 class="wsite-content-title">artworks</h2>
 
-<div class="paragraph"><strong><font size="6">Light and Cold Conversations: Atlantic, Algorithms and Visibility&nbsp;<br />&#8203;</font></strong><br />Singel Screen Digital Moving Images, 13&rsquo;11&rsquo;&rsquo;<br />&#8203;2023</div>
+    <div class="paragraph"><strong><font size="6">Light and Cold Conversations: Atlantic, Algorithms and Visibility&nbsp;<br />&#8203;</font></strong><br />Singel Screen Digital Moving Images, 13&rsquo;11&rsquo;&rsquo;<br />&#8203;2023</div>
 
-<div><div style="height: 30px; overflow: hidden;"></div>
-				<div id='352063039655724412-gallery' class='imageGallery' style='line-height: 0px; padding: 0; margin: 0'>
-<div id='352063039655724412-imageContainer0' style='float:left;width:24.95%;margin:0;'><div id='352063039655724412-insideImageContainer0' style='position:relative;margin:4px;'><div class='galleryImageHolder' style='position:relative; width:100%; padding:0 0 75.08%;'><div class='galleryInnerImageHolder'><a href='uploads/1/4/8/1/148137552/1_orig.jpg' rel='lightbox[gallery352063039655724412]'><img src='uploads/1/4/8/1/148137552/1.jpg' class='galleryImage' _width='800' _height='450' style='position:absolute;border:0;width:100%;top:12.54%;left:0%' /></a></div></div></div></div><div id='352063039655724412-imageContainer1' style='float:left;width:24.95%;margin:0;'><div id='352063039655724412-insideImageContainer1' style='position:relative;margin:4px;'><div class='galleryImageHolder' style='position:relative; width:100%; padding:0 0 75.08%;'><div class='galleryInnerImageHolder'><a href='uploads/1/4/8/1/148137552/2_orig.jpg' rel='lightbox[gallery352063039655724412]'><img src='uploads/1/4/8/1/148137552/2.jpg' class='galleryImage' _width='800' _height='450' style='position:absolute;border:0;width:100%;top:12.54%;left:0%' /></a></div></div></div></div><div id='352063039655724412-imageContainer2' style='float:left;width:24.95%;margin:0;'><div id='352063039655724412-insideImageContainer2' style='position:relative;margin:4px;'><div class='galleryImageHolder' style='position:relative; width:100%; padding:0 0 75.08%;'><div class='galleryInnerImageHolder'><a href='uploads/1/4/8/1/148137552/4_orig.jpg' rel='lightbox[gallery352063039655724412]'><img src='uploads/1/4/8/1/148137552/4.jpg' class='galleryImage' _width='800' _height='450' style='position:absolute;border:0;width:100%;top:12.54%;left:0%' /></a></div></div></div></div><div id='352063039655724412-imageContainer3' style='float:left;width:24.95%;margin:0;'><div id='352063039655724412-insideImageContainer3' style='position:relative;margin:4px;'><div class='galleryImageHolder' style='position:relative; width:100%; padding:0 0 75.08%;'><div class='galleryInnerImageHolder'><a href='uploads/1/4/8/1/148137552/juntao-yang-light-and-cold-conversation-atlantic-algorithmic-and-visibilit-digital-video-2023-13min-1_orig.png' rel='lightbox[gallery352063039655724412]'><img src='uploads/1/4/8/1/148137552/juntao-yang-light-and-cold-conversation-atlantic-algorithmic-and-visibilit-digital-video-2023-13min-1.png' class='galleryImage' _width='800' _height='450' style='position:absolute;border:0;width:100%;top:12.54%;left:0%' /></a></div></div></div></div><div id='352063039655724412-imageContainer4' style='float:left;width:24.95%;margin:0;'><div id='352063039655724412-insideImageContainer4' style='position:relative;margin:4px;'><div class='galleryImageHolder' style='position:relative; width:100%; padding:0 0 75.08%;'><div class='galleryInnerImageHolder'><a href='uploads/1/4/8/1/148137552/light-and-cold-conversation-atlantic-algorithmic-and-visibility-mp4-20230420-192053-562_orig.png' rel='lightbox[gallery352063039655724412]'><img src='uploads/1/4/8/1/148137552/light-and-cold-conversation-atlantic-algorithmic-and-visibility-mp4-20230420-192053-562.png' class='galleryImage' _width='800' _height='450' style='position:absolute;border:0;width:100%;top:12.54%;left:0%' /></a></div></div></div></div><div id='352063039655724412-imageContainer5' style='float:left;width:24.95%;margin:0;'><div id='352063039655724412-insideImageContainer5' style='position:relative;margin:4px;'><div class='galleryImageHolder' style='position:relative; width:100%; padding:0 0 75.08%;'><div class='galleryInnerImageHolder'><a href='uploads/1/4/8/1/148137552/juntao-yang-light-and-cold-conversation-atlantic-algorithmic-and-visibilit-digital-video-2023-13min-5_orig.png' rel='lightbox[gallery352063039655724412]'><img src='uploads/1/4/8/1/148137552/juntao-yang-light-and-cold-conversation-atlantic-algorithmic-and-visibilit-digital-video-2023-13min-5.png' class='galleryImage' _width='800' _height='450' style='position:absolute;border:0;width:100%;top:12.54%;left:0%' /></a></div></div></div></div><div id='352063039655724412-imageContainer6' style='float:left;width:24.95%;margin:0;'><div id='352063039655724412-insideImageContainer6' style='position:relative;margin:4px;'><div class='galleryImageHolder' style='position:relative; width:100%; padding:0 0 75.08%;'><div class='galleryInnerImageHolder'><a href='uploads/1/4/8/1/148137552/juntao-yang-light-and-cold-conversation-atlantic-algorithmic-and-visibilit-digital-video-2023-13min-7_orig.png' rel='lightbox[gallery352063039655724412]'><img src='uploads/1/4/8/1/148137552/juntao-yang-light-and-cold-conversation-atlantic-algorithmic-and-visibilit-digital-video-2023-13min-7.png' class='galleryImage' _width='800' _height='450' style='position:absolute;border:0;width:100%;top:12.54%;left:0%' /></a></div></div></div></div><div id='352063039655724412-imageContainer7' style='float:left;width:24.95%;margin:0;'><div id='352063039655724412-insideImageContainer7' style='position:relative;margin:4px;'><div class='galleryImageHolder' style='position:relative; width:100%; padding:0 0 75.08%;'><div class='galleryInnerImageHolder'><a href='uploads/1/4/8/1/148137552/juntao-yang-light-and-cold-conversation-atlantic-algorithmic-and-visibilit-digital-video-2023-13min-2_orig.png' rel='lightbox[gallery352063039655724412]'><img src='uploads/1/4/8/1/148137552/juntao-yang-light-and-cold-conversation-atlantic-algorithmic-and-visibilit-digital-video-2023-13min-2.png' class='galleryImage' _width='800' _height='450' style='position:absolute;border:0;width:100%;top:12.54%;left:0%' /></a></div></div></div></div><span style='display: block; clear: both; height: 0px; overflow: hidden;'></span>
-</div>
+    <div><div style="height: 30px; overflow: hidden;"></div>
+                    <div id='352063039655724412-gallery' class='imageGallery' style='line-height: 0px; padding: 0; margin: 0'>
+    <div id='352063039655724412-imageContainer0' style='float:left;width:24.95%;margin:0;'><div id='352063039655724412-insideImageContainer0' style='position:relative;margin:4px;'><div class='galleryImageHolder' style='position:relative; width:100%; padding:0 0 75.08%;'><div class='galleryInnerImageHolder'><a href='uploads/1/4/8/1/148137552/1_orig.jpg' rel='lightbox[gallery352063039655724412]'><img src='uploads/1/4/8/1/148137552/1.jpg' class='galleryImage' _width='800' _height='450' style='position:absolute;border:0;width:100%;top:12.54%;left:0%' /></a></div></div></div></div><div id='352063039655724412-imageContainer1' style='float:left;width:24.95%;margin:0;'><div id='352063039655724412-insideImageContainer1' style='position:relative;margin:4px;'><div class='galleryImageHolder' style='position:relative; width:100%; padding:0 0 75.08%;'><div class='galleryInnerImageHolder'><a href='uploads/1/4/8/1/148137552/2_orig.jpg' rel='lightbox[gallery352063039655724412]'><img src='uploads/1/4/8/1/148137552/2.jpg' class='galleryImage' _width='800' _height='450' style='position:absolute;border:0;width:100%;top:12.54%;left:0%' /></a></div></div></div></div><div id='352063039655724412-imageContainer2' style='float:left;width:24.95%;margin:0;'><div id='352063039655724412-insideImageContainer2' style='position:relative;margin:4px;'><div class='galleryImageHolder' style='position:relative; width:100%; padding:0 0 75.08%;'><div class='galleryInnerImageHolder'><a href='uploads/1/4/8/1/148137552/4_orig.jpg' rel='lightbox[gallery352063039655724412]'><img src='uploads/1/4/8/1/148137552/4.jpg' class='galleryImage' _width='800' _height='450' style='position:absolute;border:0;width:100%;top:12.54%;left:0%' /></a></div></div></div></div><div id='352063039655724412-imageContainer3' style='float:left;width:24.95%;margin:0;'><div id='352063039655724412-insideImageContainer3' style='position:relative;margin:4px;'><div class='galleryImageHolder' style='position:relative; width:100%; padding:0 0 75.08%;'><div class='galleryInnerImageHolder'><a href='uploads/1/4/8/1/148137552/juntao-yang-light-and-cold-conversation-atlantic-algorithmic-and-visibilit-digital-video-2023-13min-1_orig.png' rel='lightbox[gallery352063039655724412]'><img src='uploads/1/4/8/1/148137552/juntao-yang-light-and-cold-conversation-atlantic-algorithmic-and-visibilit-digital-video-2023-13min-1.png' class='galleryImage' _width='800' _height='450' style='position:absolute;border:0;width:100%;top:12.54%;left:0%' /></a></div></div></div></div><div id='352063039655724412-imageContainer4' style='float:left;width:24.95%;margin:0;'><div id='352063039655724412-insideImageContainer4' style='position:relative;margin:4px;'><div class='galleryImageHolder' style='position:relative; width:100%; padding:0 0 75.08%;'><div class='galleryInnerImageHolder'><a href='uploads/1/4/8/1/148137552/light-and-cold-conversation-atlantic-algorithmic-and-visibility-mp4-20230420-192053-562_orig.png' rel='lightbox[gallery352063039655724412]'><img src='uploads/1/4/8/1/148137552/light-and-cold-conversation-atlantic-algorithmic-and-visibility-mp4-20230420-192053-562.png' class='galleryImage' _width='800' _height='450' style='position:absolute;border:0;width:100%;top:12.54%;left:0%' /></a></div></div></div></div><div id='352063039655724412-imageContainer5' style='float:left;width:24.95%;margin:0;'><div id='352063039655724412-insideImageContainer5' style='position:relative;margin:4px;'><div class='galleryImageHolder' style='position:relative; width:100%; padding:0 0 75.08%;'><div class='galleryInnerImageHolder'><a href='uploads/1/4/8/1/148137552/juntao-yang-light-and-cold-conversation-atlantic-algorithmic-and-visibilit-digital-video-2023-13min-5_orig.png' rel='lightbox[gallery352063039655724412]'><img src='uploads/1/4/8/1/148137552/juntao-yang-light-and-cold-conversation-atlantic-algorithmic-and-visibilit-digital-video-2023-13min-5.png' class='galleryImage' _width='800' _height='450' style='position:absolute;border:0;width:100%;top:12.54%;left:0%' /></a></div></div></div></div><div id='352063039655724412-imageContainer6' style='float:left;width:24.95%;margin:0;'><div id='352063039655724412-insideImageContainer6' style='position:relative;margin:4px;'><div class='galleryImageHolder' style='position:relative; width:100%; padding:0 0 75.08%;'><div class='galleryInnerImageHolder'><a href='uploads/1/4/8/1/148137552/juntao-yang-light-and-cold-conversation-atlantic-algorithmic-and-visibilit-digital-video-2023-13min-7_orig.png' rel='lightbox[gallery352063039655724412]'><img src='uploads/1/4/8/1/148137552/juntao-yang-light-and-cold-conversation-atlantic-algorithmic-and-visibilit-digital-video-2023-13min-7.png' class='galleryImage' _width='800' _height='450' style='position:absolute;border:0;width:100%;top:12.54%;left:0%' /></a></div></div></div></div><div id='352063039655724412-imageContainer7' style='float:left;width:24.95%;margin:0;'><div id='352063039655724412-insideImageContainer7' style='position:relative;margin:4px;'><div class='galleryImageHolder' style='position:relative; width:100%; padding:0 0 75.08%;'><div class='galleryInnerImageHolder'><a href='uploads/1/4/8/1/148137552/juntao-yang-light-and-cold-conversation-atlantic-algorithmic-and-visibilit-digital-video-2023-13min-2_orig.png' rel='lightbox[gallery352063039655724412]'><img src='uploads/1/4/8/1/148137552/juntao-yang-light-and-cold-conversation-atlantic-algorithmic-and-visibilit-digital-video-2023-13min-2.png' class='galleryImage' _width='800' _height='450' style='position:absolute;border:0;width:100%;top:12.54%;left:0%' /></a></div></div></div></div><span style='display: block; clear: both; height: 0px; overflow: hidden;'></span>
+    </div>
 
-				<div style="height: 0px; overflow: hidden;"></div></div>
+                    <div style="height: 0px; overflow: hidden;"></div></div>
 
-<div class="paragraph" style="text-align:center;"><font size="2">Stills&nbsp;</font></div>
+    <div class="paragraph" style="text-align:center;"><font size="2">Stills&nbsp;</font></div>
 
-<div class="paragraph"><br /><u><font size="5">Introduction:&nbsp;</font></u><br />At the end of the last century, Detroit music producer team Drexciya fictionalized the underwater race Drexciyans, believed to be the descendants of "thousands of pregnant African slaves who were thrown into the water along with dangerous cargo due to illness on a ship bound for the United States" and eventually acquired the ability to live under the sea.<br /><br />This film references and expands this imagination, envisioning a future of technological advancement supported by artificial intelligence. Here, Drexciyans and artificial intelligence re-examine the recent history of mankind and once again refer to the political economy and the politics of representation in digital infrastructure and images circulation.<br /><br />AI assists in the more efficient exploitation of resources while using them to meet the expanding infrastructure (computer clusters, storage devices, cloud computing devices, etc.) behind which planetary resource consumption, unfair African digital labor, and loud noise are deliberately hidden, continuing to shape the transparent and sanitized public image of computing technology. On the other hand, the way the sensor samples and the circulation of the image bring noise, and the compression algorithm determines the "blackness" part of the sacrifice is greater, the lack of more information, more distortion.<br /><br />In Africa, many black workers are being subjected to low wages and great emotional exploitation, removing sensitive, violent and illegal elements from AI algorithms. However, until it was exposed by the white Western media, no one mentioned this part of the group. These black laborers, like those black infrastructure, have their faces and voices deliberately hidden in order to satisfy the pure and transparent imagination of artificial intelligence (this description with clearly fascist characteristics).<br /><br />Further, Drexciyans questions the contemporary human definition of "representation," which makes clear and unambiguous images more popular and unambiguous images aesthetically and morally disadvantageous. The contemporary image world excludes the representation of black people in the name of technology, on the one hand, the backwardness of the film production and projection system on the African continent, and on the other hand, the shooting technology has been aimed at white people from the beginning and has failed to solve the problem of black identification. Drexciyans suspects that the Western film festival system has played a role. For a long time, these festivals have disparaged images of black Africa and directors from black Africa in terms of visibility. The guests on the red carpet are always noble white people. AI seems to be able to produce scripts about black Africans, but in various ways it deepens the exploitation of black Africans, and fundamentally, AI only takes blacks to the opposite of high-profile film festivals: transparency.&nbsp;</div>
+    <div class="paragraph"><br /><u><font size="5">Introduction:&nbsp;</font></u><br />At the end of the last century, Detroit music producer team Drexciya fictionalized the underwater race Drexciyans, believed to be the descendants of "thousands of pregnant African slaves who were thrown into the water along with dangerous cargo due to illness on a ship bound for the United States" and eventually acquired the ability to live under the sea.<br /><br />This film references and expands this imagination, envisioning a future of technological advancement supported by artificial intelligence. Here, Drexciyans and artificial intelligence re-examine the recent history of mankind and once again refer to the political economy and the politics of representation in digital infrastructure and images circulation.<br /><br />AI assists in the more efficient exploitation of resources while using them to meet the expanding infrastructure (computer clusters, storage devices, cloud computing devices, etc.) behind which planetary resource consumption, unfair African digital labor, and loud noise are deliberately hidden, continuing to shape the transparent and sanitized public image of computing technology. On the other hand, the way the sensor samples and the circulation of the image bring noise, and the compression algorithm determines the "blackness" part of the sacrifice is greater, the lack of more information, more distortion.<br /><br />In Africa, many black workers are being subjected to low wages and great emotional exploitation, removing sensitive, violent and illegal elements from AI algorithms. However, until it was exposed by the white Western media, no one mentioned this part of the group. These black laborers, like those black infrastructure, have their faces and voices deliberately hidden in order to satisfy the pure and transparent imagination of artificial intelligence (this description with clearly fascist characteristics).<br /><br />Further, Drexciyans questions the contemporary human definition of "representation," which makes clear and unambiguous images more popular and unambiguous images aesthetically and morally disadvantageous. The contemporary image world excludes the representation of black people in the name of technology, on the one hand, the backwardness of the film production and projection system on the African continent, and on the other hand, the shooting technology has been aimed at white people from the beginning and has failed to solve the problem of black identification. Drexciyans suspects that the Western film festival system has played a role. For a long time, these festivals have disparaged images of black Africa and directors from black Africa in terms of visibility. The guests on the red carpet are always noble white people. AI seems to be able to produce scripts about black Africans, but in various ways it deepens the exploitation of black Africans, and fundamentally, AI only takes blacks to the opposite of high-profile film festivals: transparency.&nbsp;</div>
 
-<div><div style="height: 20px; overflow: hidden;"></div>
-				<div id='184016236822753986-gallery' class='imageGallery' style='line-height: 0px; padding: 0; margin: 0'>
-<div id='184016236822753986-imageContainer0' style='float:left;width:33.28%;margin:0;'><div id='184016236822753986-insideImageContainer0' style='position:relative;margin:5px;'><div class='galleryImageHolder' style='position:relative; width:100%; padding:0 0 75%;overflow:hidden;'><div class='galleryInnerImageHolder'><a href='uploads/1/4/8/1/148137552/2023-06-17-184454_orig.jpg' rel='lightbox[gallery184016236822753986]'><img src='uploads/1/4/8/1/148137552/2023-06-17-184454.jpg' class='galleryImage' _width='800' _height='535' alt='As installed at What We Name, We Can Contain, two person show, Union Pacific, London, UK, 2015' style='position:absolute;border:0;width:112.15%;top:0%;left:-6.07%' /></a></div></div></div></div><div id='184016236822753986-imageContainer1' style='float:left;width:33.28%;margin:0;'><div id='184016236822753986-insideImageContainer1' style='position:relative;margin:5px;'><div class='galleryImageHolder' style='position:relative; width:100%; padding:0 0 75%;overflow:hidden;'><div class='galleryInnerImageHolder'><a href='uploads/1/4/8/1/148137552/2023-06-17-232447_orig.jpg' rel='lightbox[gallery184016236822753986]'><img src='uploads/1/4/8/1/148137552/2023-06-17-232447.jpg' class='galleryImage' _width='800' _height='533' style='position:absolute;border:0;width:112.57%;top:0%;left:-6.29%' /></a></div></div></div></div><div id='184016236822753986-imageContainer2' style='float:left;width:33.28%;margin:0;'><div id='184016236822753986-insideImageContainer2' style='position:relative;margin:5px;'><div class='galleryImageHolder' style='position:relative; width:100%; padding:0 0 75%;overflow:hidden;'><div class='galleryInnerImageHolder'><a href='uploads/1/4/8/1/148137552/2023-06-17-230333_orig.jpg' rel='lightbox[gallery184016236822753986]'><img src='uploads/1/4/8/1/148137552/2023-06-17-230333.jpg' class='galleryImage' _width='800' _height='533' style='position:absolute;border:0;width:112.57%;top:0%;left:-6.29%' /></a></div></div></div></div><span style='display: block; clear: both; height: 0px; overflow: hidden;'></span>
-</div>
+    <div><div style="height: 20px; overflow: hidden;"></div>
+                    <div id='184016236822753986-gallery' class='imageGallery' style='line-height: 0px; padding: 0; margin: 0'>
+    <div id='184016236822753986-imageContainer0' style='float:left;width:33.28%;margin:0;'><div id='184016236822753986-insideImageContainer0' style='position:relative;margin:5px;'><div class='galleryImageHolder' style='position:relative; width:100%; padding:0 0 75%;overflow:hidden;'><div class='galleryInnerImageHolder'><a href='uploads/1/4/8/1/148137552/2023-06-17-184454_orig.jpg' rel='lightbox[gallery184016236822753986]'><img src='uploads/1/4/8/1/148137552/2023-06-17-184454.jpg' class='galleryImage' _width='800' _height='535' alt='As installed at What We Name, We Can Contain, two person show, Union Pacific, London, UK, 2015' style='position:absolute;border:0;width:112.15%;top:0%;left:-6.07%' /></a></div></div></div></div><div id='184016236822753986-imageContainer1' style='float:left;width:33.28%;margin:0;'><div id='184016236822753986-insideImageContainer1' style='position:relative;margin:5px;'><div class='galleryImageHolder' style='position:relative; width:100%; padding:0 0 75%;overflow:hidden;'><div class='galleryInnerImageHolder'><a href='uploads/1/4/8/1/148137552/2023-06-17-232447_orig.jpg' rel='lightbox[gallery184016236822753986]'><img src='uploads/1/4/8/1/148137552/2023-06-17-232447.jpg' class='galleryImage' _width='800' _height='533' style='position:absolute;border:0;width:112.57%;top:0%;left:-6.29%' /></a></div></div></div></div><div id='184016236822753986-imageContainer2' style='float:left;width:33.28%;margin:0;'><div id='184016236822753986-insideImageContainer2' style='position:relative;margin:5px;'><div class='galleryImageHolder' style='position:relative; width:100%; padding:0 0 75%;overflow:hidden;'><div class='galleryInnerImageHolder'><a href='uploads/1/4/8/1/148137552/2023-06-17-230333_orig.jpg' rel='lightbox[gallery184016236822753986]'><img src='uploads/1/4/8/1/148137552/2023-06-17-230333.jpg' class='galleryImage' _width='800' _height='533' style='position:absolute;border:0;width:112.57%;top:0%;left:-6.29%' /></a></div></div></div></div><span style='display: block; clear: both; height: 0px; overflow: hidden;'></span>
+    </div>
 
-				<div style="height: 10px; overflow: hidden;"></div></div>
+                    <div style="height: 10px; overflow: hidden;"></div></div>
 
-<div class="paragraph" style="text-align:center;"><font size="2"><span style="color:rgb(0, 0, 0)">As installed at&nbsp;</span><em>Wonde Room: Art Exploration in the Web3, Metaverse, and AIGC Era</em><span style="color:rgb(0, 0, 0)">, </span>Advance Art Museum, Changsha, China, 2023<br />&#8203;</font></div>
+    <div class="paragraph" style="text-align:center;"><font size="2"><span style="color:rgb(0, 0, 0)">As installed at&nbsp;</span><em>Wonde Room: Art Exploration in the Web3, Metaverse, and AIGC Era</em><span style="color:rgb(0, 0, 0)">, </span>Advance Art Museum, Changsha, China, 2023<br />&#8203;</font></div>
 
-<div class="paragraph"><u><font size="5">Exhibition and Screening list:</font></u><br /><span></span>
-
-
-<em>Parallel and Intersection</em><span>, In Gallery, Taiyuan, China, 2024</span><br />
-<em>Beyond System</em><span>, Arbre Art Centre, Shenzhen, China, 2024</span><br />
-<em>Conflicts Within and Without</em><span>, SNAP, Shanghai, China, 2024</span><br />
-<em>2024 Nanjing D9Lock Art Festival: Fusion, Harmony, Coexistence, Growth</em><span>, D9Lock, Nanjing, China, 2024</span><br />
-<em>Within Iceless Age</em><span>, theBlanc, New York, USA, 2024</span><br />
-<em>Immersion</em><span>, Lockwood Annexe 5, Goldsmiths, London, UK, 2024</span><br />
-<em>GOOGOL</em><span>, Online ( Powerer by <em>New Art City</em> ), 2024</span><br />
-<em>The Realm of Time and Space</em>, Atom Space, <em>SeeDliNG Fair</em>, Shenzhen, China, 2024<br />
-<em>Code Reconstruction: Artistic Exploration in the Age of AIGC</em>, Art Museum of Luxun Academy of Fine Arts, Shenyang, China, 2024<br />
-<em>The Atmosphere of Growing Art</em>, Line Stones Gallery, Jingdezhen, China, 2023<br /><em>Wonde Room: Art Exploration in the Web3, Metaverse, and AIGC Era</em>, Advance Art Museum, Changsha, China, 2023<br />
-<em>Luohu Shenzhen-Hongkong Culture Festival</em>, Jinpi Fang, Shenzhen, China, 2023<br /><em>Cold and Light Conversations: Agency and Technology</em>, Imaginary Z, Hangzhou, China, 2023<br />
-<em>Plant-generated Images</em>, Wuhan Photography Art Centre, Wuhan, China, 2023<br />
-<em>AI &amp; NI</em>, 4C Gallery, Los Angeles, USA, 2023<br />
-<em>Doves and Magpies Sharing a Nest</em>, The Forge Art Gallery, London, UK, 2023<br />
-Wuhan University Graduate Student Academic Science and Technology Festival “Distorted Imagination: Technological Rethinking under the Annotation of Cinema”</font></a></em></u>, School of Arts, Wuhan University, Wuhan, China, 2024<br />
-Experimental Film Night, The Delta INST + GODOWN, Hangzhou, China, 2024<br /></em>
-ONED Film Festival China Touring Screening Program, <span>Lanzhou / Suzhou / Shanghai / Tianjin / Yangshuo / Yichang / Chengdu, China, 2024</span><br />&#8203;</span>&#8203;
-The 8th abC Art Book Fair</span><em>,&nbsp;</em><span>OōEli, Hangzhou, China, 2023</span><br />&#8203;</span>&#8203;
-Jetty Screening</span><em>,&nbsp;</em><span>Dali, China,2023</span><br /><em>&#8203;</em>
-<span style="color:rgb(0, 0, 0)">C-POP Theatre, Beijing,</span><span>&nbsp;China, 2023<br />
-Ferry, Chengdu, China, 2023<br /></span></div>
-
-<div class="paragraph"><u><font size="5">Film Festivals list:</font></u><br />
-MUST Chinese Youth Film Festival and Golden Rooster Film Exhibition (Macao), Macao, China, 2024&nbsp; -&nbsp;&nbsp;</font><em>Official Selection</em><br />
-British University International Students Film Festival, New Cairo, Egypt, 2024&nbsp; -&nbsp;&nbsp;</font><em>Official Selection</em><br />
-La Sur Real Film Festival, Berlin, German, 2024&nbsp; -&nbsp;&nbsp;</font><em>Official Selection</em><br />
-Origin Western Film Festival, Xi'an, China, 2024&nbsp; -&nbsp;&nbsp;</font><em>Official Selection</em><br />
-Beijing International Film Festival&nbsp;&middot; Beijing College Student Film Festival, Beijing, China, 2024&nbsp; -&nbsp;&nbsp;</font><em>Official Selection</em><br />
-He Dong Auteur Film Festival, Yuncheng,China, 2024&nbsp; -&nbsp;&nbsp;</font><em>Official Selection</em><br />
-Duemila30&nbsp;International Film Festival, Milan, Italy, 2024&nbsp; -&nbsp;&nbsp;</span><em>Official Selection</em><br />
-Frome International Climate Film Festival, Frome, UK, 2024&nbsp; -&nbsp;&nbsp;</font><em>Official Selection</em><br />
-International Film Festival of Audiovisual Theory Students, Prague,&nbsp;Czech, 2023&nbsp; -&nbsp;&nbsp;<em>Best Experimental Film (Kurt Kren’s Scratched Glasses) </em><br />
-Varsity Film Expo, Nairobi, Kenya, 2023&nbsp; -&nbsp;&nbsp;<em>Honourable Mention</em><br />
-International Alternative Media Film Festival,&nbsp;Mexico City, Mexico, 2023&nbsp; -&nbsp;&nbsp;<em>Official Selection</em><br />
-AIU Film Festival,<span>&nbsp;</span><span>Ja</span><span>hra</span><span>, Kuwait,</span> 2023&nbsp; -&nbsp;&nbsp;<em>Official Selection</em><br />
-
-Ningbo Short Film Festival, Ningbo, China, 2023&nbsp; -&nbsp;&nbsp;<em>Best Experimental Short Film Nomination</em>&nbsp;<br />
-Xi Ying Light My Fire Young Film Festival, Xi'an, China, 2023&nbsp; -&nbsp;&nbsp;<em>Official Selection</em><em>&nbsp;</em><br />
-HiShorts! Film Festival, Xiamen, China, 2023&nbsp; -&nbsp;&nbsp;<em>Official Selection</em><br />
-Shishan Film Festival, Chengdu, China, 2023&nbsp; -&nbsp;&nbsp;<em><span>Official</span>&nbsp;Selection</em>&#8203;<br />
-
-Shanghai International Short Week, Shanghai, China, 2023&nbsp; -&nbsp;&nbsp;<em>&#8203;Best AI Short<br />&#8203;</em></div>
-
-<br />&#8203;
+    <div class="paragraph"><u><font size="5">Exhibition and Screening list:</font></u><br /><span></span>
 
 
-<div><div class="wsite-multicol"><div class="wsite-multicol-table-wrap" style="margin:0 -15px;">
-	<table class="wsite-multicol-table">
-		<tbody class="wsite-multicol-tbody">
-			<tr class="wsite-multicol-tr">
-				<td class="wsite-multicol-col" style="width:50%; padding:0 15px;">
-					
-						
+    <em>Parallel and Intersection</em><span>, In Gallery, Taiyuan, China, 2024</span><br />
+    <em>Beyond System</em><span>, Arbre Art Centre, Shenzhen, China, 2024</span><br />
+    <em>Conflicts Within and Without</em><span>, SNAP, Shanghai, China, 2024</span><br />
+    <em>2024 Nanjing D9Lock Art Festival: Fusion, Harmony, Coexistence, Growth</em><span>, D9Lock, Nanjing, China, 2024</span><br />
+    <em>Within Iceless Age</em><span>, theBlanc, New York, USA, 2024</span><br />
+    <em>Immersion</em><span>, Lockwood Annexe 5, Goldsmiths, London, UK, 2024</span><br />
+    <em>GOOGOL</em><span>, Online ( Powerer by <em>New Art City</em> ), 2024</span><br />
+    <em>The Realm of Time and Space</em>, Atom Space, <em>SeeDliNG Fair</em>, Shenzhen, China, 2024<br />
+    <em>Code Reconstruction: Artistic Exploration in the Age of AIGC</em>, Art Museum of Luxun Academy of Fine Arts, Shenyang, China, 2024<br />
+    <em>The Atmosphere of Growing Art</em>, Line Stones Gallery, Jingdezhen, China, 2023<br /><em>Wonde Room: Art Exploration in the Web3, Metaverse, and AIGC Era</em>, Advance Art Museum, Changsha, China, 2023<br />
+    <em>Luohu Shenzhen-Hongkong Culture Festival</em>, Jinpi Fang, Shenzhen, China, 2023<br /><em>Cold and Light Conversations: Agency and Technology</em>, Imaginary Z, Hangzhou, China, 2023<br />
+    <em>Plant-generated Images</em>, Wuhan Photography Art Centre, Wuhan, China, 2023<br />
+    <em>AI &amp; NI</em>, 4C Gallery, Los Angeles, USA, 2023<br />
+    <em>Doves and Magpies Sharing a Nest</em>, The Forge Art Gallery, London, UK, 2023<br />
+    Wuhan University Graduate Student Academic Science and Technology Festival “Distorted Imagination: Technological Rethinking under the Annotation of Cinema”</font></a></em></u>, School of Arts, Wuhan University, Wuhan, China, 2024<br />
+    Experimental Film Night, The Delta INST + GODOWN, Hangzhou, China, 2024<br /></em>
+    ONED Film Festival China Touring Screening Program, <span>Lanzhou / Suzhou / Shanghai / Tianjin / Yangshuo / Yichang / Chengdu, China, 2024</span><br />&#8203;</span>&#8203;
+    The 8th abC Art Book Fair</span><em>,&nbsp;</em><span>OōEli, Hangzhou, China, 2023</span><br />&#8203;</span>&#8203;
+    Jetty Screening</span><em>,&nbsp;</em><span>Dali, China,2023</span><br /><em>&#8203;</em>
+    <span style="color:rgb(0, 0, 0)">C-POP Theatre, Beijing,</span><span>&nbsp;China, 2023<br />
+    Ferry, Chengdu, China, 2023<br /></span></div>
+
+    <div class="paragraph"><u><font size="5">Film Festivals list:</font></u><br />
+    MUST Chinese Youth Film Festival and Golden Rooster Film Exhibition (Macao), Macao, China, 2024&nbsp; -&nbsp;&nbsp;</font><em>Official Selection</em><br />
+    British University International Students Film Festival, New Cairo, Egypt, 2024&nbsp; -&nbsp;&nbsp;</font><em>Official Selection</em><br />
+    La Sur Real Film Festival, Berlin, German, 2024&nbsp; -&nbsp;&nbsp;</font><em>Official Selection</em><br />
+    Origin Western Film Festival, Xi'an, China, 2024&nbsp; -&nbsp;&nbsp;</font><em>Official Selection</em><br />
+    Beijing International Film Festival&nbsp;&middot; Beijing College Student Film Festival, Beijing, China, 2024&nbsp; -&nbsp;&nbsp;</font><em>Official Selection</em><br />
+    He Dong Auteur Film Festival, Yuncheng,China, 2024&nbsp; -&nbsp;&nbsp;</font><em>Official Selection</em><br />
+    Duemila30&nbsp;International Film Festival, Milan, Italy, 2024&nbsp; -&nbsp;&nbsp;</span><em>Official Selection</em><br />
+    Frome International Climate Film Festival, Frome, UK, 2024&nbsp; -&nbsp;&nbsp;</font><em>Official Selection</em><br />
+    International Film Festival of Audiovisual Theory Students, Prague,&nbsp;Czech, 2023&nbsp; -&nbsp;&nbsp;<em>Best Experimental Film (Kurt Kren’s Scratched Glasses) </em><br />
+    Varsity Film Expo, Nairobi, Kenya, 2023&nbsp; -&nbsp;&nbsp;<em>Honourable Mention</em><br />
+    International Alternative Media Film Festival,&nbsp;Mexico City, Mexico, 2023&nbsp; -&nbsp;&nbsp;<em>Official Selection</em><br />
+    AIU Film Festival,<span>&nbsp;</span><span>Ja</span><span>hra</span><span>, Kuwait,</span> 2023&nbsp; -&nbsp;&nbsp;<em>Official Selection</em><br />
+
+    Ningbo Short Film Festival, Ningbo, China, 2023&nbsp; -&nbsp;&nbsp;<em>Best Experimental Short Film Nomination</em>&nbsp;<br />
+    Xi Ying Light My Fire Young Film Festival, Xi'an, China, 2023&nbsp; -&nbsp;&nbsp;<em>Official Selection</em><em>&nbsp;</em><br />
+    HiShorts! Film Festival, Xiamen, China, 2023&nbsp; -&nbsp;&nbsp;<em>Official Selection</em><br />
+    Shishan Film Festival, Chengdu, China, 2023&nbsp; -&nbsp;&nbsp;<em><span>Official</span>&nbsp;Selection</em>&#8203;<br />
+
+    Shanghai International Short Week, Shanghai, China, 2023&nbsp; -&nbsp;&nbsp;<em>&#8203;Best AI Short<br />&#8203;</em></div>
+
+    &#8203;
 
 
-
-<div><div class="wsite-image wsite-image-border-none " style="padding-top:10px;padding-bottom:10px;margin-left:0px;margin-right:0;text-align:center">
-<img src="uploads/delta1.jpg" alt="Picture" style="width:auto;max-width:100%" />
-
-</div></div>
-<div class="paragraph" style="text-align:center;"><font size="2">Screened at The Delta INST + GODOWN, 2024 </font></div>
-
-
-					
-				</td>				<td class="wsite-multicol-col" style="width:50%; padding:0 15px;">
-					
-						
-
-<div><div class="wsite-image wsite-image-border-none " style="padding-top:10px;padding-bottom:10px;margin-left:0;margin-right:0px;text-align:center">
-<img src="uploads/yuanzikongjian24.jpg" alt="Picture" style="width:auto;max-width:100%" />
-<div style="display:block;font-size:90%"></div>
-</div></div>
-<div class="paragraph" style="text-align:center;"><font size="2">Showed at SeeDliNG Fair, 2024 </font></div>
+    <div><div class="wsite-multicol"><div class="wsite-multicol-table-wrap" style="margin:0 -15px;">
+        <table class="wsite-multicol-table">
+            <tbody class="wsite-multicol-tbody">
+                <tr class="wsite-multicol-tr">
+                    <td class="wsite-multicol-col" style="width:50%; padding:0 15px;">
+                        
+                            
 
 
 
+    <div><div class="wsite-image wsite-image-border-none " style="padding-top:10px;padding-bottom:10px;margin-left:0px;margin-right:0;text-align:center">
+    <img src="uploads/delta1.jpg" alt="Picture" style="width:auto;max-width:100%" />
 
-					
-				</td>			</tr>
-		</tbody>
-	</table>
-</div></div></div>
-
-<br /><em>&#8203;</em></div>
+    </div></div>
+    <div class="paragraph" style="text-align:center;"><font size="2">Screened at The Delta INST + GODOWN, 2024 </font></div>
 
 
-<div class="paragraph" style="text-align:left;"><u><font size="5">Reviews (Selected)<br />&#8203;</font></u><span>&#8203;"Light and cold conversations...serves as a powerful commentary on the complex relationship between technology, race, justice, and representation. The film's focus on digital representation and the politics of images connects to the broader discussions around digital inclusion and access to technology. The film raises questions about the ethical implications of ai and its potential to exacerbate existing inequalities and biases. The film encourages critical thinking about technology and its role in society, prompting viewers to consider the broader social and environmental impacts of technological advancement. By raising awareness about these issues, the film contributes to the achievement of several SDGs, particularly those focused on reducing inequalities, promoting responsible consumption and production, and building sustainable and inclusive societies. " &#8203;</span></div>
+                        
+                    </td>				<td class="wsite-multicol-col" style="width:50%; padding:0 15px;">
+                        
+                            
 
-<div class="paragraph" style="text-align:right;"><span>&mdash;&mdash; V</span><font color="#2a2a2a">arsity Film Expo, 2023<br />&#8203;&#8203;</font></div>
-
-<div class="paragraph"><span style="color:rgb(62, 62, 62)">"Taking the sacrifices behind the development of artificial intelligence as a starting point, Juntao Yang re-examines the profits and drawbacks that technological advances have brought. In early 2023, OpenAI was revealed to have made AI safer and gentler by hiring Kenyan workers to train AI to recognize extreme speech about violence, hatred, etc.. The intense reading of harmful texts has caused workers to suffer from severe mental illnesses, and the low-cost employment remuneration cannot pay for such consequences. Despite OpenAI company claims that AI can enhance human well-being, behind the development is endless mental exploitation, racial discrimination, and resource depletion. Through his moving image work, Juntao Yang raises questions and reflections on the future of AI - is AI a successful application of human intelligence or a game of power and capital? "</span></div>
-
-<div class="paragraph" style="text-align:right;">&mdash;&mdash;&nbsp;<span style="color:rgb(62, 62, 62)">&#27784;&#33883;&#20104;&#23143;<br />&#8203;</span><br /></div>
-
-<div class="paragraph">"... A particularly notable film was Light and Cold Conversations: Atlantic, Algorithms and Visibility. By juxtaposing the Western slave trade with modern digital infrastructures, such as cloud computing, data centers and undersea fibre-optic cables, the film examines how digital colonization can act as an 'invisible' force that subtly constructs and maintains the realities of racism and environmental crisis. In addition, the film employs artificial intelligence visualization techniques to transport viewers to a futuristic world that is both unique and fascinating. While activating alternative imaginations that have been suppressed or ignored, the film provokes further reflection on the ethics of artificial intelligence and technological optimism. "</div>
-
-<div class="paragraph" style="text-align:right;">&mdash;&mdash; Ketong Ou<br /><br />&#8203;<br /></div>
-
-<div><div style="height: 20px; overflow: hidden;"></div>
-				<div id='429382493714043134-gallery' class='imageGallery' style='line-height: 0px; padding: 0; margin: 0'>
-<div id='429382493714043134-imageContainer0' style='float:left;width:49.95%;margin:0;'><div id='429382493714043134-insideImageContainer0' style='position:relative;margin:5px;'><div class='galleryImageHolder' style='position:relative; width:100%; padding:0 0 75%;overflow:hidden;'><div class='galleryInnerImageHolder'><a href='uploads/1/4/8/1/148137552/11_orig.jpg' rel='lightbox[gallery429382493714043134]'><img src='uploads/1/4/8/1/148137552/11.jpg' class='galleryImage' _width='1114' _height='641' style='position:absolute;border:0;width:130.34%;top:0%;left:-15.17%' /></a></div></div></div></div><div id='429382493714043134-imageContainer1' style='float:left;width:49.95%;margin:0;'><div id='429382493714043134-insideImageContainer1' style='position:relative;margin:5px;'><div class='galleryImageHolder' style='position:relative; width:100%; padding:0 0 75%;overflow:hidden;'><div class='galleryInnerImageHolder'><a href='uploads/1/4/8/1/148137552/22_orig.jpg' rel='lightbox[gallery429382493714043134]'><img src='uploads/1/4/8/1/148137552/22.jpg' class='galleryImage' _width='800' _height='533' style='position:absolute;border:0;width:112.57%;top:0%;left:-6.29%' /></a></div></div></div></div><span style='display: block; clear: both; height: 0px; overflow: hidden;'></span>
-</div>
-
-				<div style="height: 0px; overflow: hidden;"></div></div>
-
-<div class="paragraph" style="text-align:center;"><font size="2"><span style="color:rgb(0, 0, 0)">As installed at&nbsp;</span><em>Outman</em><span style="color:rgb(0, 0, 0)">,&nbsp;</span>XXYS Cafe, Changsha, China, 2023<br />&#8203;<br />&#8203;<br />&#8203;</font></div>
+    <div><div class="wsite-image wsite-image-border-none " style="padding-top:10px;padding-bottom:10px;margin-left:0;margin-right:0px;text-align:center">
+    <img src="uploads/yuanzikongjian24.jpg" alt="Picture" style="width:auto;max-width:100%" />
+    <div style="display:block;font-size:90%"></div>
+    </div>
+    <div class="paragraph" style="text-align:center;"><font size="2">Showed at SeeDliNG Fair, 2024 </font></div>
 
 
-<div><div style="height: 0px; overflow: hidden;"></div>
-				<div id='867193390761422600-gallery' class='imageGallery' style='line-height: 0px; padding: 0; margin: 0'>
-<div id='867193390761422600-imageContainer0' style='float:left;width:49.95%;margin:0;'><div id='867193390761422600-insideImageContainer0' style='position:relative;margin:0px;'><div class='galleryImageHolder' style='position:relative; width:100%; padding:0 0 75.08%;'><div class='galleryInnerImageHolder'><a href='uploads/1/4/8/1/148137552/370392921-766348425497855-1886178150249250595-n_orig.jpg' rel='lightbox[gallery867193390761422600]'><img src='uploads/1/4/8/1/148137552/370392921-766348425497855-1886178150249250595-n.jpg' class='galleryImage' _width='800' _height='800' style='position:absolute;border:0;width:75.08%;top:0%;left:12.46%' /></a></div></div></div></div><div id='867193390761422600-imageContainer1' style='float:left;width:49.95%;margin:0;'><div id='867193390761422600-insideImageContainer1' style='position:relative;margin:0px;'><div class='galleryImageHolder' style='position:relative; width:100%; padding:0 0 75.08%;'><div class='galleryInnerImageHolder'><a href='uploads/poster.png' rel='lightbox[gallery867193390761422600]'><img src='uploads/poster.png' class='galleryImage' _width='609' _height='800' style='position:absolute;border:0;width:57.15%;top:0%;left:21.42%' /></a></div></div></div></div><span style='display: block; clear: both; height: 0px; overflow: hidden;'></span>
-</div>
 
-				<div style="height: 20px; overflow: hidden;"></div></div>
 
-<div class="paragraph" style="text-align:center;"><font size="2">News image and poster</font></div>
+                        
+                    </td>			</tr>
+            </tbody>
+        </table>
+    </div></div></div>
+
+    <div class="paragraph" style="text-align:left;">
+<br>
+<u><font size="5">Reviews (Selected)<br />&#8203;</font></u><span>&#8203;"Light and cold conversations...serves as a powerful commentary on the complex relationship between technology, race, justice, and representation. The film's focus on digital representation and the politics of images connects to the broader discussions around digital inclusion and access to technology. The film raises questions about the ethical implications of ai and its potential to exacerbate existing inequalities and biases. The film encourages critical thinking about technology and its role in society, prompting viewers to consider the broader social and environmental impacts of technological advancement. By raising awareness about these issues, the film contributes to the achievement of several SDGs, particularly those focused on reducing inequalities, promoting responsible consumption and production, and building sustainable and inclusive societies. " &#8203;</span></div>
+
+    <div class="paragraph" style="text-align:right;"><span>&mdash;&mdash; V</span><font color="#2a2a2a">arsity Film Expo, 2023<br />&#8203;&#8203;</font></div>
+
+    <div class="paragraph"><span style="color:rgb(62, 62, 62)">"Taking the sacrifices behind the development of artificial intelligence as a starting point, Juntao Yang re-examines the profits and drawbacks that technological advances have brought. In early 2023, OpenAI was revealed to have made AI safer and gentler by hiring Kenyan workers to train AI to recognize extreme speech about violence, hatred, etc.. The intense reading of harmful texts has caused workers to suffer from severe mental illnesses, and the low-cost employment remuneration cannot pay for such consequences. Despite OpenAI company claims that AI can enhance human well-being, behind the development is endless mental exploitation, racial discrimination, and resource depletion. Through his moving image work, Juntao Yang raises questions and reflections on the future of AI - is AI a successful application of human intelligence or a game of power and capital? "</span></div>
+
+    <div class="paragraph" style="text-align:right;">&mdash;&mdash;&nbsp;<span style="color:rgb(62, 62, 62)">&#27784;&#33883;&#20104;&#23143;<br />&#8203;</span><br /></div>
+
+    <div class="paragraph">"... A particularly notable film was Light and Cold Conversations: Atlantic, Algorithms and Visibility. By juxtaposing the Western slave trade with modern digital infrastructures, such as cloud computing, data centers and undersea fibre-optic cables, the film examines how digital colonization can act as an 'invisible' force that subtly constructs and maintains the realities of racism and environmental crisis. In addition, the film employs artificial intelligence visualization techniques to transport viewers to a futuristic world that is both unique and fascinating. While activating alternative imaginations that have been suppressed or ignored, the film provokes further reflection on the ethics of artificial intelligence and technological optimism. "</div>
+
+    <div class="paragraph" style="text-align:right;">&mdash;&mdash; Ketong Ou<br /><br />&#8203;<br /></div>
+
+    <div><div style="height: 20px; overflow: hidden;"></div>
+                    <div id='429382493714043134-gallery' class='imageGallery' style='line-height: 0px; padding: 0; margin: 0'>
+    <div id='429382493714043134-imageContainer0' style='float:left;width:49.95%;margin:0;'><div id='429382493714043134-insideImageContainer0' style='position:relative;margin:5px;'><div class='galleryImageHolder' style='position:relative; width:100%; padding:0 0 75%;overflow:hidden;'><div class='galleryInnerImageHolder'><a href='uploads/1/4/8/1/148137552/11_orig.jpg' rel='lightbox[gallery429382493714043134]'><img src='uploads/1/4/8/1/148137552/11.jpg' class='galleryImage' _width='1114' _height='641' style='position:absolute;border:0;width:130.34%;top:0%;left:-15.17%' /></a></div></div></div></div><div id='429382493714043134-imageContainer1' style='float:left;width:49.95%;margin:0;'><div id='429382493714043134-insideImageContainer1' style='position:relative;margin:5px;'><div class='galleryImageHolder' style='position:relative; width:100%; padding:0 0 75%;overflow:hidden;'><div class='galleryInnerImageHolder'><a href='uploads/1/4/8/1/148137552/22_orig.jpg' rel='lightbox[gallery429382493714043134]'><img src='uploads/1/4/8/1/148137552/22.jpg' class='galleryImage' _width='800' _height='533' style='position:absolute;border:0;width:112.57%;top:0%;left:-6.29%' /></a></div></div></div></div><span style='display: block; clear: both; height: 0px; overflow: hidden;'></span>
+    </div>
+
+                    <div style="height: 0px; overflow: hidden;"></div></div>
+
+    <div class="paragraph" style="text-align:center;"><font size="2"><span style="color:rgb(0, 0, 0)">As installed at&nbsp;</span><em>Outman</em><span style="color:rgb(0, 0, 0)">,&nbsp;</span>XXYS Cafe, Changsha, China, 2023<br />&#8203;<br />&#8203;<br />&#8203;</font></div>
+
+
+    <div><div style="height: 0px; overflow: hidden;"></div>
+                    <div id='867193390761422600-gallery' class='imageGallery' style='line-height: 0px; padding: 0; margin: 0'>
+    <div id='867193390761422600-imageContainer0' style='float:left;width:49.95%;margin:0;'><div id='867193390761422600-insideImageContainer0' style='position:relative;margin:0px;'><div class='galleryImageHolder' style='position:relative; width:100%; padding:0 0 75.08%;'><div class='galleryInnerImageHolder'><a href='uploads/1/4/8/1/148137552/370392921-766348425497855-1886178150249250595-n_orig.jpg' rel='lightbox[gallery867193390761422600]'><img src='uploads/1/4/8/1/148137552/370392921-766348425497855-1886178150249250595-n.jpg' class='galleryImage' _width='800' _height='800' style='position:absolute;border:0;width:75.08%;top:0%;left:12.46%' /></a></div></div></div></div><div id='867193390761422600-imageContainer1' style='float:left;width:49.95%;margin:0;'><div id='867193390761422600-insideImageContainer1' style='position:relative;margin:0px;'><div class='galleryImageHolder' style='position:relative; width:100%; padding:0 0 75.08%;'><div class='galleryInnerImageHolder'><a href='uploads/poster.png' rel='lightbox[gallery867193390761422600]'><img src='uploads/poster.png' class='galleryImage' _width='609' _height='800' style='position:absolute;border:0;width:57.15%;top:0%;left:21.42%' /></a></div></div></div></div><span style='display: block; clear: both; height: 0px; overflow: hidden;'></span>
+    </div>
+
+                    <div style="height: 20px; overflow: hidden;"></div></div>
+
+    <div class="paragraph" style="text-align:center;"><font size="2">&#8203;&#8203;&#8203;News image and poster</font></div>
+    </div>
+
+    <br /><em>&#8203;</em></div>
+
+
 			</div>
 		</div>
       </div>
@@ -448,4 +501,4 @@ Shanghai International Short Week, Shanghai, China, 2023&nbsp; -&nbsp;&nbsp;<em>
 
 		
 	</body>
-</html>
+</ht

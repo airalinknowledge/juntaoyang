@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 	<head>
-		<title>Juntao Yang 杨君陶的个人网站</title>
+		<title>神圣信仰与局部战争之间的免疫学 - 杨君陶</title>
 <meta name="description" content="juntaoyang" />
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -68,6 +68,54 @@
 .wsite-background {background-image: url("/uploads/1/4/8/1/148137552/background-images/1199586110.jpg") !important;background-repeat: no-repeat !important;background-position: 50% 50% !important;background-size: 100% !important;background-color: transparent !important;background: inherit;}
 body.wsite-background {background-attachment: fixed !important;}.wsite-background.wsite-custom-background{ background-size: cover !important}
 </style>
+<!-- 在这里拷入 ↓ -->
+<style>
+    :root {
+      /* 全局可调的三种颜色 */
+      --main-color:    #333333;  /* 正文文字 */
+      --heading-color: #222222;  /* 各级标题 */
+      --link-color:    #333333;  /* 超链接 */
+    }
+
+    /* 正文默认文字色 */
+    body, 
+    .paragraph, 
+    p {
+      color: var(--main-color) !important;
+    }
+
+    /* 各级标题色 */
+    h1, h2, h3, h4, h5, h6,
+    .section-title,
+    u, em {
+      color: var(--heading-color) !important;
+    }
+
+    /* 链接色 */
+    a, a:visited {
+      color: var(--link-color) !important;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .main-content-area {
+        max-width: 90%; /* 可以调整这个值来改变内容宽度 */
+        margin-left: 0%;
+        margin-right: 10%;
+    }
+
+    @media screen and (max-width: 767px) {
+        .main-content-area {
+            max-width: 100%;
+            margin-left: 0;
+            margin-right: 0;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+    }
+  </style>
+  <!-- 拷入结束 ↑ -->
 		<script src='files/templateArtifacts.js?1714489756'></script>
 <script>
 var STATIC_BASE = '//cdn1.editmysite.com/';
@@ -76,7 +124,7 @@ var STYLE_PREFIX = 'wsite';
 </script>
 <script src='https://cdn2.editmysite.com/js/jquery-1.8.3.min.js'></script>
 
-<script type="text/javascript" src="http://cdn2.editmysite.com/js/lang/en/stl.js?buildTime=1234&"></script>
+<script type="text/javascript" src="http://cdn2.editmysite.com/js/lang/zh/stl.js?buildTime=1234&"></script>
 <script src="http://cdn2.editmysite.com/js/site/main.js?buildTime=1234"></script><script type="text/javascript">
 		function initCustomerAccountsModels() {
 					(function(){_W.setup_rpc({"url":"\/ajax\/api\/JsonRPC\/CustomerAccounts\/","actions":{"CustomerAccounts":[{"name":"login","len":2,"multiple":false,"standalone":false},{"name":"logout","len":0,"multiple":false,"standalone":false},{"name":"getSessionDetails","len":0,"multiple":false,"standalone":false},{"name":"getAccountDetails","len":0,"multiple":false,"standalone":false},{"name":"getOrders","len":0,"multiple":false,"standalone":false},{"name":"register","len":4,"multiple":false,"standalone":false},{"name":"emailExists","len":1,"multiple":false,"standalone":false},{"name":"passwordReset","len":1,"multiple":false,"standalone":false},{"name":"passwordUpdate","len":3,"multiple":false,"standalone":false},{"name":"validateSession","len":1,"multiple":false,"standalone":false}]},"namespace":"_W.CustomerAccounts.RPC"});
@@ -100,12 +148,12 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 			_W.storeEuPrivacyPolicyUrl = "";
 			com_currentSite = "713576850827693055";
 			com_userID = "148137552";</script><script type="text/javascript">_W.configDomain = "www.weebly.com";</script><script>_W.relinquish && _W.relinquish()</script>
-<script type="text/javascript" src="http://cdn2.editmysite.com/js/lang/en/stl.js?buildTime=1234&"></script><script> _W.themePlugins = [];</script><script type="text/javascript"> _W.recaptchaUrl = "https://www.google.com/recaptcha/api.js"; </script><script type="text/javascript"><!--
+<script type="text/javascript" src="http://cdn2.editmysite.com/js/lang/zh/stl.js?buildTime=1234&"></script><script> _W.themePlugins = [];</script><script type="text/javascript"> _W.recaptchaUrl = "https://www.google.com/recaptcha/api.js"; </script><script type="text/javascript"><!--
 	var IS_ARCHIVE = 1;
 	
 	function initFlyouts(){
 		initPublishedFlyoutMenus(
-			[{"id":"356461667194310790","title":"About","url":"index.html","target":"","nav_menu":false,"nonclickable":false},{"id":"444862601486980856","title":"ARTWORKS","url":"artworks.html","target":"","nav_menu":false,"nonclickable":false},{"id":"864040464600617228","title":"Writings","url":"writings.html","target":"","nav_menu":false,"nonclickable":false},{"id":"361237216236019909","title":"Projects","url":"projects.html","target":"","nav_menu":false,"nonclickable":false},{"id":"497557010409593207","title":"NEWS","url":"news.html","target":"","nav_menu":false,"nonclickable":false}],
+			[{"id":"356461667194310790","title":"About","url":"index.html","target":"","nav_menu":false,"nonclickable":false},{"id":"444862601486980856","title":"ARTWORKS","url":"artworks.html","target":"","nav_menu":false,"nonclickable":false},{"id":"864040464600617228","title":"Writings","url":"writings.html","target":"","nav_menu":false,"nonclickable":false},{"id":"361237216236019909","title":"Projects","url":"projects.html","target":"","nav_menu":false,"nonclickable":false},{"id":"497557010409593207","title":"POSTS","url":"posts.html","target":"","nav_menu":false,"nonclickable":false}],
 			"488020263907845360",
 			'',
 			'active',
@@ -135,97 +183,37 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 </span></div>
 				<ul class="wsite-menu-default">
 						<li id="pg356461667194310790" class="wsite-menu-item-wrap">
-							<a
-										href="index.html"
-								class="wsite-menu-item"
-								>
-								About
-							</a>
-							
+							<a href="guanyu.html" class="wsite-menu-item">关于</a>
 						</li>
 						<li id="pg444862601486980856" class="wsite-menu-item-wrap">
-							<a
-										href="artworks.html"
-								class="wsite-menu-item"
-								>
-								ARTWORKS
-							</a>
-							
+							<a href="chuangzuo.html" class="wsite-menu-item">创作</a>
 						</li>
 						<li id="pg864040464600617228" class="wsite-menu-item-wrap">
-							<a
-										href="writings.html"
-								class="wsite-menu-item"
-								>
-								Writings
-							</a>
-							
+							<a href="chuban.html" class="wsite-menu-item">出版</a>
 						</li>
 						<li id="pg361237216236019909" class="wsite-menu-item-wrap">
-							<a
-										href="projects.html"
-								class="wsite-menu-item"
-								>
-								Projects
-							</a>
-							
+							<a href="xiangmu.html" class="wsite-menu-item">项目</a>
 						</li>
 						<li id="pg497557010409593207" class="wsite-menu-item-wrap">
-							<a
-										href="news.html"
-								class="wsite-menu-item"
-								>
-								NEWS
-							</a>
-							
+							<a href="fabu.html" class="wsite-menu-item">发布</a>
 						</li>
 				</ul>
 			</div>
    	 	<div id="navmobile"><ul class="wsite-menu-default">
 		<li id="pg356461667194310790" class="wsite-menu-item-wrap">
-			<a
-						href="index.html"
-				class="wsite-menu-item"
-				>
-				About
-			</a>
-			
+			<a href="guanyu.html" class="wsite-menu-item">关于</a>
 		</li>
 		<li id="pg444862601486980856" class="wsite-menu-item-wrap">
-			<a
-						href="artworks.html"
-				class="wsite-menu-item"
-				>
-				ARTWORKS
-			</a>
-			
+			<a href="chuangzuo.html" class="wsite-menu-item">创作</a>
 		</li>
 		<li id="pg864040464600617228" class="wsite-menu-item-wrap">
-			<a
-						href="writings.html"
-				class="wsite-menu-item"
-				>
-				Writings
-			</a>
-			
+			<a href="chuban.html" class="wsite-menu-item">出版</a>
 		</li>
 		<li id="pg361237216236019909" class="wsite-menu-item-wrap">
-			<a
-						href="projects.html"
-				class="wsite-menu-item"
-				>
-				Projects
-			</a>
-			
+			<a href="xiangmu.html" class="wsite-menu-item">项目</a>
 		</li>
 		<li id="pg497557010409593207" class="wsite-menu-item-wrap">
-			<a
-						href="news.html"
-				class="wsite-menu-item"
-				>
-				NEWS
-			</a>
-			
+			<a href="fabu.html" class="wsite-menu-item">发布</a>
 		</li>
 </ul>
 </div>
@@ -265,7 +253,7 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 
 
 
-<div class="paragraph" style="text-align:left;"><font size="3"><strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</strong><u><a href="kajiemiaoEN.html"><font color="#2a2a2a">English</font></a></u>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<strong>&#20013;&#25991;</strong><br />&#8203;&nbsp; &nbsp; &nbsp; airalinknowledge@gmail.com</font></div>
+<div class="paragraph" style="text-align:left;"><font size="3"><strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</strong><u><a href="kajiemiaoEN.html"><font color="#2a2a2a">English</font></a></u>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<strong>&#20013;&#25991;</strong><br />&#8203;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;juntao.yang@columbia.edu</font></div>
 
 
 
@@ -274,7 +262,7 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 					
 						
 
-<div class="paragraph" style="text-align:right;"><font size="4"><u><a href="guanyu.html"><font color="#2a2a2a">&#20851;&#20110;</font></a></u>&nbsp; &nbsp;<u><a href="chuangzuo.html"><font color="#2a2a2a">&#21019;&#20316;</font></a></u><font color="#2a2a2a">&nbsp; &nbsp;</font><u><a href="chuban.html"><font color="#2a2a2a">&#20986;&#29256;</font></a></u><font color="#2a2a2a">&nbsp; &nbsp;</font><u><a href="xiangmu.html"><font color="#2a2a2a">&#39033;&#30446;</font></a></u>&nbsp; &nbsp;<u><a href="xinwen.html"><font color="#2a2a2a">&#26032;&#38395;</font></a></u></font></div>
+<div class="paragraph" style="text-align:right;"><font size="4"><u><a href="guanyu.html"><font color="#2a2a2a">关于</font></a></u>&nbsp; &nbsp;<u><a href="chuangzuo.html"><font color="#2a2a2a">创作</font></a></u><font color="#2a2a2a">&nbsp; &nbsp;</font><u><a href="chuban.html"><font color="#2a2a2a">出版</font></a></u><font color="#2a2a2a">&nbsp; &nbsp;</font><u><a href="xiangmu.html"><font color="#2a2a2a">项目</font></a></u>&nbsp; &nbsp;<u><a href="fabu.html"><font color="#2a2a2a">发布</font></a></u></font></div>
 
 
 
@@ -287,78 +275,64 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 <div class="wsite-spacer" style="height:50px;"></div>
 
 
+<div class="main-content-area">
+    <div class="paragraph">
 
 
+    <font size="5">神圣信仰与局部战争之间的免疫学：<br/>科学 - 天主教殖民主义，西南少数民族的跨物种想象与中国卡介苗 </font><br /><font size="3"><br/><b>持续时间：</b>2024 - 至今</font><br />
+    <br />
 
 
+    <font size="3"><b>关键主题</b>：免疫学；后殖民主义；生命政治；土著知识；跨物种关系</font><br/>
+
+    <br />
 
 
-<div class="paragraph">
+    <div><div style="height: 20px; overflow: hidden; width: 100%;"></div>
+    <hr class="styled-hr" style="width:100%;"></hr>
+    <div style="height: 20px; overflow: hidden; width: 100%;"></div></div>
+    <br/><br/>
 
 
-<font size="5">神圣信仰与局部战争之间的免疫学：<br/>科学 - 天主教殖民主义，西南少数民族的跨物种想象与中国卡介苗 </font><br /><font size="3"><br/><b>持续时间：</b>2024 - 至今</font><br />
-<br />
+    <font size="4">这一项目将专注于自19世纪末以来天主教昆明教区在昭通市和昆明市留下的痕迹，尤其关注天主教信仰与殖民科学如何在当地发生复杂的纠缠，并且受西南地区传统跨物种依存关系的介入和改变，又反过来介入后者。项目还特别关注地区政权变化与政治语境突变对于免疫实践的突发影响。通过对跨物种和跨越主体性的田野调查的思辨，项目试图解释田野调查和人类学实践所固有的敞开和相遇的性质，其中人类学家通过田野调查把自己置于极度脆弱的地位，并经历几乎放弃自身主体性并用新建立的联系重构自身的过程。</br>
+    </br>
+    我以免疫学家王良为线索探讨这一故事：出生于四川成都的王良，受天主教昆明教区资助，曾在法国殖民政府在印度支那建立的河内医学院接受培训；在学成回国后，受其兄妹死于结核病的冲击，决定以个人冒险的姿态只身赴法国学习刚刚被发明但备受质疑的卡介苗，并在跨海途中几近遇难；彼时，在结核杆菌作为结核病的成因被发现之前，结核病往往被认为与社会经济环境或广义的“卫生”有关；而卡介苗则在疾病预防和疾病治疗之间占据了一条模糊的界限，王良的决定在当时堪称剑走偏锋。王良携卡介苗株回到四川重庆地区，就职于法国天主教会出资开设的仁爱堂医院；与此同时，王良在医院附近独自建立了自己的小型微生物研究所，从事卡介苗的培育和小规模的接种实验。</br>
+    </br>
+
+    <div><div style="height: 20px; overflow: hidden;"></div>
+                    <div id='894196892427886293-gallery' class='imageGallery' style='line-height: 0px; padding: 0; margin: 0'>
+
+    <div id='894196892427886293-imageContainer0' style='float:left;width:49.95%;margin:0;'><div id='894196892427886293-insideImageContainer0' style='position:relative;margin:5px;'><div class='galleryImageHolder' style='position:relative; width:100%; padding:0 0 75%;overflow:hidden;'><div class='galleryInnerImageHolder'><a href='uploads/kjm1.jpg' rel='lightbox[gallery894196892427886293]'><img src='uploads/kjm1.jpg' class='galleryImage' _width='800' _height='533' style='position:absolute;border:0;width:100%;top:0%;left:0%' /></a></div></div></div></div>
+
+    <div id='894196892427886293-imageContainer1' style='float:left;width:49.95%;margin:0;'><div id='894196892427886293-insideImageContainer1' style='position:relative;margin:5px;'><div class='galleryImageHolder' style='position:relative; width:100%; padding:0 0 75%;overflow:hidden;'><div class='galleryInnerImageHolder'><a href='uploads/kjm2.jpg' rel='lightbox[gallery894196892427886293]'><img src='uploads/kjm2.jpg' class='galleryImage' _width='800' _height='533' style='position:absolute;border:0;width:112.57%;top:0%;left:0%' /></a></div></div></div></div>
+
+    <div id='894196892427886293-imageContainer2' style='float:left;width:49.95%;margin:0;'><div id='894196892427886293-insideImageContainer2' style='position:relative;margin:5px;'><div class='galleryImageHolder' style='position:relative; width:100%; padding:0 0 75%;overflow:hidden;'><div class='galleryInnerImageHolder'><a href='uploads/kjm3.jpg' rel='lightbox[gallery894196892427886293]'><img src='uploads/kjm3.jpg' class='galleryImage' _width='800' _height='533' style='position:absolute;border:0;width:100%;top:0%;left:0%' /></a></div></div></div></div>
+
+    <div id='894196892427886293-imageContainer3' style='float:left;width:49.95%;margin:0;'><div id='894196892427886293-insideImageContainer3' style='position:relative;margin:5px;'><div class='galleryImageHolder' style='position:relative; width:100%; padding:0 0 75%;overflow:hidden;'><div class='galleryInnerImageHolder'><a href='uploads/kjm4.jpg' rel='lightbox[gallery894196892427886293]'><img src='uploads/kjm4.jpg' class='galleryImage' _width='800' _height='534' style='position:absolute;border:0;width:112.36%;top:0%;left:0%' /></a></div></div></div></div><span style='display: block; clear: both; height: 0px; overflow: hidden;'></span>
+    </div>
 
 
-<font size="3"><b>关键主题</b>：免疫学；后殖民主义；生命政治；土著知识；跨物种关系</font><br/>
+                    <div style="height: 10px; overflow: hidden;"></div></div>
 
-<br />
+    <div class="paragraph" style="text-align:center;"><font size="2"><span style="color:rgb(0, 0, 0)">拍摄于成都生物制品厂，五十年代西南地区单位合并后，王良曾工作于此。该地区现为成都生物制品厂家属小区，仍存有集体劳动时期的诸多痕迹。&#8203;</font></div>
+
+    卡介苗的故事并未结束于王良和其他免疫学者对其的成功推广；恰恰相反，随着该地区政权更迭，不同政府主体对待王良及其位于重庆免疫实验室的态度截然不同，反映了免疫科学与地缘战争及政治意识形态的相互关系：据王良本人回忆，1939年因中日战争而从武汉搬迁至重庆的国民政府卫生署曾在一次不正式的考核之后匆匆关闭了王良的实验室并终止了其卡介苗接种工作，理由包括环境卫生的问题；而当1949年，共产党军队进驻重庆并随后建立西南军政委员会卫生部，部长钱信忠亲自拜访王良的微生物实验室并倍加慰勉，并在两年后委任王良为“西南卡介苗制造研究所”所长，连续开展教学工作以推广卡介苗接种的专业人士。随着西南地区各医学生物学研究所合并，王良此后一直在共产党卫生体制中工作。王良的个人叙事中尤为显著的变化是自身的免疫实践的语境，经历了从天主教博爱观（以及潜在的殖民意图），儒家道德观和革命政治理想的多重变化，这些变化受外部政治局势影响显著，这意味着王良的免疫学叙事可以作为该地区更广阔的变化的重要线索。</br>
+    </br>
+    项目还指出，王良的故事应被放置在西南传统和天主教殖民科学共同塑造的某种关注跨物种关系的文化之中考察，而这种文化在今天的西南地区能否找到进一步的线索？通过文献调研，历史走访与艺术演绎，项目探讨西南地区民众关于物种关系（人类、微生物···）的独特观念，以及天主教信仰、殖民科学和革命政治之意图在地方与卡介苗上的曲解、增强、模糊、颠覆。</br>
+    </br></br>
+    <b><u><font size="3">鸣谢：本项目曾受重庆“南山艺术家社区驻留计划”支持，并曾在成都许燎源设计艺术博物馆“创造力发生器” 高级设计人才创作营中公开展示。</font></u></b>
+    </font>
 
 
-<div><div style="height: 20px; overflow: hidden; width: 100%;"></div>
-<hr class="styled-hr" style="width:100%;"></hr>
-<div style="height: 20px; overflow: hidden; width: 100%;"></div></div>
-<br/><br/>
+    <br />
 
-
-<font size="4">这一项目将专注于自19世纪末以来天主教昆明教区在昭通市和昆明市留下的痕迹，尤其关注天主教信仰与殖民科学如何在当地发生复杂的纠缠，并且受西南地区传统跨物种依存关系的介入和改变，又反过来介入后者。项目还特别关注地区政权变化与政治语境突变对于免疫实践的突发影响。通过对跨物种和跨越主体性的田野调查的思辨，项目试图解释田野调查和人类学实践所固有的敞开和相遇的性质，其中人类学家通过田野调查把自己置于极度脆弱的地位，并经历几乎放弃自身主体性并用新建立的联系重构自身的过程。</br>
-</br>
-我以免疫学家王良为线索探讨这一故事：出生于四川成都的王良，受天主教昆明教区资助，曾在法国殖民政府在印度支那建立的河内医学院接受培训；在学成回国后，受其兄妹死于结核病的冲击，决定以个人冒险的姿态只身赴法国学习刚刚被发明但备受质疑的卡介苗，并在跨海途中几近遇难；彼时，在结核杆菌作为结核病的成因被发现之前，结核病往往被认为与社会经济环境或广义的“卫生”有关；而卡介苗则在疾病预防和疾病治疗之间占据了一条模糊的界限，王良的决定在当时堪称剑走偏锋。王良携卡介苗株回到四川重庆地区，就职于法国天主教会出资开设的仁爱堂医院；与此同时，王良在医院附近独自建立了自己的小型微生物研究所，从事卡介苗的培育和小规模的接种实验。</br>
-</br>
-
-<div><div style="height: 20px; overflow: hidden;"></div>
-				<div id='894196892427886293-gallery' class='imageGallery' style='line-height: 0px; padding: 0; margin: 0'>
-
-<div id='894196892427886293-imageContainer0' style='float:left;width:49.95%;margin:0;'><div id='894196892427886293-insideImageContainer0' style='position:relative;margin:5px;'><div class='galleryImageHolder' style='position:relative; width:100%; padding:0 0 75%;overflow:hidden;'><div class='galleryInnerImageHolder'><a href='uploads/kjm1.jpg' rel='lightbox[gallery894196892427886293]'><img src='uploads/kjm1.jpg' class='galleryImage' _width='800' _height='533' style='position:absolute;border:0;width:100%;top:0%;left:0%' /></a></div></div></div></div>
-
-<div id='894196892427886293-imageContainer1' style='float:left;width:49.95%;margin:0;'><div id='894196892427886293-insideImageContainer1' style='position:relative;margin:5px;'><div class='galleryImageHolder' style='position:relative; width:100%; padding:0 0 75%;overflow:hidden;'><div class='galleryInnerImageHolder'><a href='uploads/kjm2.jpg' rel='lightbox[gallery894196892427886293]'><img src='uploads/kjm2.jpg' class='galleryImage' _width='800' _height='533' style='position:absolute;border:0;width:112.57%;top:0%;left:0%' /></a></div></div></div></div>
-
-<div id='894196892427886293-imageContainer2' style='float:left;width:49.95%;margin:0;'><div id='894196892427886293-insideImageContainer2' style='position:relative;margin:5px;'><div class='galleryImageHolder' style='position:relative; width:100%; padding:0 0 75%;overflow:hidden;'><div class='galleryInnerImageHolder'><a href='uploads/kjm3.jpg' rel='lightbox[gallery894196892427886293]'><img src='uploads/kjm3.jpg' class='galleryImage' _width='800' _height='533' style='position:absolute;border:0;width:100%;top:0%;left:0%' /></a></div></div></div></div>
-
-<div id='894196892427886293-imageContainer3' style='float:left;width:49.95%;margin:0;'><div id='894196892427886293-insideImageContainer3' style='position:relative;margin:5px;'><div class='galleryImageHolder' style='position:relative; width:100%; padding:0 0 75%;overflow:hidden;'><div class='galleryInnerImageHolder'><a href='uploads/kjm4.jpg' rel='lightbox[gallery894196892427886293]'><img src='uploads/kjm4.jpg' class='galleryImage' _width='800' _height='534' style='position:absolute;border:0;width:112.36%;top:0%;left:0%' /></a></div></div></div></div><span style='display: block; clear: both; height: 0px; overflow: hidden;'></span>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    </div>
 </div>
-
-
-				<div style="height: 10px; overflow: hidden;"></div></div>
-
-<div class="paragraph" style="text-align:center;"><font size="2"><span style="color:rgb(0, 0, 0)">拍摄于成都生物制品厂，五十年代西南地区单位合并后，王良曾工作于此。该地区现为成都生物制品厂家属小区，仍存有集体劳动时期的诸多痕迹。&#8203;</font></div>
-
-卡介苗的故事并未结束于王良和其他免疫学者对其的成功推广；恰恰相反，随着该地区政权更迭，不同政府主体对待王良及其位于重庆免疫实验室的态度截然不同，反映了免疫科学与地缘战争及政治意识形态的相互关系：据王良本人回忆，1939年因中日战争而从武汉搬迁至重庆的国民政府卫生署曾在一次不正式的考核之后匆匆关闭了王良的实验室并终止了其卡介苗接种工作，理由包括环境卫生的问题；而当1949年，共产党军队进驻重庆并随后建立西南军政委员会卫生部，部长钱信忠亲自拜访王良的微生物实验室并倍加慰勉，并在两年后委任王良为“西南卡介苗制造研究所”所长，连续开展教学工作以推广卡介苗接种的专业人士。随着西南地区各医学生物学研究所合并，王良此后一直在共产党卫生体制中工作。王良的个人叙事中尤为显著的变化是自身的免疫实践的语境，经历了从天主教博爱观（以及潜在的殖民意图），儒家道德观和革命政治理想的多重变化，这些变化受外部政治局势影响显著，这意味着王良的免疫学叙事可以作为该地区更广阔的变化的重要线索。</br>
-</br>
-项目还指出，王良的故事应被放置在西南传统和天主教殖民科学共同塑造的某种关注跨物种关系的文化之中考察，而这种文化在今天的西南地区能否找到进一步的线索？通过文献调研，历史走访与艺术演绎，项目探讨西南地区民众关于物种关系（人类、微生物···）的独特观念，以及天主教信仰、殖民科学和革命政治之意图在地方与卡介苗上的曲解、增强、模糊、颠覆。</br>
-</br></br>
-<b><u><font size="3">鸣谢：本项目曾受重庆“南山艺术家社区驻留计划”支持，并曾在成都许燎源设计艺术博物馆“创造力发生器” 高级设计人才创作营中公开展示。</font></u></b>
-</font>
-
-
-<br />
-
-<br />
-<br />
-<br />
-<br />
-<br />
-
-
-
-
-
-
-
-
-
-
-
 			</div>
 		</div>
       </div>

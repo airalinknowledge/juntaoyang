@@ -68,6 +68,54 @@
 .wsite-background {background-image: url("/uploads/1/4/8/1/148137552/background-images/1199586110.jpg") !important;background-repeat: no-repeat !important;background-position: 50% 50% !important;background-size: 100% !important;background-color: transparent !important;background: inherit;}
 body.wsite-background {background-attachment: fixed !important;}.wsite-background.wsite-custom-background{ background-size: cover !important}
 </style>
+<!-- 在这里拷入 ↓ -->
+<style>
+    :root {
+      /* 全局可调的三种颜色 */
+      --main-color:    #333333;  /* 正文文字 */
+      --heading-color: #222222;  /* 各级标题 */
+      --link-color:    #333333;  /* 超链接 */
+    }
+
+    /* 正文默认文字色 */
+    body, 
+    .paragraph, 
+    p {
+      color: var(--main-color) !important;
+    }
+
+    /* 各级标题色 */
+    h1, h2, h3, h4, h5, h6,
+    .section-title,
+    u, em {
+      color: var(--heading-color) !important;
+    }
+
+    /* 链接色 */
+    a, a:visited {
+      color: var(--link-color) !important;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .main-content-area {
+        max-width: 90%; /* 可以调整这个值来改变内容宽度 */
+        margin-left: 0%;
+        margin-right: 10%;
+    }
+
+    @media screen and (max-width: 767px) {
+        .main-content-area {
+            max-width: 100%;
+            margin-left: 0;
+            margin-right: 0;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+    }
+  </style>
+  <!-- 拷入结束 ↑ -->
 		<script src='files/templateArtifacts.js?1714489756'></script>
 <script>
 var STATIC_BASE = '//cdn1.editmysite.com/';
@@ -105,7 +153,7 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 	
 	function initFlyouts(){
 		initPublishedFlyoutMenus(
-			[{"id":"356461667194310790","title":"About","url":"index.html","target":"","nav_menu":false,"nonclickable":false},{"id":"444862601486980856","title":"ARTWORKS","url":"artworks.html","target":"","nav_menu":false,"nonclickable":false},{"id":"864040464600617228","title":"Writings","url":"writings.html","target":"","nav_menu":false,"nonclickable":false},{"id":"361237216236019909","title":"Projects","url":"projects.html","target":"","nav_menu":false,"nonclickable":false},{"id":"497557010409593207","title":"NEWS","url":"news.html","target":"","nav_menu":false,"nonclickable":false}],
+			[{"id":"356461667194310790","title":"About","url":"index.html","target":"","nav_menu":false,"nonclickable":false},{"id":"444862601486980856","title":"ARTWORKS","url":"artworks.html","target":"","nav_menu":false,"nonclickable":false},{"id":"864040464600617228","title":"Writings","url":"writings.html","target":"","nav_menu":false,"nonclickable":false},{"id":"361237216236019909","title":"Projects","url":"projects.html","target":"","nav_menu":false,"nonclickable":false},{"id":"497557010409593207","title":"POSTS","url":"posts.html","target":"","nav_menu":false,"nonclickable":false}],
 			"602838301542353077",
 			'',
 			'active',
@@ -172,10 +220,10 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 						</li>
 						<li id="pg497557010409593207" class="wsite-menu-item-wrap">
 							<a
-										href="news.html"
+										href="posts.html"
 								class="wsite-menu-item"
 								>
-								NEWS
+								POSTS
 							</a>
 							
 						</li>
@@ -220,10 +268,10 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 		</li>
 		<li id="pg497557010409593207" class="wsite-menu-item-wrap">
 			<a
-						href="news.html"
+						href="posts.html"
 				class="wsite-menu-item"
 				>
-				NEWS
+				POSTS
 			</a>
 			
 		</li>
@@ -264,7 +312,7 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 						
 
 
-<div class="paragraph" style="text-align:left;"><font size="3"><strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</strong><strong>English</strong>&nbsp; &nbsp; &nbsp; &nbsp;<font color="#2a2a2a">&nbsp;</font><u><a href="nihennankanjian.html"><font color="#2a2a2a">&#20013;&#25991;</font></a></u><br />&#8203;&nbsp; &nbsp; &nbsp; airalinknowledge@gmail.com</font></div>
+<div class="paragraph" style="text-align:left;"><font size="3"><strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</strong><strong>English</strong>&nbsp; &nbsp; &nbsp; &nbsp;<font color="#2a2a2a">&nbsp;</font><u><a href="nihennankanjian.html"><font color="#2a2a2a">&#20013;&#25991;</font></a></u><br />&#8203;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;juntao.yang@columbia.edu</font></div>
 
 					
 				</td>				<td class="wsite-multicol-col" style="width:63.105726872247%; padding:0 15px;">
@@ -272,7 +320,7 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 						
 
 
-<div class="paragraph" style="text-align:right;"><font size="4"><u><a href="http://juntaoyang.site"><font color="#2a2a2a">ABOUT</font></a></u><font color="#2a2a2a">&nbsp; &nbsp; </font><u><a href="artworks.html"><font color="#2a2a2a">ARTWORKS</font></a></u><font color="#2a2a2a">&nbsp; &nbsp;&nbsp;</font><u><a href="writings.html"><font color="#2a2a2a">WRITINGS</font></a></u><font color="#2a2a2a">&nbsp; &nbsp; </font><u><a href="projects.html"><font color="#2a2a2a">PROJECTS</font></a></u><font color="#2a2a2a">&nbsp;</font>&nbsp; &nbsp;<u><a href="news.html"><font color="#2a2a2a">NEWS</font></a></u>&nbsp;&nbsp;</font></div>
+<div class="paragraph" style="text-align:right;"><font size="4"><u><a href="http://juntaoyang.site"><font color="#2a2a2a">ABOUT</font></a></u><font color="#2a2a2a">&nbsp; &nbsp; </font><u><a href="artworks.html"><font color="#2a2a2a">ARTWORKS</font></a></u><font color="#2a2a2a">&nbsp; &nbsp;&nbsp;</font><u><a href="writings.html"><font color="#2a2a2a">WRITINGS</font></a></u><font color="#2a2a2a">&nbsp; &nbsp; </font><u><a href="projects.html"><font color="#2a2a2a">PROJECTS</font></a></u><font color="#2a2a2a">&nbsp;</font>&nbsp; &nbsp;<u><a href="posts.html"><font color="#2a2a2a">POSTS</font></a></u>&nbsp;&nbsp;</font></div>
 
 
 
@@ -284,38 +332,39 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 
 <div class="wsite-spacer" style="height:50px;"></div>
 
-<h2 class="wsite-content-title">Artworks</h2>
+<div class="main-content-area">
+    <h2 class="wsite-content-title">Artworks</h2>
 
-<div class="paragraph"><font size="5"><strong>You Can Hardly See...</strong></font><br /><strong><font size="6">&nbsp;</font></strong><br />Screen Print Photography on Lightbox, Digital Images<br />2024</div>
+    <div class="paragraph"><font size="5"><strong>You Can Hardly See...</strong></font><br /><strong><font size="6">&nbsp;</font></strong><br />Screen Print Photography on Lightbox, Digital Images<br />2024</div>
 
-<span class='imgPusher' style='float:left;height:0px'></span><span style='display: table;width:auto;position:relative;float:left;max-width:100%;;clear:left;margin-top:0px;*margin-top:0px'><a><img src="uploads/你很难看见....png" style="margin-top: 10px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; border-width:1px;padding:3px; max-width:100%" alt="Picture" class="galleryImageBorder wsite-image" /></a><span style="display: table-caption; caption-side: bottom; font-size: 90%; margin-top: -0px; margin-bottom: 0px; text-align: center;" class="wsite-caption"></span></span>
-<div class="paragraph" style="text-align:center;display:block;"><span><font size="2">"You Can Hardly See...", Photograph on Lightbox, 2024</font></span></div>
-<hr style="width:100%;clear:both;visibility:hidden;"></hr>
+    <span class='imgPusher' style='float:left;height:0px'></span><span style='display: table;width:auto;position:relative;float:left;max-width:100%;;clear:left;margin-top:0px;*margin-top:0px'><a><img src="uploads/你很难看见....png" style="margin-top: 10px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; border-width:1px;padding:3px; max-width:100%" alt="Picture" class="galleryImageBorder wsite-image" /></a><span style="display: table-caption; caption-side: bottom; font-size: 90%; margin-top: -0px; margin-bottom: 0px; text-align: center;" class="wsite-caption"></span></span>
+    <div class="paragraph" style="text-align:center;display:block;"><span><font size="2">"You Can Hardly See...", Photograph on Lightbox, 2024</font></span></div>
+    <hr style="width:100%;clear:both;visibility:hidden;"></hr>
 
-<div class="paragraph"><br />&#8203;<br /><u><font size="5">Introduction:</font></u><br />
+    <div class="paragraph"><br />&#8203;<br /><u><font size="5">Introduction:</font></u><br />
 
-<span>The Ponte della Libertà is the route that tourists and artists must take to reach the island of Venice from the Mestre area, and is highly appreciated for its long history and the picturesque scenery that surrounds it. However, as the railroad and public transportation carried by the Ponte Libertà passes quickly through the area, the modern industrial facilities of the Moranzani area and the Fusina harbor on the other side of the sea are often overlooked, overshadowed by the beauty of the maritime landscape. It is worth noting, however, that it is these easily overlooked industrial landscapes that are the foundation of what Venice is today: not only do they continue to produce the socio-economic lifeblood of modern Venice, but they are also thought to be one of the main culprits of Venice's land subsidence due to their exploitation of the groundwater. The industrial context of modern Venice has been deliberately omitted in a seemingly emphatic manner: although the prestigious Venice Biennale uses the <em>Arsenale</em>, Venice's industrial heartland, as its main pavilion, the industrial infrastructure is often hidden in the background, tucked away in the corners of picturesque/eco-apocalyptic landscapes, a quick glimpse on the fast track to the art temple.
-<br /><br />
-Can we truly see the industrial reality that has been hidden from us? If we can, this will inevitably imply a way of seeing that pierces the surface of the spectacle: perhaps we need a conspiracy of visual technologies...<br />
+    <span>The Ponte della Libertà is the route that tourists and artists must take to reach the island of Venice from the Mestre area, and is highly appreciated for its long history and the picturesque scenery that surrounds it. However, as the railroad and public transportation carried by the Ponte Libertà passes quickly through the area, the modern industrial facilities of the Moranzani area and the Fusina harbor on the other side of the sea are often overlooked, overshadowed by the beauty of the maritime landscape. It is worth noting, however, that it is these easily overlooked industrial landscapes that are the foundation of what Venice is today: not only do they continue to produce the socio-economic lifeblood of modern Venice, but they are also thought to be one of the main culprits of Venice's land subsidence due to their exploitation of the groundwater. The industrial context of modern Venice has been deliberately omitted in a seemingly emphatic manner: although the prestigious Venice Biennale uses the <em>Arsenale</em>, Venice's industrial heartland, as its main pavilion, the industrial infrastructure is often hidden in the background, tucked away in the corners of picturesque/eco-apocalyptic landscapes, a quick glimpse on the fast track to the art temple.
+    <br /><br />
+    Can we truly see the industrial reality that has been hidden from us? If we can, this will inevitably imply a way of seeing that pierces the surface of the spectacle: perhaps we need a conspiracy of visual technologies...<br />
 
-</span><br /><span>&#8203;</span><br />
-
-
-
-
-
-<span class='imgPusher' style='float:left;height:0px'></span><span style='display: table;width:auto;position:relative;float:left;max-width:100%;;clear:left;margin-top:0px;*margin-top:0px'><a><img src="uploads/谷歌地图拼接.png" style="margin-top: 10px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; border-width:1px;padding:3px; max-width:100%" alt="Picture" class="galleryImageBorder wsite-image" /></a><span style="display: table-caption; caption-side: bottom; font-size: 90%; margin-top: -0px; margin-bottom: 0px; text-align: center;" class="wsite-caption"></span></span>
-<div class="paragraph" style="text-align:center;display:block;"><span><font size="2">"You Can Hardly See...", Digital photography based on Google Maps, 2024</font></span></div>
-<hr style="width:100%;clear:both;visibility:hidden;"></hr>
-
-
-<span class='imgPusher' style='float:left;height:0px'></span><span style='display: table;width:auto;position:relative;float:left;max-width:100%;;clear:left;margin-top:0px;*margin-top:0px'><a><img src="uploads/D91.jpg" style="margin-top: 10px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; border-width:1px;padding:3px; max-width:100%" alt="Picture" class="galleryImageBorder wsite-image" /></a><span style="display: table-caption; caption-side: bottom; font-size: 90%; margin-top: -0px; margin-bottom: 0px; text-align: center;" class="wsite-caption"></span></span>
-<div class="paragraph" style="text-align:center;display:block;"><span><font size="2">As installed at <em> 2024 Nanjing D9Lock Art Festival</em>, Nanjing, China, 2024</font></span></div>
-<hr style="width:100%;clear:both;visibility:hidden;"></hr>
+    </span><br /><span>&#8203;</span><br />
 
 
 
-</div></div></div>
+
+
+    <span class='imgPusher' style='float:left;height:0px'></span><span style='display: table;width:auto;position:relative;float:left;max-width:100%;;clear:left;margin-top:0px;*margin-top:0px'><a><img src="uploads/谷歌地图拼接.png" style="margin-top: 10px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; border-width:1px;padding:3px; max-width:100%" alt="Picture" class="galleryImageBorder wsite-image" /></a><span style="display: table-caption; caption-side: bottom; font-size: 90%; margin-top: -0px; margin-bottom: 0px; text-align: center;" class="wsite-caption"></span></span>
+    <div class="paragraph" style="text-align:center;display:block;"><span><font size="2">"You Can Hardly See...", Digital photography based on Google Maps, 2024</font></span></div>
+    <hr style="width:100%;clear:both;visibility:hidden;"></hr>
+
+
+    <span class='imgPusher' style='float:left;height:0px'></span><span style='display: table;width:auto;position:relative;float:left;max-width:100%;;clear:left;margin-top:0px;*margin-top:0px'><a><img src="uploads/D91.jpg" style="margin-top: 10px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; border-width:1px;padding:3px; max-width:100%" alt="Picture" class="galleryImageBorder wsite-image" /></a><span style="display: table-caption; caption-side: bottom; font-size: 90%; margin-top: -0px; margin-bottom: 0px; text-align: center;" class="wsite-caption"></span></span>
+    <div class="paragraph" style="text-align:center;display:block;"><span><font size="2">As installed at <em> 2024 Nanjing D9Lock Art Festival</em>, Nanjing, China, 2024</font></span></div>
+    <hr style="width:100%;clear:both;visibility:hidden;"></hr>
+
+
+
+    </div></div></div>
 			</div>
 		</div>
       </div>

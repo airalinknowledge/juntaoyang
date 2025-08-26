@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 	<head>
-		<title>Juntao Yang 杨君陶的个人网站</title>
-<meta name="description" content="Juntao Yang's Personal Page; 杨君陶的个人网页" />
-<meta name="keywords" content="Juntao Yang,杨君陶,当代艺术,电影,Film,contemporary art,轻巧而冷淡的对谈,大西洋,算法,可见性" />
+		<title>出版 - 杨君陶</title>
+<meta name="description" content="杨君陶的个人网页" />
+<meta name="keywords" content="杨君陶, Juntao Yang, 当代艺术, 电影, Film, contemporary art" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -64,6 +64,22 @@
 #wsite-content h2.wsite-product-title {}
 .wsite-product .wsite-product-price a {}
 }</style>
+<!-- 新增样式：限制正文内容宽度 -->
+<style>
+    /* 限制正文内容区域宽度，增加两侧留白 */
+    .main-content-area {
+        max-width: 90%; /* 可以调整这个值来改变内容宽度 */
+        margin-left: 0%;
+        margin-right: 10%;
+    }
+
+    /* 针对移动设备，取消宽度限制，让内容全宽显示 */
+    @media screen and (max-width: 767px) {
+        .main-content-area {
+            max-width: 100%;
+        }
+    }
+</style>
 <style>
 .wsite-background {background-image: url("/uploads/1/4/8/1/148137552/background-images/1199586110.jpg") !important;background-repeat: no-repeat !important;background-position: 50% 50% !important;background-size: 100% !important;background-color: transparent !important;background: inherit;}
 body.wsite-background {background-attachment: fixed !important;}.wsite-background.wsite-custom-background{ background-size: cover !important}
@@ -76,7 +92,7 @@ var STYLE_PREFIX = 'wsite';
 </script>
 <script src='https://cdn2.editmysite.com/js/jquery-1.8.3.min.js'></script>
 
-<script type="text/javascript" src="http://cdn2.editmysite.com/js/lang/en/stl.js?buildTime=1234&"></script>
+<script type="text/javascript" src="http://cdn2.editmysite.com/js/lang/zh/stl.js?buildTime=1234&"></script>
 <script src="http://cdn2.editmysite.com/js/site/main.js?buildTime=1234"></script><script type="text/javascript">
 		function initCustomerAccountsModels() {
 					(function(){_W.setup_rpc({"url":"\/ajax\/api\/JsonRPC\/CustomerAccounts\/","actions":{"CustomerAccounts":[{"name":"login","len":2,"multiple":false,"standalone":false},{"name":"logout","len":0,"multiple":false,"standalone":false},{"name":"getSessionDetails","len":0,"multiple":false,"standalone":false},{"name":"getAccountDetails","len":0,"multiple":false,"standalone":false},{"name":"getOrders","len":0,"multiple":false,"standalone":false},{"name":"register","len":4,"multiple":false,"standalone":false},{"name":"emailExists","len":1,"multiple":false,"standalone":false},{"name":"passwordReset","len":1,"multiple":false,"standalone":false},{"name":"passwordUpdate","len":3,"multiple":false,"standalone":false},{"name":"validateSession","len":1,"multiple":false,"standalone":false}]},"namespace":"_W.CustomerAccounts.RPC"});
@@ -100,12 +116,12 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 			_W.storeEuPrivacyPolicyUrl = "";
 			com_currentSite = "713576850827693055";
 			com_userID = "148137552";</script><script type="text/javascript">_W.configDomain = "www.weebly.com";</script><script>_W.relinquish && _W.relinquish()</script>
-<script type="text/javascript" src="http://cdn2.editmysite.com/js/lang/en/stl.js?buildTime=1234&"></script><script> _W.themePlugins = [];</script><script type="text/javascript"> _W.recaptchaUrl = "https://www.google.com/recaptcha/api.js"; </script><script type="text/javascript"><!--
+<script type="text/javascript" src="http://cdn2.editmysite.com/js/lang/zh/stl.js?buildTime=1234&"></script><script> _W.themePlugins = [];</script><script type="text/javascript"> _W.recaptchaUrl = "https://www.google.com/recaptcha/api.js"; </script><script type="text/javascript"><!--
 	var IS_ARCHIVE = 1;
 	
 	function initFlyouts(){
 		initPublishedFlyoutMenus(
-			[{"id":"356461667194310790","title":"About","url":"index.html","target":"","nav_menu":false,"nonclickable":false},{"id":"444862601486980856","title":"ARTWORKS","url":"artworks.html","target":"","nav_menu":false,"nonclickable":false},{"id":"864040464600617228","title":"Writings","url":"writings.html","target":"","nav_menu":false,"nonclickable":false},{"id":"361237216236019909","title":"Projects","url":"projects.html","target":"","nav_menu":false,"nonclickable":false},{"id":"497557010409593207","title":"NEWS","url":"news.html","target":"","nav_menu":false,"nonclickable":false}],
+			[{"id":"356461667194310790","title":"About","url":"index.html","target":"","nav_menu":false,"nonclickable":false},{"id":"444862601486980856","title":"ARTWORKS","url":"artworks.html","target":"","nav_menu":false,"nonclickable":false},{"id":"864040464600617228","title":"Writings","url":"writings.html","target":"","nav_menu":false,"nonclickable":false},{"id":"361237216236019909","title":"Projects","url":"projects.html","target":"","nav_menu":false,"nonclickable":false},{"id":"497557010409593207","title":"POSTS","url":"posts.html","target":"","nav_menu":false,"nonclickable":false}],
 			"585518547668467670",
 			'',
 			'active',
@@ -135,97 +151,37 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 </span></div>
 				<ul class="wsite-menu-default">
 						<li id="pg356461667194310790" class="wsite-menu-item-wrap">
-							<a
-										href="index.html"
-								class="wsite-menu-item"
-								>
-								About
-							</a>
-							
+							<a href="guanyu.html" class="wsite-menu-item">关于</a>
 						</li>
 						<li id="pg444862601486980856" class="wsite-menu-item-wrap">
-							<a
-										href="artworks.html"
-								class="wsite-menu-item"
-								>
-								ARTWORKS
-							</a>
-							
+							<a href="chuangzuo.html" class="wsite-menu-item">创作</a>
 						</li>
-						<li id="pg864040464600617228" class="wsite-menu-item-wrap">
-							<a
-										href="writings.html"
-								class="wsite-menu-item"
-								>
-								Writings
-							</a>
-							
+						<li id="active" class="wsite-menu-item-wrap">
+							<a href="chuban.html" class="wsite-menu-item">出版</a>
 						</li>
 						<li id="pg361237216236019909" class="wsite-menu-item-wrap">
-							<a
-										href="projects.html"
-								class="wsite-menu-item"
-								>
-								Projects
-							</a>
-							
+							<a href="xiangmu.html" class="wsite-menu-item">项目</a>
 						</li>
 						<li id="pg497557010409593207" class="wsite-menu-item-wrap">
-							<a
-										href="news.html"
-								class="wsite-menu-item"
-								>
-								NEWS
-							</a>
-							
+							<a href="fabu.html" class="wsite-menu-item">发布</a>
 						</li>
 				</ul>
 			</div>
    	 	<div id="navmobile"><ul class="wsite-menu-default">
 		<li id="pg356461667194310790" class="wsite-menu-item-wrap">
-			<a
-						href="index.html"
-				class="wsite-menu-item"
-				>
-				About
-			</a>
-			
+			<a href="guanyu.html" class="wsite-menu-item">关于</a>
 		</li>
 		<li id="pg444862601486980856" class="wsite-menu-item-wrap">
-			<a
-						href="artworks.html"
-				class="wsite-menu-item"
-				>
-				ARTWORKS
-			</a>
-			
+			<a href="chuangzuo.html" class="wsite-menu-item">创作</a>
 		</li>
 		<li id="pg864040464600617228" class="wsite-menu-item-wrap">
-			<a
-						href="writings.html"
-				class="wsite-menu-item"
-				>
-				Writings
-			</a>
-			
+			<a href="chuban.html" class="wsite-menu-item">出版</a>
 		</li>
 		<li id="pg361237216236019909" class="wsite-menu-item-wrap">
-			<a
-						href="projects.html"
-				class="wsite-menu-item"
-				>
-				Projects
-			</a>
-			
+			<a href="xiangmu.html" class="wsite-menu-item">项目</a>
 		</li>
 		<li id="pg497557010409593207" class="wsite-menu-item-wrap">
-			<a
-						href="news.html"
-				class="wsite-menu-item"
-				>
-				NEWS
-			</a>
-			
+			<a href="fabu.html" class="wsite-menu-item">发布</a>
 		</li>
 </ul>
 </div>
@@ -251,7 +207,7 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
   	<div id="content-wrapper">
       <div id="wsite-content" class="wsite-elements wsite-not-footer">
 	<div class="wsite-section-wrap">
-	<div class="wsite-section wsite-body-section wsite-background-15 wsite-custom-background" style="height: 951px;" >
+	<div class="wsite-section wsite-body-section wsite-background-15 wsite-custom-background" style="height: auto;" >
 		<div class="wsite-section-content">
         <div class="container">
 			<div class="wsite-section-elements">
@@ -263,16 +219,14 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 					
 						
 
-<div class="paragraph" style="text-align:left;"><font size="3"><strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</strong><u><a href="writings.html"><font color="#2a2a2a">English</font></a></u>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<strong>&#20013;&#25991;</strong><br />&#8203;&nbsp; &nbsp; &nbsp; airalinknowledge@gmail.com</font></div>
+<div class="paragraph" style="text-align:left;"><font size="3"><strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</strong><u><a href="writings.html"><font color="#2a2a2a">English</font></a></u>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<strong>&#20013;&#25991;</strong><br />&#8203;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;juntao.yang@columbia.edu</font></div>
 
 
 					
 				</td>				<td class="wsite-multicol-col" style="width:63.105726872247%; padding:0 15px;">
 					
 						
-
-<div class="paragraph" style="text-align:right;"><font size="4"><u><a href="guanyu.html"><font color="#2a2a2a">关于</font></a></u>&nbsp; &nbsp;<u><a href="chuangzuo.html"><font color="#2a2a2a">创作</font></a></u>&nbsp; &nbsp;<strong><font color="#2a2a2a">出版&nbsp; &nbsp;</font></strong><u><a href="xiangmu.html"><font color="#2a2a2a">项目</font></a></u>&nbsp; &nbsp;<u><a href="xinwen.html"><font color="#2a2a2a">新闻</font></a></u></font></div>
-
+                                  <div class="paragraph" style="text-align:right;"><font size="4"><u><a href="guanyu.html"><font color="#2a2a2a">关于</font></a></u><font color="#2a2a2a">&nbsp; &nbsp;</font><u><a href="chuangzuo.html"><font color="#2a2a2a">创作</font></a></u><font color="#2a2a2a">&nbsp; &nbsp;</font><strong><font color="#2a2a2a">出版</font></strong><font color="#2a2a2a">&nbsp; &nbsp;</font><u><a href="xiangmu.html"><font color="#2a2a2a">项目</font></a></u><font color="#2a2a2a">&nbsp;</font>&nbsp;&nbsp;<a href="fabu.html"><u><font color="#2a2a2a">发布</font></font></u></div>
 
 					
 				</td>			</tr>
@@ -283,6 +237,7 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 
 <div class="wsite-spacer" style="height:50px;"></div>
 
+<div class="main-content-area">
 <h2 class="wsite-content-title">出版</h2>
 
 
@@ -369,18 +324,18 @@ Precarious Attachments_A Critical Reading of Judith Butler’s The Psychic Life 
 
 
 
-<div class="paragraph"><font color="#000000" size="6">&#35780;&#35770;&#20889;&#20316;</font><br /><div style="height:15px;"></div>
+<div class="paragraph"><font color="#000000" size="6">评论写作</font><br /><div style="height:15px;"></div>
 
 <a href="/uploads/JuntaoYang_Stepping_Through_Cures_and_Curses_How_the_Traces_of_Herb_Scattering_Breathing_and_Memorizing_Mediate_Collective_Trauma_and_Public_Healing.pdf#page=39" ><font color="#000000"><u>“穿越治愈/诅咒：草药散播、呼吸和记忆的痕迹如何调解集体创伤和公共治疗”</font></a></u>，MODA Critical Review，2025<br />
 <div style="height:17px;"></div>
 
-<u><a href="https://mp.weixin.qq.com/s/pudCgdXn5oZk23n-0E4NMw" target="_blank"><font color="#000000">“&#36731;&#24039;&#19982;&#20919;&#28129;&#30340;&#23545;&#35848;&#65306;&#25968;&#23383;&#33021;&#21160;&#24615;&#65292;&#25512;&#27979;&#24615;&#32654;&#23398;&#65292;&#38452;&#35851;&#35770;&#21516;&#24773;&#32773;”</font>&#8203;</a></u><span style="color:rgb(0, 0, 0)">， Imaginary Z，2023</span><br />
+<u><a href="https://mp.weixin.qq.com/s/pudCgdXn5oZk23n-0E4NMw" target="_blank"><font color="#000000">“轻巧与冷淡的对谈：数字能动性，推测性美学，与阴谋论同情者”</font>&#8203;</a></u><span style="color:rgb(0, 0, 0)">， Imaginary Z，2023</span><br />
 <div style="height:17px;"></div>
 
-<u><em><a href="https://mp.weixin.qq.com/s/cdMjyF0wYb5q0NEMFrLtFQ" target="_blank"><font color="#000000">&#8203;</font></a></em><a href="https://mp.weixin.qq.com/s/cdMjyF0wYb5q0NEMFrLtFQ" target="_blank"><font color="#000000">“&#29469;&#28982;&#20013;&#26029;&#65306;&#27599;&#19968;&#27425;&#27785;&#40664;&#37117;&#26159;&#38544;&#34109;&#31354;&#38388;”</font></a></u><font color="#000000">，</font> &#27874;&#30524;&#35266;&#28857;，&#27874;&#30524;&#33402;&#26415;，2023<br />
+<u><em><a href="https://mp.weixin.qq.com/s/cdMjyF0wYb5q0NEMFrLtFQ" target="_blank"><font color="#000000">&#8203;</font></a></em><a href="https://mp.weixin.qq.com/s/cdMjyF0wYb5q0NEMFrLtFQ" target="_blank"><font color="#000000">“戛然而止：每一次静默都是隐藏空间”</font></a></u><font color="#000000">，</font> 浮屿观览，浮屿艺术，2023<br />
 <div style="height:17px;"></div>
 
-<u><a href="https://mp.weixin.qq.com/s/2Qo2SAe7MscwARqoK2msOQ" target="_blank"><font color="#000000">“&#20174;&#12298;&#20013;&#22269;&#12299;&#21040;&#12298;CK2K2X&#12299;&#65306;&#24819;&#35937;&#30340;&#20266;&#35013;&#19982;&#24322;&#20891;&#31361;&#36215;”</font></a><font color="#000000">&#8203;</font></u>，&#28246;&#21271;&#30005;&#24433;&#23478;&#21327;&#20250;&#38738;&#24180;&#22996;&#21592;&#20250;&#19987;&#26639;，2023<br /><br />&#8203;&#8203;</div>
+<u><a href="https://mp.weixin.qq.com/s/2Qo2SAe7MscwARqoK2msOQ" target="_blank"><font color="#000000">“从《中国》到《CK2K2X》：想象的伪装与异类的突现”</font></a><font color="#000000">&#8203;</font></u>，湖北省电影家协会青年评论委员会专栏，2023<br /><br />&#8203;&#8203;</div>
 
 
 

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
-  <title>Posts - Juntao Yang</title>
-  <meta name="description" content="Juntao Yang's informal posts, drafts, and notes; 杨君陶的随笔与草稿" />
-  <meta name="keywords" content="Juntao Yang,杨君陶, posts, drafts, notes, 随笔, 草稿" />
+  <title>发布 - 杨君陶</title>
+  <meta name="description" content="杨君陶的随笔与草稿" />
+  <meta name="keywords" content="杨君陶, Juntao Yang, 发布, 随笔, 草稿, posts, drafts, notes" />
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -64,9 +64,7 @@
       #wsite-content h2.wsite-product-title {}
       .wsite-product .wsite-product-price a {}
     }
-  </style>
-  <style>
-    .wsite-background {
+     .wsite-background {
       background-image: url("/uploads/1/4/8/1/148137552/background-images/1199586110.jpg") !important;
       background-repeat: no-repeat !important;
       background-position: 50% 50% !important;
@@ -76,136 +74,38 @@
     }
     body.wsite-background {background-attachment: fixed !important;}
     .wsite-background.wsite-custom-background { background-size: cover !important; }
-    
-    /* 保留你原先的 Flex 样式（不再使用，但不影响其它部分） */
-    .posts-flex-container {
-        display: flex;
-        flex-direction: row;
-        gap: 80px; 
-    }
-    .posts-flex-column {
-        width: 50%;
-        display: flex;
-        flex-direction: column;
-    }
-
-    .post-entry-card {
-        width: 100%;
-        margin-bottom: 80px; 
-    }
-    .post-image {
-        width: 100%;
-        height: auto;
-        display: block;
-        margin-bottom: 15px;
-    }
-
-    .post-title a {
-        text-decoration: none !important;
-        color: #555 !important;   /* 标题颜色与原 read-more 保持一致 */
-    }
-    .post-title a:hover {
-        color: #000 !important;
-    }
-
-    .post-date {
-        font-family: "Georgia", serif;
-        font-size: 12px !important; 
-        color: #888;
-        margin: 0 0 6px;
-    }
-    .post-excerpt {
-        font-size: 14px !important;
-    }
-
-    .read-more {
-        text-decoration: underline;
-        color: #555 !important;
-        font-weight: bold;
-    }
-    .read-more:hover {
-        color: #000 !important;
-    }
-
-    .news-section .paragraph {
-        margin-bottom: 15px;
-        font-size: 15px;
-    }
-    .news-section a {
-        text-decoration: underline;
-    }
-    
-    /* 左右区块间距/分隔线 */
-    .posts-column {
-        padding-right: 60px !important;
-    }
-    .separator-wrapper {
-        border-left: 1px solid #e0e0e0;
-        padding-left: 60px;
-        height: 100%;
-    }
-
-    /* 只收紧卡片内部的间距 */
-    .post-entry-card .paragraph { 
-      margin: 6px 0 !important;
-      line-height: 1.35;
-    }
-    .post-entry-card .post-image { 
-      margin-bottom: 8px !important;
-    }
-    .post-entry-card .post-title { 
-      margin: 6px 0 4px !important;
-    }
-    .post-entry-card .post-excerpt { 
-      margin: 0 0 8px !important;
-    }
-    .wsite-elements .post-entry-card .paragraph {
-      margin: 6px 0 !important;
-    }
-
-    /* === 原：两列瀑布流（自动分栏） — 仍然保留，但本页改用手动分发 === */
-    .posts-waterfall {
-      column-count: 2;
-      column-gap: 80px;            /* 与原 gap 保持一致 */
-    }
-    .posts-waterfall .post-entry-card {
-      break-inside: avoid;         /* 避免被切断 */
-      display: inline-block;       /* 参与列内排布 */
-      width: 100%;
-      margin: 0 0 80px;
-    }
-    .posts-waterfall .post-entry-card:nth-child(even) {
-      margin-top: 60px;
-    }
-
-    /* === 新增：手动分发双列（Flex） === */
+    .post-entry-card { width: 100%; margin-bottom: 80px; }
+    .post-image { width: 100%; height: auto; display: block; margin-bottom: 15px; }
+    .post-title a { text-decoration: none !important; color: #555 !important; }
+    .post-title a:hover { color: #000 !important; }
+    .post-date { font-family: "Georgia", serif; font-size: 12px !important; color: #888; margin: 0 0 6px; }
+    .post-excerpt { font-size: 14px !important; }
+    .news-section .paragraph { margin-bottom: 15px; font-size: 15px; }
+    .news-section a { text-decoration: underline; }
+    .posts-column { padding-right: 60px !important; }
+    .separator-wrapper { border-left: 1px solid #e0e0e0; padding-left: 60px; height: 100%; }
+    .post-entry-card .paragraph { margin: 6px 0 !important; line-height: 1.35; }
+    .post-entry-card .post-image { margin-bottom: 8px !important; }
+    .post-entry-card .post-title { margin: 6px 0 4px !important; }
+    .post-entry-card .post-excerpt { margin: 0 0 8px !important; }
+    .wsite-elements .post-entry-card .paragraph { margin: 6px 0 !important; }
     .posts-two-col { display: flex; gap: 80px; }
     .posts-left, .posts-right { flex: 1; display: flex; flex-direction: column; }
-    /* 首行错落：右列第一张下移，可按需把 80px 调大/调小 */
     .posts-right .post-entry-card:first-child { margin-top: 80px; }
     .posts-left .post-entry-card, .posts-right .post-entry-card { margin: 0 0 80px; width: 100%; }
-
-    /* 移动端：单列 */
     @media (max-width: 767px) {
-      .posts-waterfall { column-count: 1; column-gap: 0; }
-      /* 你原先的移动端样式继续生效 */
-      .posts-flex-container { flex-direction: column; gap: 0; }
-      .posts-flex-column { width: 100%; margin-top: 0 !important; }
       .separator-wrapper { border-left: none; padding-left: 0; margin-top: 40px; }
       .posts-column { padding-right: 15px !important; }
       .news-column { padding-left: 15px !important; }
-      /* 手动分发在移动端改为单列堆叠 */
       .posts-two-col { display:block; }
       .posts-left, .posts-right { width:100%; }
-      /* 移动端取消错落，避免顶部空白过大 */
       .posts-right .post-entry-card:first-child { margin-top: 0; }
     }
   </style>
   <script src="https://cdn2.editmysite.com/js/jquery-1.8.3.min.js"></script>
-  <!-- Other scripts from your site... -->
 </head>
 
-<body class="no-header-page  wsite-page-index wsite-theme-light">
+<body class="no-header-page wsite-page-index wsite-theme-light">
   <div id="wrapper">
     <div id="navigation">
       <div id="navigation-wrap">
@@ -216,23 +116,21 @@
               <span style="display:none"><span style="display:none">&nbsp;</span></span>
             </span>
           </div>
-          <!-- Navigation Updated: 'NEWS' is removed, 'POSTS' is reordered -->
           <ul class="wsite-menu-default">
-            <li class="wsite-menu-item-wrap"><a href="index.html" class="wsite-menu-item">About</a></li>
-            <li class="wsite-menu-item-wrap"><a href="artworks.html" class="wsite-menu-item">ARTWORKS</a></li>
-            <li class="wsite-menu-item-wrap"><a href="writings.html" class="wsite-menu-item">Writings</a></li>
-            <li class="wsite-menu-item-wrap"><a href="projects.html" class="wsite-menu-item">Projects</a></li>
-            <li id="active" class="wsite-menu-item-wrap"><a href="posts.html" class="wsite-menu-item">Posts</a></li> <!-- THIS IS THE ACTIVE PAGE -->
+            <li class="wsite-menu-item-wrap"><a href="guanyu.html" class="wsite-menu-item">关于</a></li>
+            <li class="wsite-menu-item-wrap"><a href="chuangzuo.html" class="wsite-menu-item">创作</a></li>
+            <li class="wsite-menu-item-wrap"><a href="chuban.html" class="wsite-menu-item">出版</a></li>
+            <li class="wsite-menu-item-wrap"><a href="xiangmu.html" class="wsite-menu-item">项目</a></li>
+            <li id="active" class="wsite-menu-item-wrap"><a href="fabu.html" class="wsite-menu-item">发布</a></li>
           </ul>
         </div>
-        <!-- Mobile navigation updated as well -->
         <div id="navmobile">
           <ul class="wsite-menu-default">
-            <li class="wsite-menu-item-wrap"><a href="index.html" class="wsite-menu-item">About</a></li>
-            <li class="wsite-menu-item-wrap"><a href="artworks.html" class="wsite-menu-item">ARTWORKS</a></li>
-            <li class="wsite-menu-item-wrap"><a href="writings.html" class="wsite-menu-item">Writings</a></li>
-            <li class="wsite-menu-item-wrap"><a href="projects.html" class="wsite-menu-item">Projects</a></li>
-            <li id="active" class="wsite-menu-item-wrap"><a href="posts.html" class="wsite-menu-item">Posts</a></li>
+            <li class="wsite-menu-item-wrap"><a href="guanyu.html" class="wsite-menu-item">关于</a></li>
+            <li class="wsite-menu-item-wrap"><a href="chuangzuo.html" class="wsite-menu-item">创作</a></li>
+            <li class="wsite-menu-item-wrap"><a href="chuban.html" class="wsite-menu-item">出版</a></li>
+            <li class="wsite-menu-item-wrap"><a href="xiangmu.html" class="wsite-menu-item">项目</a></li>
+            <li id="active" class="wsite-menu-item-wrap"><a href="fabu.html" class="wsite-menu-item">发布</a></li>
           </ul>
         </div>
       </div>
@@ -252,7 +150,6 @@
               <div class="wsite-section-content">
                 <div class="container">
                   <div class="wsite-section-elements">
-                    <!-- Top navigation bar (copied from your index page) -->
                     <div>
                       <div class="wsite-multicol">
                         <div class="wsite-multicol-table-wrap" style="margin:0 -15px;">
@@ -260,11 +157,10 @@
                             <tbody class="wsite-multicol-tbody">
                               <tr class="wsite-multicol-tr">
                                 <td class="wsite-multicol-col" style="width:36.89%; padding:0 15px;">
-                                  <div class="paragraph" style="text-align:left;"><font size="3"><strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</strong><strong>English</strong>&nbsp; &nbsp; &nbsp; &nbsp;<font color="#2a2a2a">&nbsp;</font><u><a href="fabu.html"><font color="#2a2a2a">&#20013;&#25991;</font></a></u><br />&#8203;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;juntao.yang@columbia.edu</font></div>
+                                  <div class="paragraph" style="text-align:left;"><font size="3"><strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</strong><u><a href="posts.html"><font color="#2a2a2a">English</font></a></u>&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;<font color="#2a2a2a">&nbsp;</font><strong>&#20013;&#25991;</strong><br />&#8203;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;juntao.yang@columbia.edu</font></div>
                                 </td>
                                 <td class="wsite-multicol-col" style="width:63.10%; padding:0 15px;">
-                                  <!-- Top-right nav updated: Order changed and 'POSTS' is now bold text -->
-                                  <div class="paragraph" style="text-align:right;"><font size="4"><u><a href="index.html"><font color="#2a2a2a">ABOUT</font></a></u><font color="#2a2a2a">&nbsp; &nbsp; </font><u><a href="artworks.html"><font color="#2a2a2a">ARTWORKS</font></a></u><font color="#2a2a2a">&nbsp; &nbsp;&nbsp;</font><u><a href="writings.html"><font color="#2a2a2a">WRITINGS</font></a></u><font color="#2a2a2a">&nbsp; &nbsp;&nbsp;</font><u><a href="projects.html"><font color="#2a2a2a">PROJECTS</font></a></u><font color="#2a2a2a">&nbsp;</font>&nbsp; &nbsp;<strong><font color="#2a2a2a">POSTS</font></strong>&nbsp;&nbsp;</font></div>
+                                  <div class="paragraph" style="text-align:right;"><font size="4"><u><a href="guanyu.html"><font color="#2a2a2a">关于</font></a></u><font color="#2a2a2a">&nbsp; &nbsp;</font><u><a href="chuangzuo.html"><font color="#2a2a2a">创作</font></a></u><font color="#2a2a2a">&nbsp; &nbsp;</font><u><a href="chuban.html"><font color="#2a2a2a">出版</font></a></u><font color="#2a2a2a">&nbsp; &nbsp;</font><u><a href="xiangmu.html"><font color="#2a2a2a">项目</font></a></u><font color="#2a2a2a">&nbsp;</font>&nbsp;&nbsp;<strong><font color="#2a2a2a">发布</font></u></strong></font></div>
                                 </td>
                               </tr>
                             </tbody>
@@ -273,98 +169,66 @@
                       </div>
                     </div>
                     
-                    <!-- Title block -->
                     <div>
                         <div style="height: 50px; overflow: hidden; width: 100%;"></div>
-                        <h2 class="wsite-content-title" style="text-align:left;">Posts</h2>
+                        <h2 class="wsite-content-title" style="text-align:left;">发布</h2>
                         <div style="height: 20px; overflow: hidden; width: 100%;"></div>
                         <hr class="styled-hr" style="width:100%;"></hr>
                         <div style="height: 20px; overflow: hidden; width: 100%;"></div>
                     </div>
                     <div class="paragraph" style="text-align:left; font-style:italic; color:#555;">
-                        This page contains recent updates and fragments of my writing. These pieces may be temporary, unconsidered, and informal—unpublished now, and perhaps forever.
+                        此页面包含我最近的更新和一些写作片段。这些内容可能是临时的、未经深思熟虑的、非正式的——现在尚未发表，也许永远不会。
                     </div>
                     <div class="wsite-spacer" style="height:50px;"></div>
-                    <!-- END OF NEW TITLE BLOCK -->
 
-                    <!-- START OF POSTS & NEWS CONTENT -->
                     <div class="wsite-multicol">
                       <div class="wsite-multicol-table-wrap" style="margin:0 -15px;">
                         <table class="wsite-multicol-table">
                           <tbody class="wsite-multicol-tbody">
                             <tr class="wsite-multicol-tr">
-                              <!-- Left Column: Posts -->
                               <td class="wsite-multicol-col posts-column" style="width:75%; padding:0 15px; vertical-align: top;">
                                 
-                                <!-- 新：手动分发双列容器（FLEX） -->
                                 <div class="posts-two-col">
-
-
-
-
-                                  <!-- 左列：Post 1, Post 3 -->
                                   <div class="posts-left">
-                                    <!-- Post 1 -->
                                     <div class="post-entry-card">
                                       <a href="mukendi.html"><img src="uploads/Mukendi.jpg" class="post-image" alt="文章预览图"></a>
                                       <div class="paragraph post-title">
-                                        <a href="mukendi.html"><u><font size="4">Jean Katambayi Mukendi:  Toward a Speculative Rather Than Technicist Media Archaeology</font></u></a>
+                                        <a href="mukendi.html"><u><font size="4">让·卡通巴伊·穆肯迪：走向一种思辨性而非技术主义的媒介考古学</font></u></a>
                                       </div>
-                                      <div class="paragraph post-date">August 25, 2025</div>
-                                      <div class="paragraph post-excerpt">I seek a more emphatically speculative approach to media archaeology, one capable of apprehending the spatio-temporal scales that transcend what can be grasped through technical restoration and hands-on operation. The work of Jean Katambayi Mukendi seems to offer just such a pathway.</div>
+                                      <div class="paragraph post-date">2025年8月25日</div>
+                                      <div class="paragraph post-excerpt">我寻求一种更具思辨性的媒介考古学方法，它能够捕捉那些超越技术修复和亲手操作所能理解的时空尺度。让·卡通巴伊·穆肯迪的作品似乎正为此提供了这样一条路径。</div>
                                     </div>
-
-
-
-                                    <!-- Post 3（如有后续，按需添加到左列） -->
                                   </div>
 
-
-
-
-
-
-                                  <!-- 右列：Post 2, Post 4 -->
                                   <div class="posts-right">
-                                    <!-- Post 2 -->
                                     <div class="post-entry-card">
                                       <a href="marxt.html"><img src="uploads/marxt.jpg" class="post-image" alt="文章预览图"></a>
                                       <div class="paragraph post-title">
-                                        <a href="marxt.html"><u><font size="4">Lukas Marxt: How Do We Mediate Haunted Toxicity?</font></u></a>
+                                        <a href="marxt.html"><u><font size="4">卢卡斯·马克斯特：我们如何媒介化萦绕的毒性？</font></u></a>
                                       </div>
-                                      <div class="paragraph post-date">August 23, 2025</div>
-                                      <div class="paragraph post-excerpt">A moving image work that engages with the multi-layered histories of land, lake water, and toxicity—histories of remnants and ghosts—must itself be stratified. It must attempt to navigate multiple spatiotemporal scales without losing orientation, and attune to mediating what are, in essence, invisible elemental specters.</div>
+                                      <div class="paragraph post-date">2025年8月23日</div>
+                                      <div class="paragraph post-excerpt">一个处理土地、湖水和毒性的多层次历史——关于遗迹与鬼魂的历史——的动态影像作品，其本身必须是分层的。它必须试图在多个时空尺度中航行而不失方向，并致力于媒介化那些本质上是不可见的元素幽灵。</div>
                                     </div>
-
-   
                                   </div>
                                 </div>
-                                <!-- END posts-two-col -->
                               </td>
 
-                              <!-- Right Column: News -->
                               <td class="wsite-multicol-col news-column" style="width:25%; padding:0 15px; vertical-align: top;">
                                 <div class="separator-wrapper">
                                   <div class="news-section">
-                                    <div class="paragraph"><u><font size="4">News</font></u></div>
+                                    <div class="paragraph"><u><font size="4">消息</font></u></div>
                                     <div class="paragraph">
-
-   <b>Sep 9-13, 2025:</b> Will be speaking at the interdisciplinary conference "Taboo-Transgression-Transcendence" in Slovenia.<a href="[https://avarts.ionio.gr/ttt/2025/en/program/](https://avarts.ionio.gr/ttt/2025/en/program/)"><br>[Details]</a>
-                     </div>
-                     <div class="paragraph">
-                       <b>Aug 25-30, 2025:</b> Will be speaking at the congress of The International Committee for the Conservation of the Industrial Heritage (TICCIH) in Sweden.
-                     </div>
-                     <div class="paragraph">
-                       <b>Jul 21-27, 2025:</b> Participating in the "Excluded Media VII" summer workshop at Northwestern University.
-                     </div>
-                     <div class="paragraph">
-                       <b>Jul 16, 2025:</b> Speaking at the "Shaping Futures" conference at Seoul National University.<br><a href="file:///D:/uploads/[ABSTRACT]_SEAA-SNU_Anthropology_2025_in_Seoul.pdf#page=105">[Details]</a>
+                                       <b>2025年9月9-13日：</b>将在斯洛文尼亚的“禁忌-越界-超越”跨学科会议上发言。<a href="[https://avarts.ionio.gr/ttt/2025/en/program/](https://avarts.ionio.gr/ttt/2025/en/program/)"><br>[详情]</a>
+                                     </div>
+                                     <div class="paragraph">
+                                       <b>2025年8月25-30日：</b>将在瑞典的国际工业遗产保护委员会（TICCIH）大会上发言。
+                                     </div>
+                                     <div class="paragraph">
+                                       <b>2025年7月21-27日：</b>参加西北大学的“被排斥的媒介VII”夏季工作坊。
+                                     </div>
+                                     <div class="paragraph">
+                                       <b>2025年7月16日：</b>在首尔大学的“塑造未来”会议上发言。<br><a href="file:///D:/uploads/[ABSTRACT]_SEAA-SNU_Anthropology_2025_in_Seoul.pdf#page=105">[详情]</a>
                                     </div>
-
-
-
-                                    </div>
-                                    <!-- Add more news items here -->
                                   </div>
                                 </div>
                               </td>
@@ -373,10 +237,9 @@
                         </table>
                       </div>
                     </div>
-                    <!-- END OF POSTS & NEWS CONTENT -->
 
                     <div class="paragraph" style="text-align:center;">
-                      <br /><br /><br /><br /><font size="2"><br />All Rights Reserved&nbsp;&copy;&nbsp; Juntao Yang</font>
+                      <br /><br /><br /><br /><font size="2"><br />版权所有&nbsp;&copy;&nbsp; 杨君陶</font>
                     </div>
                   </div>
                 </div>
@@ -388,7 +251,6 @@
     </div>
   </div>
 
-  <!-- Scripts from your site -->
   <script type="text/javascript" src="files/theme/plugins.js"></script>
   <script type="text/javascript" src="files/theme/custom.js"></script>
   <script type="text/javascript" src="files/theme/mobile.js"></script>

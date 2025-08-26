@@ -68,6 +68,54 @@
 .wsite-background {background-image: url("/uploads/1/4/8/1/148137552/background-images/1199586110.jpg") !important;background-repeat: no-repeat !important;background-position: 50% 50% !important;background-size: 100% !important;background-color: transparent !important;background: inherit;}
 body.wsite-background {background-attachment: fixed !important;}.wsite-background.wsite-custom-background{ background-size: cover !important}
 </style>
+<!-- 在这里拷入 ↓ -->
+<style>
+    :root {
+      /* 全局可调的三种颜色 */
+      --main-color:    #333333;  /* 正文文字 */
+      --heading-color: #222222;  /* 各级标题 */
+      --link-color:    #333333;  /* 超链接 */
+    }
+
+    /* 正文默认文字色 */
+    body, 
+    .paragraph, 
+    p {
+      color: var(--main-color) !important;
+    }
+
+    /* 各级标题色 */
+    h1, h2, h3, h4, h5, h6,
+    .section-title,
+    u, em {
+      color: var(--heading-color) !important;
+    }
+
+    /* 链接色 */
+    a, a:visited {
+      color: var(--link-color) !important;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .main-content-area {
+        max-width: 90%; /* 可以调整这个值来改变内容宽度 */
+        margin-left: 0%;
+        margin-right: 10%;
+    }
+
+    @media screen and (max-width: 767px) {
+        .main-content-area {
+            max-width: 100%;
+            margin-left: 0;
+            margin-right: 0;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+    }
+  </style>
+  <!-- 拷入结束 ↑ -->
 		<script src='files/templateArtifacts.js?1714489756'></script>
 <script>
 var STATIC_BASE = '//cdn1.editmysite.com/';
@@ -105,7 +153,7 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 	
 	function initFlyouts(){
 		initPublishedFlyoutMenus(
-			[{"id":"356461667194310790","title":"About","url":"index.html","target":"","nav_menu":false,"nonclickable":false},{"id":"444862601486980856","title":"ARTWORKS","url":"artworks.html","target":"","nav_menu":false,"nonclickable":false},{"id":"864040464600617228","title":"Writings","url":"writings.html","target":"","nav_menu":false,"nonclickable":false},{"id":"361237216236019909","title":"Projects","url":"projects.html","target":"","nav_menu":false,"nonclickable":false},{"id":"497557010409593207","title":"NEWS","url":"news.html","target":"","nav_menu":false,"nonclickable":false}],
+			[{"id":"356461667194310790","title":"About","url":"index.html","target":"","nav_menu":false,"nonclickable":false},{"id":"444862601486980856","title":"ARTWORKS","url":"artworks.html","target":"","nav_menu":false,"nonclickable":false},{"id":"864040464600617228","title":"Writings","url":"writings.html","target":"","nav_menu":false,"nonclickable":false},{"id":"361237216236019909","title":"Projects","url":"projects.html","target":"","nav_menu":false,"nonclickable":false},{"id":"497557010409593207","title":"POSTS","url":"posts.html","target":"","nav_menu":false,"nonclickable":false}],
 			"488020263907845360",
 			'',
 			'active',
@@ -172,10 +220,10 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 						</li>
 						<li id="pg497557010409593207" class="wsite-menu-item-wrap">
 							<a
-										href="news.html"
+										href="posts.html"
 								class="wsite-menu-item"
 								>
-								NEWS
+								POSTS
 							</a>
 							
 						</li>
@@ -220,10 +268,10 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 		</li>
 		<li id="pg497557010409593207" class="wsite-menu-item-wrap">
 			<a
-						href="news.html"
+						href="posts.html"
 				class="wsite-menu-item"
 				>
-				NEWS
+				POSTS
 			</a>
 			
 		</li>
@@ -264,7 +312,7 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 						
 
 
-<div class="paragraph" style="text-align:left;"><font size="3"><strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</strong><strong>English</strong>&nbsp; &nbsp; &nbsp; &nbsp;<font color="#2a2a2a">&nbsp;</font><u><a href="GOOGOLzuotanhui.html"><font color="#2a2a2a">&#20013;&#25991;</font></a></u><br />&#8203;&nbsp; &nbsp; &nbsp; airalinknowledge@gmail.com</font></div>
+<div class="paragraph" style="text-align:left;"><font size="3"><strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</strong><strong>English</strong>&nbsp; &nbsp; &nbsp; &nbsp;<font color="#2a2a2a">&nbsp;</font><u><a href="GOOGOLzuotanhui.html"><font color="#2a2a2a">&#20013;&#25991;</font></a></u><br />&#8203;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;juntao.yang@columbia.edu</font></div>
 
 
 					
@@ -272,7 +320,7 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 					
 						
 
-<div class="paragraph" style="text-align:right;"><font size="4"><u><a href="http://juntaoyang.site"><font color="#2a2a2a">ABOUT</font></a></u><font color="#2a2a2a">&nbsp; &nbsp; </font><u><a href="artworks.html"><font color="#2a2a2a">ARTWORKS</font></a></u><font color="#2a2a2a">&nbsp; &nbsp;&nbsp;</font><u><a href="writings.html"><font color="#2a2a2a">WRITINGS</font></a></u><font color="#2a2a2a">&nbsp; &nbsp; </font><u><a href="projects.html"><font color="#2a2a2a">PROJECTS</font></a></u><font color="#2a2a2a">&nbsp;</font>&nbsp; &nbsp;<u><a href="news.html"><font color="#2a2a2a">NEWS</font></a></u>&nbsp;&nbsp;</font></div>
+<div class="paragraph" style="text-align:right;"><font size="4"><u><a href="http://juntaoyang.site"><font color="#2a2a2a">ABOUT</font></a></u><font color="#2a2a2a">&nbsp; &nbsp; </font><u><a href="artworks.html"><font color="#2a2a2a">ARTWORKS</font></a></u><font color="#2a2a2a">&nbsp; &nbsp;&nbsp;</font><u><a href="writings.html"><font color="#2a2a2a">WRITINGS</font></a></u><font color="#2a2a2a">&nbsp; &nbsp; </font><u><a href="projects.html"><font color="#2a2a2a">PROJECTS</font></a></u><font color="#2a2a2a">&nbsp;</font>&nbsp; &nbsp;<u><a href="posts.html"><font color="#2a2a2a">POSTS</font></a></u>&nbsp;&nbsp;</font></div>
 
 
 					
@@ -283,163 +331,130 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 
 <div class="wsite-spacer" style="height:50px;"></div>
 
+<div class="main-content-area">
+    <div class="paragraph">
 
 
+    <font size="7">GOOGOL | Artist Panel Talk Review</font><br />
+    <br />
+    <br />
+    <br />
 
 
+    <div><div style="height: 20px; overflow: hidden; width: 100%;"></div>
+    <hr class="styled-hr" style="width:100%;"></hr>
+    <div style="height: 20px; overflow: hidden; width: 100%;"></div></div>
+    <br />
 
+    <font size="5">Personal Background</font><br /><br />
+    1.    <em>Can you briefly introduce your artistic background?</em><br />
+    I graduated from Wuhan University and Columbia University, studying film and emergent media studies. I have been focusing on geological imagery and planetary images, digital infrastructure, ecological art and water communities.<br />
 
+    <br />
+    <br />
 
-<div class="paragraph">
 
+    2.    <em>What sparked your interest in making art?</em><br />
+    Art seems to me to be a great way to intervene in important contemporary issues and to dialog with complex situations. It combines a discursive creativity, an active engagement with theory, and an almost anthropological capacity for observation and description. I like to think of art-making as a potential pathway to strategies for solving current problems.
+    <br /><br /><br />
+    <br />
 
-<font size="7">GOOGOL | Artist Panel Talk Review</font><br />
-<br />
-<br />
-<br />
 
+    <div><div style="height: 20px; overflow: hidden; width: 100%;"></div>
+    <hr class="styled-hr" style="width:100%;"></hr>
+    <div style="height: 20px; overflow: hidden; width: 100%;"></div></div>
+    <br />
 
-<div><div style="height: 20px; overflow: hidden; width: 100%;"></div>
-<hr class="styled-hr" style="width:100%;"></hr>
-<div style="height: 20px; overflow: hidden; width: 100%;"></div></div>
-<br />
 
-<font size="5">Personal Background</font><br /><br />
-1.    <em>Can you briefly introduce your artistic background?</em><br />
-I graduated from Wuhan University and Columbia University, studying film and emergent media studies. I have been focusing on geological imagery and planetary images, digital infrastructure, ecological art and water communities.<br />
 
-<br />
-<br />
 
+    <font size="5">Art Inspiration</font><br /><br />
+    1.    <em>What are your main sources of inspiration?</em><br />
+    A large part of my creative inspiration comes from my research process and all kinds of things I come across during my fieldwork. My creations are almost always based on problématique, so any important question that can trigger my doubts can inspire my creations. For example, the works on display in this exhibition were inspired by the idea of what is the cost of today's rapidly advancing artificial intelligence technology? I began my own research and discovered the deep scratches it leaves in ecology, post-colonialism, and the politics of reproduction.<br />
+    <br /><br />
 
-2.    <em>What sparked your interest in making art?</em><br />
-Art seems to me to be a great way to intervene in important contemporary issues and to dialog with complex situations. It combines a discursive creativity, an active engagement with theory, and an almost anthropological capacity for observation and description. I like to think of art-making as a potential pathway to strategies for solving current problems.
-<br /><br /><br />
-<br />
+    2.    <em>Are there any artists or works that have particularly influenced your artistic style?</em><br />
+    Visual artists I really admire include Hito Steyerl, who is very good at using visual art as a means of reflecting on visuality. Of course, she is also very sensitive to the important issues of the day, and her works are always layered with several subtleties and always thought-provoking. I am also a great admirer of the Chinese artist Fei Yining, who is particularly good at combining poetic aesthetics with speculative imagery, and expressing them through joint visual, auditory, and literary installations, even to the point of achieving a dreamlike state. I am also deeply influenced by critics, theoreticians and philosophers, including Susan Sontag-who not only has the bold posture of a critic, but also the kind of complex and wandering perceptions that characterize artists.
+    <br /><br /><br />
+    <br />
 
 
-<div><div style="height: 20px; overflow: hidden; width: 100%;"></div>
-<hr class="styled-hr" style="width:100%;"></hr>
-<div style="height: 20px; overflow: hidden; width: 100%;"></div></div>
-<br />
+    <div><div style="height: 20px; overflow: hidden; width: 100%;"></div>
+    <hr class="styled-hr" style="width:100%;"></hr>
+    <div style="height: 20px; overflow: hidden; width: 100%;"></div></div>
+    <br />
 
 
 
+    <font size="5">Creative Process</font><br /><br />
+    1.    <em>How do you usually start working on a piece?</em><br />
+    Each of my works often starts with a small idea, a frame full of possibilities, a thought-provoking phrase. This also means that I hardly ever write outlines, which is not a good habit, but I do enjoy the fact that the work gradually deviates from the earliest expectations and takes on a new look throughout the process.<br /><br />
 
-<font size="5">Art Inspiration</font><br /><br />
-1.    <em>What are your main sources of inspiration?</em><br />
-A large part of my creative inspiration comes from my research process and all kinds of things I come across during my fieldwork. My creations are almost always based on problématique, so any important question that can trigger my doubts can inspire my creations. For example, the works on display in this exhibition were inspired by the idea of what is the cost of today's rapidly advancing artificial intelligence technology? I began my own research and discovered the deep scratches it leaves in ecology, post-colonialism, and the politics of reproduction.<br />
-<br /><br />
+    2.    <em>What are the unique steps or methods of your creative process?</em><br />
+    If anything, I emphasize the "questioning" aspect of the process. I want the meaning of my work to be not one-dimensional and one-layered, but rich in angles of entry, which means not passing judgment, but rather distancing myself from all possible statements and allowing for rhetorical questions. For a manifesto or a diatribe, decisiveness is important; but for a work of art, there are times when stratigraphic meanings need to be layered,intruded, deposited, and metamorphosed.
 
-2.    <em>Are there any artists or works that have particularly influenced your artistic style?</em><br />
-Visual artists I really admire include Hito Steyerl, who is very good at using visual art as a means of reflecting on visuality. Of course, she is also very sensitive to the important issues of the day, and her works are always layered with several subtleties and always thought-provoking. I am also a great admirer of the Chinese artist Fei Yining, who is particularly good at combining poetic aesthetics with speculative imagery, and expressing them through joint visual, auditory, and literary installations, even to the point of achieving a dreamlike state. I am also deeply influenced by critics, theoreticians and philosophers, including Susan Sontag-who not only has the bold posture of a critic, but also the kind of complex and wandering perceptions that characterize artists.
-<br /><br /><br />
-<br />
 
+    <br /><br /><br />
+    <br />
 
-<div><div style="height: 20px; overflow: hidden; width: 100%;"></div>
-<hr class="styled-hr" style="width:100%;"></hr>
-<div style="height: 20px; overflow: hidden; width: 100%;"></div></div>
-<br />
 
+    <div><div style="height: 20px; overflow: hidden; width: 100%;"></div>
+    <hr class="styled-hr" style="width:100%;"></hr>
+    <div style="height: 20px; overflow: hidden; width: 100%;"></div></div>
+    <br />
 
+    <font size="5">Work Interpretation</font><br /><br />
+    1.    <em>What do you want the audience to feel from your exhibition?</em><br />
+    This is the first time I have participated in an exhibition of an online modeling space from an insider's point of view, which I find particularly novel and rewarding. The space that the curators built for me relates to an ocean, which not only matches the tone of my work, but also allows the viewer to truly envision where he or she is: in a vast but natural environment that has been fully interfered with by human ambition and modern technology. I draw the viewer's attention to the implications of the appropriation of natural resources behind technology, especially contemporary technology, the exploitation of third world populations, and how we imagine and critique them. These effects are often difficult to see because they are too discrete in space and time, because they are deliberately suppressed and hidden. This exhibition provides a safe perceptual space where viewers can join me in contemplating these complex but important contemporary issues.
 
-<font size="5">Creative Process</font><br /><br />
-1.    <em>How do you usually start working on a piece?</em><br />
-Each of my works often starts with a small idea, a frame full of possibilities, a thought-provoking phrase. This also means that I hardly ever write outlines, which is not a good habit, but I do enjoy the fact that the work gradually deviates from the earliest expectations and takes on a new look throughout the process.<br /><br />
+    <br /><br /><br />
 
-2.    <em>What are the unique steps or methods of your creative process?</em><br />
-If anything, I emphasize the "questioning" aspect of the process. I want the meaning of my work to be not one-dimensional and one-layered, but rich in angles of entry, which means not passing judgment, but rather distancing myself from all possible statements and allowing for rhetorical questions. For a manifesto or a diatribe, decisiveness is important; but for a work of art, there are times when stratigraphic meanings need to be layered,intruded, deposited, and metamorphosed.
+    <br />
+    <div><div style="height: 20px; overflow: hidden; width: 100%;"></div>
+    <hr class="styled-hr" style="width:100%;"></hr>
+    <div style="height: 20px; overflow: hidden; width: 100%;"></div></div>
 
+    <br />
 
-<br /><br /><br />
-<br />
+    <font size="5">Future Plans</font><br /><br />
+    1.    <em>What are your next creative projects or exhibitions?</em><br />
+    In the future, I would like to combine academic research and art creation, perhaps the two can be complementary. In the long term, I hope to have the space to carry out a personal project.
 
 
-<div><div style="height: 20px; overflow: hidden; width: 100%;"></div>
-<hr class="styled-hr" style="width:100%;"></hr>
-<div style="height: 20px; overflow: hidden; width: 100%;"></div></div>
-<br />
+    <br /><br /><br />
 
-<font size="5">Work Interpretation</font><br /><br />
-1.    <em>What do you want the audience to feel from your exhibition?</em><br />
-This is the first time I have participated in an exhibition of an online modeling space from an insider's point of view, which I find particularly novel and rewarding. The space that the curators built for me relates to an ocean, which not only matches the tone of my work, but also allows the viewer to truly envision where he or she is: in a vast but natural environment that has been fully interfered with by human ambition and modern technology. I draw the viewer's attention to the implications of the appropriation of natural resources behind technology, especially contemporary technology, the exploitation of third world populations, and how we imagine and critique them. These effects are often difficult to see because they are too discrete in space and time, because they are deliberately suppressed and hidden. This exhibition provides a safe perceptual space where viewers can join me in contemplating these complex but important contemporary issues.
 
-<br /><br /><br />
 
-<br />
-<div><div style="height: 20px; overflow: hidden; width: 100%;"></div>
-<hr class="styled-hr" style="width:100%;"></hr>
-<div style="height: 20px; overflow: hidden; width: 100%;"></div></div>
+    <br />
 
-<br />
+    <div><div style="height: 20px; overflow: hidden; width: 100%;"></div>
+    <hr class="styled-hr" style="width:100%;"></hr>
+    <div style="height: 20px; overflow: hidden; width: 100%;"></div></div>
+    <br />
 
-<font size="5">Future Plans</font><br /><br />
-1.    <em>What are your next creative projects or exhibitions?</em><br />
-In the future, I would like to combine academic research and art creation, perhaps the two can be complementary. In the long term, I hope to have the space to carry out a personal project.
+    <font size="5">Art & Society</font></font><br /><br />
+    1.    <em>What role do you think art plays in modern society?</em><br />
+    If modern art has accomplished its task of changing the sensibility of the times and has been reduced to a statue on the altar or a commodity in the marketplace, then it is my belief that contemporary art is still in the stage of questioning, reflecting and imagining the present, the past and the future of society. Contemporary art's unique speculative qualities and unrestricted forms allow it to constantly change its shape in order to intervene and respond to the important issues that keep emerging. This unqualified nature of form and intent will be a long and endless process that will not come to an end after the completion of its mission, as in the case of modern art; unqualified nature also means that it will be difficult for the art market to take possession of these works, and for contemporary artists to subordinate their creations to the principles of the market: the bad news is that it is difficult for contemporary art to support the artist's life through sales, but the good news is that contemporary art will always be able to maintain a rebellious stance, especially against the logic of capitalism and its evils. 
+    <br /><br />
 
+    2.    <em>How do you see the integration of art and technology?</em><br />
+    So-called Art is always an empty concept, only the means to achieve it change over time in the hands of different artists. The "technological art" that is so popular today is an idea that actively embraces new technologies in order to create works of art. What I am more concerned about is whether it is possible to rethink the technology itself in a self-reflexive way by utilizing it in art nowadays.
 
-<br /><br /><br />
+    <br /><br /><br />
 
 
+    <br />
 
-<br />
+    <div><div style="height: 20px; overflow: hidden; width: 100%;"></div>
+    <hr class="styled-hr" style="width:100%;"></hr>
+    <div style="height: 20px; overflow: hidden; width: 100%;"></div></div>
+    <br />
 
-<div><div style="height: 20px; overflow: hidden; width: 100%;"></div>
-<hr class="styled-hr" style="width:100%;"></hr>
-<div style="height: 20px; overflow: hidden; width: 100%;"></div></div>
-<br />
 
-<font size="5">Art & Society</font></font><br /><br />
-1.    <em>What role do you think art plays in modern society?</em><br />
-If modern art has accomplished its task of changing the sensibility of the times and has been reduced to a statue on the altar or a commodity in the marketplace, then it is my belief that contemporary art is still in the stage of questioning, reflecting and imagining the present, the past and the future of society. Contemporary art's unique speculative qualities and unrestricted forms allow it to constantly change its shape in order to intervene and respond to the important issues that keep emerging. This unqualified nature of form and intent will be a long and endless process that will not come to an end after the completion of its mission, as in the case of modern art; unqualified nature also means that it will be difficult for the art market to take possession of these works, and for contemporary artists to subordinate their creations to the principles of the market: the bad news is that it is difficult for contemporary art to support the artist's life through sales, but the good news is that contemporary art will always be able to maintain a rebellious stance, especially against the logic of capitalism and its evils. 
-<br /><br />
-
-2.    <em>How do you see the integration of art and technology?</em><br />
-So-called Art is always an empty concept, only the means to achieve it change over time in the hands of different artists. The "technological art" that is so popular today is an idea that actively embraces new technologies in order to create works of art. What I am more concerned about is whether it is possible to rethink the technology itself in a self-reflexive way by utilizing it in art nowadays.
-
-<br /><br /><br />
-
-
-<br />
-
-<div><div style="height: 20px; overflow: hidden; width: 100%;"></div>
-<hr class="styled-hr" style="width:100%;"></hr>
-<div style="height: 20px; overflow: hidden; width: 100%;"></div></div>
-<br />
-
-
-<font size="5">Personal Suggestion</font><br /><br />
-1.    <em>What do you think is the most important quality in creating art?</em><br />
-Embracing the complexity.</div><br />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    <font size="5">Personal Suggestion</font><br /><br />
+    1.    <em>What do you think is the most important quality in creating art?</em><br />
+    Embracing the complexity.</div><br />
+</div>
 			</div>
 		</div>
       </div>

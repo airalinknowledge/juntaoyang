@@ -63,11 +63,60 @@
 .blog-header h2 a {}
 #wsite-content h2.wsite-product-title {}
 .wsite-product .wsite-product-price a {}
-}</style>
+}
+</style>
 <style>
 .wsite-background {background-image: url("/uploads/1/4/8/1/148137552/background-images/1199586110.jpg") !important;background-repeat: no-repeat !important;background-position: 50% 50% !important;background-size: 100% !important;background-color: transparent !important;background: inherit;}
 body.wsite-background {background-attachment: fixed !important;}.wsite-background.wsite-custom-background{ background-size: cover !important}
 </style>
+<!-- 在这里拷入 ↓ -->
+<style>
+    :root {
+      /* 全局可调的三种颜色 */
+      --main-color:    #333333;  /* 正文文字 */
+      --heading-color: #222222;  /* 各级标题 */
+      --link-color:    #333333;  /* 超链接 */
+    }
+
+    /* 正文默认文字色 */
+    body, 
+    .paragraph, 
+    p {
+      color: var(--main-color) !important;
+    }
+
+    /* 各级标题色 */
+    h1, h2, h3, h4, h5, h6,
+    .section-title,
+    u, em {
+      color: var(--heading-color) !important;
+    }
+
+    /* 链接色 */
+    a, a:visited {
+      color: var(--link-color) !important;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .main-content-area {
+        max-width: 90%; /* 可以调整这个值来改变内容宽度 */
+        margin-left: 0%;
+        margin-right: 10%;
+    }
+
+    @media screen and (max-width: 767px) {
+        .main-content-area {
+            max-width: 100%;
+            margin-left: 0;
+            margin-right: 0;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+    }
+  </style>
+  <!-- 拷入结束 ↑ -->
 		<script src='files/templateArtifacts.js?1714489756'></script>
 <script>
 var STATIC_BASE = '//cdn1.editmysite.com/';
@@ -105,7 +154,7 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 	
 	function initFlyouts(){
 		initPublishedFlyoutMenus(
-			[{"id":"356461667194310790","title":"About","url":"index.html","target":"","nav_menu":false,"nonclickable":false},{"id":"444862601486980856","title":"ARTWORKS","url":"artworks.html","target":"","nav_menu":false,"nonclickable":false},{"id":"864040464600617228","title":"Writings","url":"writings.html","target":"","nav_menu":false,"nonclickable":false},{"id":"361237216236019909","title":"Projects","url":"projects.html","target":"","nav_menu":false,"nonclickable":false},{"id":"497557010409593207","title":"NEWS","url":"news.html","target":"","nav_menu":false,"nonclickable":false}],
+			[{"id":"356461667194310790","title":"About","url":"index.html","target":"","nav_menu":false,"nonclickable":false},{"id":"444862601486980856","title":"ARTWORKS","url":"artworks.html","target":"","nav_menu":false,"nonclickable":false},{"id":"864040464600617228","title":"Writings","url":"writings.html","target":"","nav_menu":false,"nonclickable":false},{"id":"361237216236019909","title":"Projects","url":"projects.html","target":"","nav_menu":false,"nonclickable":false},{"id":"497557010409593207","title":"POSTS","url":"posts.html","target":"","nav_menu":false,"nonclickable":false}],
 			"488020263907845360",
 			'',
 			'active',
@@ -172,10 +221,10 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 						</li>
 						<li id="pg497557010409593207" class="wsite-menu-item-wrap">
 							<a
-										href="news.html"
+										href="posts.html"
 								class="wsite-menu-item"
 								>
-								NEWS
+								POSTS
 							</a>
 							
 						</li>
@@ -220,10 +269,10 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 		</li>
 		<li id="pg497557010409593207" class="wsite-menu-item-wrap">
 			<a
-						href="news.html"
+						href="posts.html"
 				class="wsite-menu-item"
 				>
-				NEWS
+				POSTS
 			</a>
 			
 		</li>
@@ -263,7 +312,7 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 					
 						
 
-<div class="paragraph" style="text-align:left;"><font size="3"><strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</strong><strong>English</strong>&nbsp; &nbsp; &nbsp; &nbsp;<font color="#2a2a2a">&nbsp;</font><u><a href="chiluodeshanghenyubeiyiqide.html"><font color="#2a2a2a">&#20013;&#25991;</font></a></u><br />&#8203;&nbsp; &nbsp; &nbsp; airalinknowledge@gmail.com</font></div>
+<div class="paragraph" style="text-align:left;"><font size="3"><strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</strong><strong>English</strong>&nbsp; &nbsp; &nbsp; &nbsp;<font color="#2a2a2a">&nbsp;</font><u><a href="chiluodeshanghenyubeiyiqide.html"><font color="#2a2a2a">&#20013;&#25991;</font></a></u><br />&#8203;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;juntao.yang@columbia.edu</font></div>
 
 
 					
@@ -271,7 +320,7 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 					
 						
 
-<div class="paragraph" style="text-align:right;"><font size="4"><u><a href="http://juntaoyang.site"><font color="#2a2a2a">ABOUT</font></a></u><font color="#2a2a2a">&nbsp; &nbsp; </font><u><a href="artworks.html"><font color="#2a2a2a">ARTWORKS</font></a></u><font color="#2a2a2a">&nbsp; &nbsp;&nbsp;</font><u><a href="writings.html"><font color="#2a2a2a">WRITINGS</font></a></u><font color="#2a2a2a">&nbsp; &nbsp; </font><u><a href="projects.html"><font color="#2a2a2a">PROJECTS</font></a></u><font color="#2a2a2a">&nbsp;</font>&nbsp; &nbsp;<u><a href="news.html"><font color="#2a2a2a">NEWS</font></a></u>&nbsp;&nbsp;</font></div>
+<div class="paragraph" style="text-align:right;"><font size="4"><u><a href="http://juntaoyang.site"><font color="#2a2a2a">ABOUT</font></a></u><font color="#2a2a2a">&nbsp; &nbsp; </font><u><a href="artworks.html"><font color="#2a2a2a">ARTWORKS</font></a></u><font color="#2a2a2a">&nbsp; &nbsp;&nbsp;</font><u><a href="writings.html"><font color="#2a2a2a">WRITINGS</font></a></u><font color="#2a2a2a">&nbsp; &nbsp; </font><u><a href="projects.html"><font color="#2a2a2a">PROJECTS</font></a></u><font color="#2a2a2a">&nbsp;</font>&nbsp; &nbsp;<u><a href="posts.html"><font color="#2a2a2a">POSTS</font></a></u>&nbsp;&nbsp;</font></div>
 
 
 					
@@ -282,86 +331,87 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 
 <div class="wsite-spacer" style="height:50px;"></div>
 
-<h2 class="wsite-content-title">artworks</h2>
+<div class="main-content-area">
+    <h2 class="wsite-content-title">artworks</h2>
 
-<div class="paragraph"><strong><font size="5">Naked Wounds and the Abandoned</font></strong><br /><font size="6">&#8203;</font><strong><font size="6">&nbsp;</font></strong><br />Digital Photography<br />&#8203;2024</div>
+    <div class="paragraph"><strong><font size="5">Naked Wounds and the Abandoned</font></strong><br /><font size="6">&#8203;</font><strong><font size="6">&nbsp;</font></strong><br />Digital Photography<br />&#8203;2024</div>
 
-<span class='imgPusher' style='float:left;height:0px'></span><span style='display: table;width:auto;position:relative;float:left;max-width:100%;;clear:left;margin-top:0px;*margin-top:0px'><a><img src="uploads/Its been happening all along 1.png" style="margin-top: 10px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; border-width:1px;padding:3px; max-width:100%" alt="Picture" class="galleryImageBorder wsite-image" /></a><span style="display: table-caption; caption-side: bottom; font-size: 90%; margin-top: -0px; margin-bottom: 0px; text-align: center;" class="wsite-caption"></span></span>
-<div class="paragraph" style="text-align:center;display:block;"><em><font size="2">Naked Wounds and the Abandoned: It's Been Happening All Along,&nbsp;</font></em><span><font size="2">digital photography, 2024</font></span></div>
-<hr style="width:100%;clear:both;visibility:hidden;"></hr>
+    <span class='imgPusher' style='float:left;height:0px'></span><span style='display: table;width:auto;position:relative;float:left;max-width:100%;;clear:left;margin-top:0px;*margin-top:0px'><a><img src="uploads/Its been happening all along 1.png" style="margin-top: 10px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; border-width:1px;padding:3px; max-width:100%" alt="Picture" class="galleryImageBorder wsite-image" /></a><span style="display: table-caption; caption-side: bottom; font-size: 90%; margin-top: -0px; margin-bottom: 0px; text-align: center;" class="wsite-caption"></span></span>
+    <div class="paragraph" style="text-align:center;display:block;"><em><font size="2">Naked Wounds and the Abandoned: It's Been Happening All Along,&nbsp;</font></em><span><font size="2">digital photography, 2024</font></span></div>
+    <hr style="width:100%;clear:both;visibility:hidden;"></hr>
 
-<div class="paragraph"><br /><u><font size="5">&#8203;Introduction:&nbsp;</font></u><br />The digital photography series "Naked Wounds and the Abandoned" is based on the Tangshan Pit Park in Nanjing. This area was once the largest abandoned quarry around Nanjing, the Longquan Quarry. Continuing to be heavily mined since the 1970s, Longquan Quarry was gradually shut down and abandoned after the turn of the millennium; in recent years, in response to national policies on environmental protection and development, the area has decided to ecologically rehabilitate the abandoned quarry and develop it into an eco-park, which includes a number of luxury Holiday Inn hotels. Due to Tangshan's distance from downtown Nanjing and the inconvenience of transport, the pit park's visitor traffic is not ideal. Part of the park is now open to the public, but the area's native forests have almost disappeared, and the rest of the ecological situation is very different from that of the well-preserved hills around it, with five huge pits remaining exposed and barren.<br /><br />Since the Industrial Revolution, humans have proved to be a force for shaping the landscape, with geological materials and fossil energy sources buried deep beneath the earth's surface entangled with, facilitating, or constraining human social and technological progress, leading us to consider a vertical version of geopolitics that has emerged under the Anthropocene paradigm: the Tangshan pits have moved from the socialist era's collective geological resources under socialism, to the outcomes and consumer goods of neoliberal environmental governance, as a collective geomorphological event that suggests how we are today situated in a "society made of geology" and owe various "geopolitical and evolutionary debts" to geological materials. The long geological time intersects with the everyday time of humanity and the time of capitalist globalisation in the geomorphological event embodied by the pit, which can be seen not only as a microcosmic slice of our present-day life and social conditions, but also as its subterranean prehistory, unleashing the alternative geographic imagination.<br /><br />In the 1990s, local labourers found a well-preserved fossilised skull in construction waste in a karst cave in Tangshan, which was later identified and named Nanjing Man, thought to be some kind of Homo erectus 58,000 years ago. The discovery of this species proves that Homo erectus had already settled in East Asia before the emergence of early Homo sapiens, thus disturbing the traditional doctrine of the spread of Homo sapiens. Although the influence of East Asian Homo erectus on the ancestry of modern humans is not yet clear, Nanjing Homo erectus is one of the evidences that call for a revision of the standard model of human origins, conceptualising the concept of human beings as "interspecies". On the other hand, the discovery of East Asian Homo erectus such as Nanjing Man has also fuelled an overabundance of folk nationalist fervour aimed at separating ancient Chinese from European and African races through archaeological evidence and attempting to assign the former the highest evolutionary hierarchy. In addition to this, the process of discovering Nanjing Man is also an unintentional metaphor for the intimate relationship between human fossils and geological materiality, thus revealing the common origin, mutual differentiation and eventual decomposition and merging of human materiality and geological materiality. To sum up, fossils as an object of knowledge change and split the taxonomic order of things, thus resetting the epistemology of established knowledge.<br /><br />Through digital photography and digital manipulation (analogue screen printing), the series "Naked Wounds and the Abandoned" transforms the surface of the exposed mine into a texture that approximates the tissue of human skin, blurring the distinction between geology and human beings, between non-living matter and the living. The works parody the style of popular posters in the neoliberal market, juxtaposing elements with complex connotations in an attempt to stimulate critical reflection on the part of the viewer.<br />&#8203;</div>
-
-
-
-<div id="content-wrapper">
-      <div id="wsite-content" class="wsite-elements wsite-not-footer">
-	<div class="wsite-section-wrap">
-	<div class="wsite-section wsite-body-section wsite-background-31 wsite-custom-background"  >
-		<div class="wsite-section-content">
-        <div class="container">
-			<div class="wsite-section-elements">
-				<div><div class="wsite-multicol"><div class="wsite-multicol-table-wrap" style="margin:0 -15px;">
-	<table class="wsite-multicol-table">
-		<tbody class="wsite-multicol-tbody">
-			<tr class="wsite-multicol-tr">
-				<td class="wsite-multicol-col" style="width:50%; padding:0 15px;">
-					
-						
-
-<span class='imgPusher' style='float:left;height:0px'></span><span style='display: table;width:auto;position:relative;float:left;max-width:100%;;clear:left;margin-top:0px;*margin-top:0px'><a><img src="uploads/are we cool yet.png" style="margin-top: 10px; margin-bottom: 0px; margin-left: 0px; margin-right: 10px; border-width:0; max-width:100%" alt="Picture" class="galleryImageBorder wsite-image" /></a><span style="display: table-caption; caption-side: bottom; font-size: 90%; margin-top: -0px; margin-bottom: 0px; text-align: center;" class="wsite-caption"></span></span>
-<div class="paragraph" style="text-align:center;display:block;"><em><font size="2">Naked Wounds and the Abandoned: Are We Cool Yet?,&nbsp;<br />&#8203;</font></em><span><font size="2">digital photography, 2024</font></span></div>
-<hr style="width:100%;clear:both;visibility:hidden;"></hr>
-
-
-					
-				</td>				<td class="wsite-multicol-col" style="width:50%; padding:0 15px;">
-					
-						
-
-<div><div class="wsite-image wsite-image-border-none " style="padding-top:10px;padding-bottom:0px;margin-left:0px;margin-right:0px;text-align:center">
-<a>
-<img src="uploads/still witnessing.png" alt="Picture" style="width:auto;max-width:100%" />
-</a>
-<div style="display:block;font-size:90%"></div>
-</div></div>
-
-<div class="paragraph" style="text-align:center;"><em><font size="2">Naked Wounds and the Abandoned: Still Witnessing,&nbsp;<br />&#8203;</font></em><span><font size="2">digital photography, 2024</font></span></div>
+    <div class="paragraph"><br /><u><font size="5">&#8203;Introduction:&nbsp;</font></u><br />The digital photography series "Naked Wounds and the Abandoned" is based on the Tangshan Pit Park in Nanjing. This area was once the largest abandoned quarry around Nanjing, the Longquan Quarry. Continuing to be heavily mined since the 1970s, Longquan Quarry was gradually shut down and abandoned after the turn of the millennium; in recent years, in response to national policies on environmental protection and development, the area has decided to ecologically rehabilitate the abandoned quarry and develop it into an eco-park, which includes a number of luxury Holiday Inn hotels. Due to Tangshan's distance from downtown Nanjing and the inconvenience of transport, the pit park's visitor traffic is not ideal. Part of the park is now open to the public, but the area's native forests have almost disappeared, and the rest of the ecological situation is very different from that of the well-preserved hills around it, with five huge pits remaining exposed and barren.<br /><br />Since the Industrial Revolution, humans have proved to be a force for shaping the landscape, with geological materials and fossil energy sources buried deep beneath the earth's surface entangled with, facilitating, or constraining human social and technological progress, leading us to consider a vertical version of geopolitics that has emerged under the Anthropocene paradigm: the Tangshan pits have moved from the socialist era's collective geological resources under socialism, to the outcomes and consumer goods of neoliberal environmental governance, as a collective geomorphological event that suggests how we are today situated in a "society made of geology" and owe various "geopolitical and evolutionary debts" to geological materials. The long geological time intersects with the everyday time of humanity and the time of capitalist globalisation in the geomorphological event embodied by the pit, which can be seen not only as a microcosmic slice of our present-day life and social conditions, but also as its subterranean prehistory, unleashing the alternative geographic imagination.<br /><br />In the 1990s, local labourers found a well-preserved fossilised skull in construction waste in a karst cave in Tangshan, which was later identified and named Nanjing Man, thought to be some kind of Homo erectus 58,000 years ago. The discovery of this species proves that Homo erectus had already settled in East Asia before the emergence of early Homo sapiens, thus disturbing the traditional doctrine of the spread of Homo sapiens. Although the influence of East Asian Homo erectus on the ancestry of modern humans is not yet clear, Nanjing Homo erectus is one of the evidences that call for a revision of the standard model of human origins, conceptualising the concept of human beings as "interspecies". On the other hand, the discovery of East Asian Homo erectus such as Nanjing Man has also fuelled an overabundance of folk nationalist fervour aimed at separating ancient Chinese from European and African races through archaeological evidence and attempting to assign the former the highest evolutionary hierarchy. In addition to this, the process of discovering Nanjing Man is also an unintentional metaphor for the intimate relationship between human fossils and geological materiality, thus revealing the common origin, mutual differentiation and eventual decomposition and merging of human materiality and geological materiality. To sum up, fossils as an object of knowledge change and split the taxonomic order of things, thus resetting the epistemology of established knowledge.<br /><br />Through digital photography and digital manipulation (analogue screen printing), the series "Naked Wounds and the Abandoned" transforms the surface of the exposed mine into a texture that approximates the tissue of human skin, blurring the distinction between geology and human beings, between non-living matter and the living. The works parody the style of popular posters in the neoliberal market, juxtaposing elements with complex connotations in an attempt to stimulate critical reflection on the part of the viewer.<br />&#8203;</div>
 
 
 
-					
-				</td>			</tr>
-		</tbody>
-	</table>
+    <div id="content-wrapper">
+          <div id="wsite-content" class="wsite-elements wsite-not-footer">
+        <div class="wsite-section-wrap">
+        <div class="wsite-section wsite-body-section wsite-background-31 wsite-custom-background"  >
+            <div class="wsite-section-content">
+            <div class="container">
+                <div class="wsite-section-elements">
+                    <div><div class="wsite-multicol"><div class="wsite-multicol-table-wrap" style="margin:0 -15px;">
+        <table class="wsite-multicol-table">
+            <tbody class="wsite-multicol-tbody">
+                <tr class="wsite-multicol-tr">
+                    <td class="wsite-multicol-col" style="width:50%; padding:0 15px;">
+                        
+                            
+
+    <span class='imgPusher' style='float:left;height:0px'></span><span style='display: table;width:auto;position:relative;float:left;max-width:100%;;clear:left;margin-top:0px;*margin-top:0px'><a><img src="uploads/are we cool yet.png" style="margin-top: 10px; margin-bottom: 0px; margin-left: 0px; margin-right: 10px; border-width:0; max-width:100%" alt="Picture" class="galleryImageBorder wsite-image" /></a><span style="display: table-caption; caption-side: bottom; font-size: 90%; margin-top: -0px; margin-bottom: 0px; text-align: center;" class="wsite-caption"></span></span>
+    <div class="paragraph" style="text-align:center;display:block;"><em><font size="2">Naked Wounds and the Abandoned: Are We Cool Yet?,&nbsp;<br />&#8203;</font></em><span><font size="2">digital photography, 2024</font></span></div>
+    <hr style="width:100%;clear:both;visibility:hidden;"></hr>
 
 
-<div><div class="wsite-image wsite-image-border-none " style="padding-top:10px;padding-bottom:0px;margin-left:0px;margin-right:0px;text-align:center">
-<a>
-<img src="uploads/innovart.jpg" alt="Picture" style="width:auto;max-width:100%" />
-</a>
-<div style="display:block;font-size:90%"></div>
-</div></div>
+                        
+                    </td>				<td class="wsite-multicol-col" style="width:50%; padding:0 15px;">
+                        
+                            
 
-<div class="paragraph" style="text-align:center;"><font size="2"><span style="color:rgb(0, 0, 0)">As installed at&nbsp;</span></font><em><font size="2">Wuer · Fun · Concept Exhibition</font></em><span><font size="2">,InnovArt Space, Pazhou, 2024</font></span><br /><font size="2">&#8203;</font></div>
+    <div><div class="wsite-image wsite-image-border-none " style="padding-top:10px;padding-bottom:0px;margin-left:0px;margin-right:0px;text-align:center">
+    <a>
+    <img src="uploads/still witnessing.png" alt="Picture" style="width:auto;max-width:100%" />
+    </a>
+    <div style="display:block;font-size:90%"></div>
+    </div></div>
 
-</div></div></div>
-			</div>
-		</div>
-      </div>
+    <div class="paragraph" style="text-align:center;"><em><font size="2">Naked Wounds and the Abandoned: Still Witnessing,&nbsp;<br />&#8203;</font></em><span><font size="2">digital photography, 2024</font></span></div>
 
-	</div>
+
+
+                        
+                    </td>			</tr>
+            </tbody>
+        </table>
+
+
+    <div><div class="wsite-image wsite-image-border-none " style="padding-top:10px;padding-bottom:0px;margin-left:0px;margin-right:0px;text-align:center">
+    <a>
+    <img src="uploads/innovart.jpg" alt="Picture" style="width:auto;max-width:100%" />
+    </a>
+    <div style="display:block;font-size:90%"></div>
+    </div></div>
+
+    <div class="paragraph" style="text-align:center;"><font size="2"><span style="color:rgb(0, 0, 0)">As installed at&nbsp;</span></font><em><font size="2">Wuer · Fun · Concept Exhibition</font></em><span><font size="2">,InnovArt Space, Pazhou, 2024</font></span><br /><font size="2">&#8203;</font></div>
+
+    </div></div></div>
+                </div>
+            </div>
+          </div>
+
+        </div>
+    </div>
+
+                </div>
+            </div>
+          </div>
+
+        </div>
+    </div>
+
+    </div>
 </div>
-
-			</div>
-		</div>
-      </div>
-
-	</div>
-</div>
-
-</div>
-
   	</div>
 
   	

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Posts - Juntao Yang</title>
+  <title>Lukas Marxt: How Do We Mediate Haunted Toxicity? - Juntao Yang</title>
   <meta name="description" content="Juntao Yang's informal posts, drafts, and notes; 杨君陶的随笔与草稿" />
   <meta name="keywords" content="Juntao Yang,杨君陶, posts, drafts, notes, 随笔, 草稿" />
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -64,8 +64,6 @@
       #wsite-content h2.wsite-product-title {}
       .wsite-product .wsite-product-price a {}
     }
-  </style>
-  <style>
     .wsite-background {
       background-image: url("/uploads/1/4/8/1/148137552/background-images/1199586110.jpg") !important;
       background-repeat: no-repeat !important;
@@ -76,129 +74,58 @@
     }
     body.wsite-background {background-attachment: fixed !important;}
     .wsite-background.wsite-custom-background { background-size: cover !important; }
-    
-    /* 保留你原先的 Flex 样式（不再使用，但不影响其它部分） */
-    .posts-flex-container {
-        display: flex;
-        flex-direction: row;
-        gap: 80px; 
-    }
-    .posts-flex-column {
-        width: 50%;
-        display: flex;
-        flex-direction: column;
-    }
 
-    .post-entry-card {
-        width: 100%;
-        margin-bottom: 80px; 
+    /* === Post Detail Page Specific Styles === */
+    .post-detail-container {
+        max-width: 800px; /* Or a width that you prefer */
+        margin: 0 auto; /* Center the content */
+        padding: 0 15px;
     }
-    .post-image {
+    .post-detail-title {
+        font-size: 32px !important; /* Larger title for detail page */
+        font-weight: bold;
+        margin-bottom: 10px;
+        line-height: 1.2;
+    }
+    .post-detail-date {
+        font-family: "Georgia", serif;
+        font-size: 14px !important; 
+        color: #888;
+        margin-bottom: 30px;
+    }
+    .post-detail-image {
         width: 100%;
         height: auto;
-        display: block;
-        margin-bottom: 15px;
+        margin-bottom: 30px;
     }
-
-    .post-title a {
-        text-decoration: none !important;
-        color: #555 !important;   /* 标题颜色与原 read-more 保持一致 */
+    .post-detail-content .paragraph {
+        font-size: 18px !important; /* Slightly larger font for readability */
+        line-height: 1.8 !important; /* More spacing between lines */
+        margin-bottom: 20px;
     }
-    .post-title a:hover {
-        color: #000 !important;
+    .back-link {
+        margin-top: 80px; /* Increased margin for more space */
+        text-align: center;
     }
-
-    .post-date {
-        font-family: "Georgia", serif;
-        font-size: 12px !important; 
-        color: #888;
-        margin: 0 0 6px;
-    }
-    .post-excerpt {
-        font-size: 14px !important;
-    }
-
-    .read-more {
+    .back-link a {
+        color: #000; /* Changed color to black */
         text-decoration: underline;
-        color: #555 !important;
-        font-weight: bold;
+        font-size: 14px;
     }
-    .read-more:hover {
-        color: #000 !important;
+    .back-link a:hover {
+        color: #555; /* Keep a hover effect */
     }
-
-    .news-section .paragraph {
-        margin-bottom: 15px;
-        font-size: 15px;
+    .styled-hr {
+        border: 0;
+        height: 1px;
+        background-color: #e0e0e0;
+        margin: 40px 0;
     }
-    .news-section a {
-        text-decoration: underline;
-    }
-    
-    /* 左右区块间距/分隔线 */
-    .posts-column {
-        padding-right: 60px !important;
-    }
-    .separator-wrapper {
-        border-left: 1px solid #e0e0e0;
-        padding-left: 60px;
-        height: 100%;
-    }
-
-    /* 只收紧卡片内部的间距 */
-    .post-entry-card .paragraph { 
-      margin: 6px 0 !important;
-      line-height: 1.35;
-    }
-    .post-entry-card .post-image { 
-      margin-bottom: 8px !important;
-    }
-    .post-entry-card .post-title { 
-      margin: 6px 0 4px !important;
-    }
-    .post-entry-card .post-excerpt { 
-      margin: 0 0 8px !important;
-    }
-    .wsite-elements .post-entry-card .paragraph {
-      margin: 6px 0 !important;
-    }
-
-    /* === 原：两列瀑布流（自动分栏） — 仍然保留，但本页改用手动分发 === */
-    .posts-waterfall {
-      column-count: 2;
-      column-gap: 80px;            /* 与原 gap 保持一致 */
-    }
-    .posts-waterfall .post-entry-card {
-      break-inside: avoid;         /* 避免被切断 */
-      display: inline-block;       /* 参与列内排布 */
-      width: 100%;
-      margin: 0 0 80px;
-    }
-    .posts-waterfall .post-entry-card:nth-child(even) {
-      margin-top: 60px;
-    }
-
-    /* === 新增：手动分发双列（Flex） === */
-    .posts-two-col { display: flex; gap: 80px; }
-    .posts-left, .posts-right { flex: 1; display: flex; flex-direction: column; }
-    /* 首行错落：右列第一张下移，可按需把 80px 调大/调小 */
-    .posts-right .post-entry-card:first-child { margin-top: 80px; }
-    .posts-left .post-entry-card, .posts-right .post-entry-card { margin: 0 0 80px; width: 100%; }
-
-    /* 移动端：单列 */
-    @media (max-width: 767px) {
-      .posts-waterfall { column-count: 1; column-gap: 0; }
-      /* 你原先的移动端样式继续生效 */
-      .posts-flex-container { flex-direction: column; gap: 0; }
-      .posts-flex-column { width: 100%; margin-top: 0 !important; }
-      .separator-wrapper { border-left: none; padding-left: 0; margin-top: 40px; }
-      .posts-column { padding-right: 15px !important; }
-      .news-column { padding-left: 15px !important; }
-      /* 手动分发在移动端改为单列堆叠 */
-      .posts-two-col { display:block; }
-      .posts-left, .posts-right { width:100%; }
-      /* 移动端取消错落，避免顶部空白过大 */
-      .posts-right .post-entry-card:first-child { margin-top: 0; }
+    .post-references .paragraph {
+        font-size: 15px !important; /* Smaller than main content */
+        line-height: 1.6 !important;
+        color: #555;
+        margin-bottom: 10px !important;
     }
   </style>
   <script src="https://cdn2.editmysite.com/js/jquery-1.8.3.min.js"></script>
@@ -260,11 +187,11 @@
                             <tbody class="wsite-multicol-tbody">
                               <tr class="wsite-multicol-tr">
                                 <td class="wsite-multicol-col" style="width:36.89%; padding:0 15px;">
-                                  <div class="paragraph" style="text-align:left;"><font size="3"><strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</strong><strong>English</strong>&nbsp; &nbsp; &nbsp; &nbsp;<font color="#2a2a2a">&nbsp;</font><u><a href="fabu.html"><font color="#2a2a2a">&#20013;&#25991;</font></a></u><br />&#8203;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;juntao.yang@columbia.edu</font></div>
+                                  <div class="paragraph" style="text-align:left;"><font size="3"><strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</strong><strong>English</strong>&nbsp; &nbsp; &nbsp; &nbsp;<font color="#2a2a2a">&nbsp;</font><u><a href="#"><font color="#2a2a2a">中文</font></a></u><br />&#8203;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;juntao.yang@columbia.edu</font></div>
                                 </td>
                                 <td class="wsite-multicol-col" style="width:63.10%; padding:0 15px;">
-                                  <!-- Top-right nav updated: Order changed and 'POSTS' is now bold text -->
-                                  <div class="paragraph" style="text-align:right;"><font size="4"><u><a href="index.html"><font color="#2a2a2a">ABOUT</font></a></u><font color="#2a2a2a">&nbsp; &nbsp; </font><u><a href="artworks.html"><font color="#2a2a2a">ARTWORKS</font></a></u><font color="#2a2a2a">&nbsp; &nbsp;&nbsp;</font><u><a href="writings.html"><font color="#2a2a2a">WRITINGS</font></a></u><font color="#2a2a2a">&nbsp; &nbsp;&nbsp;</font><u><a href="projects.html"><font color="#2a2a2a">PROJECTS</font></a></u><font color="#2a2a2a">&nbsp;</font>&nbsp; &nbsp;<strong><font color="#2a2a2a">POSTS</font></strong>&nbsp;&nbsp;</font></div>
+                                  <!-- Top-right nav updated: "POSTS" is now a link -->
+                                  <div class="paragraph" style="text-align:right;"><font size="4"><u><a href="index.html"><font color="#2a2a2a">ABOUT</font></a></u><font color="#2a2a2a">&nbsp; &nbsp; </font><u><a href="artworks.html"><font color="#2a2a2a">ARTWORKS</font></a></u><font color="#2a2a2a">&nbsp; &nbsp;&nbsp;</font><u><a href="writings.html"><font color="#2a2a2a">WRITINGS</font></a></u><font color="#2a2a2a">&nbsp; &nbsp;&nbsp;</font><u><a href="projects.html"><font color="#2a2a2a">PROJECTS</font></a></u><font color="#2a2a2a">&nbsp;</font>&nbsp; &nbsp;<u><a href="posts.html"><font color="#2a2a2a">POSTS</font></a></u>&nbsp;&nbsp;</font></div>
                                 </td>
                               </tr>
                             </tbody>
@@ -273,107 +200,69 @@
                       </div>
                     </div>
                     
-                    <!-- Title block -->
-                    <div>
-                        <div style="height: 50px; overflow: hidden; width: 100%;"></div>
-                        <h2 class="wsite-content-title" style="text-align:left;">Posts</h2>
-                        <div style="height: 20px; overflow: hidden; width: 100%;"></div>
-                        <hr class="styled-hr" style="width:100%;"></hr>
-                        <div style="height: 20px; overflow: hidden; width: 100%;"></div>
+                    <div class="wsite-spacer" style="height:80px;"></div>
+
+                    <!-- START OF POST DETAIL CONTENT -->
+                    <div class="post-detail-container">
+                        <div class="paragraph post-detail-title">
+                            Lukas Marxt: How Do We Mediate Haunted Toxicity?
+                        </div>
+                        <div class="paragraph post-detail-date">
+                            August 25, 2025
+                        </div>
+                        <div>
+                            <img src="uploads/marxt.jpg" class="post-detail-image" alt="文章主图">
+                        </div>
+                        <div class="post-detail-content">
+                            <div class="paragraph">
+                             A moving image work that engages with the multi-layered histories of land, lake water, and toxicity—histories of remnants and ghosts—must itself be stratified.¹ It must attempt to navigate multiple spatiotemporal scales without losing orientation, and attune to mediating what are, in essence, invisible elemental specters.
+                            </div>
+                            <div class="paragraph">
+Among The Palms The Bomb, or: Looking for Reflections in the Toxic Field of Plenty (2024) delves deeply into the historical-geographical context of the Salton Sea, a milieu that enables the artist to distill the various layers of the region’s lethal toxicity. Chemical pollutants, concentrated in the waters or buried in shallow soils, have devastated the ecosystem and, carried as dust by the wind, extend their reach to distant human settlements. These toxins are residues of multiple human interventions: bomb tests and military maneuvers from World War II and the Cold War to the present day. Freshwater depletion and soil salinization from large-scale agricultural development on Indigenous lands further exacerbate the situation. These practices are entangled with processes of nationalism, capitalism, and colonialism, even as they in turn shape the very forms those processes take. Toxicity becomes not merely a narrative thread but a persistent and lethal presence.
+                            </div>
+                            <div class="paragraph">
+The artist wrestles with a central question: how can one mediate a toxicity that is spectral—difficult to apprehend, yet ever-present and materially destructive?² This spectrality takes form in a recurring figure, a blurred-faced soldier who alternates between drilling and watching, a cipher for the hidden histories of violence and contamination. Media technologies here must assume the responsibility of mediation, rendering the invisible perceptible. Perceptibility and intelligibility, however, unfold in generative ways; Karen Barad would describe the vitality within such an assemblage as “intra-action,” even while resisting the vocabulary of “mediation.”³ Alongside the camera—the most privileged medium—the artist mobilizes his background in environmental science to incorporate instruments such as the metal detector, sonar, drill, and total station. Bomb fragments, for example, surface continually. Such technological interventions, deployed across contexts, negotiate submerged histories and deadly substances with a pronounced media-ethical awareness: drilling here becomes less an extractivist gesture than an invitation.
+                            </div>
+                            <div class="paragraph">
+The artist’s critical engagement with media technologies also provokes reflection on (dis)embodiment, manifest in designs that appear contradictory or uncanny. A gimbal erases the trace of the handheld camera while the sound of footsteps is amplified. Why should media simultaneously locate and erase human presence? The paradox finds sharper articulation in a later scene: in the rented ballroom of a local museum, where wartime popular music loops endlessly and atomic bomb replicas are absurdly displayed, the artist dances with the camera hoisted on his shoulder. Beyond satire of nationalism and military ardor, this scene foregrounds the porosity and intimacy between human and medium. The work suggests that the human–media–geology nexus should be apprehended as a continuum, entangled and indivisible across scales.
+                            </div>
+                            <div class="paragraph">
+Yet, while the artist treats toxicity as a spatiotemporal residue or spectral element, his conceptualization still tends to collapse it into the malevolent legacies of human violence—war, nationalist fervor, internal colonialism, or capitalism—rather than apprehending it as a flow traversing bodies, environments, and temporalities.⁴ The problem persists: how do toxicity, geology, or matter more broadly speak themselves? The film gestures toward this recognition, particularly in the opening sequences where extended landscape shots linger after human actors exit the frame, instead of being inserted abruptly. In those moments, matter itself seems to stir—albeit on scales of time and space beyond human comprehension.
+                            </div>
+
+                        </div>
+<br>
+<br>
+                        <!-- Divider and References Section -->
+                        <hr class="styled-hr" />
+<br>
+<br>
+<br>
+
+
+
+                        <div class="post-references">
+
+                     <div class="paragraph">1. Thanks to a complimentary ticket from the dear Ava Witonsky, I was able to see this film at the Anthology Film Archives.</div>
+                     <div class="paragraph">2. The concept of hauntology is drawn from Jacques Derrida, <i>Specters of Marx: The State of the Debt, the Work of Mourning and the New International</i>, trans. Peggy Kamuf (New York: Routledge, 1994), and is complemented by Avery F. Gordon, <i>Ghostly Matters: Haunting and the Sociological Imagination</i> (Minneapolis: University of Minnesota Press, 1997).</div>
+                     <div class="paragraph">3. Karen Barad, <i>Meeting the Universe Halfway: Quantum Physics and the Entanglement of Matter and Meaning</i> (Durham, NC: Duke University Press, 2007).</div>
+                     <div class="paragraph">4. Stacy Alaimo, <i>Bodily Natures: Science, Environment, and the Material Self</i> (Bloomington: Indiana University Press, 2010).</div>
+
+
+
+
+
+
+                        </div>
+                        <!-- End of References Section -->
+<br>
+<br>
+<br>
+                        <div class="paragraph back-link">
+                            <a href="posts.html">← Back to all posts</a>
+                        </div>
                     </div>
-                    <div class="paragraph" style="text-align:left; font-style:italic; color:#555;">
-                        This page contains recent updates and fragments of my writing. These pieces may be temporary, unconsidered, and informal—unpublished now, and perhaps forever.
-                    </div>
-                    <div class="wsite-spacer" style="height:50px;"></div>
-                    <!-- END OF NEW TITLE BLOCK -->
-
-                    <!-- START OF POSTS & NEWS CONTENT -->
-                    <div class="wsite-multicol">
-                      <div class="wsite-multicol-table-wrap" style="margin:0 -15px;">
-                        <table class="wsite-multicol-table">
-                          <tbody class="wsite-multicol-tbody">
-                            <tr class="wsite-multicol-tr">
-                              <!-- Left Column: Posts -->
-                              <td class="wsite-multicol-col posts-column" style="width:75%; padding:0 15px; vertical-align: top;">
-                                
-                                <!-- 新：手动分发双列容器（FLEX） -->
-                                <div class="posts-two-col">
-
-
-
-
-                                  <!-- 左列：Post 1, Post 3 -->
-                                  <div class="posts-left">
-                                    <!-- Post 1 -->
-                                    <div class="post-entry-card">
-                                      <a href="mukendi.html"><img src="uploads/Mukendi.jpg" class="post-image" alt="文章预览图"></a>
-                                      <div class="paragraph post-title">
-                                        <a href="mukendi.html"><u><font size="4">Jean Katambayi Mukendi:  Toward a Speculative Rather Than Technicist Media Archaeology</font></u></a>
-                                      </div>
-                                      <div class="paragraph post-date">August 25, 2025</div>
-                                      <div class="paragraph post-excerpt">I seek a more emphatically speculative approach to media archaeology, one capable of apprehending the spatio-temporal scales that transcend what can be grasped through technical restoration and hands-on operation. The work of Jean Katambayi Mukendi seems to offer just such a pathway.</div>
-                                    </div>
-
-
-
-                                    <!-- Post 3（如有后续，按需添加到左列） -->
-                                  </div>
-
-
-
-
-
-
-                                  <!-- 右列：Post 2, Post 4 -->
-                                  <div class="posts-right">
-                                    <!-- Post 2 -->
-                                    <div class="post-entry-card">
-                                      <a href="marxt.html"><img src="uploads/marxt.jpg" class="post-image" alt="文章预览图"></a>
-                                      <div class="paragraph post-title">
-                                        <a href="marxt.html"><u><font size="4">Lukas Marxt: How Do We Mediate Haunted Toxicity?</font></u></a>
-                                      </div>
-                                      <div class="paragraph post-date">August 23, 2025</div>
-                                      <div class="paragraph post-excerpt">A moving image work that engages with the multi-layered histories of land, lake water, and toxicity—histories of remnants and ghosts—must itself be stratified. It must attempt to navigate multiple spatiotemporal scales without losing orientation, and attune to mediating what are, in essence, invisible elemental specters.</div>
-                                    </div>
-
-   
-                                  </div>
-                                </div>
-                                <!-- END posts-two-col -->
-                              </td>
-
-                              <!-- Right Column: News -->
-                              <td class="wsite-multicol-col news-column" style="width:25%; padding:0 15px; vertical-align: top;">
-                                <div class="separator-wrapper">
-                                  <div class="news-section">
-                                    <div class="paragraph"><u><font size="4">News</font></u></div>
-                                    <div class="paragraph">
-
-   <b>Sep 9-13, 2025:</b> Will be speaking at the interdisciplinary conference "Taboo-Transgression-Transcendence" in Slovenia.<a href="[https://avarts.ionio.gr/ttt/2025/en/program/](https://avarts.ionio.gr/ttt/2025/en/program/)"><br>[Details]</a>
-                     </div>
-                     <div class="paragraph">
-                       <b>Aug 25-30, 2025:</b> Will be speaking at the congress of The International Committee for the Conservation of the Industrial Heritage (TICCIH) in Sweden.
-                     </div>
-                     <div class="paragraph">
-                       <b>Jul 21-27, 2025:</b> Participating in the "Excluded Media VII" summer workshop at Northwestern University.
-                     </div>
-                     <div class="paragraph">
-                       <b>Jul 16, 2025:</b> Speaking at the "Shaping Futures" conference at Seoul National University.<br><a href="file:///D:/uploads/[ABSTRACT]_SEAA-SNU_Anthropology_2025_in_Seoul.pdf#page=105">[Details]</a>
-                                    </div>
-
-
-
-                                    </div>
-                                    <!-- Add more news items here -->
-                                  </div>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>
-                    <!-- END OF POSTS & NEWS CONTENT -->
+                    <!-- END OF POST DETAIL CONTENT -->
 
                     <div class="paragraph" style="text-align:center;">
                       <br /><br /><br /><br /><font size="2"><br />All Rights Reserved&nbsp;&copy;&nbsp; Juntao Yang</font>

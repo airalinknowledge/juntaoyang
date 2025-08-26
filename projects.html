@@ -63,7 +63,24 @@
 .blog-header h2 a {}
 #wsite-content h2.wsite-product-title {}
 .wsite-product .wsite-product-price a {}
-}</style>
+}
+</style>
+<!-- 新增样式：限制正文内容宽度 -->
+<style>
+    /* 限制正文内容区域宽度，增加两侧留白 */
+    .main-content-area {
+        max-width: 90%; /* 可以调整这个值来改变内容宽度 */
+        margin-left: 0%;
+        margin-right: 10%;
+    }
+
+    /* 针对移动设备，取消宽度限制，让内容全宽显示 */
+    @media screen and (max-width: 767px) {
+        .main-content-area {
+            max-width: 100%;
+        }
+    }
+</style>
 <style>
 .wsite-background {background-image: url("/uploads/1/4/8/1/148137552/background-images/1199586110.jpg") !important;background-repeat: no-repeat !important;background-position: 50% 50% !important;background-size: 100% !important;background-color: transparent !important;background: inherit;}
 body.wsite-background {background-attachment: fixed !important;}.wsite-background.wsite-custom-background{ background-size: cover !important}
@@ -105,7 +122,7 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 	
 	function initFlyouts(){
 		initPublishedFlyoutMenus(
-			[{"id":"356461667194310790","title":"About","url":"index.html","target":"","nav_menu":false,"nonclickable":false},{"id":"444862601486980856","title":"ARTWORKS","url":"artworks.html","target":"","nav_menu":false,"nonclickable":false},{"id":"864040464600617228","title":"Writings","url":"writings.html","target":"","nav_menu":false,"nonclickable":false},{"id":"361237216236019909","title":"Projects","url":"projects.html","target":"","nav_menu":false,"nonclickable":false},{"id":"497557010409593207","title":"NEWS","url":"news.html","target":"","nav_menu":false,"nonclickable":false}],
+			[{"id":"356461667194310790","title":"About","url":"index.html","target":"","nav_menu":false,"nonclickable":false},{"id":"444862601486980856","title":"ARTWORKS","url":"artworks.html","target":"","nav_menu":false,"nonclickable":false},{"id":"864040464600617228","title":"Writings","url":"writings.html","target":"","nav_menu":false,"nonclickable":false},{"id":"361237216236019909","title":"Projects","url":"projects.html","target":"","nav_menu":false,"nonclickable":false},{"id":"497557010409593207","title":"POSTS","url":"posts.html","target":"","nav_menu":false,"nonclickable":false}],
 			"361237216236019909",
 			'',
 			'active',
@@ -172,10 +189,10 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 						</li>
 						<li id="pg497557010409593207" class="wsite-menu-item-wrap">
 							<a
-										href="news.html"
+										href="posts.html"
 								class="wsite-menu-item"
 								>
-								NEWS
+								POSTS
 							</a>
 							
 						</li>
@@ -220,10 +237,10 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 		</li>
 		<li id="pg497557010409593207" class="wsite-menu-item-wrap">
 			<a
-						href="news.html"
+						href="posts.html"
 				class="wsite-menu-item"
 				>
-				NEWS
+				POSTS
 			</a>
 			
 		</li>
@@ -263,7 +280,7 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 					
 						
 
-<div class="paragraph" style="text-align:left;"><font size="3"><strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</strong><strong>English</strong>&nbsp; &nbsp; &nbsp; &nbsp;<font color="#2a2a2a">&nbsp;</font><u><a href="xiangmu.html"><font color="#2a2a2a">&#20013;&#25991;</font></a></u><br />&#8203;&nbsp; &nbsp; &nbsp; airalinknowledge@gmail.com</font></div>
+<div class="paragraph" style="text-align:left;"><font size="3"><strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</strong><strong>English</strong>&nbsp; &nbsp; &nbsp; &nbsp;<font color="#2a2a2a">&nbsp;</font><u><a href="xiangmu.html"><font color="#2a2a2a">&#20013;&#25991;</font></a></u><br />&#8203;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;juntao.yang@columbia.edu</font></div>
 
 
 					
@@ -271,7 +288,7 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 					
 						
 
-<div class="paragraph" style="text-align:right;"><font size="4"><u><a href="http://juntaoyang.site"><font color="#2a2a2a">ABOUT</font></a></u><font color="#2a2a2a">&nbsp; &nbsp; </font><u><a href="artworks.html"><font color="#2a2a2a">ARTWORKS</font></a></u><font color="#2a2a2a">&nbsp; &nbsp;&nbsp;</font><u><a href="writings.html"><font color="#2a2a2a">WRITINGS</font></a></u><font color="#2a2a2a">&nbsp; &nbsp; </font><strong><font color="#2a2a2a">PROJECTS</font></strong><font color="#2a2a2a">&nbsp;</font>&nbsp; &nbsp;<u><a href="news.html"><font color="#2a2a2a">NEWS</font></a></u>&nbsp;&nbsp;</font></div>
+<div class="paragraph" style="text-align:right;"><font size="4"><u><a href="http://juntaoyang.site"><font color="#2a2a2a">ABOUT</font></a></u><font color="#2a2a2a">&nbsp; &nbsp; </font><u><a href="artworks.html"><font color="#2a2a2a">ARTWORKS</font></a></u><font color="#2a2a2a">&nbsp; &nbsp;&nbsp;</font><u><a href="writings.html"><font color="#2a2a2a">WRITINGS</font></a></u><font color="#2a2a2a">&nbsp; &nbsp; </font><strong><font color="#2a2a2a">PROJECTS</font></strong><font color="#2a2a2a">&nbsp;</font>&nbsp; &nbsp;<u><a href="posts.html"><font color="#2a2a2a">POSTS</font></a></u>&nbsp;&nbsp;</font></div>
 
 
 					
@@ -285,6 +302,7 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 
 <div class="wsite-spacer" style="height:50px;"></div>
 
+<div class="main-content-area">
 <h2 class="wsite-content-title">Projects</h2>
 
 
@@ -301,7 +319,7 @@ Scientific - Catholic Colonialism, Multispecies Imaginations, and Chinese BCG Va
 
 <div class="paragraph"><a href="dizhixueEN.html" target="_blank"><font color="#2a2a2a"><strong><font size="4">Texture of the Earth and Skin We're In: </br>Geological Thinking, Anthropocene Cinema, and the Imaginations Beyond Humanbeing</font></strong><br /><font size="3">2023 - Present</font></font></a><br /><br /></div>
 
-
+</div>
 
 			</div>
 		</div>
