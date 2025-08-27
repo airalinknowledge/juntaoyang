@@ -63,21 +63,78 @@
 .blog-header h2 a {}
 #wsite-content h2.wsite-product-title {}
 .wsite-product .wsite-product-price a {}
-}</style>
-<!-- 新增样式：限制正文内容宽度 -->
+}
+</style>
+<!-- 新增样式以匹配writings.html -->
 <style>
-    /* 限制正文内容区域宽度，增加两侧留白 */
-    .main-content-area {
-        max-width: 90%; /* 可以调整这个值来改变内容宽度 */
-        margin-left: 0%;
-        margin-right: 10%;
+    .writings-body {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 0 15px;
+        font-family: "Georgia", serif !important;
     }
-
-    /* 针对移动设备，取消宽度限制，让内容全宽显示 */
-    @media screen and (max-width: 767px) {
-        .main-content-area {
-            max-width: 100%;
-        }
+    .writing-section {
+        margin-bottom: 0;
+    }
+    .writing-section-title {
+        font-size: 1.8em;
+        font-weight: normal;
+        letter-spacing: 1px;
+        margin-bottom: 50px;
+        font-family: "Georgia", serif !important;
+        text-align: center;
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+    .writing-entry {
+        margin-bottom: 40px;
+    }
+    .conference-section .writing-entry {
+        margin-bottom: 55px;
+    }
+    .writing-title {
+        font-size: 1.15em;
+        font-style: italic;
+        margin-bottom: 8px;
+        line-height: 1.5;
+        font-family: "Georgia", serif !important;
+    }
+    .writing-title a {
+        text-decoration: none;
+        color: #333;
+        transition: color 0.3s ease;
+    }
+    .writing-title a:hover {
+        color: #000;
+        text-decoration: underline;
+    }
+    .writing-details {
+        font-size: 1em;
+        color: #555;
+        line-height: 1.7;
+        padding-left: 25px;
+        font-family: "Georgia", serif !important;
+    }
+    .writing-details a {
+        text-decoration: underline;
+        color: #444;
+    }
+    .writing-details a:hover {
+        color: #000;
+    }
+    .talks-list .writing-title {
+        font-style: normal;
+    }
+    .decorative-hr {
+        border: none;
+        height: 1px;
+        background-color: #ccc;
+        width: 100px;
+        margin: 80px auto;
+    }
+    /* 特定于中文标题的样式，取消斜体 */
+    .chinese-title {
+        font-style: normal !important;
     }
 </style>
 <style>
@@ -237,126 +294,118 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 
 <div class="wsite-spacer" style="height:50px;"></div>
 
-<div class="main-content-area">
 <h2 class="wsite-content-title">出版</h2>
+<div class="wsite-spacer" style="height:40px;"></div>
 
+<!-- ******** 以下为格式修改后的内容 ******** -->
+<div class="writings-body">
 
-<div><div style="height: 10px; overflow: hidden; width: 100%;"></div>
-<hr class="styled-hr" style="width:100%;"></hr>
-<div style="height: 40px; overflow: hidden; width: 100%;"></div></div>
+    <div class="writing-section">
+        <h3 class="writing-section-title">同行评审论文</h3>
+        
+        <div class="writing-entry">
+            <p class="writing-title">"From Waste to Wound, from Cure to Curse—Or, How the Ritualized Scattering of Herbal Remnants Reconfigures Healing, Communal Trauma, and the Politics of Breath"</p>
+            <p class="writing-details">- 刊于 <em>TABOO ‒ TRANSGRESSION ‒ TRANSCENDENCE in Art & Science 2025, Interdisciplinary Conference Proceedings</em>, Ionian University Publications (2025)</p>
+        </div>
+        <div class="writing-entry">
+            <p class="writing-title"><a href="/uploads/Precarious Attachments_A Critical Reading of Judith Butler’s The Psychic Life of Power_Theories in Subjection (1997).pdf">"Precarious Attachments: A Critical Reading of Judith Butler's The Psychic Life of Power: Theories in Subjection (1997)"</a></p>
+            <p class="writing-details">- 刊于 <em>The Journal of Contemporary Art Criticism</em>, Asia Technology Research Institute, Volume 1 Issue 2 (2025)</p>
+        </div>
+        <div class="writing-entry">
+            <p class="writing-title chinese-title"><a href="/uploads/Juntao Yang_Materiality, Geoaesthetics and Planetary Futures_The Geology of Media in the Context of Anthropocene.pdf">“物质性，地质美学与行星未来：人类世语境下的媒介地质学”</a></p>
+            <p class="writing-details">- 刊于中国戏剧出版社《戏剧与影视评论》2024年第六期</p>
+        </div>
+    </div>
 
+    <hr class="decorative-hr">
 
+    <div class="writing-section">
+        <h3 class="writing-section-title">评论写作</h3>
+        <div class="writing-entry">
+            <p class="writing-title chinese-title"><a href="/uploads/JuntaoYang_Stepping_Through_Cures_and_Curses_How_the_Traces_of_Herb_Scattering_Breathing_and_Memorizing_Mediate_Collective_Trauma_and_Public_Healing.pdf#page=39">“穿越治愈/诅咒：草药散播、呼吸和记忆的痕迹如何调解集体创伤和公共治疗”</a></p>
+            <p class="writing-details">MODA Critical Review，2025</p>
+        </div>
+        <div class="writing-entry">
+            <p class="writing-title chinese-title"><a href="https://mp.weixin.qq.com/s/pudCgdXn5oZk23n-0E4NMw" target="_blank">“轻巧与冷淡的对谈：数字能动性，推测性美学，与阴谋论同情者”</a></p>
+            <p class="writing-details">Imaginary Z，2023</p>
+        </div>
+        <div class="writing-entry">
+            <p class="writing-title chinese-title"><a href="https://mp.weixin.qq.com/s/cdMjyF0wYb5q0NEMFrLtFQ" target="_blank">“戛然而止：每一次静默都是隐藏空间”</a></p>
+            <p class="writing-details">浮屿观览，浮屿艺术，2023</p>
+        </div>
+        <div class="writing-entry">
+            <p class="writing-title chinese-title"><a href="https://mp.weixin.qq.com/s/2Qo2SAe7MscwARqoK2msOQ" target="_blank">“从《中国》到《CK2K2X》：想象的伪装与异类的突现”</a></p>
+            <p class="writing-details">湖北省电影家协会青年评论委员会专栏，2023</p>
+        </div>
+    </div>
+    
+    <hr class="decorative-hr">
 
-<font color="#000000">
+    <div class="writing-section conference-section">
+        <h3 class="writing-section-title">会议展示</h3>
+        <div class="writing-entry">
+            <p class="writing-title"><em>Mediating Elemental Ghosts: Media Archaeology as Planetary Sorcery</em> [口头报告]</p>
+            <p class="writing-details">- 2025厦门大学青年电影论坛，论讨主题：“电影之爱与电影之死：从传统美学到数智革命”，厦门大学，中国，2025/7</p>
+        </div>
+        <div class="writing-entry">
+            <p class="writing-title"><em>Fault Lines and Echoing Strata: Attunement and Unsecurement through East Asia's Earthquake–Media</em> [口头报告]</p>
+            <p class="writing-details">
+- SEAA-SNU Anthropology 2025 Conference "Shaping Futures: East Asia as Practice", Seoul National University, 韩国, 2025/7/14-7/16<br>
+- The 20th annual Cinema and Media Studies Graduate Student Conference "Failing Media", The University of Chicago, 美国, 2025/4/25-2025/4/26<br>
+- "Mediated Futures: Graduate Student Interdisciplinary Conference on Environment, Space, Future, and Media in Southeast and East Asian Cultural and Art Practices", University of California, Irvine, 美国, 2025/4/25 - 4/27<br>
+- Common Ground Graduate Conference 2025 "Media Studies in/at/form The Margins", Indiana University Bloomington, 美国, 2025/3/7 - 3/8<br>
+- 2025 NYU Cinema Studies Student Conference "Templates", New York University, 美国, 2025/2/28 - 3/1</p>
+        </div>
+         <div class="writing-entry">
+            <p class="writing-title"><em>Porous Heritage, Chemical Exposure Victims, Suppressed Vulnerability/Sensitivity: Activate the Embodied Experience of Industrial Heritage Among a Wider Population</em> [口头报告]</p>
+            <p class="writing-details">- Big Stuff Conference "Skills and Machines: A Living Paternership", Perth, 澳大利亚, 2025/10/14 - 10/17<br>
+- The International Committee for the Conservation of the Industrial Heritage Congress 2025 "Heritage in action: Legacies of industry in future making", Kiruna, 瑞典, 2025/8/25-30<br>
+- The Society for Industrial Archeology's 53rd Annual Conference, Buffalo, 美国, 2025/5/29-6/1</p>
+        </div>
+         <div class="writing-entry">
+            <p class="writing-title"><em>Stepping Through Cures/Curses: How the Traces of Herb Scattering, Breathing, and Memorizing Mediate Collective Trauma and Public Healing</em> [口头报告]</p>
+            <p class="writing-details">（修订后发表为 <em>From Waste to Wound, from Cure to Curse—Or, How the Ritualized Scattering of Herbal Remnants Reconfigures Healing, Communal Trauma, and the Politics of Breath</em>）<br>
+            - Taboo-Transgression-Transcendence in Art & Science 2025, Interdisciplinary Conference, Kino Šiška, 斯洛文尼亚, 2025/9/9-9/13</p>
+        </div>
+        <div class="writing-entry">
+            <p class="writing-title chinese-title">“媒介物质性的新视角：人类世语境下的地质学电影批评” [口头报告（部分）]</p>
+            <p class="writing-details">（修订后发表为 “物质性，地质美学与行星未来：人类世语境下的媒介地质学”）<br>
+            - 北京国际电影节·第32届大学生电影节 第六届国际青年学者论坛，北京师范大学，中国，2025/4<br>
+            - 第六届媒介物质性论坛，清华大学，中国，2025/3/29-3/30<br>
+            - 2024中国东部传媒艺术论坛，南京大学，中国，2024/12/14<br>
+            - “全球共通：数字时代的共同体想象 ”学术大会暨2024 年浙江省传播学会年会，浙大宁波理工学院，中国，2024/12/13 - 12/14<br>
+            - 第十二届海峡两岸生态文学年会暨后人类语境下的生态批评与生态文学研讨会，集美大学，中国，2024/10/11 - 10/13</p>
+        </div>
+    </div>
 
-<div class="paragraph"><font color="#000000" size="6">出版论文</font><br /><div style="height:15px;"></div>
+    <hr class="decorative-hr">
 
+    <div class="writing-section">
+        <h3 class="writing-section-title">对谈</h3>
+        <div class="writing-entry">
+            <p class="writing-title talks-list"><a href="https://mp.weixin.qq.com/s/emznMENbR0EbiGNm2IyYyQ" target="_blank">沙龙对谈, “多屏影像”短片主题展映</a></p>
+            <p class="writing-details">中国美术学院，杭州，中国，2025</p>
+        </div>
+        <div class="writing-entry">
+            <p class="writing-title talks-list"><a href="https://mp.weixin.qq.com/s/FxY6OtlHM6bSdNDa7oV9DA" target="_blank">“失真的想象力：电影注解下的技术反思”</a></p>
+            <p class="writing-details">武汉大学艺术学院, 2024</p>
+        </div>
+        <div class="writing-entry">
+            <p class="writing-title talks-list"><a href="GOOGOLtalk.html" target="_blank">艺术家对谈, <em>GOOGOL</em></a></p>
+            <p class="writing-details">线上, 2024</p>
+        </div>
+        <div class="writing-entry">
+            <p class="writing-title talks-list"><a href="https://mp.weixin.qq.com/s/LceWwIAWW9sofBra7_AgKA" target="_blank">“一切是如何开始的？”——神秘学圆桌会第一期</a></p>
+            <p class="writing-details">乌麦艺术计划, 线上, 2023</p>
+        </div>
+    </div>
 
-<font>" <em>Queer as Survival: Methodologies of Leakage, Pornographic Politics of Shame and A Subversive Alliance</em>"</font></a></u><font> </font><br/>
--&nbsp; &nbsp;&nbsp;同行评审中&nbsp; &nbsp;&nbsp;<br /><div style="height:26px;"></div>
+</div>
+<!-- ******** 修改结束 ******** -->
 
-
-<font color="#000000">"<em>The Unsecurity and Attunement of Heterogeneous Actants: Rethinking the World and the Earth through Environmental–Media</em>"</font></a></u><font color="#000000"> </font><br/>
--&nbsp; &nbsp;&nbsp;同行评审中&nbsp; &nbsp;&nbsp;<br /><div style="height:24px;"></div>
-
-<font color="#000000"><em>"From Waste to Wound, from Cure to Curse—Or, How the Ritualized Scattering of Herbal Remnants Reconfigures Healing, Communal Trauma, and the Politics of Breath"</em></font></a></u><font color="#000000"> </font><br/>
--&nbsp; &nbsp;&nbsp;刊于 <em>TABOO ‒ TRANSGRESSION ‒ TRANSCENDENCE in Art & Science 2025, Interdisciplinary Conference Proceedings</em>, Ionian University Publications (2025)&nbsp; &nbsp;&nbsp;<br /><div style="height:24px;"></div>
-
-<em><u><a href="/uploads/
-Precarious Attachments_A Critical Reading of Judith Butler’s The Psychic Life of Power_Theories in Subjection (1997).pdf" ><font color="#000000">"Precarious Attachments: A Critical Reading of Judith Butler's The Psychic Life of Power: Theories in Subjection (1997) "</em></font></a></u><br/>
--&nbsp; &nbsp;&nbsp;刊于<em>The Journal of Contemporary Art Criticism</em>, Asia Technology Research Institute, Volume 1 Issue 2 (2025)&nbsp; &nbsp;&nbsp;<br /><div style="height:26px;"></div>
-
-<u><a href="/uploads/Juntao Yang_Materiality, Geoaesthetics and Planetary Futures_The Geology of Media in the Context of Anthropocene.pdf" ><font color="#000000">“物质性，地质美学与行星未来：人类世语境下的媒介地质学”</font></a></u><font color="#000000"></font><br /> 
--&nbsp; &nbsp;&nbsp;刊于中国戏剧出版社《戏剧与影视评论》2024年第六期&nbsp; &nbsp;&nbsp;<br />
-
-
-
-
-
-&#8203;</div>
-&#8203;</div>
-
-
-<div class="paragraph"><font color="#000000" size="6">会议展示</font><br /><div style="height:15px;"></div>
-
-
-
-<font><em>Mediating Elemental Ghosts: Media Archaeology as Planetary Sorcery</em>&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;[口头报告]</font></a></u><font></font><br/>
--&nbsp; &nbsp;&nbsp;2025厦门大学青年电影论坛，论讨主题：“电影之爱与电影之死：从传统美学到数智革命”，厦门大学，中国，2025/7<br />
-
-<div style="height:60px;"></div>
-
-
-<font color="#000000">“<em>Fault Lines and Echoing Strata: Attunement and Unsecurement through East Asia's Earthquake–Media</em>”&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;[ 口头报告 ]</font></a></u><font color="#000000"></font><br/>
--&nbsp; &nbsp;&nbsp;SEAA-SNU Anthropology 2025 Conference "Shaping Futures: East Asia as Practice", Seoul National University, 韩国, 2025/7/14-7/16<br />
--&nbsp; &nbsp;&nbsp;The 20th annual Cinema and Media Studies Graduate Student Conference "Failing Media", The University of Chicago, 美国, 2025/4/25-2025/4/26<br />
--&nbsp; &nbsp;&nbsp;"Mediated Futures: Graduate Student Interdisciplinary Conference on Environment, Space, Future, and Media in Southeast and East Asian Cultural and Art Practices", University of California, Irvine, 美国, 2025/4/25 - 4/27<br />
--&nbsp; &nbsp;&nbsp;Common Ground Graduate Conference 2025 "Media Studies in/at/form The Margins", Indiana University Bloomington, 美国, 2025/3/7 - 3/8<br />
--&nbsp; &nbsp;&nbsp;2025 NYU Cinema Studies Student Conference "Templates", New York University, 美国, 2025/2/28 - 3/1
-<br /><div style="height:60px;"></div>
-
-
-<font color="#000000">“<em>Porous Heritage, Chemical Exposure Victims, Suppressed Vulnerability/Sensitivity: Activate the Embodied Experience of Industrial Heritage Among a Wider Population”</em>&nbsp; &nbsp;
-&nbsp; &nbsp;&nbsp;&nbsp;[ 口头报告 ]</font></a></u><font color="#000000"></font><br />
--&nbsp; &nbsp;&nbsp;Big Stuff Conference "Skills and Machines: A Living Paternership", Perth, 澳大利亚, 2025/10/14 - 10/17<br />
--&nbsp; &nbsp;&nbsp;The International Committee for the Conservation of the Industrial Heritage Congress 2025 "Heritage in action: Legacies of industry in future making", Kiruna, 瑞典, 2025/8/25-30<br />
--&nbsp; &nbsp;&nbsp;The Society for Industrial Archeology's 53rd Annual Conference, Buffalo, 美国, 2025/5/29-6/1<br />
-<div style="height:60px;"></div>
-
-
-<font color="#000000"><em>“Stepping Through Cures/Curses: How the Traces of Herb Scattering, Breathing, and Memorizing Mediate Collective Trauma and Public Healing”</em>&nbsp; &nbsp;
-&nbsp; &nbsp;&nbsp;&nbsp;[口头报告]</font></a></u><font color="#000000"></font><br />
-( 修订后发表为 <em>From Waste to Wound, from Cure to Curse—Or, How the Ritualized Scattering of Herbal Remnants Reconfigures Healing, Communal Trauma, and the Politics of Breath</em> )<br />
--&nbsp; &nbsp;&nbsp;Taboo-Transgression-Transcendence in Art & Science 2025, Interdisciplinary Conference, Kino Šiška, 斯洛文尼亚, 2025/9/9-9/13
-<br /><div style="height:60px;"></div>
-
-
-<font color="#000000">“媒介物质性的新视角：人类世语境下的地质学电影批评”</em>&nbsp; &nbsp;
-&nbsp; &nbsp;&nbsp;&nbsp;[ 口头报告（部分） ]</font></a></u><font color="#000000"></font><br/>
-（ 修订后发表为 “物质性，地质美学与行星未来：人类世语境下的媒介地质学” ）<br />
--&nbsp; &nbsp;&nbsp;北京国际电影节·第32届大学生电影节 第六届国际青年学者论坛，北京师范大学，中国，2025/4<br />
--&nbsp; &nbsp;&nbsp;第六届媒介物质性论坛，清华大学，中国，2025/3/29-3/30<br />
--&nbsp; &nbsp;&nbsp;2024中国东部传媒艺术论坛，南京大学，中国，2024/12/14<br />
--&nbsp; &nbsp;&nbsp;“全球共通：数字时代的共同体想象 ”学术大会暨2024 年浙江省传播学会年会，浙大宁波理工学院，中国，2024/12/13 - 12/14<br />
--&nbsp; &nbsp;&nbsp;第十二届海峡两岸生态文学年会暨后人类语境下的生态批评与生态文学研讨会，集美大学，中国，2024/10/11 - 10/13<br /><br />&#8203;&#8203;</div>
-
-
-
-
-
-<div class="paragraph"><font color="#000000" size="6">评论写作</font><br /><div style="height:15px;"></div>
-
-<a href="/uploads/JuntaoYang_Stepping_Through_Cures_and_Curses_How_the_Traces_of_Herb_Scattering_Breathing_and_Memorizing_Mediate_Collective_Trauma_and_Public_Healing.pdf#page=39" ><font color="#000000"><u>“穿越治愈/诅咒：草药散播、呼吸和记忆的痕迹如何调解集体创伤和公共治疗”</font></a></u>，MODA Critical Review，2025<br />
-<div style="height:17px;"></div>
-
-<u><a href="https://mp.weixin.qq.com/s/pudCgdXn5oZk23n-0E4NMw" target="_blank"><font color="#000000">“轻巧与冷淡的对谈：数字能动性，推测性美学，与阴谋论同情者”</font>&#8203;</a></u><span style="color:rgb(0, 0, 0)">， Imaginary Z，2023</span><br />
-<div style="height:17px;"></div>
-
-<u><em><a href="https://mp.weixin.qq.com/s/cdMjyF0wYb5q0NEMFrLtFQ" target="_blank"><font color="#000000">&#8203;</font></a></em><a href="https://mp.weixin.qq.com/s/cdMjyF0wYb5q0NEMFrLtFQ" target="_blank"><font color="#000000">“戛然而止：每一次静默都是隐藏空间”</font></a></u><font color="#000000">，</font> 浮屿观览，浮屿艺术，2023<br />
-<div style="height:17px;"></div>
-
-<u><a href="https://mp.weixin.qq.com/s/2Qo2SAe7MscwARqoK2msOQ" target="_blank"><font color="#000000">“从《中国》到《CK2K2X》：想象的伪装与异类的突现”</font></a><font color="#000000">&#8203;</font></u>，湖北省电影家协会青年评论委员会专栏，2023<br /><br />&#8203;&#8203;</div>
-
-
-
-<div class="paragraph"><font color="#000000" size="6">对谈</font><br />
-<div style="height:15px;"></div>
-
-<u><a href="https://mp.weixin.qq.com/s/emznMENbR0EbiGNm2IyYyQ" target="_blank"><font color="#000000">沙龙对谈</a></u>, “多屏影像”短片主题展映</a></em></font></u>，中国美术学院，杭州，中国，2025<br />
-<div style="height:15px;"></div>
-<u><a href="https://mp.weixin.qq.com/s/FxY6OtlHM6bSdNDa7oV9DA" target="_blank"><font color="#000000">“失真的想象力：电影注解下的技术反思”</em></font></a></u></font>, 武汉大学艺术学院, 2024<br />
-<div style="height:15px;"></div>
-<u><a href="GOOGOLtalk.html" target="_blank"><font color="#000000">艺术家对谈</font></a></u></font>, <em>GOOGOL</em>,    线上, 2024<br />
-<div style="height:15px;"></div>
-
-<u><a href="https://mp.weixin.qq.com/s/LceWwIAWW9sofBra7_AgKA" target="_blank"><font color="#000000">“一切是如何开始的？”——神秘学圆桌会第一期<font color="#000000"></font></a></u>, 乌麦艺术计划, 线上, 2023</font><br />
-
-
-
+			</div>
+		</div>
       </div>
-
-
-
 	</div>
 </div>
 

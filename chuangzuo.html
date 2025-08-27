@@ -63,22 +63,71 @@
 .blog-header h2 a {}
 #wsite-content h2.wsite-product-title {}
 .wsite-product .wsite-product-price a {}
-}</style>
-<!-- 新增样式：限制正文内容宽度 -->
-<style>
-    /* 限制正文内容区域宽度，增加两侧留白 */
-    .main-content-area {
-        max-width: 90%; /* 可以调整这个值来改变内容宽度 */
-        margin-left: 0%;
-        margin-right: 10%;
+}
+/* 新增的自定义样式，用于图文错落布局，不依赖外部库 */
+.artworks-container {
+    padding-top: 0px; /* 重置内边距 */
+}
+.artwork-item-new {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 20px; /* 作品之间的间距 */
+}
+.artwork-image-new, .artwork-description-new {
+    width: 100%; /* 移动端默认全宽 */
+}
+.artwork-image-new a {
+    display: block;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: box-shadow 0.3s ease;
+}
+.artwork-image-new a:hover {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+.artwork-image-new img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+.artwork-description-new {
+    padding: 20px 0;
+}
+.artwork-description-new a {
+    text-decoration: none;
+}
+.artwork-title-new {
+    font-size: 1.2em; /* 调整字体大小以匹配原有风格 */
+    font-weight: bold;
+    font-family: "Georgia", serif !important;
+}
+.artwork-details-new {
+    font-size: 1em;
+    color: #2a2a2a;
+    margin-top: 8px;
+    font-family: "Georgia", serif !important;
+}
+/* 桌面端样式 */
+@media screen and (min-width: 768px) {
+    .artwork-item-new {
+        flex-wrap: nowrap;
+        gap: 80px; /* 拉大图片和文字之间的间距 */
     }
-
-    /* 针对移动设备，取消宽度限制，让内容全宽显示 */
-    @media screen and (max-width: 767px) {
-        .main-content-area {
-            max-width: 100%;
-        }
+    .artwork-image-new {
+        width: 40%; /* 调小图片宽度 */
     }
+    .artwork-description-new {
+        width: 55%; /* 相应调整文字宽度 */
+        padding: 0;
+    }
+    /* 使用独立的类来实现错落效果 */
+    .artwork-item-new.reverse-layout .artwork-image-new {
+        order: 2; /* 将图片排到后面 */
+    }
+    .artwork-item-new.reverse-layout .artwork-description-new {
+        text-align: right;
+    }
+}
 </style>
 <style>
 .wsite-background {background-image: url("/uploads/1/4/8/1/148137552/background-images/1199586110.jpg") !important;background-repeat: no-repeat !important;background-position: 50% 50% !important;background-size: 100% !important;background-color: transparent !important;background: inherit;}
@@ -219,7 +268,7 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 					
 						
 
-<div class="paragraph" style="text-align:left;"><font size="3"><strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</strong><u><a href="artworks.html"><font color="#2a2a2a">English</font></a></u>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<strong>&#20013;&#25991;</strong><br />&#8203;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;juntao.yang@columbia.edu</font></div>
+<div class="paragraph" style="text-align:left;"><font size="3"><strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</strong><u><a href="artworks.html"><font color="#2a2a2a">English</font></a></u>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<strong>中文</strong><br />&#8203;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;juntao.yang@columbia.edu</font></div>
 
 
 					
@@ -238,44 +287,109 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 
 <div class="wsite-spacer" style="height:50px;"></div>
 
-<div class="main-content-area">
-<h2 class="wsite-content-title">&#21019;&#20316;</h2>
+<h2 class="wsite-content-title">创作</h2>
 
-<div><div style="height: 20px; overflow: hidden; width: 100%;"></div>
-<hr class="styled-hr" style="width:100%;"></hr>
-<div style="height: 20px; overflow: hidden; width: 100%;"></div></div>
+<div><div style="height: 20px; overflow: hidden; width: 100%;"></div><hr class="styled-hr" style="width:100%;"></hr><div style="height: 20px; overflow: hidden; width: 100%;"></div></div>
 
-<div class="paragraph"><a href="xiaoshidezhongliang.html" target="_blank"><strong><font size="4" color="#2a2a2a"><span style="display: none;">&nbsp;</span>消失的重量</font></strong><br /><font color="#2a2a2a"><font size="3">现成品（磅秤，编织袋）<br />&#8203;2024<span style="display: none;">&nbsp;</span></font></font></a></div>
+<!-- ******** 以下是修改的作品列表部分 ******** -->
+<div class="artworks-container">
+    <!-- 作品 1: 图片在左 -->
+    <div class="artwork-item-new">
+        <div class="artwork-image-new">
+            <a href="xiaoshidezhongliang.html" target="_blank">
+                <img src="uploads/D94.jpg" alt="作品图片 1">
+            </a>
+        </div>
+        <div class="artwork-description-new">
+            <a href="xiaoshidezhongliang.html" target="_blank">
+                <h3 class="artwork-title-new">消失的重量</h3>
+                <p class="artwork-details-new">
+                    现成品（磅秤，编织袋）<br>
+                    2024
+                </p>
+            </a>
+        </div>
+    </div>
+    <div><div style="height: 20px; overflow: hidden; width: 100%;"></div><hr class="styled-hr" style="width:100%;"></hr><div style="height: 20px; overflow: hidden; width: 100%;"></div></div>
 
-<div><div style="height: 20px; overflow: hidden; width: 100%;"></div>
-<hr class="styled-hr" style="width:100%;"></hr>
-<div style="height: 20px; overflow: hidden; width: 100%;"></div></div>
+    <!-- 作品 2: 图片在右 -->
+    <div class="artwork-item-new reverse-layout">
+        <div class="artwork-image-new">
+            <a href="nihennankanjian.html" target="_blank">
+                <img src="uploads/D91.jpg" alt="作品图片 2">
+            </a>
+        </div>
+        <div class="artwork-description-new">
+            <a href="nihennankanjian.html" target="_blank">
+                <h3 class="artwork-title-new">你很难看见...</h3>
+                <p class="artwork-details-new">
+                    灯箱摄影，数字影像<br>
+                    2024
+                </p>
+            </a>
+        </div>
+    </div>
+    <div><div style="height: 20px; overflow: hidden; width: 100%;"></div><hr class="styled-hr" style="width:100%;"></hr><div style="height: 20px; overflow: hidden; width: 100%;"></div></div>
 
-<div class="paragraph"><a href="nihennankanjian.html" target="_blank"><strong><font size="4" color="#2a2a2a"><span style="display: none;">&nbsp;</span>你很难看见...</font></strong><br /><font color="#2a2a2a"><font size="3">灯箱摄影，数字影像<br />&#8203;2024<span style="display: none;">&nbsp;</span></font></font></a></div>
+    <!-- 作品 3: 图片在左 -->
+    <div class="artwork-item-new">
+        <div class="artwork-image-new">
+            <a href="chiluodeshanghenyubeiyiqide.html" target="_blank">
+                <img src="uploads/innovart.jpg" alt="作品图片 3">
+            </a>
+        </div>
+        <div class="artwork-description-new">
+            <a href="chiluodeshanghenyubeiyiqide.html" target="_blank">
+                <h3 class="artwork-title-new">赤裸的伤痕与被遗弃者</h3>
+                <p class="artwork-details-new">
+                    数字摄影<br>
+                    2024
+                </p>
+            </a>
+        </div>
+    </div>
+    <div><div style="height: 20px; overflow: hidden; width: 100%;"></div><hr class="styled-hr" style="width:100%;"></hr><div style="height: 20px; overflow: hidden; width: 100%;"></div></div>
 
-<div><div style="height: 20px; overflow: hidden; width: 100%;"></div>
-<hr class="styled-hr" style="width:100%;"></hr>
-<div style="height: 20px; overflow: hidden; width: 100%;"></div></div>
+    <!-- 作品 4: 图片在右 -->
+    <div class="artwork-item-new reverse-layout">
+        <div class="artwork-image-new">
+            <a href="qingqiaoerlengdandeduitan.html" target="_blank">
+                <img src="uploads/yuanzikongjian24.jpg" alt="作品图片 4">
+            </a>
+        </div>
+        <div class="artwork-description-new">
+            <a href="qingqiaoerlengdandeduitan.html" target="_blank">
+                <h3 class="artwork-title-new">轻巧而冷淡的对谈：大西洋，算法与可见性</h3>
+                <p class="artwork-details-new">
+                    单频高清影像, 13’11’’<br>
+                    2023
+                </p>
+            </a>
+        </div>
+    </div>
+    <div><div style="height: 20px; overflow: hidden; width: 100%;"></div><hr class="styled-hr" style="width:100%;"></hr><div style="height: 20px; overflow: hidden; width: 100%;"></div></div>
 
-
-<div class="paragraph"><br /><a href="chiluodeshanghenyubeiyiqide.html" target="_blank"><font color="#2a2a2a"><strong><font size="4">&#36196;&#35064;&#30340;&#20260;&#30165;&#19982;&#34987;&#36951;&#24323;&#32773;</font></strong><br /><font size="3"><span>&#25968;&#23383;&#25668;&#24433;</span><br /><span>&#8203;2024</span></font></font></a></div>
-
-<div><div style="height: 20px; overflow: hidden; width: 100%;"></div>
-<hr class="styled-hr" style="width:100%;"></hr>
-<div style="height: 20px; overflow: hidden; width: 100%;"></div></div>
-
-<div class="paragraph"><br /><a href="qingqiaoerlengdandeduitan.html" target="_blank"><font color="#2a2a2a"><strong><font size="4">&#36731;&#24039;&#32780;&#20919;&#28129;&#30340;&#23545;&#35848;&#65306;&#22823;&#35199;&#27915;&#65292;&#31639;&#27861;&#19982;&#21487;&#35265;&#24615;</font></strong><br /><font size="3">&#21333;&#23631;&#39640;&#28165;&#24433;&#20687;, 13&rsquo;11&rsquo;&rsquo;<br />&#8203;2023</font></font></a></div>
-
-<div><div style="height: 20px; overflow: hidden; width: 100%;"></div>
-<hr class="styled-hr" style="width:100%;"></hr>
-<div style="height: 20px; overflow: hidden; width: 100%;"></div></div>
-
-<div class="paragraph"><br /><a href="bencaogongtonghuxi.html" target="_blank"><font color="#2a2a2a"><strong><font size="4">&#26412;&#33609;&#65306;&#20849;&#21516;&#21628;&#21560;</font></strong><br /><font size="3"><span>&#21333;&#23631;&#39640;&#28165;&#25968;&#23383;&#24433;&#20687;&#65288;4'19''&#65289;&#65292;&#33609;&#33647;&#65288;&#19977;&#19971;&#65292;&#36828;&#24535;&#65292;&#29281;&#20025;&#30382;&#65289;</span><br /><span>&#8203;2023</span></font></font></a></div>
-
-<div><div style="height: 20px; overflow: hidden; width: 100%;"></div>
-<hr class="styled-hr" style="width:100%;"></hr>
-<div style="height: 20px; overflow: hidden; width: 100%;"></div></div>
+    <!-- 作品 5: 图片在左 -->
+    <div class="artwork-item-new">
+        <div class="artwork-image-new">
+            <a href="bencaogongtonghuxi.html" target="_blank">
+                 <img src="uploads/333.jpg" alt="作品图片 5">
+            </a>
+        </div>
+        <div class="artwork-description-new">
+            <a href="bencaogongtonghuxi.html" target="_blank">
+                <h3 class="artwork-title-new">本草：共同呼吸</h3>
+                <p class="artwork-details-new">
+                    单频高清数字影像（4'19''），草药（三七，远志，牡丹皮）<br>
+                    2023
+                </p>
+            </a>
+        </div>
+    </div>
+     <div><div style="height: 20px; overflow: hidden; width: 100%;"></div><hr class="styled-hr" style="width:100%;"></hr><div style="height: 20px; overflow: hidden; width: 100%;"></div></div>
 </div>
+<!-- ******** 作品列表修改结束 ******** -->
+
 			</div>
 		</div>
       </div>
