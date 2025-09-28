@@ -77,18 +77,6 @@
     body.wsite-background {background-attachment: fixed !important;}
     .wsite-background.wsite-custom-background { background-size: cover !important; }
     
-    /* 保留你原先的 Flex 样式（不再使用，但不影响其它部分） */
-    .posts-flex-container {
-        display: flex;
-        flex-direction: row;
-        gap: 80px; 
-    }
-    .posts-flex-column {
-        width: 50%;
-        display: flex;
-        flex-direction: column;
-    }
-
     .post-entry-card {
         width: 100%;
         margin-bottom: 80px; 
@@ -102,7 +90,7 @@
 
     .post-title a {
         text-decoration: none !important;
-        color: #555 !important;   /* 标题颜色与原 read-more 保持一致 */
+        color: #555 !important;
     }
     .post-title a:hover {
         color: #000 !important;
@@ -135,7 +123,6 @@
         text-decoration: underline;
     }
     
-    /* 左右区块间距/分隔线 */
     .posts-column {
         padding-right: 60px !important;
     }
@@ -145,7 +132,6 @@
         height: 100%;
     }
 
-    /* 只收紧卡片内部的间距 */
     .post-entry-card .paragraph { 
       margin: 6px 0 !important;
       line-height: 1.35;
@@ -163,42 +149,18 @@
       margin: 6px 0 !important;
     }
 
-    /* === 原：两列瀑布流（自动分栏） — 仍然保留，但本页改用手动分发 === */
-    .posts-waterfall {
-      column-count: 2;
-      column-gap: 80px;            /* 与原 gap 保持一致 */
-    }
-    .posts-waterfall .post-entry-card {
-      break-inside: avoid;         /* 避免被切断 */
-      display: inline-block;       /* 参与列内排布 */
-      width: 100%;
-      margin: 0 0 80px;
-    }
-    .posts-waterfall .post-entry-card:nth-child(even) {
-      margin-top: 60px;
-    }
-
-    /* === 新增：手动分发双列（Flex） === */
     .posts-two-col { display: flex; gap: 80px; }
     .posts-left, .posts-right { flex: 1; display: flex; flex-direction: column; }
-    /* 首行错落：右列第一张下移，可按需把 80px 调大/调小 */
     .posts-right .post-entry-card:first-child { margin-top: 80px; }
     .posts-left .post-entry-card, .posts-right .post-entry-card { margin: 0 0 80px; width: 100%; }
 
-    /* 移动端：单列 */
     @media (max-width: 767px) {
-      .posts-waterfall { column-count: 1; column-gap: 0; }
-      /* 你原先的移动端样式继续生效 */
-      .posts-flex-container { flex-direction: column; gap: 0; }
-      .posts-flex-column { width: 100%; margin-top: 0 !important; }
+      .posts-two-col { display:block; }
+      .posts-left, .posts-right { width:100%; }
+      .posts-right .post-entry-card:first-child { margin-top: 0; }
       .separator-wrapper { border-left: none; padding-left: 0; margin-top: 40px; }
       .posts-column { padding-right: 15px !important; }
       .news-column { padding-left: 15px !important; }
-      /* 手动分发在移动端改为单列堆叠 */
-      .posts-two-col { display:block; }
-      .posts-left, .posts-right { width:100%; }
-      /* 移动端取消错落，避免顶部空白过大 */
-      .posts-right .post-entry-card:first-child { margin-top: 0; }
     }
   </style>
   <script src="https://cdn2.editmysite.com/js/jquery-1.8.3.min.js"></script>
@@ -296,50 +258,34 @@
                               <!-- Left Column: Posts -->
                               <td class="wsite-multicol-col posts-column" style="width:75%; padding:0 15px; vertical-align: top;">
                                 
-                                <!-- 新：手动分发双列容器（FLEX） -->
+                                <!-- Manual two-column container (FLEX) -->
                                 <div class="posts-two-col">
-
-
-
-
-                                  <!-- 左列：Post 1, Post 3 -->
+                                  <!-- Left Column: Posts 1, 3, 5, 7 -->
                                   <div class="posts-left">
-                                    <!-- Post 1 -->
+
+                                    <!-- Post: Butler (Original) -->
                                     <div class="post-entry-card">
-                                      <a href="mukendi.html"><img src="uploads/Mukendi.jpg" class="post-image" alt="文章预览图"></a>
+                                      <a href="butler.html"><img src="uploads/Butler.jpg" class="post-image" alt="A photograph of Judith Butler"></a>
                                       <div class="paragraph post-title">
-                                        <a href="mukendi.html"><u><font size="4">Jean Katambayi Mukendi:  Toward a Speculative Rather Than Technicist Media Archaeology</font></u></a>
+                                        <a href="butler.html"><u><font size="4">A Defense of Obscurity: Translating Judith Butler</font></u></a>
                                       </div>
-                                      <div class="paragraph post-date">August 25, 2025</div>
-                                      <div class="paragraph post-excerpt">I seek a more emphatically speculative approach to media archaeology, one capable of apprehending the spatio-temporal scales that transcend what can be grasped through technical restoration and hands-on operation. The work of Jean Katambayi Mukendi seems to offer just such a pathway.</div>
+                                      <div class="paragraph post-date">September 27, 2025</div>
+                                      <div class="paragraph post-excerpt">In 2003, Judith Butler published a long essay titled "The Value of Difficulty." In this piece, she aimed to defend "obscure" and "unclear" language, a stance that continues to provoke debate. I further argue for the value, that difficulty in language is not mere obscurity but an ethical and political force that resists hegemonic clarity and continually renews critical thought.</div>
                                     </div>
-
-
-
-                                    <!-- Post 3（如有后续，按需添加到左列） -->
-                                  </div>
-
-
-
-
-
-
-                                  <!-- 右列：Post 2, Post 4 -->
-                                  <div class="posts-right">
-                                    <!-- Post 2 -->
+                                    
+                                    <!-- Post: Typhoid Mary (New) -->
                                     <div class="post-entry-card">
-                                      <a href="marxt.html"><img src="uploads/marxt.jpg" class="post-image" alt="文章预览图"></a>
+                                      <a href="mary.html"><img src="uploads/Mary.jpg" class="post-image" alt="A historical photograph of Mary Mallon, known as Typhoid Mary"></a>
                                       <div class="paragraph post-title">
-                                        <a href="marxt.html"><u><font size="4">Lukas Marxt: How Do We Mediate Haunted Toxicity?</font></u></a>
+                                        <a href="mary.html"><u><font size="4">Disempowered Women in Discursive Articulation: The Beautiful Legend of Typhoid Mary</font></u></a>
                                       </div>
-                                      <div class="paragraph post-date">August 23, 2025</div>
-                                      <div class="paragraph post-excerpt">A moving image work that engages with the multi-layered histories of land, lake water, and toxicity—histories of remnants and ghosts—must itself be stratified. It must attempt to navigate multiple spatiotemporal scales without losing orientation, and attune to mediating what are, in essence, invisible elemental specters.</div>
+                                      <div class="paragraph post-date">September 2, 2025</div>
+                                      <div class="paragraph post-excerpt">This essay examines the stigmatization of 'Typhoid Mary,' exploring how prejudice and power articulate themselves around a supposed truth, drawing a parallel to the film *Malèna*.</div>
                                     </div>
-
-                                  <div class="posts-right">
-                                    <!-- Post 2 -->
+                                    
+                                    <!-- Post: Luxun (Original) -->
                                     <div class="post-entry-card">
-                                      <a href="luxun.html"><img src="uploads/luxun.jpg" class="post-image" alt="文章预览图"></a>
+                                      <a href="luxun.html"><img src="uploads/luxun.jpg" class="post-image" alt="A photograph of a mural depicting Lu Xun smoking"></a>
                                       <div class="paragraph post-title">
                                         <a href="luxun.html"><u><font size="4">Smoking, Discipline, and Desire: Re-Coding the Political Body from Lu Xun’s Iconography</font></u></a>
                                       </div>
@@ -347,8 +293,51 @@
                                       <div class="paragraph post-excerpt">The debate over whether Lu Xun’s mural should preserve his smoking image points to the historical complexity of how reactionary and revolutionary forces have aesthetically coded the body and desire.</div>
                                     </div>
 
+                                    <!-- Post: Wellek (New) -->
+                                    <div class="post-entry-card">
+                                      <a href="wellek.html"><img src="uploads/wellek.jpg" class="post-image" alt="A black and white portrait of René Wellek"></a>
+                                      <div class="paragraph post-title">
+                                        <a href="wellek.html"><u><font size="4">Rethinking René Wellek: On <i>Destroying Literary Studies</i> (1983)</font></u></a>
+                                      </div>
+                                      <div class="paragraph post-date">August 9, 2025</div>
+                                      <div class="paragraph post-excerpt">René Wellek's 1983 essay “Destroying Literary Studies” critiqued the rise of post-structuralism and deconstruction. This essay re-examines his arguments, their blind spots, and their lasting influence.</div>
+                                    </div>
 
-   
+                                  </div>
+
+                                  <!-- Right Column: Posts 2, 4, 6 -->
+                                  <div class="posts-right">
+                                    
+                                    <!-- Post: Fascism (New) -->
+                                    <div class="post-entry-card">
+                                      <a href="sterile.html"><img src="uploads/nazi.ppm" class="post-image" alt="A black and white photograph from a Nazi rally"></a>
+                                      <div class="paragraph post-title">
+                                        <a href="sterile.html"><u><font size="4">Desiring Fascism, Sterile Aesthetics</font></u></a>
+                                      </div>
+                                      <div class="paragraph post-date">September 20, 2025</div>
+                                      <div class="paragraph post-excerpt">Building on the debate between Susan Sontag and Adrienne Rich, this essay explores fascism's libidinal economy and proposes a counter-strategy: an art of exhaustion, enervation, and sterile aesthetics.</div>
+                                    </div>
+
+                                    <!-- Post: Mukendi (Original) -->
+                                    <div class="post-entry-card">
+                                      <a href="mukendi.html"><img src="uploads/Mukendi.jpg" class="post-image" alt="Artwork by Jean Katambayi Mukendi"></a>
+                                      <div class="paragraph post-title">
+                                        <a href="mukendi.html"><u><font size="4">Jean Katambayi Mukendi: Toward a Speculative Rather Than Technicist Media Archaeology</font></u></a>
+                                      </div>
+                                      <div class="paragraph post-date">August 25, 2025</div>
+                                      <div class="paragraph post-excerpt">I seek a more emphatically speculative approach to media archaeology. The work of Jean Katambayi Mukendi seems to offer just such a pathway.</div>
+                                    </div>
+
+                                    <!-- Post: Marxt (Original) -->
+                                    <div class="post-entry-card">
+                                      <a href="marxt.html"><img src="uploads/marxt.jpg" class="post-image" alt="A still from a film by Lukas Marxt"></a>
+                                      <div class="paragraph post-title">
+                                        <a href="marxt.html"><u><font size="4">Lukas Marxt: How Do We Mediate Haunted Toxicity?</font></u></a>
+                                      </div>
+                                      <div class="paragraph post-date">August 23, 2025</div>
+                                      <div class="paragraph post-excerpt">A moving image work that engages with the multi-layered histories of land, lake water, and toxicity—histories of remnants and ghosts—must itself be stratified.</div>
+                                    </div>
+                                    
                                   </div>
                                 </div>
                                 <!-- END posts-two-col -->
@@ -360,26 +349,32 @@
                                   <div class="news-section">
                                     <div class="paragraph"><u><font size="4">News</font></u></div>
                                     <div class="paragraph">
-
-   <b>Sep 9-13, 2025:</b> Will be speaking at the interdisciplinary conference "Taboo-Transgression-Transcendence" in Slovenia.<a href="https://avarts.ionio.gr/ttt/2025/en/program/"><br>[Details]</a>
-                     </div>
-                     <div class="paragraph">
-                       <b>Aug 25-30, 2025:</b> Will be speaking at the congress of The International Committee for the Conservation of the Industrial Heritage (TICCIH) in Sweden.
-                     </div>
-                     <div class="paragraph">
-                       <b>Aug 27, 2025:</b> Speaking at the "Futurities II:  The Transnational Exchange of Chinese and American Film and Media Theories", Columbia University.
-                     </div>
-                     <div class="paragraph">
-                       <b>Jul 21-27, 2025:</b> Participating in the "Excluded Media VII" summer workshop at Northwestern University.
-                     </div>
-                     <div class="paragraph">
-                       <b>Jul 16, 2025:</b> Speaking at the "Shaping Futures" conference at Seoul National University.<br><a href="uploads/[ABSTRACT]_SEAA-SNU_Anthropology_2025_in_Seoul.pdf#page=105">[Details]</a>
+                                      <b>Nov 21, 2025:</b> Will be speaking at the 2025 Annual Meeting of the American Anthropological Association, New Orleans, USA.
                                     </div>
-
-
-
+                                    <div class="paragraph">
+                                      <b>Nov 19, 2025:</b> Will be speaking at the Pacific Ancient and Modern Language Association Annual Convention, San Francisco, USA.
                                     </div>
-                                    <!-- Add more news items here -->
+                                    <div class="paragraph">
+                                      <b>Oct 14–17, 2025:</b> Will be speaking at the Big Stuff Heritage Conference, "Skills and Machines: A Living Partnership," at the University of Canberra, Australia.
+                                    </div>
+                                    <div class="paragraph">
+                                      <b>Sep 8–Nov 7, 2025:</b> Participating in the exhibition "The Great Rupture: Archaeology of the Apocalyptic Future" at the Central Art Museum, Hangzhou.
+                                    </div>
+                                    <div class="paragraph">
+                                      <b>Sep 9-13, 2025:</b> Will be speaking at the interdisciplinary conference "Taboo-Transgression-Transcendence" in Slovenia.<a href="https://avarts.ionio.gr/ttt/2025/en/program/"><br>[Details]</a>
+                                    </div>
+                                    <div class="paragraph">
+                                      <b>Aug 25-30, 2025:</b> Will be speaking at the congress of The International Committee for the Conservation of the Industrial Heritage (TICCIH) in Sweden.
+                                    </div>
+                                    <div class="paragraph">
+                                      <b>Aug 27, 2025:</b> Speaking at the "Futurities II:  The Transnational Exchange of Chinese and American Film and Media Theories", Columbia University.
+                                    </div>
+                                    <div class="paragraph">
+                                      <b>Jul 21-27, 2025:</b> Participating in the "Excluded Media VII" summer workshop at Northwestern University.
+                                    </div>
+                                    <div class="paragraph">
+                                      <b>Jul 16, 2025:</b> Speaking at the "Shaping Futures" conference at Seoul National University.<br><a href="uploads/[ABSTRACT]_SEAA-SNU_Anthropology_2025_in_Seoul.pdf#page=105">[Details]</a>
+                                    </div>
                                   </div>
                                 </div>
                               </td>
@@ -409,3 +404,5 @@
   <script type="text/javascript" src="files/theme/mobile.js"></script>
 </body>
 </html>
+
+
