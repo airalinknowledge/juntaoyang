@@ -7,6 +7,12 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <script type="text/javascript">
+    if (window.innerWidth < 768) {
+      window.location.href = "fabu-mobile.html";
+    }
+  </script>
+
   <link id="wsite-base-style" rel="stylesheet" type="text/css" href="https://cdn2.editmysite.com/css/sites.css?buildTime=1234" />
   <link rel="stylesheet" type="text/css" href="https://cdn2.editmysite.com/css/old/fancybox.css?1234" />
   <link rel="stylesheet" type="text/css" href="https://cdn2.editmysite.com/css/social-icons.css?buildtime=1234" media="screen,projection" />
@@ -40,6 +46,29 @@
     .blog-header h2 a {}
     #wsite-content h2.wsite-product-title {}
     .wsite-product .wsite-product-price a {}
+    @media screen and (min-width: 767px) {
+      .wsite-elements.wsite-not-footer:not(.wsite-header-elements) div.paragraph, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) p, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-block .product-title, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-description, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .wsite-form-field label, #wsite-content div.paragraph, #wsite-content p, #wsite-content .product-block .product-title, #wsite-content .product-description, #wsite-content .wsite-form-field label, .blog-sidebar div.paragraph, .blog-sidebar p, .blog-sidebar .wsite-form-field label {line-height:33px !important;}
+      .wsite-elements.wsite-footer div.paragraph, .wsite-elements.wsite-footer p, .wsite-elements.wsite-footer .product-block .product-title, .wsite-elements.wsite-footer .product-description, .wsite-elements.wsite-footer .wsite-form-field label {}
+      .wsite-elements.wsite-not-footer:not(.wsite-header-elements) h2, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-long .product-title, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-large .product-title, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-small .product-title, #wsite-content h2, #wsite-content .product-long .product-title, #wsite-content .product-large .product-title, #wsite-content .product-small .product-title, .blog-sidebar h2 {font-size:100px !important;line-height:75px !important;}
+      #wsite-content h2, #wsite-content .product-long .product-title, #wsite-content .product-large .product-title, #wsite-content .product-small .product-title, .blog-sidebar h2 {}
+      .wsite-elements.wsite-footer h2, .wsite-elements.wsite-footer .product-long .product-title, .wsite-elements.wsite-footer .product-large .product-title, .wsite-elements.wsite-footer .product-small .product-title {}
+      #wsite-title {font-size:23px !important;}
+      .wsite-menu-default a {font-size:14px !important;}
+      .wsite-menu a {}
+      .wsite-image div, .wsite-caption {}
+      .galleryCaptionInnerText {}
+      .fancybox-title {}
+      .wslide-caption-text {}
+      .wsite-phone {}
+      .wsite-headline, .wsite-header-section .wsite-content-title {}
+      .wsite-headline-paragraph, .wsite-header-section .paragraph {}
+      .wsite-button-inner {}
+      .wsite-not-footer blockquote {}
+      .wsite-footer blockquote {}
+      .blog-header h2 a {}
+      #wsite-content h2.wsite-product-title {}
+      .wsite-product .wsite-product-price a {}
+    }
   </style>
   <style>
     .wsite-background {
@@ -55,7 +84,7 @@
     
     .post-entry-card {
         width: 100%;
-        margin-bottom: 60px; 
+        margin-bottom: 80px; 
     }
     .post-image {
         width: 100%;
@@ -82,9 +111,6 @@
         font-size: 14px !important;
     }
 
-    .news-section {
-        margin-top: 40px;
-    }
     .news-section .paragraph {
         margin-bottom: 15px;
         font-size: 15px;
@@ -93,6 +119,15 @@
         text-decoration: underline;
     }
     
+    .posts-column {
+        padding-right: 60px !important;
+    }
+    .separator-wrapper {
+        border-left: 1px solid #e0e0e0;
+        padding-left: 60px;
+        height: 100%;
+    }
+
     .post-entry-card .paragraph { 
       margin: 6px 0 !important;
       line-height: 1.35;
@@ -109,5 +144,260 @@
     .wsite-elements .post-entry-card .paragraph {
       margin: 6px 0 !important;
     }
+
+    .posts-two-col { display: flex; gap: 80px; }
+    .posts-left, .posts-right { flex: 1; display: flex; flex-direction: column; }
+    .posts-right .post-entry-card:first-child { margin-top: 80px; }
+    .posts-left .post-entry-card, .posts-right .post-entry-card { margin: 0 0 80px; width: 100%; }
+
+    @media (max-width: 767px) {
+      .posts-two-col { display:block; }
+      .posts-left, .posts-right { width:100%; }
+      .posts-right .post-entry-card:first-child { margin-top: 0; }
+      .separator-wrapper { border-left: none; padding-left: 0; margin-top: 40px; }
+      .posts-column { padding-right: 15px !important; }
+      .news-column { padding-left: 15px !important; }
+    }
   </style>
-  <script src="https://cdn2.editmysite.com/js/
+  <script src="https://cdn2.editmysite.com/js/jquery-1.8.3.min.js"></script>
+  </head>
+
+<body class="no-header-page  wsite-page-index wsite-theme-light">
+  <div id="wrapper">
+    <div id="navigation">
+      <div id="navigation-wrap">
+        <div id="nav">
+          <div class="sitename">
+            <span class="wsite-logo">
+              <span class="wsite-title-placeholder">&nbsp;</span>
+              <span style="display:none"><span style="display:none">&nbsp;</span></span>
+            </span>
+          </div>
+          <ul class="wsite-menu-default">
+            <li class="wsite-menu-item-wrap"><a href="guanyu.html" class="wsite-menu-item">关于</a></li>
+            <li class="wsite-menu-item-wrap"><a href="chuangzuo.html" class="wsite-menu-item">创作</a></li>
+            <li class="wsite-menu-item-wrap"><a href="chuban.html" class="wsite-menu-item">出版</a></li>
+            <li class="wsite-menu-item-wrap"><a href="xiangmu.html" class="wsite-menu-item">项目</a></li>
+            <li id="active" class="wsite-menu-item-wrap"><a href="fabu.html" class="wsite-menu-item">发布</a></li>
+          </ul>
+        </div>
+        <div id="navmobile">
+          <ul class="wsite-menu-default">
+            <li class="wsite-menu-item-wrap"><a href="guanyu.html" class="wsite-menu-item">关于</a></li>
+            <li class="wsite-menu-item-wrap"><a href="chuangzuo.html" class="wsite-menu-item">创作</a></li>
+            <li class="wsite-menu-item-wrap"><a href="chuban.html" class="wsite-menu-item">出版</a></li>
+            <li class="wsite-menu-item-wrap"><a href="xiangmu.html" class="wsite-menu-item">项目</a></li>
+            <li id="active" class="wsite-menu-item-wrap"><a href="fabu.html" class="wsite-menu-item">发布</a></li>
+          </ul>
+        </div>
+      </div>
+      <label id="mobile-close" class="hamburger" for="mobile-input"></label>
+    </div>
+    <div id="main">
+      <div id="mobile-top">
+        <label id="mobile-open" class="hamburger" for="mobile-input"></label>
+        <div class="sitename">
+          <span class="wsite-logo"><span class="wsite-title-placeholder">&nbsp;</span><span style="display:none"><span style="display:none">&nbsp;</span></span></span>
+        </div>
+      </div>
+      <div id="content-wrapper">
+        <div id="wsite-content" class="wsite-elements wsite-not-footer">
+          <div class="wsite-section-wrap">
+            <div class="wsite-section wsite-body-section wsite-background-5 wsite-custom-background" style="min-height: 951px; padding-bottom: 40px;">
+              <div class="wsite-section-content">
+                <div class="container">
+                  <div class="wsite-section-elements">
+                    <div>
+                      <div class="wsite-multicol">
+                        <div class="wsite-multicol-table-wrap" style="margin:0 -15px;">
+                          <table class="wsite-multicol-table">
+                            <tbody class="wsite-multicol-tbody">
+                              <tr class="wsite-multicol-tr">
+                                <td class="wsite-multicol-col" style="width:36.89%; padding:0 15px;">
+                                  <div class="paragraph" style="text-align:left;"><font size="3"><strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</strong><u><a href="posts.html"><font color="#2a2a2a">English</font></a></u>&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;<font color="#2a2a2a">&nbsp;</font><strong>&#20013;&#25991;</strong><br />&#8203;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;juntao.yang@columbia.edu</font></div>
+                                </td>
+                                <td class="wsite-multicol-col" style="width:63.10%; padding:0 15px;">
+                                  <div class="paragraph" style="text-align:right;"><font size="4"><u><a href="guanyu.html"><font color="#2a2a2a">关于</font></a></u><font color="#2a2a2a">&nbsp; &nbsp;</font><u><a href="chuangzuo.html"><font color="#2a2a2a">创作</font></a></u><font color="#2a2a2a">&nbsp; &nbsp;</font><u><a href="chuban.html"><font color="#2a2a2a">出版</font></a></u><font color="#2a2a2a">&nbsp; &nbsp;</font><u><a href="xiangmu.html"><font color="#2a2a2a">项目</font></a></u><font color="#2a2a2a">&nbsp;</font>&nbsp;&nbsp;<strong><font color="#2a2a2a">发布</font></strong></font></div>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div>
+                        <div style="height: 50px; overflow: hidden; width: 100%;"></div>
+                        <h2 class="wsite-content-title" style="text-align:left;">发布</h2>
+                        <div style="height: 20px; overflow: hidden; width: 100%;"></div>
+                        <hr class="styled-hr" style="width:100%;"></hr>
+                        <div style="height: 20px; overflow: hidden; width: 100%;"></div>
+                    </div>
+                    <div class="paragraph" style="text-align:left; font-style:italic; color:#555;">
+                        此页面包含我最近的更新和一些写作片段。这些内容可能是临时的、未经深思熟虑的、非正式的——现在尚未发表，也许永远不会。
+                    </div>
+                    <div class="wsite-spacer" style="height:50px;"></div>
+                    <div class="wsite-multicol">
+                      <div class="wsite-multicol-table-wrap" style="margin:0 -15px;">
+                        <table class="wsite-multicol-table">
+                          <tbody class="wsite-multicol-tbody">
+                            <tr class="wsite-multicol-tr">
+                              <td class="wsite-multicol-col posts-column" style="width:75%; padding:0 15px; vertical-align: top;">
+                                
+                                <div class="posts-two-col">
+                                  <div class="posts-left">
+
+                                    <div class="post-entry-card">
+                                      <a href="structuralism.html"><img src="uploads/structuralism.jpg" class="post-image" alt="一幅代表结构主义的抽象图像"></a>
+                                      <div class="paragraph post-title">
+                                        <a href="structuralism.html"><u><font size="4">文化研究和媒介研究：法国结构主义的两种遗产</font></u></a>
+                                      </div>
+                                      <div class="paragraph post-date">2025年10月14日</div>
+                                      <div class="paragraph post-excerpt">这篇短文追溯了法国结构主义如何分化为英美文化研究和德国媒介理论这两条不同的学术路径。</div>
+                                    </div>
+
+                                    <div class="post-entry-card">
+                                        <a href="butler.html"><img src="uploads/Butler.jpg" class="post-image" alt="朱迪斯·巴特勒的照片"></a>
+                                        <div class="paragraph post-title">
+                                          <a href="butler.html"><u><font size="4">为晦涩辩护：翻译朱迪斯·巴特勒</font></u></a>
+                                        </div>
+                                        <div class="paragraph post-date">2025年9月27日</div>
+                                        <div class="paragraph post-excerpt">2003年，朱迪斯·巴特勒发表长文《困难的价值》，旨在为“晦涩”与“不清晰”的语言辩护，此文至今仍引发争论。我希望进一步为这一价值辩护。</div>
+                                    </div>
+                                    
+                                    <div class="post-entry-card">
+                                      <a href="meme.html"><img src="uploads/bullet.png" class="post-image" alt="一颗刻有文字的弹壳的特写"></a>
+                                      <div class="paragraph post-title">
+                                        <a href="meme.html"><u><font size="4">空洞的激进：Charlie Kirk之死与meme政治</font></u></a>
+                                      </div>
+                                      <div class="paragraph post-date">2025年9月13日</div>
+                                      <div class="paragraph post-excerpt">枪手没有任何明确的政治动机；他充满迷因的宣言只展示了一种核心空洞的激进主义——这种空洞的激进主义，正是后政治新自由主义社会的必然产物。</div>
+                                    </div>
+
+                                    <div class="post-entry-card">
+                                      <a href="luxun.html"><img src="uploads/luxun.jpg" class="post-image" alt="一幅描绘鲁迅吸烟的壁画照片"></a>
+                                      <div class="paragraph post-title">
+                                        <a href="luxun.html"><u><font size="4">吸烟、规训与欲望：从鲁迅的图像学重编码政治身体</font></u></a>
+                                      </div>
+                                      <div class="paragraph post-date">2025年8月25日</div>
+                                      <div class="paragraph post-excerpt">关于鲁迅壁画是否应保留其吸烟形象的争论，指向了反动与革命力量如何从美学上编码身体与欲望的历史复杂性。</div>
+                                    </div>
+
+                                    <div class="post-entry-card">
+                                      <a href="marxt.html"><img src="uploads/marxt.jpg" class="post-image" alt="卢卡斯·马克斯特电影中的一帧"></a>
+                                      <div class="paragraph post-title">
+                                        <a href="marxt.html"><u><font size="4">卢卡斯·马克斯特：我们如何媒介化萦绕的毒性？</font></u></a>
+                                      </div>
+                                      <div class="paragraph post-date">2025年8月23日</div>
+                                      <div class="paragraph post-excerpt">一个处理土地、湖水和毒性的多层次历史——关于遗迹与鬼魂的历史——的动态影像作品，其本身必须是分层的。</div>
+                                    </div>
+
+                                  </div>
+
+                                  <div class="posts-right">
+                                    
+                                    <div class="post-entry-card">
+                                      <a href="indexicality.html"><img src="uploads/hunt.webp" class="post-image" alt="猎人与猎物，象征着索引性的捕捉行为"></a>
+                                      <div class="paragraph post-title">
+                                        <a href="indexicality.html"><u><font size="4">论索引性</font></u></a>
+                                      </div>
+                                      <div class="paragraph post-date">2025年10月3日</div>
+                                      <div class="paragraph post-excerpt">我主张以一种更具本体论纯度的方式来界定索引性：它是因果接触所沉积的物质痕迹，而其社会效力则由一套真理政体来保证。</div>
+                                    </div>
+                                    
+                                    <div class="post-entry-card">
+                                      <a href="sterile.html"><img src="uploads/nazi.ppm" class="post-image" alt="纳粹集会的黑白照片"></a>
+                                      <div class="paragraph post-title">
+                                        <a href="sterile.html"><u><font size="4">欲望法西斯，不育的美学</font></u></a>
+                                      </div>
+                                      <div class="paragraph post-date">2025年9月20日</div>
+                                      <div class="paragraph post-excerpt">本文在苏珊·桑塔格与阿德里安·里奇的辩论基础上，探讨了法西斯主义的力比多经济，并提出一种反制策略：一种耗竭的、萎靡的、不育的美学。</div>
+                                    </div>
+
+                                    <div class="post-entry-card">
+                                      <a href="mary.html"><img src="uploads/Mary.jpg" class="post-image" alt="伤寒玛丽的历史照片"></a>
+                                      <div class="paragraph post-title">
+                                        <a href="mary.html"><u><font size="4">话语接合中的失势女性：伤寒玛丽的美丽传说</font></u></a>
+                                      </div>
+                                      <div class="paragraph post-date">2025年9月2日</div>
+                                      <div class="paragraph post-excerpt">本文考察了“伤寒玛丽”的污名化过程，探讨偏见与权力如何围绕一个所谓的真相进行自我接合，并将其与电影《西西里的美丽传说》进行对读。</div>
+                                    </div>
+
+                                    <div class="post-entry-card">
+                                      <a href="mukendi.html"><img src="uploads/Mukendi.jpg" class="post-image" alt="让·卡通巴伊·穆肯迪的艺术作品"></a>
+                                      <div class="paragraph post-title">
+                                        <a href="mukendi.html"><u><font size="4">让·卡通巴伊·穆肯迪：走向一种思辨性而非技术主义的媒介考古学</font></u></a>
+                                      </div>
+                                      <div class="paragraph post-date">2025年8月25日</div>
+                                      <div class="paragraph post-excerpt">我寻求一种更具思辨性的媒介考古学方法。让·卡通巴伊·穆肯迪的作品似乎正为此提供了这样一条路径。</div>
+                                    </div>
+                                    
+                                    <div class="post-entry-card">
+                                      <a href="wellek.html"><img src="uploads/wellek.jpg" class="post-image" alt="勒内·韦勒克的黑白肖像"></a>
+                                      <div class="paragraph post-title">
+                                        <a href="wellek.html"><u><font size="4">反思勒内·韦勒克：论《摧毁文学研究》（1983）</font></u></a>
+                                      </div>
+                                      <div class="paragraph post-date">2025年8月9日</div>
+                                      <div class="paragraph post-excerpt">勒内·韦勒克1983年的文章《摧毁文学研究》批判了后结构主义与解构主义的兴起。本文重新审视了他的论点、其盲点以及持久影响。</div>
+                                    </div>
+                                  </div>
+                                </div>
+                                </td>
+
+                              <td class="wsite-multicol-col news-column" style="width:25%; padding:0 15px; vertical-align: top;">
+                                <div class="separator-wrapper">
+                                  <div class="news-section">
+                                    <div class="paragraph"><u><font size="4">消息</font></u></div>
+                                    <div class="paragraph">
+                                      <b>2025年11月21日：</b> 将在美国新奥尔良的美国人类学协会2025年年会上发言。
+                                    </div>
+                                    <div class="paragraph">
+                                      <b>2025年11月19日：</b> 将在美国旧金山的太平洋古代与现代语言协会年会上发言。
+                                    </div>
+                                    <div class="paragraph">
+                                      <b>2025年10月14-17日：</b> 将在澳大利亚堪培拉大学的“大型遗产会议：技能与机器：活态的伙伴关系”上发言。
+                                    </div>
+                                    <div class="paragraph">
+                                      <b>2025年9月8日至11月7日：</b> 参加在杭州中央美术馆举办的展览“大断裂：末世未来考古学”。
+                                    </div>
+                                    <div class="paragraph">
+                                      <b>2025年9月9-13日：</b>将在斯洛文尼亚的“禁忌-越界-超越”跨学科会议上发言。<a href="https://avarts.ionio.gr/ttt/2025/en/program/"><br>[详情]</a>
+                                    </div>
+                                    <div class="paragraph">
+                                      <b>2025年8月25-30日：</b>将在瑞典的国际工业遗产保护委员会（TICCIH）大会上发言。
+                                    </div>
+                                    <div class="paragraph">
+                                      <b>2025年8月27日：</b>将在哥伦比亚大学的“未来性II：中美电影与媒介理论的跨国交流”会议上发言。
+                                    </div>
+                                    <div class="paragraph">
+                                      <b>2025年7月21-27日：</b>参加西北大学的“被排斥的媒介VII”夏季工作坊。
+                                    </div>
+                                    <div class="paragraph">
+                                      <b>2025年7月16日：</b>在首尔大学的“塑造未来”会议上发言。<br><a href="uploads/[ABSTRACT]_SEAA-SNU_Anthropology_2025_in_Seoul.pdf#page=105">[详情]</a>
+                                    </div>
+                                  </div>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                    <div class="paragraph" style="text-align:center;">
+                      <br /><br /><br /><br /><font size="2"><br />版权所有&nbsp;&copy;&nbsp; 杨君陶</font>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript" src="files/theme/plugins.js"></script>
+  <script type="text/javascript" src="files/theme/custom.js"></script>
+  <script type="text/javascript" src="files/theme/mobile.js"></script>
+</body>
+</html>
