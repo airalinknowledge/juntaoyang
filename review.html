@@ -356,15 +356,26 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
   /* ←← 把这里换成你的 Worker 地址（必须带 ?db=log） */
   const ENDPOINT = 'https://review.airalinknowledge.workers.dev/?db=log';
 
+  /* 循环拉取所有分页 */
+  async function fetchAll() {
+    const all = [];
+    let cursor = null;
+    do {
+      // 构造请求 URL，如果
+      const url = ENDPOINT + (cursor ? '&cursor=' + encodeURIComponent(cursor) : '') + '&_=' + Date.now();
+      const { items = [], next_cursor } = await fetch(url).then(r => r.json());
+      all.push(...items);
+      cursor = next_cursor || null;
+    } while (cursor); // 只要还有 next_cursor，就继续循环
+    return all;
+  }
+
   /* 安全转义 */
   const esc = s => s ? String(s).replace(/[&<>"']/g, m => (
     {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]
   )) : '';
 
-  /* 日期格式：
-     - Creation：YYYY
-     - Date：Mon DD, YYYY
-  */
+  /* 日期格式：Creation (YYYY) */
   const fmtC1 = iso => {
     if (!iso) return '';
     try {
@@ -374,6 +385,8 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
       return d.getUTCFullYear();
     } catch { return iso; }
   };
+  
+  /* 日期格式：Date (Mon DD, YYYY) */
   const fmtD2 = iso => {
     if (!iso) return '';
     try {
@@ -384,20 +397,18 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
     } catch { return iso; }
   };
 
-  /* 拉取并渲染（加时间戳绕过缓存） */
-  fetch(ENDPOINT + '&_=' + Date.now())
-    .then(r => r.json())
-    .then(({ items }) => {
+  /* 拉取并渲染 */
+  fetchAll()
+    .then(items => {
       const root = document.getElementById('list');
-
       if (!Array.isArray(items) || !items.length) {
         root.innerHTML = '<div class="entry"><div class="content">暂无记录。</div></div>';
         return;
       }
-
-      // 在渲染前按日期排序 (从新到旧)
-      items.sort((a, b) => new Date(b.date) - new Date(a.date));
-
+      
+      // 排序：从新到旧
+      items.sort((a, b) => new Date(a.date || 0) < new Date(b.date || 0) ? 1 : -1);
+      
       root.innerHTML = items.map(x => {
         const body = x.comment?.trim() ? x.comment.trim() : (x.title || '');
         const left_bits = [];
@@ -406,8 +417,7 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
         if (x.creation) left_bits.push(esc(fmtC1(x.creation)));
         const left = left_bits.join(', ');
         const right = x.date ? esc(fmtD2(x.date)) : '';
-
-        // 新布局：元数据在上，评论在下
+        
         return `
           <article class="entry">
             <div class="meta-container">
