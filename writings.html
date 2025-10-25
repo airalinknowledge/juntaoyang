@@ -2,16 +2,15 @@
 <html lang="en">
 	<head>
 		<title>Juntao Yang</title>
-<meta name="description" content="juntaoyang" />
-
+<meta name="description" content="Juntao Yang's Personal Page; 杨君陶的个人网页" />
+<meta name="keywords" content="Juntao Yang,杨君陶,当代艺术,电影,Film,contemporary art,轻巧而冷淡的对谈,大西洋,算法,可见性" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
 		
 		<link id="wsite-base-style" rel="stylesheet" type="text/css" href="http://cdn2.editmysite.com/css/sites.css?buildTime=1234" />
 <link rel="stylesheet" type="text/css" href="http://cdn2.editmysite.com/css/old/fancybox.css?1234" />
 <link rel="stylesheet" type="text/css" href="http://cdn2.editmysite.com/css/social-icons.css?buildtime=1234" media="screen,projection" />
-<link rel="stylesheet" type="text/css" href="files/main_style.css?1712751537" title="wsite-theme-css" />
+<link rel="stylesheet" type="text/css" href="files/main_style.css?1714489767" title="wsite-theme-css" />
 <link href='http://cdn2.editmysite.com/fonts/Maven_Pro/font.css?2' rel='stylesheet' type='text/css' />
 
 <link href='http://cdn2.editmysite.com/fonts/Alike/font.css?2' rel='stylesheet' type='text/css' />
@@ -64,50 +63,78 @@
 #wsite-content h2.wsite-product-title {}
 .wsite-product .wsite-product-price a {}
 }
-</style>
-<!-- 新增样式：限制正文内容宽度 -->
-<style>
-    /* 限制正文内容区域宽度，增加两侧留白 */
-    .main-content-area {
-        max-width: 90%; /* 可以调整这个值来改变内容宽度 */
-        margin-left: 0%;
-        margin-right: 10%;
-    }
-
-    /* 针对移动设备，取消宽度限制，让内容全宽显示 */
-    @media screen and (max-width: 767px) {
-        .main-content-area {
-            max-width: 100%;
-        }
-    }
-/* 正文区域：链接颜色继承正文颜色 */
-.main-content-column a,
-.main-content-column a:visited,
-.main-content-column a:hover,
-.main-content-column a:active {
-  color: inherit !important;
+/* 新增的自定义样式 */
+.writings-body {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 15px;
+    font-family: "Georgia", serif !important; 
 }
-
-/* 链接里的子元素也继承（防止再被覆盖） */
-.main-content-column a * { color: inherit !important; }
-
-/* 失效化旧式 <font color>，避免把文字固定成灰色 */
-.main-content-column font[color] { color: inherit !important; }
-
-/* 可选：给链接保留轻微的可识别性（按需保留/删除） */
-.main-content-column a {
-  text-decoration: underline;
-  text-underline-offset: 2px;
+.writing-section {
+    margin-bottom: 0; 
 }
-.main-content-column a:hover { text-decoration-thickness: 2px; }
-
-
+.writing-section-title {
+    font-size: 1.8em; 
+    font-weight: normal;
+    letter-spacing: 1px;
+    margin-bottom: 50px; /* DEBUG FIX: 拉大标题和条目间距 */
+    font-family: "Georgia", serif !important;
+    text-align: center; 
+    border-bottom: none; 
+    padding-bottom: 0;
+}
+.writing-entry {
+    margin-bottom: 40px; 
+}
+.conference-section .writing-entry {
+    margin-bottom: 65px;
+}
+.writing-title {
+    font-size: 1.15em;
+    font-style: normal; /* <-- 已修正 */
+    margin-bottom: 8px;
+    line-height: 1.5;
+    font-family: "Georgia", serif !important;
+}
+.writing-title a {
+    text-decoration: none;
+    color: #333;
+    transition: color 0.3s ease;
+}
+.writing-title a:hover {
+    color: #000;
+    text-decoration: underline;
+}
+.writing-details {
+    font-size: 1em;
+    color: #555;
+    line-height: 1.7;
+    padding-left: 25px; 
+    font-family: "Georgia", serif !important;
+}
+.writing-details a {
+    text-decoration: underline;
+    color: #444;
+}
+.writing-details a:hover {
+    color: #000;
+}
+.talks-list .writing-title {
+    font-style: normal;
+}
+.decorative-hr {
+    border: none;
+    height: 1px;
+    background-color: #ccc;
+    width: 100px; 
+    margin: 80px auto; 
+}
 </style>
 <style>
 .wsite-background {background-image: url("/uploads/1/4/8/1/148137552/background-images/1199586110.jpg") !important;background-repeat: no-repeat !important;background-position: 50% 50% !important;background-size: 100% !important;background-color: transparent !important;background: inherit;}
 body.wsite-background {background-attachment: fixed !important;}.wsite-background.wsite-custom-background{ background-size: cover !important}
 </style>
-		<script src='files/templateArtifacts.js?1712751521'></script>
+		<script src='files/templateArtifacts.js?1714489756'></script>
 <script>
 var STATIC_BASE = '//cdn1.editmysite.com/';
 var ASSETS_BASE = '//cdn2.editmysite.com/';
@@ -139,26 +166,11 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 			_W.storeEuPrivacyPolicyUrl = "";
 			com_currentSite = "713576850827693055";
 			com_userID = "148137552";</script><script type="text/javascript">_W.configDomain = "www.weebly.com";</script><script>_W.relinquish && _W.relinquish()</script>
-<script type="text/javascript" src="http://cdn2.editmysite.com/js/lang/en/stl.js?buildTime=1234&"></script><script> _W.themePlugins = [];</script><script type="text/javascript"> _W.recaptchaUrl = "https://www.google.com/recaptcha/api.js"; </script><script type="text/javascript"><!--
-	var IS_ARCHIVE = 1;
-	
-	function initFlyouts(){
-		initPublishedFlyoutMenus(
-			[{"id":"356461667194310790","title":"About","url":"index.html","target":"","nav_menu":false,"nonclickable":false},{"id":"444862601486980856","title":"ARTWORKS","url":"artworks.html","target":"","nav_menu":false,"nonclickable":false},{"id":"864040464600617228","title":"Writings","url":"writings.html","target":"","nav_menu":false,"nonclickable":false},{"id":"361237216236019909","title":"Projects","url":"projects.html","target":"","nav_menu":false,"nonclickable":false},{"id":"497557010409593207","title":"POSTS","url":"posts.html","target":"","nav_menu":false,"nonclickable":false}],
-			"361237216236019909",
-			'',
-			'active',
-			false,
-			{"navigation\/item":"<li {{#id}}id=\"{{id}}\"{{\/id}} class=\"wsite-menu-item-wrap\">\n\t<a\n\t\t{{^nonclickable}}\n\t\t\t{{^nav_menu}}\n\t\t\t\thref=\"{{url}}\"\n\t\t\t{{\/nav_menu}}\n\t\t{{\/nonclickable}}\n\t\t{{#target}}\n\t\t\ttarget=\"{{target}}\"\n\t\t{{\/target}}\n\t\t{{#membership_required}}\n\t\t\tdata-membership-required=\"{{.}}\"\n\t\t{{\/membership_required}}\n\t\tclass=\"wsite-menu-item\"\n\t\t>\n\t\t{{{title_html}}}\n\t<\/a>\n\t{{#has_children}}{{> navigation\/flyout\/list}}{{\/has_children}}\n<\/li>\n","navigation\/flyout\/list":"<div class=\"wsite-menu-wrap\" style=\"display:none\">\n\t<ul class=\"wsite-menu\">\n\t\t{{#children}}{{> navigation\/flyout\/item}}{{\/children}}\n\t<\/ul>\n<\/div>\n","navigation\/flyout\/item":"<li {{#id}}id=\"{{id}}\"{{\/id}}\n\tclass=\"wsite-menu-subitem-wrap {{#is_current}}wsite-nav-current{{\/is_current}}\"\n\t>\n\t<a\n\t\t{{^nonclickable}}\n\t\t\t{{^nav_menu}}\n\t\t\t\thref=\"{{url}}\"\n\t\t\t{{\/nav_menu}}\n\t\t{{\/nonclickable}}\n\t\t{{#target}}\n\t\t\ttarget=\"{{target}}\"\n\t\t{{\/target}}\n\t\tclass=\"wsite-menu-subitem\"\n\t\t>\n\t\t<span class=\"wsite-menu-title\">\n\t\t\t{{{title_html}}}\n\t\t<\/span>{{#has_children}}<span class=\"wsite-menu-arrow\">&gt;<\/span>{{\/has_children}}\n\t<\/a>\n\t{{#has_children}}{{> navigation\/flyout\/list}}{{\/has_children}}\n<\/li>\n"},
-			{}
-		)
-	}
-//-->
-</script>
+<script type="text/javascript" src="http://cdn2.editmysite.com/js/lang/en/stl.js?buildTime=1234&"></script><script> _W.themePlugins = [];</script><script type="text/javascript"> _W.recaptchaUrl = "https://www.google.com/recaptcha/api.js"; </script><script type="text/javascript"></script>
 		
 		
 	</head>
-	<body class="no-header-page  wsite-page-projects wsite-theme-light"><div id="wrapper">
+	<body class="no-header-page  wsite-page-guanyu wsite-theme-light"><div id="wrapper">
 
 	<div id="navigation">
     <div id="navigation-wrap">
@@ -173,7 +185,7 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 
 </span></div>
 				<ul class="wsite-menu-default">
-						<li id="active" class="wsite-menu-item-wrap">
+						<li id="pg356461667194310790" class="wsite-menu-item-wrap">
 							<a
 										href="index.html"
 								class="wsite-menu-item"
@@ -191,7 +203,7 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 							</a>
 							
 						</li>
-						<li id="pg864040464600617228" class="wsite-menu-item-wrap">
+						<li id="active" class="wsite-menu-item-wrap">
 							<a
 										href="writings.html"
 								class="wsite-menu-item"
@@ -248,7 +260,7 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 			</a>
 			
 		</li>
-		<li id="active" class="wsite-menu-item-wrap">
+		<li id="pg361237216236019909" class="wsite-menu-item-wrap">
 			<a
 						href="projects.html"
 				class="wsite-menu-item"
@@ -290,7 +302,7 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
   	<div id="content-wrapper">
       <div id="wsite-content" class="wsite-elements wsite-not-footer">
 	<div class="wsite-section-wrap">
-	<div class="wsite-section wsite-body-section wsite-background-2 wsite-custom-background"  >
+	<div class="wsite-section wsite-body-section wsite-background-15" >
 		<div class="wsite-section-content">
         <div class="container">
 			<div class="wsite-section-elements">
@@ -300,322 +312,178 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 			<tr class="wsite-multicol-tr">
 				<td class="wsite-multicol-col" style="width:36.894273127753%; padding:0 15px;">
 					
-						
-
-<div class="paragraph" style="text-align:left;"><font size="3"><strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</strong><strong>English</strong>&nbsp; &nbsp; &nbsp; &nbsp;<font color="#2a2a2a">&nbsp;</font><u><a href="guanyu.html"><font color="#2a2a2a">&#20013;&#25991;</font></a></u><br />&#8203;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;juntao.yang@columbia.edu</font></div>
-
-
+<div class="paragraph" style="text-align:left;"><font size="3"><strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</strong><strong>English</strong>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<u><a href="chuban.html"><font color="#2a2a2a">中文</font></a></u><br />&#8203;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;juntao.yang@columbia.edu</font></div>
 					
 				</td>				<td class="wsite-multicol-col" style="width:63.105726872247%; padding:0 15px;">
 					
-						
-
-<div class="paragraph" style="text-align:right;"><font size="4"><strong><font color="#2a2a2a">ABOUT</font></strong><font color="#2a2a2a">&nbsp; &nbsp; </font><u><a href="artworks.html"><font color="#2a2a2a">ARTWORKS</font></a></u><font color="#2a2a2a">&nbsp; &nbsp;&nbsp;</font><u><a href="writings.html"><font color="#2a2a2a">WRITINGS</font></a></u><font color="#2a2a2a">&nbsp; &nbsp; </font><u><a href="projects.html"><font color="#2a2a2a">PROJECTS</font></a></u><font color="#2a2a2a">&nbsp;</font>&nbsp; &nbsp;<u><a href="posts.html"><font color="#2a2a2a">POSTS</font></a></u>&nbsp;&nbsp;</font></div>
-
-
+<div class="paragraph" style="text-align:right;"><font size="4"><u><a href="index.html"><font color="#2a2a2a">ABOUT</font></u></strong><font color="#2a2a2a">&nbsp; &nbsp; </font><u><a href="artworks.html"><font color="#2a2a2a">ARTWORKS</font></a></u><font color="#2a2a2a">&nbsp; &nbsp;&nbsp;</font><strong><font color="#2a2a2a">WRITINGS</font></a></strong><font color="#2a2a2a">&nbsp; &nbsp;&nbsp;</font><u><a href="projects.html"><font color="#2a2a2a">PROJECTS</font></a></u><font color="#2a2a2a">&nbsp;</font>&nbsp; &nbsp;<u><a href="posts.html"><font color="#2a2a2a">POSTS</font></a></u>&nbsp;&nbsp;</font></div>
 					
 				</td>			</tr>
 		</tbody>
 	</table>
 </div></div></div>
 
+<div class="wsite-spacer" style="height:50px;"></div>
 
+<h2 class="wsite-content-title">Writings</h2>
+<div><div style="height: 20px; overflow: hidden; width: 100%;"></div><hr class="styled-hr" style="width:100%;"></hr><div style="height: 20px; overflow: hidden; width: 100%;"></div></div>
+<div class="wsite-spacer" style="height:40px;"></div>
 
-                      <div style="height: 10px; overflow: hidden; width: 100%;"></div>
-                      <hr class="styled-hr" style="width:100%;"></hr>
-                      <div style="height: 40px; overflow: hidden; width: 100%;"></div>
-                    </div>
-                    <div class="main-content-column">
-                      <div class="paragraph">
-                     <font size="4">Juntao Yang is a critic, curator, and artist.</font><br /><br />
-                        <font size="4">Yang's critical writings and artistic practices focus on the traces of the operations of micro power in the specific field of visual and material culture, the visible or invisible conflicts and violence in daily existence, and the organization and fluid of the proxy of power. Yang is committed to resorting to Speech, sometimes hysterically, counteracts the silent power of ideology and the pervasive political apathy. Yang's current research focuses on planetary cinema and geological thinking, as well as toxicity and catastrophe media. Yang is currently based in New York and Nanjing.<br />&#8203;</font>
-                      </div>
-                      <div class="wsite-spacer" style="height:10px;"></div>
-                      <div class="paragraph" style="text-align:left;">
-                        <u><font size="5">Education&nbsp;</font></u><br />
-                        MA in Film and Media Studies ( Emergent Media Studies ), School of the Arts, Columbia University, USA, 2024-2026<br />
-                        BA in Drama and Film-and-Television Literature, School of Arts, Wuhan University, China, 2020-2024<br /><br />
-                      </div>
+<div class="writings-body">
 
+    <div class="writing-section">
+        <h3 class="writing-section-title">Peer-Reviewed Publications</h3>
 
-                      <div class="paragraph">
-                        <u><font size="5">Awards</font></u><br />
-PAMLA Graduate Student Scholarship, Pacific Ancient and Modern Language Association 2025 Conference, 2025<br/>
-                        Best Short Film Award &amp; Best Editing Award for&nbsp;&#8203;<em>Light and Cold Conversations: Atlantic, Algorithms and Visibility</em>, Perfect Tense Short Film Festival in 20th Anniversary Celebration of the School of Communication, Fujian Normal University, 2024<br />
-                        First Prize for Paper, The 1st "Outstanding Academic Paper Award for China Eastern Media Art", 2024<br/>
-                        Third Prize for Paper, The 6th 'Wang Guangqi Cup' National College Student Paper Competition in Art Disciplines, 2024<br/>
-                        Third Prize for Conference Paper, The 5th China-ASEAN University Postgraduate Forum on Art, 2024<br/>
-                        Film &amp; Media Studies Program Scholarship, School of the Arts, Columbia University, 2024<br/>
-                        Honor for Outstanding Participants,  <em>"Chinese Cinema: Histories, Methods and Ecologies"</em>  Summer School, School of Film, Xiamen University, 2024<br />
-                        Accommodation Scholarship, &#8203;Duemila30 International Film Festival, 2024<br/>
-                        Best Experimental Film (Kurt Kren’s Scratched Glasses) for&nbsp;&#8203;<em>Light and Cold Conversations: Atlantic, Algorithms and Visibility</em>, International Film Festival of Audiovisual Theory Students, 2023<br />&#8203;</em>
-                        Best Experimental Short Film Nomination for <em>Light and Cold Conversations: Atlantic, Algorithms and Visibility</em>, <span>Ningbo Short Film Festival, 2023</span><br />
-  Honourable Mention&nbsp;<span>for&nbsp;&#8203;</span><em>Light and Cold Conversations: Atlantic, Algorithms and Visibility</em>,&nbsp;<span>Varsity Film Expo, 2023</span><br />&#8203;Best AI Short for&nbsp;&#8203;<em>Light and Cold Conversations: Atlantic, Algorithms and Visibility</em>,<em>&nbsp;</em><span>Shanghai International Short Week, 2023</span><br /><br />
-  </div>
-
-
-                      <div class="paragraph">
-                        <u><font size="5">Conferences &amp; Workshops</font></u><br />
-                        <div id="conferences">
-
-                          <div class="conference-item"><em>2025 Annual Meeting of the American Anthropological Association</em>, USA, 2025/11</div>
-                          <div class="conference-item"><em>Pacific Ancient and Modern Language Association Annual Convention</em>, USA, 2025/11</div>
-                          <div class="conference-item"><em>Big Stuff Heritage Conference </em>, Theme: "Skills and Machines: A Living Paternership", University of Canberra, Australia, 2025/10</div>
-                          <div class="conference-item"><em>Taboo-Transgression-Transcendence in Art &amp; Science 2025, Interdisciplinary Conference</em>, Slovenia, 2025/9</div>
-                          <div class="conference-item"><em>The International Committee for the Conservation of the Industrial Heritage Congress 2025</em>, Theme: "Heritage in action: Legacies of industry in future making", Sweden, 2025/8</div>
-                          <div class="conference-item"><em>Futurities II: The Transnational Exchange of Chinese and American Film and Media Theories</em>, Columbia University, USA, 2025/8</div>
-                          <div class="conference-item"><em>2025 Rhetoric, Media and Publics Summer Institute: Excluded Media VII</em>, Northwestern University, USA, 2025/7</div>
-                          <div class="conference-item"><em>SEAA-SNU Anthropology 2025 Conference</em>, Theme: "Shaping Futures: East Asia as Practice", Seoul National University, South Korea, 2025/7</div>
-                          <div class="conference-item"><em>Xiamen University School of Film 2025 Youth Forum</em>, Theme: "The Death of Cinema, The Love for Film: From Aesthetic Traditions to Digital Intelligence Revolution", Xiamen University, China, 2025/7</div>
-                          <div class="conference-item"><em>The 20th annual Cinema and Media Studies Graduate Student Conference</em>, Theme: "Failing Media", The University of Chicago, USA, 2025/4</div>
-                          <div class="conference-item"><em>Beijing International Film Festival · The 32nd College Student Film Festival: 2025 International Young Scholars Conference</em>, Beijing Normal University, China, 2025/4</div>
-                          <div class="conference-item"><em>Mediated Futures: Graduate Student Interdisciplinary Conference on Environment, Space, Future, and Media in Southeast and East Asian Cultural and Art Practices</em>, University of California, Irvine, USA, 2025/4</div>
-                          <div class="conference-item"><em>6th Media Materiality Forum</em>, Theme: "Digital Intelligence, Cosmotechnics, and Planetary Future", Tsinghua University, China, 2025/3</div>
-                          <div class="conference-item"><em>Common Ground Graduate Conference 2025</em>, Theme: "Media Studies in/at/from the Margins", Indiana University Bloomington, USA, 2025/3</div>
-                          <div class="conference-item"><em>2025 NYU Cinema Studies Student Conference</em>, Theme: "Template", New York University, USA, 2025/2 - 2025/3</div>
-                          <div class="conference-item"><em>The 2nd Gansu Graduate Student Forum on Journalism and Communication</em>, Lanzhou University, China, 2025/1</div>
-                          <div class="conference-item"><em>The 16th Anhui Graduate Student Forum on Journalism and Communication</em>, Theme: "Transmutation · Integration · Innovation: Media Boundaries and Communication Imagination in the Age of Digital Intelligence", Anhui University, China, 2024/12</div>
-                          <div class="conference-item"><em>International Symposium on the Development of Artistic Disciplines in the Era of Digital Intelligence</em>, Sub-forum Theme: "Art Media, Art Institutions and Art Landscape in the Era of Digital Intelligence", Wuhan University of Technology, China, 2024/12</div>
-                          <div class="conference-item"><em>2024 China Eastern Media Art Forum</em>, Forum Topic: "Film and New Audiovisual Art in the Context of Digitization", Sub-forum Theme: "New Advances in Film and Television Media Theory in the Age of Digital Intelligence", Nanjing University, China, 2024/12</div>
-                          <div class="conference-item"><em>2024 Annual Academic Conference of Zhejiang Communication Association</em>, Forum Topic: "Global Connectivity: Imagining Communities in the Digital Era", NingboTech University, China, 2024/12</div>
-                          <div class="conference-item"><em>The 1st Digital Intelligence Cinema Forum</em>, Forum Topic: "Digital Intelligence Cinema: New Technologies · New Methods · New Aesthetics", Sub-forum Theme: "Theories: Philosophy, Aesthetics, and Other Related Issues in Digital Intelligence Cinema", Chongqing University, China, 2024/12</div>
-                          <div class="conference-item"><em>The 6th "Youth and Visual Media" Postgraduate Academic Forum</em>, Forum Topic: "Cross-boundary and Future of Cinema", Fujian Normal University, China, 2024/11</div>
-                          <div class="conference-item"><em>The 1st Eco-cinema Theory and Creation Research Forum</em>, Southwest Petroleum University, China, 2024/11</div>
-                          <div class="conference-item"><em>The 5th China-ASEAN University Postgraduate Forum on Art</em>, Forum Topic: Paradigm Transformation and Discourse Innovation of Art Research in the Digital Intelligence Era, Guangxi Art University, China, 2024/10</div>
-                          <div class="conference-item"><em>The 12th Ecological Literature Annual Conference Across the Taiwan Strait &amp; Academic Forum on Eco-criticism and Eco-literature in the Context of Posthumanism</em>, Forum Topic: "Anthropocene and Posthumanism Criticism", Jimei University, China, 2024/10</div>
-                          <div class="conference-item"><em>"Chinese Cinema: Histories, Methods and Ecologies" Summer School</em>, School of Film, Xiamen University, China, 2024/7</div>
-                          <div class="conference-item"><em>The 8th "Inspiration Booster" Creative Camp of Contemporary Art Design,</em> XLY MoMA, China, 2024/6 - 2024/7</div>
-                        </div>
-                        <button id="toggle-conferences">Show More</button>
-                        <br /><br />
-                      </div>
-
-
-                      <div class="paragraph">
-                        <u><font size="5">Exhibitions (selection)</font></u><br />
-                        <div id="exhibitions">
-                          <div class="exhibition-item"><em>The Great Rupture: Archaeology of the Apocalyptic Future</em>, Central Art Museum, Hangzhou, 2025</div>
-                          <div class="exhibition-item"><em>City in the Mirror: The Creative Narratives of AIGC's Future Imagery</em>, Center for Digital Innovation and Humanities Education, Macau University of Science and Technology, Macau, 2025</div>
-                          <div class="exhibition-item"><em>Notes, solitude or the canceled, Blanchot airdrops through the wavy lines that advance in parallel</em>, Cooling Gallery, Nanjing, China, 2024</div>
-                          <div class="exhibition-item"><em>Perceiving: The Body of Group Ritual, and the Resonant Memories</em>, Acute Angle Gallery, Guangzhou, China, 2024</div>
-                          <div class="exhibition-item"><em>Synthetic Wilderness</em>, John Molly Gallery, New York, USA, 2024</div>
-                          <div class="exhibition-item"><em>Parallel and Intersection</em>, In Gallery, Taiyuan, China, 2024</div>
-                          <div class="exhibition-item"><em>Random Inspection</em>, Tang Museum · Project Z, Dongguan, China, 2024</div>
-                          <div class="exhibition-item"><em>Beyond System</em>, Arbre Art Centre, Shenzhen, China, 2024</div>
-                          <div class="exhibition-item"><em>Unclaasifiable</em>, New Bridge Art Museum, Shanghai, China, 2024</div>
-                          <div class="exhibition-item"><em>Self, as the Narrated, as the Others</em>, Assorted Objects Experimental Gallery, Shanghai, China, 2024</div>
-                          <div class="exhibition-item"><em>Flow Landscape</em>, H&Art Gallery, Shenyang, China, 2024</div>
-                          <div class="exhibition-item"><em>Conflicts Within and Without</em>, SNAP, Shanghai, China, 2024</div>
-                          <div class="exhibition-item"><em>Mending Nature</em>, Kongshan Art Gallery, Hangzhou, China, 2024</div>
-                          <div class="exhibition-item"><em>2024 Nanjing D9Lock Art Festival: Fusion, Harmony, Coexistence, Growth</em>, D9Lock, Nanjing, China, 2024</div>
-                          <div class="exhibition-item"><em>Within Iceless Age</em>, theBlanc, New York, USA, 2024</div>
-                          <div class="exhibition-item"><em>Immersion</em>, Lockwood Annexe 5, Goldsmiths, London, UK, 2024</div>
-                          <div class="exhibition-item"><em>Silent Field</em>, Dongshengli NO.13, Suzhou, China, 2024</div>
-                          <div class="exhibition-item"><em>GOOGOL</em>, Online ( Powerer by <em>New Art City</em> ), 2024</div>
-                          <div class="exhibition-item"><em>The Logic of Sensation</em>, Ivory Gate Gallery, Shanghai, China, 2024</div>
-                          <div class="exhibition-item"><em>Language Babel</em>, Art Lift Art Space, Shenyang, China, 2024</div>
-                          <div class="exhibition-item"><em>Together For Future</em>, Atom Space, SeeDliNG Fair, Shenzhen, China, 2024</div>
-                          <div class="exhibition-item"><em>The Realm of Time and Space</em>, Qingdao Art Museum, Qingdao, China, 2024</div>
-                          <div class="exhibition-item"><em>Wuer · Fun · Concept Exhibition</em>, InnovArt Space, Pazhou, China, 2024</div>
-                          <div class="exhibition-item"><em>Code Reconstruction: Artistic Exploration in the Age of AIGC</em>, Art Museum of Luxun Academy of Fine Arts, Shenyang, China, 2024</div>
-                          <div class="exhibition-item"><em>Wonde Room: Art Exploration in the Web3, Metaverse, and AIGC Era</em>, Advance Art Museum, Changsha, China, 2023</div>
-                          <div class="exhibition-item"><em>Migratory Bird 300</em>, Zone out Space 2.0, Aranya Theatre Festival, Qinhuangdao, China, 2023</div>
-                          <div class="exhibition-item"><em>The Atmosphere of Growing Art</em>, Line Stones Gallery, Jingdezhen, China, 2023</div>
-                          <div class="exhibition-item"><em>De wereld Wat Met Handvat getembi Ik? – Rituals, Oracles, and Artistic spirit mediums
-  </em>, 798CUBE, Beijing, China, 2023</div>
-                          <div class="exhibition-item"><em>Luohu Shenzhen-Hongkong Culture Festival</em>, Line Stones Gallery, Jingdezhen, 2023</div>
-                          <div class="exhibition-item"><em>Cold and Light Conversation: Agency and Technology</em>, Imaginary Z, Hangzhou, China, 2023</div>
-                          <div class="exhibition-item"><em>Plant-generated Images</em>, Wuhan Photography Art Centre, Wuhan, China, 2023</div>
-                          <div class="exhibition-item"><em>Under the Current: The Hidden World in the Surface Water</em>, HEZUO SPACE, Shenyang, China, 2023</div>
-                          <div class="exhibition-item"><em>Doves and Magpies Sharing a Nest</em>, The Forge Art Gallery, London, UK, 2023</div>
-                          <div class="exhibition-item"><em>AI & NI</em>, 4C Gallery, Los Angeles, USA, 2023</div>
-                        </div>
-                        <button id="toggle-exhibitions">Show More</button>
-                        <br /><br />
-                      </div>
-
-
-                      <div class="paragraph">
-                        <u><font size="5">Film Festivals (selection)</font></u><br />
-                        <div id="film-festivals">
-                          <div class="film-festival-item">FESTIVAL ANGAELICA, USA, 2025 - <em>Official Selection</em></div>
-                          <div class="film-festival-item">Kuala Lumpur International Film Awards, Kuala Lumpur, Malaysia, 2025 - <em>Official Selection</em></div>
-                          <div class="film-festival-item">Unfolding Dreams Cinema Showcase, Chengdu, China, 2024 - <em>Official Selection</em></div>
-                          <div class="film-festival-item">Perfect Tense Short Film Festival in 20th Anniversary Celebration of the School of Communication, Fujian Normal University, Fuzhou, China, 2024 - <em>Best Short Film Award &amp; Best Editing Award</em></div>
-                          <div class="film-festival-item">MUST Chinese Youth Film Festival and Golden Rooster Film Exhibition (Macao), Macao, China, 2024 - <em>Official Selection</em></div>
-                          <div class="film-festival-item">British University International Students Film Festival, New Cairo, Egypt, 2024 - <em>Official Selection</em></div>
-                          <div class="film-festival-item">La Sur Real Film Festival, Berlin, German, 2024 - <em>Official Selection</em></div>
-                          <div class="film-festival-item">Origin Western Film Festival, Xi'an, China, 2024 - <em>Official Selection</em></div>
-                          <div class="film-festival-item">Beijing International Film Festival · Beijing College Student Film Festival, Beijing, China, 2024 - <em>Official Selection</em></div>
-                          <div class="film-festival-item">He Dong Auteur Film Festival, Yuncheng, China, 2024 - <em>Official Selection</em></div>
-                          <div class="film-festival-item">Duemila30 International Film Festival, Milan, Italy, 2024 - <em>Official Selection</em></div>
-                          <div class="film-festival-item">Frome International Climate Film Festival, Frome, UK, 2024 - <em>Official Selection</em></div>
-                          <div class="film-festival-item">International Film Festival of Audiovisual Theory Students, Prague, Czech, 2023 - <em>Best Experimental Film (Kurt Kren’s Scratched Glasses)</em></div>
-                          <div class="film-festival-item">Varsity Film Expo, Nairobi, Kenya, 2023 - <em>Honourable Mention</em></div>
-                          <div class="film-festival-item">International Alternative Media Film Festival, Mexico City, Mexico, 2023 - <em>Official Selection</em></div>
-                          <div class="film-festival-item">AIU Kuwait International Film Festival, Jahra, Kuwait, 2023 - <em>Official Selection</em></div>
-                          <div class="film-festival-item">Ningbo Short Film Festival, Ningbo, China, 2023 - <em>Best Experimental Short Film Nomination</em></div>
-                          <div class="film-festival-item">Xi Ying Light My Fire Young Film Festival, Xi'an, China, 2023 - <em>Official Selection</em></div>
-                          <div class="film-festival-item">HiShorts! Film Festival, Xiamen, China, 2023 - <em>Official Selection</em></div>
-                          <div class="film-festival-item">Shishan Film Festival, Chengdu, China, 2023 - <em>Official Selection</em></div>
-                          <div class="film-festival-item">Shanghai International Short Week, Shanghai, China, 2023 - <em>Best AI Short</em></div>
-                        </div>
-                        <button id="toggle-film-festivals">Show More</button>
-                      <br /><br />
-                      </div>
-
-
-                      <div class="paragraph">
-                        <u><font size="5">Screenings</font></u><br />
-                        <div id="screenings">
-
-                          <div class="screening-item"><em><u><a href="https://www.lakesidefilmfestival.com/films2025/la-sur-real-shorts">Curated Short Film Program, La Sur Real: Edition IV</a></u></em>, Lakeside Film Festival, Berlin, German, 2025</div>
-                          <div class="screening-item"><em><u><a href="https://www.instagram.com/reel/DIhTOWRpmfN/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="_blank">"Memorias ocultas: territorios y cuerpos que gritan", "Entre los seres y la tierra, fuego"Seis cortometrajes</a></u></em>, Faculty of Arts of the Universidad Nacional de Colombia, Bogotá, Colombia, 2025</div>
-                          <div class="screening-item"><em><u><a href="https://mp.weixin.qq.com/s/pQrMXlqDrw24a1HtoL9JzQ" target="_blank">"Multi-screen Images" Short Film Theme Screening</a></em></u>, China Academy of Art, Hangzhou, China, 2025</div>
-                          <div class="screening-item"><em><u><a href="https://mp.weixin.qq.com/s/2eJPbRy5onttHqb3tvY00Q" target="_blank">Wuhan University Graduate Student Academic Science and Technology Festival “Distorted Imagination: Technological Rethinking under the Annotation of Cinema”</a></u></em>, School of Arts, Wuhan University, Wuhan, China, 2024</div>
-                          <div class="screening-item"><em><u><a href="https://mp.weixin.qq.com/s/Ap6ifFvuRDjMwyRNi-s6Cw" target="_blank">Experimental Film Night</a></u></em>, The Delta INST + GODOWN, Hangzhou, China, 2024</div>
-                          <div class="screening-item"><em><u><a href="https://mp.weixin.qq.com/s/2m4KOOK_9bZTcjshwPC73Q" target="_blank">ONED Film Festival China Touring Screening Program</a></u></em>, Lanzhou / Suzhou / Shanghai / Tianjin / Yangshuo / Yichang / Chengdu, China, 2024</div>
-                          <div class="screening-item"><em><u><a href="https://mp.weixin.qq.com/s/Uw2rS5Uk5JADzRAvFa4KbQ" target="_blank">The 8th abC Art Book Fair</a></u></em>, OōEli, Hangzhou, China, 2a023</div>
-                          <div class="screening-item"><em><u><a href="https://mp.weixin.qq.com/s/RWMzt2DKmVaVpEY2Rgkxxg" target="_blank">Jetty Screening</a></u></em>, Dali, China, 2023</div>
-                          <div class="screening-item"><em><u><a href="https://mp.weixin.qq.com/s/oAricm9WS5m2XtCShSG4tQ" target="_blank">C-POP Theatre</a></u></em>, Beijing, China, 2023</div>
-                          <div class="screening-item"><em><u><a href="https://mp.weixin.qq.com/s/NTp_wqKoNgdeY2TsnEd1og" target="_blank">Ferry</a></u></em>, Chengdu, China, 2023<br /><br /></div>
-                        </div>
-
-                      </div>
-
-
-                      <div class="paragraph" style="text-align:left;">
-                        <u><font size="5">Residencies<br />&#8203;</font></u>
-                        <em>Nanshan Artist Community,</em> Chongqing, China&nbsp;&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;&nbsp; 2024/5/25 - 2024/6/14<br />
-                        <em>Migratory Bird 300,</em> Aranya Theatre Festival, Qinhuangdao, China&nbsp;&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;&nbsp; 2023/6/8 - 2023/6/21<br /><br />
-                      </div>
-
-
-                      <div class="paragraph">
-                        <u><font size="5">Teaching Experience</font></u><br />
-                        "Texture of the Earth and Skin We're In: Geological Thinking, Anthropocene Cinema, and the Imaginations Beyond Humanbeing" courses, Radiance Academy, online, 2024&nbsp;&nbsp;&nbsp; (<em>at high school &amp; undergraduate levels, <u><a href="syllabus.html" target="_blank">click here for the syllabus</a></u></em>)<br />&#8203;
-                      </div>
-
-
-                      <div class="paragraph">
-                        <u><font size="5">Talks &amp; Interviews</font></u><br />
-
-                        <u><a href="https://mp.weixin.qq.com/s/emznMENbR0EbiGNm2IyYyQ" target="_blank">Panel Talk</a></u>, <em>Thematic Screening of Multi-Screen Video Short Films</em>, China Academy of Art, Hangzhou, 2025<br />
-
-                        <u><a href="httpsReadMe.md
-/s/FxY6OtlHM6bSdNDa7oV9DA" target="_blank">Panel Talk</a></u>, <em>Wuhan University Graduate Student Academic Science and Technology Festival "Distorted Imagination: Technological Rethinking under the Annotation of Cinema”</em>, School of Arts, Wuhan University, Wuhan, 2024<br />
-
-                        <u><a href="https://044artstudio.com/artists" target="_blank">Artists Interview</a></u>, 044 ART STUDIO, Online, 2024<br />
-                        Artists Interview, Jiangsu Business Daily, Nanjing, 2024<br />
-                        <u><a href="GOOGOLtalk.html" target="_blank">Artist Panel Talk</a></u>, <em>GOOGOL</em>, Online, 2024<br />
-                        <u><a href="https://www.xiaohongshu.com/explore/66619b2f000000000c01b3fb?app_platform=android&amp;ignoreEngage=true&amp;app_version=8.39.0&amp;share_from_user_hidden=true&amp;type=normal&amp;author_share=1&amp;xhsshare=WeixinSession&amp;shareRedId=N0xHMDM9RUE2NzUyOTgwNjY0OTc9NTxO&amp;apptime=1717687112&amp;share_id=4f70ca260d5848adb599a2d74a239521" target="_blank">Artist Interview</a></u>, <em>"Breathe With the Plants"</em>, Xì | Collective, 2024<br />
-                        <span style="color:rgb(0, 0, 0)">Artist talk, </span>Wuhan Photography Art Centre, Wuhan, China, 2023<br />
-                        <u><a href="https://mp.weixin.qq.com/s/LceWwIAWW9sofBra7_AgKA" target="_blank">Invited lecture</a></u>, "How did it start?" The First Round Table of the Occulf, Umay Art Project, Online, 2023<br />
-                        Invited Lecture, Advance Art Museum, Changsha, China, 2023<br />
-                        <u><a href="https://mp.weixin.qq.com/s/XgwA910JrW2Ra7zy_YppLQ" target="_blank">Artist Interview</a></u>, <em>"Independent Artists, in Nanjing"</em>, Nanjing Cultural Life Guide, 2023<br />
-                        <u><a href="httpsDoNotCommit.txt
-/s/oAricm9WS5m2XtCShSG4tQ" target="_blank">Artist talk</a></u>, C-POP Theatre, Beijing, China, 2023<br /><br />
-                      </div>
-                      <div class="paragraph">
-                        <u><font size="5">Professional Affiliations</font></u><br />
-                        China Film Critics Association, Motion Pictures and Technologies Committee (CFCA)<br />
-                        China Society of Motion Pictures and Television Engineering (CSMPTE)<br />
-                        China Science Film and Video Association (CSFVA)<br />
-                        Hubei Provincial Film Artists Association, Youth Committees<br />
-                        American Psychological Association (APA)<br />
-                        Chinese Society for Environmental Science (CSES)<br />
-                        Geological Society of China (GSC)<br />
-                      </div>
-                      <div class="paragraph" style="text-align:center;">
-                        <br /><br /><font size="2"><br />All Rights Reserved&nbsp;&copy;&nbsp; Juntao Yang</font>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div class="writing-entry">
+            <p class="writing-title">The Earth That Holds Us: The Geological Turn in Film and Media Studies</p>
+            <p class="writing-details"><em>Theoretical Studies in Literature and Art</em>, East China Normal University Press, Incoming<br>(Written in Chinese)</p>
         </div>
-      </div>
+        <div class="writing-entry">
+            <p class="writing-title"><a href="/uploads/Precarious Attachments_A Critical Reading of Judith Butler’s The Psychic Life of Power_Theories in Subjection (1997).pdf">Precarious Attachments: A Critical Reading of Judith Butler's The Psychic Life of Power: Theories in Subjection (1997)</a></p>
+            <p class="writing-details"><em>The Journal of Contemporary Art Criticism</em>, Asia Technology Research Institute,Volume 1 Issue 2 (2025)</p>
+        </div>
+        <div class="writing-entry">
+            <p class="writing-title"><a href="/uploads/Juntao Yang_Materiality, Geoaesthetics and Planetary Futures_The Geology of Media in the Context of Anthropocene.pdf">Materiality, Geoaesthetics and Planetary Futures: The Geology of Media in the Context of Anthropocene</a></p>
+            <p class="writing-details"><em>Review of Theatre and Film</em>, China Theatre Press, Issue 6 (2024)<br>(Written in Chinese)</p>
+        </div>
     </div>
+
+    <hr class="decorative-hr">
+
+    <div class="writing-section">
+        <h3 class="writing-section-title">Criticism & Essays</h3>
+        <div class="writing-entry">
+            <p class="writing-title"><a href="https://www.peopleoftheenvironment.org/blog/lukas-marxt-how-do-we-mediate-haunted-toxicity" target="_blank">Lukas Marxt: How Do We Mediate Haunted Toxicity?</a></p>
+            <p class="writing-details"><em>Edge Effects</em>, 2026</p>
+        </div>
+        <div class="writing-entry">
+            <p class="writing-title">A Defense of Obscurity, or Stones from Other Hills: Translating Judith Butler</p>
+            <p class="writing-details"><em>Gadfly</em>, 2025</p>
+        </div>
+        <div class="writing-entry">
+            <p class="writing-title"><a href="/uploads/JuntaoYang_Stepping_Through_Cures_and_Curses_How_the_Traces_of_Herb_Scattering_Breathing_and_Memorizing_Mediate_Collective_Trauma_and_Public_Healing.pdf#page=39">Stepping Through Cures/Curses, or Herbary: Co-respiration (2023)</a></p>
+            <p class="writing-details"><em>MODA Critical Review</em>, 2025</p>
+        </div>
+        <div class="writing-entry">
+            <p class="writing-title"><a href="/uploads/From China to CK2K2X_The Camouflage of Imagination and The Emergence of The Heterodox.pdf" target="_blank">From "China" to "CK2K2X": The Camouflage of Imagination and The Emergence of The Heterodox</a></p>
+            <p class="writing-details">Hubei Provincial Film Artists Association Youth Committee, 2023</p>
+        </div>
+        <div class="writing-entry">
+            <p class="writing-title"><a href="https://mp.weixin.qq.com/s/pudCgdXn5oZk23n-0E4NMw" target="_blank">Light and Cold Conversations: Digital Agency, Speculative Aesthetics, and Conspiracy Sympathizers</a></p>
+            <p class="writing-details"><em>Imaginary Z</em>, 2023</p>
+        </div>
+        <div class="writing-entry">
+            <p class="writing-title"><a href="https://mp.weixin.qq.com/s/cdMjyF0wYb5q0NEMFrLtFQ" target="_blank">​A Sudden Interruption: All Silence Is A Hidden Space</a></p>
+            <p class="writing-details"><em>Buoyant Views, Buoyant Art</em>, 2023 (Written in Chinese)</p>
+        </div>
+    </div>
+    
+    <hr class="decorative-hr">
+
+    <div class="writing-section conference-section">
+        <h3 class="writing-section-title">Workshops & Conference Presentations</h3>
+
+
+        <div class="writing-entry">
+            <p class="writing-title">Hunting the Sensibles: Performing Anthropology Across Media [Multidisciplinary Workshop with Xiaohui Liu, Pengrui Ou, Wang Xue Sophia, Renee Yu Jin and Yuwan Zhang]</p>
+            <p class="writing-details">- 2025 Annual Meeting of the American Anthropological Association, New Orleans, United States, November 21, 2025</p>
+        </div>
+        
+        <div class="writing-entry">
+            <p class="writing-title">The Grammar of Survival: Queer Shame, State Violence, and Temporal Refusal in East Palace, West Palace (1996) [Oral Presentations]</p>
+            <p class="writing-details">- <a href="https://pamla.ballastacademic.com/Home/PublicViewAbstract/22668" target="_blank">Pacific Ancient and Modern Language Association Annual Convention</a>, San Francisco, USA, November 20–23, 2025</p>
+        </div>
+
+        <div class="writing-entry">
+            <p class="writing-title">Specter, Capital, Simulator: Exhuming P.T. (2014), a Media Archaeological Sketch [Oral Presentations]</p>
+            <p class="writing-details">- [Aniwow! 2025] 20th China (Beijing) International Student Animation Festival, Annual Conference of China Game Studies 2025, Communication University of China, China, October 25-26, 2025</p>
+        </div>
+        
+        <div class="writing-entry">
+            <p class="writing-title">Mediating Elemental Ghosts: Media Archaeology as Planetary Sorcery [Oral Presentations]</p>
+            <p class="writing-details">- Xiamen University School of Film 2025 Youth Forum "The Death of Cinema, The Love for Film: From Aesthetic Traditions to Digital Intelligence Revolution", Xiamen University, China, July 12, 2025</p>
+        </div>
+
+
+        <div class="writing-entry">
+            <p class="writing-title">Fault Lines and Echoing Strata: Attunement and Unsecurement through East Asia's Earthquake–Media [Oral Presentations]</p>
+            <p class="writing-details">
+- <a href="https://arts.columbia.edu/events/futurities-ii-transnational-exchange-chinese-and-american-film-and-media-theories">"Futurities II: The Transnational Exchange of Chinese and American Film and Media Theories"</a>, Columbia University, United States, Augest 27, 2025<br>
+- <a href="/uploads/[ABSTRACT]_SEAA-SNU_Anthropology_2025_in_Seoul.pdf#page=105">SEAA-SNU Anthropology 2025 Conference "Shaping Futures: East Asia as Practice"</a>, Seoul National University, South Korea, July 14-16, 2025<br>
+            - <a href="https://voices.uchicago.edu/failingmedia/" target="_blank">The 20th annual Cinema and Media Studies Graduate Student Conference "Failing Media"</a>, The University of Chicago, USA, April 25-26<br>
+            - "Mediated Futures: Graduate Student Interdisciplinary Conference on Environment, Space, Future, and Media in Southeast and East Asian Cultural and Art Practices", University of California, Irvine, USA, April 25-26, 2025<br>
+            - <a href="https://voices.uchicago.edu/failingmedia/" target="_blank">Common Ground Graduate Conference "Media Studies in/at/form The Margins"</a>, Indiana University Bloomington, USA, March 7–8, 2025<br>
+            - <a href="https://tisch.nyu.edu/cinema-studies/events/spring-2025/student-conference.html">2025 NYU Cinema Studies Student Conference "Templates"</a>, New York University, USA, February 28–March 1, 2025</p>
+        </div>
+
+         <div class="writing-entry">
+            <p class="writing-title">Porous Heritage, Chemical Exposure Victims, Suppressed Vulnerability/Sensitivity: Activate the Embodied Experience of Industrial Heritage Among a Wider Population [Oral Presentations]</p>
+            <p class="writing-details">- Big Stuff Heritage Conference "Skills and Machines: A Living Paternership", University of Canberra, Australia, October 14–17, 2025<br/>
+- The International Committee for the Conservation of the Industrial Heritage Congress 2025 "Heritage in action: Legacies of industry in future making", Kiruna, Sweden, August 25–30, 2025</p>
+        </div>
+
+
+         <div class="writing-entry">
+            <p class="writing-title">Stepping Through Cures/Curses: How the Traces of Herb Scattering, Breathing, and Memorizing Mediate Collective Trauma and Public Healing [Oral Presentations]</p>
+            <p class="writing-details">
+            - <a href="https://avarts.ionio.gr/ttt/" target="_blank">Taboo-Transgression-Transcendence in Art & Science 2025, Interdisciplinary Conference</a>, Kino Šiška, Slovenia, Septmber 9-13, 2025</p>
+        </div>
+
+        <div class="writing-entry">
+            <p class="writing-title">New Perspectives on Media Materiality: Geological Film Criticism in an Anthropocenic Perspective [Selected Oral Presentations]</p>
+            <p class="writing-details">( Later Published as <em>Geoaesthetics and Planetary Futures: The Geology of Media in the Context of Anthropocene</em> )<br>
+            - Beijing International Film Festival · The 32nd College Student Film Festival: 2025 International Young Scholars Conference, Beijing Normal University, China, April, 2025<br>
+            - 6th Media Materiality Forum "Digital Intelligence, Cosmotechnics, and Planetary Future", Tsinghua University, China, March 29-30, 2025<br>
+            - 2024 China Eastern Media Art Forum "Film and New Audiovisual Art in the Context of Digitization", Nanjing University, China, December 14, 2024<br>
+            - 2024 Annual Academic Conference of Zhejiang Communication Association, NingboTech University, China, December 13–14, 2024<br>
+            - The 12th Ecological Literature Annual Conference Across the Taiwan Strait & Academic Forum on Eco-criticism and Eco-literature in the Context of Posthumanism "Anthropocene and Posthumanism Criticism", Jimei University, China, October 11-13, 2024</p>
+        </div>
+    </div>
+
+    <hr class="decorative-hr">
+
+    <div class="writing-section">
+        <h3 class="writing-section-title">Invited Talks</h3>
+        <div class="writing-entry">
+            <p class="writing-title talks-list"><a href="https://mp.weixin.qq.com/s/emznMENbR0EbiGNm2IyYyQ" target="_blank">Panel Talk</a></p>
+            <p class="writing-details"><em>Thematic Screening of Multi-Screen Video Short Films</em>, China Academy of Art, Hangzhou, 2025</p>
+        </div>
+        <div class="writing-entry">
+            <p class="writing-title talks-list"><a href="https://mp.weixin.qq.com/s/FxY6OtlHM6bSdNDa7oV9DA" target="_blank">"Distorted Imagination: Technological Rethinking under the Annotation of Cinema"</a></p>
+            <p class="writing-details">School of Arts, Wuhan University, 2024</p>
+        </div>
+        <div class="writing-entry">
+            <p class="writing-title talks-list"><a href="GOOGOLtalk.html" target="_blank">Artist Panel Talk</a></p>
+            <p class="writing-details"><em>GOOGOL</em>, Online, 2024</p>
+        </div>
+        <div class="writing-entry">
+            <p class="writing-title talks-list"><a href="https://mp.weixin.qq.com/s/LceWwIAWW9sofBra7_AgKA" target="_blank">"How did it start?" The First Round Table of the Occulf</a></p>
+            <p class="writing-details">Umay Art Project, Online, 2023</p>
+        </div>
+    </div>
+
+</div>
+</div>
+		</div>
+      </div>
+	</div>
+</div>
+
+</div>
+
+  	</div>
+
+  
+
   </div>
 
+</div>
+<script type="text/javascript" src="files/theme/plugins.js"></script>
+<script type="text/javascript" src="files/theme/custom.js"></script>
+<script type="text/javascript" src="files/theme/mobile.js"></script>
+    <div id="customer-accounts-app"></div>
+    <script src="http://cdn2.editmysite.com/js/site/main-customer-accounts-site.js?buildTime=1234"></script>
 
-  <script type="text/javascript" src="files/theme/plugins.js"></script>
-  <script type="text/javascript" src="files/theme/custom.js"></script>
-  <script type-="text/javascript" src="files/theme/mobile.js"></script>
-  <div id="customer-accounts-app"></div>
-  <script src="https://cdn2.editmysite.com/js/site/main-customer-accounts-site.js?buildTime=1234"></script>
-  <script>
-    $(document).ready(function(){
-      // Conferences & Workshops
-      var conferenceItems = $("#conferences .conference-item");
-      if(conferenceItems.length > 10) {
-        conferenceItems.slice(10).hide();
-        $("#toggle-conferences").show().on("click", function(){
-          if($(this).text() === "Show More"){
-            conferenceItems.slice(10).slideDown();
-            $(this).text("Show Less");
-          } else {
-            conferenceItems.slice(10).slideUp();
-            $(this).text("Show More");
-          }
-        });
-      } else {
-        $("#toggle-conferences").hide();
-      }
-      
-      // Exhibitions (selection)
-      var exhibitionItems = $("#exhibitions .exhibition-item");
-      if(exhibitionItems.length > 10) {
-        exhibitionItems.slice(10).hide();
-        $("#toggle-exhibitions").show().on("click", function(){
-          if($(this).text() === "Show More"){
-            exhibitionItems.slice(10).slideDown();
-            $(this).text("Show Less");
-          } else {
-            exhibitionItems.slice(10).slideUp();
-            $(this).text("Show More");
-          }
-        });
-      } else {
-        $("#toggle-exhibitions").hide();
-      }
-      
-      // Film Festivals (selection)
-      var filmFestivalItems = $("#film-festivals .film-festival-item");
-      if(filmFestivalItems.length > 10) {
-        filmFestivalItems.slice(10).hide();
-        $("#toggle-film-festivals").show().on("click", function(){
-          if($(this).text() === "Show More"){
-            filmFestivalItems.slice(10).slideDown();
-            $(this).text("Show Less");
-          } else {
-            filmFestivalItems.slice(10).slideUp();
-            $(this).text("Show More");
-          }
-        });
-      } else {
-        $("#toggle-film-festivals").hide();
-      }
-      
-      // Screenings
-      var screeningItems = $("#screenings .screening-item");
-      if(screeningItems.length > 10) {
-        screeningItems.slice(10).hide();
-        $("#toggle-screenings").show().on("click", function(){
-          if($(this).text() === "Show More"){
-            screeningItems.slice(10).slideDown();
-            $(this).text("Show Less");
-          } else {
-            screeningItems.slice(10).slideUp();
-            $(this).text("Show More");
-          }
-        });
-      } else {
-        $("#toggle-screenings").hide();
-      }
-    });
-  </script>
-</body>
+		
+	</body>
 </html>
