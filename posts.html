@@ -126,6 +126,10 @@
     }
     .news-section a {
         text-decoration: underline;
+        color: #555; /* 将链接颜色改为灰色 */
+    }
+    .news-section a:hover {
+        color: #000; /* 添加鼠标悬停效果 */
     }
     
     .posts-column {
@@ -156,7 +160,13 @@
 
     .posts-two-col { display: flex; gap: 80px; }
     .posts-left, .posts-right { flex: 1; display: flex; flex-direction: column; }
-    .posts-right .post-entry-card:first-child { margin-top: 80px; }
+    
+    @media screen and (min-width: 767px) {
+      .posts-right .post-entry-card:first-child { 
+        margin-top: 80px;
+      }
+    }
+
     .posts-left .post-entry-card, .posts-right .post-entry-card { margin: 0 0 80px; width: 100%; }
 
     @media (max-width: 767px) {
@@ -260,148 +270,25 @@
                             <tr class="wsite-multicol-tr">
                               <td class="wsite-multicol-col posts-column" style="width:75%; padding:0 15px; vertical-align: top;">
                                 
-                                <div class="posts-two-col">
-                                  <div class="posts-left">
-
-                                    <div class="post-entry-card">
-                                      <a href="survival.html"><img src="uploads/weather.jpg" class="post-image" alt="An image related to weather and floods"></a>
-                                      <div class="paragraph post-title">
-                                        <a href="survival.html"><u><font size="4">The Grammar of Survival, or after floods, we still love.</font></u></a>
+                                <div class="posts-two-col" id="posts-container" aria-live="polite">
+                                  <div class="posts-left" id="posts-left">
                                       </div>
-                                      <div class="paragraph post-date">October 24, 2025</div>
-                                      <div class="paragraph post-excerpt">What is the grammar of survival? It is fawning, complicity, and a desperate struggle to transfer lethal pressure onto other, weaker beings in exchange for one's own continued existence.</div>
-                                    </div>
-
-                                    <div class="post-entry-card">
-                                      <a href="indexicality.html"><img src="uploads/hunt.webp" class="post-image" alt="A hunter and their prey, symbolizing the capturing act of indexicality"></a>
-                                      <div class="paragraph post-title">
-                                        <a href="indexicality.html"><u><font size="4">On Indexicality</font></u></a>
+                                  <div class="posts-right" id="posts-right">
                                       </div>
-                                      <div class="paragraph post-date">October 3, 2025</div>
-                                      <div class="paragraph post-excerpt">I advocate for defining indexicality with ontological purity: it is the material trace deposited by causal contact, and its social efficacy is guaranteed by a regime of truth.</div>
-                                    </div>
-
-                                    <div class="post-entry-card">
-                                      <a href="sterile.html"><img src="uploads/nazi.ppm" class="post-image" alt="A black and white photograph from a Nazi rally"></a>
-                                      <div class="paragraph post-title">
-                                        <a href="sterile.html"><u><font size="4">Desiring Fascism, Sterile Aesthetics</font></u></a>
-                                      </div>
-                                      <div class="paragraph post-date">September 20, 2025</div>
-                                      <div class="paragraph post-excerpt">Building on the debate between Susan Sontag and Adrienne Rich, this essay explores fascism's libidinal economy and proposes a counter-strategy: an art of exhaustion, enervation, and sterile aesthetics.</div>
-                                    </div>
-                                    
-                                    <div class="post-entry-card">
-                                      <a href="mary.html"><img src="uploads/Mary.jpg" class="post-image" alt="A historical photograph of Mary Mallon, known as Typhoid Mary"></a>
-                                      <div class="paragraph post-title">
-                                        <a href="mary.html"><u><font size="4">Disempowered Women in Discursive Articulation: The Beautiful Legend of Typhoid Mary</font></u></a>
-                                      </div>
-                                      <div class="paragraph post-date">September 2, 2025</div>
-                                      <div class="paragraph post-excerpt">This essay examines the stigmatization of 'Typhoid Mary,' exploring how prejudice and power articulate themselves around a supposed truth, drawing a parallel to the film *Malèna*.</div>
-                                    </div>
-
-                                    <div class="post-entry-card">
-                                      <a href="mukendi.html"><img src="uploads/Mukendi.jpg" class="post-image" alt="Artwork by Jean Katambayi Mukendi"></a>
-                                      <div class="paragraph post-title">
-                                        <a href="mukendi.html"><u><font size="4">Jean Katambayi Mukendi: Toward a Speculative Rather Than Technicist Media Archaeology</font></u></a>
-                                      </div>
-                                      <div class="paragraph post-date">August 25, 2025</div>
-                                      <div class="paragraph post-excerpt">I seek a more emphatically speculative approach to media archaeology. The work of Jean Katambayi Mukendi seems to offer just such a pathway.</div>
-                                    </div>
-
-                                    <div class="post-entry-card">
-                                      <a href="wellek.html"><img src="uploads/wellek.jpg" class="post-image" alt="A black and white portrait of René Wellek"></a>
-                                      <div class="paragraph post-title">
-                                      <a href="wellek.html"><u><font size="4">Rethinking René Wellek: On <i>Destroying Literary Studies</i> (1983)</font></u></a>
-                                      </div>
-                                      <div class="paragraph post-date">August 9, 2025</div>
-                                      <div class="paragraph post-excerpt">René Wellek's 1983 essay “Destroying Literary Studies” critiqued the rise of post-structuralism and deconstruction. This essay re-examines his arguments, their blind spots, and their lasting influence.</div>
-                                    </div>
-                                    
-                                  </div>
-
-                                  <div class="posts-right">
-                                    
-                                    <div class="post-entry-card">
-                                      <a href="structuralism.html"><img src="uploads/structuralism.jpg" class="post-image" alt="An abstract image representing structuralism"></a>
-                                      <div class="paragraph post-title">
-                                        <a href="structuralism.html"><u><font size="4">Cultural Studies and Media Studies: Two Legacies of French Structuralism</font></u></a>
-                                      </div>
-                                      <div class="paragraph post-date">October 14, 2025</div>
-                                      <div class="paragraph post-excerpt">This short essay, part of an introductory lecture, traces the dual evolution of French structuralism into Anglo-American cultural studies and German media theory.</div>
-                                    </div>
-                                    
-                                    <div class="post-entry-card">
-                                        <a href="butler.html"><img src="uploads/Butler.jpg" class="post-image" alt="A photograph of Judith Butler"></a>
-                                        <div class="paragraph post-title">
-                                        <a href="butler.html"><u><font size="4">A Defense of Obscurity: Translating Judith Butler</font></u></a>
-                                        </div>
-                                        <div class="paragraph post-date">September 27, 2025</div>
-                                        <div class="paragraph post-excerpt">In 2003, Judith Butler published a long essay titled "The Value of Difficulty." In this piece, she aimed to defend "obscure" and "unclear" language, a stance that continues to provoke debate. I further argue for the value, that difficulty in language is not mere obscurity but an ethical and political force that resists hegemonic clarity and continually renews critical thought.</div>
-                                    </div>
-
-                                    <div class="post-entry-card">
-                                        <a href="meme.html"><img src="uploads/bullet.png" class="post-image" alt="A close-up of an inscribed bullet casing"></a>
-                                        <div class="paragraph post-title">
-                                        <a href="meme.html"><u><font size="4">A Radicalism That Is Empty: Memetic Politics and The Death of Charlie Kirk</font></u></a>
-                                        </div>
-                                        <div class="paragraph post-date">September 13, 2025</div>
-                                        <div class="paragraph post-excerpt">The murderer lacked any clear political motive; his memetic declaration merely displayed a form of radicalism hollow at its core—an empty radicalism that emerges precisely as a consequence of a post-political neoliberal society.</div>
-                                    </div>
-
-                                    <div class="post-entry-card">
-                                      <a href="luxun.html"><img src="uploads/luxun.jpg" class="post-image" alt="A photograph of a mural depicting Lu Xun smoking"></a>
-                                      <div class="paragraph post-title">
-                                        <a href="luxun.html"><u><font size="4">Smoking, Discipline, and Desire: Re-Coding the Political Body from Lu Xun’s Iconography</font></u></a>
-                                      </div>
-                                      <div class="paragraph post-date">August 25, 2025</div>
-                                      <div class="paragraph post-excerpt">The debate over whether Lu Xun’s mural should preserve his smoking image points to the historical complexity of how reactionary and revolutionary forces have aesthetically coded the body and desire.</div>
-                                    </div>
-                                    
-                                    <div class="post-entry-card">
-                                      <a href="marxt.html"><img src="uploads/marxt.jpg" class="post-image" alt="A still from a film by Lukas Marxt"></a>
-                                      <div class="paragraph post-title">
-                                        <a href="marxt.html"><u><font size="4">Lukas Marxt: How Do We Mediate Haunted Toxicity?</font></u></a>
-                                      </div>
-                                      <div class="paragraph post-date">August 23, 2025</div>
-                                      <div class="paragraph post-excerpt">A moving image work that engages with the multi-layered histories of land, lake water, and toxicity—histories of remnants and ghosts—must itself be stratified.</div>
-                                    </div>
-                                    
-                                  </div>
                                 </div>
-                                </td>
+                                
+                              </td>
 
                               <td class="wsite-multicol-col news-column" style="width:25%; padding:0 15px; vertical-align: top;">
                                 <div class="separator-wrapper">
+                                  <!-- ===== START OF STEP 5 MODIFICATION ===== -->
+                                  <!-- 移除了原来的静态 <div class="paragraph">...</div> 列表 -->
                                   <div class="news-section">
                                     <div class="paragraph"><u><font size="4">News</font></u></div>
-                                    <div class="paragraph">
-                                      <b>Nov 21, 2025:</b> Will be speaking at the 2025 Annual Meeting of the American Anthropological Association, New Orleans, USA.
-                                    </div>
-                                    <div class="paragraph">
-                                      <b>Nov 19, 2025:</b> Will be speaking at the Pacific Ancient and Modern Language Association Annual Convention, San Francisco, USA.
-                                    </div>
-                                    <div class="paragraph">
-                                      <b>Oct 14–17, 2025:</b> Will be speaking at the Big Stuff Heritage Conference, "Skills and Machines: A Living Partnership," at the University of Canberra, Australia.
-                                    </div>
-                                    <div class="paragraph">
-                                      <b>Sep 8–Nov 7, 2025:</b> Participating in the exhibition "The Great Rupture: Archaeology of the Apocalyptic Future" at the Central Art Museum, Hangzhou.
-                                    </div>
-                                    <div class="paragraph">
-                                      <b>Sep 9-13, 2025:</b> Will be speaking at the interdisciplinary conference "Taboo-Transgression-Transcendence" in Slovenia.<a href="https://avarts.ionio.gr/ttt/2025/en/program/"><br>[Details]</a>
-                                    </div>
-                                    <div class="paragraph">
-                                      <b>Aug 25-30, 2025:</b> Will be speaking at the congress of The International Committee for the Conservation of the Industrial Heritage (TICCIH) in Sweden.
-                                    </div>
-                                    <div class="paragraph">
-                                      <b>Aug 27, 2025:</b> Speaking at the "Futurities II:  The Transnational Exchange of Chinese and American Film and Media Theories", Columbia University.
-                                    </div>
-                                    <div class="paragraph">
-                                      <b>Jul 21-27, 2025:</b> Participating in the "Excluded Media VII" summer workshop at Northwestern University.
-                                    </div>
-                                    <div class="paragraph">
-                                      <b>Jul 16, 2025:</b> Speaking at the "Shaping Futures" conference at Seoul National University.<br><a href="uploads/[ABSTRACT]_SEAA-SNU_Anthropology_2025_in_Seoul.pdf#page=105">[Details]</a>
-                                    </div>
+                                    <!-- 添加了用于动态渲染的容器 -->
+                                    <div id="news-list"></div>
                                   </div>
+                                  <!-- ===== END OF STEP 5 MODIFICATION ===== -->
                                 </div>
                               </td>
                             </tr>
@@ -425,5 +312,157 @@
   <script type="text/javascript" src="files/theme/plugins.js"></script>
   <script type="text/javascript" src="files/theme/custom.js"></script>
   <script type="text/javascript" src="files/theme/mobile.js"></script>
+
+  <script>
+    /* 1. 定义 Worker 端点 (Endpoint) */
+    //    确保 ?db=posts 与你的 Cloudflare Worker 环境变量 (DB_POSTS) 对应
+    const ENDPOINT = 'https://posts.airalinknowledge.workers.dev/?db=posts';
+  
+    /* 2. 安全转义 (Escape) HTML */
+    const esc = s => s ? String(s).replace(/[&<>"']/g, m => (
+      {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]
+    )) : '';
+  
+    /* 3. 日期格式化 (Format Date) */
+    //    (e.g., "October 24, 2025")
+    const fmtD2 = iso => {
+      if (!iso) return '';
+      try {
+        // 支持 YYYY-MM-DD 或 YYYY-MM-DDTHH:MM:SS...
+        const datePart = iso.split('T')[0];
+        const parts = datePart.split('-');
+        if (parts.length < 1) return iso;
+        const d = new Date(Date.UTC(parts[0], (parts[1] || 1) - 1, parts[2] || 1));
+        // 使用 month: 'long' 来显示完整月份
+        return d.toLocaleDateString('en-US', { timeZone: 'UTC', year:'numeric', month:'long', day:'2-digit' });
+      } catch { return iso; }
+    };
+  
+    /* 4. 获取所有数据 (Fetch All) */
+    //    使用 ?all=1 来让 Worker 处理所有分页，前端只请求一次
+    async function fetchAll() {
+      // 添加 &all=1, cache: 'no-store' 和时间戳
+      const url = ENDPOINT + '&all=1&_=' + Date.now();
+      const { items = [] } = await fetch(url, { cache: 'no-store' }).then(r => r.json());
+      return items;
+    }
+  
+    /* 5. 渲染卡片 (Render Card) */
+    //    这是一个辅助函数，用于生成单个 post 卡片的 HTML
+    //    它会读取 worker 返回的属性
+    const renderPostCard = (x) => {
+      // 假设你的 Notion 数据库有以下列 (并已在 Worker 中正确映射):
+      // x.title (来自 Name)
+      // x.comment (来自 Comment -> 用作摘要)
+      // x.date (来自 Date)
+      // x.link (来自 Link -> e.g., 'survival.html')
+      // x.poster (来自 Poster -> 图像 URL)
+  
+      const link = x.link ? esc(x.link) : '#';
+      const title = esc(x.title || 'Untitled Post'); // 确保 title 有回退
+      const excerpt = esc(x.comment); // 使用 comment 字段作为 excerpt
+      const date = x.date ? esc(fmtD2(x.date)) : '';
+      // 优化：添加 alt, loading="lazy", decoding="async"
+      const image = x.poster ? `<a href="${link}"><img src="${esc(x.poster)}" class="post-image" alt="${title}" loading="lazy" decoding="async"></a>` : '';
+  
+      return `
+        <div class="post-entry-card">
+          ${image}
+          <div class="paragraph post-title">
+            <a href="${link}"><u><font size="4">${title}</font></u></a>
+          </div>
+          <div class="paragraph post-date">${date}</div>
+          <div class="paragraph post-excerpt">${excerpt}</div>
+        </div>`;
+    };
+  
+    /* 6. 执行 (Execute) */
+    fetchAll()
+      .then(items => {
+        const leftCol = document.getElementById('posts-left');
+        const rightCol = document.getElementById('posts-right');
+        const container = document.getElementById('posts-container');
+  
+        if (!leftCol || !rightCol) {
+           if (container) container.innerHTML = "<p class='paragraph'>加载失败：找不到 #posts-left 或 #posts-right 容器。</p>";
+           console.error("Error: Page layout missing #posts-left or #posts-right.");
+           return;
+        }
+        if (!Array.isArray(items) || !items.length) {
+          leftCol.innerHTML = '<div class="paragraph">暂无记录。</div>';
+          return;
+        }
+  
+        // 7. 按日期排序 (Sort by Date)
+        //    (确保 Notion 中的 'Date' 属性有数据)
+        items.sort((a, b) => new Date(b.date || 0) - new Date(a.date || 0));
+  
+        // 8. 分配到左右两栏 (Distribute to Columns)
+        const leftItems = [];
+        const rightItems = [];
+        items.forEach((item, index) => {
+          if (index % 2 === 0) {
+            leftItems.push(item);
+          } else {
+            rightItems.push(item);
+          }
+        });
+  
+        // 9. 渲染 HTML (Render HTML)
+        leftCol.innerHTML = leftItems.map(renderPostCard).join('');
+        rightCol.innerHTML = rightItems.map(renderPostCard).join('');
+      })
+      .catch(e => {
+        // 捕获错误 (Catch Errors)
+        const container = document.getElementById('posts-container');
+        const errorMsg = `<div class="paragraph">加载失败：${esc(String(e))}</div>`;
+        if (container) {
+          container.innerHTML = errorMsg;
+        } else {
+          document.body.insertAdjacentHTML('beforeend', errorMsg);
+        }
+        console.error(e);
+      });
+
+    /* --- STEP 6: Added News Fetching Logic --- */
+    async function fetchNews() {
+      const url = 'https://posts.airalinknowledge.workers.dev/?db=news&all=1&publishedOnly=0&_=' + Date.now();
+      const { items = [] } = await fetch(url, { cache: 'no-store' }).then(r => r.json());
+      // 后端已按 Date 降序，这里再保险一次
+      items.sort((a,b) => new Date(b.date||0) - new Date(a.date||0));
+      return items;
+    }
+
+    const renderNewsItem = (x) => {
+      const d = x.date ? esc(fmtD2(x.date)) : '';
+      const t = esc(x.title || '');
+      const c = esc(x.comment || '');
+      const link = x.link ? ` <a href="${esc(x.link)}">[Details]</a>` : '';
+      // 与你原有样式对齐：粗体日期在前，后跟内容
+      const body = t && c ? `${t} — ${c}` : (t || c);
+      return `<div class="paragraph"><b>${d}:</b> ${body}${link}</div>`;
+    };
+
+    // 渲染 News
+    fetchNews()
+      .then(list => {
+        const box = document.getElementById('news-list');
+        if (!box) return; // 这个检查现在应该能通过了
+        if (!list.length) {
+          box.innerHTML = `<div class="paragraph" style="color:#888">No updates yet.</div>`;
+          return;
+        }
+        box.innerHTML = list.map(renderNewsItem).join('');
+      })
+      .catch(e => {
+        const box = document.getElementById('news-list');
+        if (box) box.innerHTML = `<div class="paragraph" style="color:#a00">Load failed: ${esc(String(e))}</div>`;
+        console.error(e);
+      });
+    /* --- End of STEP 6 --- */
+  </script>
+
 </body>
 </html>
+
+
