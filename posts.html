@@ -281,15 +281,11 @@
 
                               <td class="wsite-multicol-col news-column" style="width:25%; padding:0 15px; vertical-align: top;">
                                 <div class="separator-wrapper">
-                                  <!-- ===== START OF STEP 5 MODIFICATION ===== -->
-                                  <!-- 移除了原来的静态 <div class="paragraph">...</div> 列表 -->
                                   <div class="news-section">
                                     <div class="paragraph"><u><font size="4">News</font></u></div>
-                                    <!-- 添加了用于动态渲染的容器 -->
                                     <div id="news-list"></div>
                                   </div>
-                                  <!-- ===== END OF STEP 5 MODIFICATION ===== -->
-                                </div>
+                                  </div>
                               </td>
                             </tr>
                           </tbody>
@@ -428,20 +424,33 @@
     async function fetchNews() {
       const url = 'https://posts.airalinknowledge.workers.dev/?db=news&all=1&publishedOnly=0&_=' + Date.now();
       const { items = [] } = await fetch(url, { cache: 'no-store' }).then(r => r.json());
-      // 后端已按 Date 降序，这里再保险一次
-      items.sort((a,b) => new Date(b.date||0) - new Date(a.date||0));
+      // 后端已按 Date 降序，前端不再需要排序
+      // items.sort((a,b) => new Date(b.date||0) - new Date(a.date||0));
       return items;
     }
 
+    // [START] 替换为用户提供的正确版本
     const renderNewsItem = (x) => {
-      const d = x.date ? esc(fmtD2(x.date)) : '';
+      let d = '';
+
+      if (x.dateRange?.start) {
+        const s = fmtD2(x.dateRange.start);
+        const e = x.dateRange.end ? fmtD2(x.dateRange.end) : '';
+        d = e ? `${s} – ${e}` : s;
+      } else if (x.date) {
+        d = fmtD2(x.date);
+      } else if (x.dateText) {
+        d = x.dateText;
+      }
+
       const t = esc(x.title || '');
       const c = esc(x.comment || '');
       const link = x.link ? ` <a href="${esc(x.link)}">[Details]</a>` : '';
-      // 与你原有样式对齐：粗体日期在前，后跟内容
       const body = t && c ? `${t} — ${c}` : (t || c);
-      return `<div class="paragraph"><b>${d}:</b> ${body}${link}</div>`;
+
+      return `<div class="paragraph"><b>${esc(d)}:</b> ${body}${link}</div>`;
     };
+    // [END] 替换完成
 
     // 渲染 News
     fetchNews()
@@ -464,5 +473,3 @@
 
 </body>
 </html>
-
-

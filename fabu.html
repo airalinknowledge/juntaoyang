@@ -117,6 +117,10 @@
     }
     .news-section a {
         text-decoration: underline;
+        color: #555; /* 保持与英文版一致 */
+    }
+    .news-section a:hover {
+        color: #000; /* 保持与英文版一致 */
     }
     
     .posts-column {
@@ -147,10 +151,17 @@
 
     .posts-two-col { display: flex; gap: 80px; }
     .posts-left, .posts-right { flex: 1; display: flex; flex-direction: column; }
-    .posts-right .post-entry-card:first-child { margin-top: 80px; }
+    
+    @media screen and (min-width: 767px) {
+      .posts-right .post-entry-card:first-child { 
+        margin-top: 80px;
+      }
+    }
+
     .posts-left .post-entry-card, .posts-right .post-entry-card { margin: 0 0 80px; width: 100%; }
 
     @media (max-width: 767px) {
+      /* 移动端样式由 fabu-mobile.html 处理 */
       .posts-two-col { display:block; }
       .posts-left, .posts-right { width:100%; }
       .posts-right .post-entry-card:first-child { margin-top: 0; }
@@ -248,146 +259,30 @@
                             <tr class="wsite-multicol-tr">
                               <td class="wsite-multicol-col posts-column" style="width:75%; padding:0 15px; vertical-align: top;">
                                 
-                                <div class="posts-two-col">
-                                  <div class="posts-left">
-
-                                    <div class="post-entry-card">
-                                      <a href="survival.html"><img src="uploads/weather.jpg" class="post-image" alt="一张关于天气与洪水的图片"></a>
-                                      <div class="paragraph post-title">
-                                        <a href="survival.html"><u><font size="4">生存的语法，或洪水过后，我们依然去爱</font></u></a>
-                                      </div>
-                                      <div class="paragraph post-date">2025年10月24日</div>
-                                      <div class="paragraph post-excerpt">生存的语法是什么？是奉承、是同谋，是孤注一掷地将致命的压力转移给其他更弱小的存在，以换取自身的存续。</div>
-                                    </div>
-
-                                    <div class="post-entry-card">
-                                      <a href="indexicality.html"><img src="uploads/hunt.webp" class="post-image" alt="猎人与猎物，象征着索引性的捕捉行为"></a>
-                                      <div class="paragraph post-title">
-                                        <a href="indexicality.html"><u><font size="4">论索引性</font></u></a>
-                                      </div>
-                                      <div class="paragraph post-date">2025年10月3日</div>
-                                      <div class="paragraph post-excerpt">我主张以一种更具本体论纯度的方式来界定索引性：它是因果接触所沉积的物质痕迹，而其社会效力则由一套真理政体来保证。</div>
-                                    </div>
-                                    
-                                    <div class="post-entry-card">
-                                      <a href="sterile.html"><img src="uploads/nazi.ppm" class="post-image" alt="纳粹集会的黑白照片"></a>
-                                      <div class="paragraph post-title">
-                                        <a href="sterile.html"><u><font size="4">欲望法西斯，不育的美学</font></u></a>
-                                      </div>
-                                      <div class="paragraph post-date">2025年9月20日</div>
-                                      <div class="paragraph post-excerpt">本文在苏珊·桑塔格与阿德里安·里奇的辩论基础上，探讨了法西斯主义的力比多经济，并提出一种反制策略：一种耗竭的、萎靡的、不育的美学。</div>
-                                    </div>
-
-                                    <div class="post-entry-card">
-                                      <a href="mary.html"><img src="uploads/Mary.jpg" class="post-image" alt="伤寒玛丽的历史照片"></a>
-                                      <div class="paragraph post-title">
-                                        <a href="mary.html"><u><font size="4">话语接合中的失势女性：伤寒玛丽的美丽传说</font></u></a>
-                                      </div>
-                                      <div class="paragraph post-date">2025年9月2日</div>
-                                      <div class="paragraph post-excerpt">本文考察了“伤寒玛丽”的污名化过程，探讨偏见与权力如何围绕一个所谓的真相进行自我接合，并将其与电影《西西里的美丽传说》进行对读。</div>
-                                    </div>
-                                    
-                                    <div class="post-entry-card">
-                                      <a href="mukendi.html"><img src="uploads/Mukendi.jpg" class="post-image" alt="让·卡通巴伊·穆肯迪的艺术作品"></a>
-                                      <div class="paragraph post-title">
-                                        <a href="mukendi.html"><u><font size="4">让·卡通巴伊·穆肯迪：走向一种思辨性而非技术主义的媒介考古学</font></u></a>
-                                      </div>
-                                      <div class="paragraph post-date">2025年8月25日</div>
-                                      <div class="paragraph post-excerpt">我寻求一种更具思辨性的媒介考古学方法。让·卡通巴伊·穆肯迪的作品似乎正为此提供了这样一条路径。</div>
-                                    </div>
-                                    
-                                    <div class="post-entry-card">
-                                      <a href="wellek.html"><img src="uploads/wellek.jpg" class="post-image" alt="勒内·韦勒克的黑白肖像"></a>
-                                      <div class="paragraph post-title">
-                                        <a href="wellek.html"><u><font size="4">反思勒内·韦勒克：论《摧毁文学研究》（1983）</font></u></a>
-                                      </div>
-                                      <div class="paragraph post-date">2025年8月9日</div>
-                                      <div class="paragraph post-excerpt">勒内·韦勒克1983年的文章《摧毁文学研究》批判了后结构主义与解构主义的兴起。本文重新审视了他的论点、其盲点以及持久影响。</div>
-                                    </div>
+                                <!-- [START] Dynamic Posts Container -->
+                                <div class="posts-two-col" id="posts-container" aria-live="polite">
+                                  <div class="posts-left" id="posts-left">
+                                      <!-- Static content removed, will be filled by JS -->
                                   </div>
-
-                                  <div class="posts-right">
-                                    
-                                    <div class="post-entry-card">
-                                      <a href="structuralism.html"><img src="uploads/structuralism.jpg" class="post-image" alt="一幅代表结构主义的抽象图像"></a>
-                                      <div class="paragraph post-title">
-                                        <a href="structuralism.html"><u><font size="4">文化研究和媒介研究：法国结构主义的两种遗产</font></u></a>
-                                      </div>
-                                      <div class="paragraph post-date">2025年10月14日</div>
-                                      <div class="paragraph post-excerpt">这篇短文追溯了法国结构主义如何分化为英美文化研究和德国媒介理论这两条不同的学术路径。</div>
-                                    </div>
-                                    
-                                    <div class="post-entry-card">
-                                        <a href="butler.html"><img src="uploads/Butler.jpg" class="post-image" alt="朱迪斯·巴特勒的照片"></a>
-                                        <div class="paragraph post-title">
-                                          <a href="butler.html"><u><font size="4">为晦涩辩护：翻译朱迪斯·巴特勒</font></u></a>
-                                        </div>
-                                        <div class="paragraph post-date">2025年9月27日</div>
-                                        <div class="paragraph post-excerpt">2003年，朱迪斯·巴特勒发表长文《困难的价值》，旨在为“晦涩”与“不清晰”的语言辩护，此文至今仍引发争论。我希望进一步为这一价值辩护。</div>
-                                    </div>
-
-                                    <div class="post-entry-card">
-                                      <a href="meme.html"><img src="uploads/bullet.png" class="post-image" alt="一颗刻有文字的弹壳的特写"></a>
-                                      <div class="paragraph post-title">
-                                        <a href="meme.html"><u><font size="4">空洞的激进：Charlie Kirk之死与meme政治</font></u></a>
-                                      </div>
-                                      <div class="paragraph post-date">2025年9月13日</div>
-                                      <div class="paragraph post-excerpt">枪手没有任何明确的政治动机；他充满迷因的宣言只展示了一种核心空洞的激进主义——这种空洞的激进主义，正是后政治新自由主义社会的必然产物。</div>
-                                    </div>
-                                    
-                                    <div class="post-entry-card">
-                                      <a href="luxun.html"><img src="uploads/luxun.jpg" class="post-image" alt="一幅描绘鲁迅吸烟的壁画照片"></a>
-                                      <div class="paragraph post-title">
-                                        <a href="luxun.html"><u><font size="4">吸烟、规训与欲望：从鲁迅的图像学重编码政治身体</font></u></a>
-                                      </div>
-                                      <div class="paragraph post-date">2025年8月25日</div>
-                                      <div class="paragraph post-excerpt">关于鲁迅壁画是否应保留其吸烟形象的争论，指向了反动与革命力量如何从美学上编码身体与欲望的历史复杂性。</div>
-                                    </div>
-
-                                    <div class="post-entry-card">
-                                      <a href="marxt.html"><img src="uploads/marxt.jpg" class="post-image" alt="卢卡斯·马克斯特电影中的一帧"></a>
-                                      <div class="paragraph post-title">
-                                        <a href="marxt.html"><u><font size="4">卢卡斯·马克斯特：我们如何媒介化萦绕的毒性？</font></u></a>
-                                      </div>
-                                      <div class="paragraph post-date">2025年8月23日</div>
-                                      <div class="paragraph post-excerpt">一个处理土地、湖水和毒性的多层次历史——关于遗迹与鬼魂的历史——的动态影像作品，其本身必须是分层的。</div>
-                                    </div>
-
+                                  <div class="posts-right" id="posts-right">
+                                      <!-- Static content removed, will be filled by JS -->
                                   </div>
                                 </div>
-                                </td>
+                                <!-- [END] Dynamic Posts Container -->
+                                
+                              </td>
 
                               <td class="wsite-multicol-col news-column" style="width:25%; padding:0 15px; vertical-align: top;">
                                 <div class="separator-wrapper">
                                   <div class="news-section">
                                     <div class="paragraph"><u><font size="4">消息</font></u></div>
-                                    <div class="paragraph">
-                                      <b>2025年11月21日：</b> 将在美国新奥尔良的美国人类学协会2025年年会上发言。
+                                    
+                                    <!-- [START] Dynamic News List -->
+                                    <div id="news-list">
+                                      <!-- Static content removed, will be filled by JS -->
                                     </div>
-                                    <div class="paragraph">
-                                      <b>2025年11月19日：</b> 将在美国旧金山的太平洋古代与现代语言协会年会上发言。
-                                    </div>
-                                    <div class="paragraph">
-                                      <b>2025年10月14-17日：</b> 将在澳大利亚堪培拉大学的“大型遗产会议：技能与机器：活态的伙伴关系”上发言。
-                                    </div>
-                                    <div class="paragraph">
-                                      <b>2025年9月8日至11月7日：</b> 参加在杭州中央美术馆举办的展览“大断裂：末世未来考古学”。
-                                    </div>
-                                    <div class="paragraph">
-                                      <b>2025年9月9-13日：</b>将在斯洛文尼亚的“禁忌-越界-超越”跨学科会议上发言。<a href="https://avarts.ionio.gr/ttt/2025/en/program/"><br>[详情]</a>
-                                    </div>
-                                    <div class="paragraph">
-                                      <b>2025年8月25-30日：</b>将在瑞典的国际工业遗产保护委员会（TICCIH）大会上发言。
-                                    </div>
-                                    <div class="paragraph">
-                                      <b>2025年8月27日：</b>将在哥伦比亚大学的“未来性II：中美电影与媒介理论的跨国交流”会议上发言。
-                                    </div>
-                                    <div class="paragraph">
-                                      <b>2025年7月21-27日：</b>参加西北大学的“被排斥的媒介VII”夏季工作坊。
-                                    </div>
-                                    <div class="paragraph">
-                                      <b>2025年7月16日：</b>在首尔大学的“塑造未来”会议上发言。<br><a href="uploads/[ABSTRACT]_SEAA-SNU_Anthropology_2025_in_Seoul.pdf#page=105">[详情]</a>
-                                    </div>
+                                    <!-- [END] Dynamic News List -->
+
                                   </div>
                                 </div>
                               </td>
@@ -412,5 +307,152 @@
   <script type="text/javascript" src="files/theme/plugins.js"></script>
   <script type="text/javascript" src="files/theme/custom.js"></script>
   <script type="text/javascript" src="files/theme/mobile.js"></script>
+
+  <!-- [START] Dynamic Content Script (Localized for Chinese) -->
+  <script>
+    /* 1. 定义 Worker 端点 (Endpoint) */
+    const ENDPOINT = 'https://posts.airalinknowledge.workers.dev/?db=posts';
+  
+    /* 2. 安全转义 (Escape) HTML */
+    const esc = s => s ? String(s).replace(/[&<>"']/g, m => (
+      {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]
+    )) : '';
+  
+    /* 3. 日期格式化 (Format Date) - 中文版 */
+    //    (e.g., "2025年10月24日")
+    const fmtD2 = iso => {
+      if (!iso) return '';
+      try {
+        const datePart = iso.split('T')[0];
+        const parts = datePart.split('-'); // [YYYY, MM, DD]
+        if (parts.length < 3) return iso; // 至少需要 YYYY-MM-DD
+        const year = parts[0];
+        const month = parseInt(parts[1], 10); // 移除前导零
+        const day = parseInt(parts[2], 10); // 移除前导零
+        return `${year}年${month}月${day}日`;
+      } catch { return iso; }
+    };
+  
+    /* 4. 获取所有数据 (Fetch All) */
+    async function fetchAll() {
+      // 添加 &all=1, cache: 'no-store' 和时间戳
+      const url = ENDPOINT + '&all=1&_=' + Date.now();
+      const { items = [] } = await fetch(url, { cache: 'no-store' }).then(r => r.json());
+      return items;
+    }
+  
+    /* 5. 渲染卡片 (Render Card) */
+    const renderPostCard = (x) => {
+      const link = x.link ? esc(x.link) : '#';
+      const title = esc(x.title || '无标题'); // 确保 title 有回退
+      const excerpt = esc(x.comment); // 使用 comment 字段作为 excerpt
+      const date = x.date ? esc(fmtD2(x.date)) : '';
+      const image = x.poster ? `<a href="${link}"><img src="${esc(x.poster)}" class="post-image" alt="${title}" loading="lazy" decoding="async"></a>` : '';
+  
+      return `
+        <div class="post-entry-card">
+          ${image}
+          <div class="paragraph post-title">
+            <a href="${link}"><u><font size="4">${title}</font></u></a>
+          </div>
+          <div class="paragraph post-date">${date}</div>
+          <div class="paragraph post-excerpt">${excerpt}</div>
+        </div>`;
+    };
+  
+    /* 6. 执行 (Execute) */
+    fetchAll()
+      .then(items => {
+        const leftCol = document.getElementById('posts-left');
+        const rightCol = document.getElementById('posts-right');
+        const container = document.getElementById('posts-container');
+  
+        if (!leftCol || !rightCol) {
+           if (container) container.innerHTML = "<p class='paragraph'>加载失败：找不到 #posts-left 或 #posts-right 容器。</p>";
+           console.error("Error: Page layout missing #posts-left or #posts-right.");
+           return;
+        }
+        if (!Array.isArray(items) || !items.length) {
+          leftCol.innerHTML = '<div class="paragraph">暂无记录。</div>';
+          return;
+        }
+  
+        // 7. 按日期排序 (Sort by Date)
+        items.sort((a, b) => new Date(b.date || 0) - new Date(a.date || 0));
+  
+        // 8. 分配到左右两栏 (Distribute to Columns)
+        const leftItems = [];
+        const rightItems = [];
+        items.forEach((item, index) => {
+          if (index % 2 === 0) {
+            leftItems.push(item);
+          } else {
+            rightItems.push(item);
+          }
+        });
+  
+        // 9. 渲染 HTML (Render HTML)
+        leftCol.innerHTML = leftItems.map(renderPostCard).join('');
+        rightCol.innerHTML = rightItems.map(renderPostCard).join('');
+      })
+      .catch(e => {
+        // 捕获错误 (Catch Errors)
+        const container = document.getElementById('posts-container');
+        const errorMsg = `<div class="paragraph">加载失败：${esc(String(e))}</div>`;
+        if (container) {
+          container.innerHTML = errorMsg;
+        } else {
+          document.body.insertAdjacentHTML('beforeend', errorMsg);
+        }
+        console.error(e);
+      });
+
+    /* --- News Fetching Logic (Localized) --- */
+    async function fetchNews() {
+      const url = 'https://posts.airalinknowledge.workers.dev/?db=news&all=1&publishedOnly=0&_=' + Date.now();
+      const { items = [] } = await fetch(url, { cache: 'no-store' }).then(r => r.json());
+      return items;
+    }
+
+    const renderNewsItem = (x) => {
+      let d = '';
+
+      if (x.dateRange?.start) {
+        const s = fmtD2(x.dateRange.start);
+        const e = x.dateRange.end ? fmtD2(x.dateRange.end) : '';
+        d = e ? `${s} – ${e}` : s;
+      } else if (x.date) {
+        d = fmtD2(x.date);
+      } else if (x.dateText) {
+        d = x.dateText;
+      }
+
+      const t = esc(x.title || '');
+      const c = esc(x.comment || '');
+      const link = x.link ? ` <a href="${esc(x.link)}">[详情]</a>` : ''; // 本地化
+      const body = t && c ? `${t} — ${c}` : (t || c);
+
+      return `<div class="paragraph"><b>${esc(d)}:</b> ${body}${link}</div>`;
+    };
+
+    // 渲染 News
+    fetchNews()
+      .then(list => {
+        const box = document.getElementById('news-list');
+        if (!box) return;
+        if (!list.length) {
+          box.innerHTML = `<div class="paragraph" style="color:#888">暂无消息。</div>`; // 本地化
+          return;
+        }
+        box.innerHTML = list.map(renderNewsItem).join('');
+      })
+      .catch(e => {
+        const box = document.getElementById('news-list');
+        if (box) box.innerHTML = `<div class="paragraph" style="color:#a00">加载失败：${esc(String(e))}</div>`; // 本地化
+        console.error(e);
+      });
+  </script>
+  <!-- [END] Dynamic Content Script -->
+
 </body>
 </html>
