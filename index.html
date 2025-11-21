@@ -65,21 +65,25 @@
 .wsite-product .wsite-product-price a {}
 }
 </style>
-<!-- 新增样式：限制正文内容宽度 -->
 <style>
-    /* 限制正文内容区域宽度，增加两侧留白 */
+    /* 使用 !important 强制覆盖所有默认样式 */
     .main-content-area {
-        max-width: 90%; /* 可以调整这个值来改变内容宽度 */
-        margin-left: 0%;
-        margin-right: 10%;
+        width: 98% !important; /* 强制宽度为 98% */
+        max-width: 100% !important; /* 取消最大宽度限制 */
+        margin-left: 0 !important;
+        margin-right: 0 !important; /* 强制右侧无边距 */
+        padding-right: 2% !important; /* 仅留极少的内部填充 */
+        box-sizing: border-box !important; /* 确保 padding 不会撑破布局 */
     }
 
-    /* 针对移动设备，取消宽度限制，让内容全宽显示 */
+    /* 针对移动设备 */
     @media screen and (max-width: 767px) {
         .main-content-area {
-            max-width: 100%;
+            width: 100% !important;
+            padding-right: 10px !important;
         }
     }
+
 /* 正文区域：链接颜色继承正文颜色 */
 .main-content-column a,
 .main-content-column a:visited,
@@ -88,19 +92,35 @@
   color: inherit !important;
 }
 
-/* 链接里的子元素也继承（防止再被覆盖） */
 .main-content-column a * { color: inherit !important; }
-
-/* 失效化旧式 <font color>，避免把文字固定成灰色 */
 .main-content-column font[color] { color: inherit !important; }
 
-/* 可选：给链接保留轻微的可识别性（按需保留/删除） */
 .main-content-column a {
   text-decoration: underline;
   text-underline-offset: 2px;
 }
 .main-content-column a:hover { text-decoration-thickness: 2px; }
 
+/* 展开/收缩按钮美化 */
+.toggle-btn {
+    background: none;
+    border: none;
+    padding: 10px 0;
+    margin-top: 5px;
+    font-family: "Georgia", serif;
+    font-size: 16px;
+    color: #666;
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    transition: color 0.3s ease, opacity 0.3s ease;
+    outline: none;
+}
+
+.toggle-btn:hover {
+    color: #000;
+    opacity: 0.8;
+}
 
 </style>
 <style>
@@ -139,22 +159,7 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 			_W.storeEuPrivacyPolicyUrl = "";
 			com_currentSite = "713576850827693055";
 			com_userID = "148137552";</script><script type="text/javascript">_W.configDomain = "www.weebly.com";</script><script>_W.relinquish && _W.relinquish()</script>
-<script type="text/javascript" src="http://cdn2.editmysite.com/js/lang/en/stl.js?buildTime=1234&"></script><script> _W.themePlugins = [];</script><script type="text/javascript"> _W.recaptchaUrl = "https://www.google.com/recaptcha/api.js"; </script><script type="text/javascript"><!--
-	var IS_ARCHIVE = 1;
-	
-	function initFlyouts(){
-		initPublishedFlyoutMenus(
-			[{"id":"356461667194310790","title":"About","url":"index.html","target":"","nav_menu":false,"nonclickable":false},{"id":"444862601486980856","title":"ARTWORKS","url":"artworks.html","target":"","nav_menu":false,"nonclickable":false},{"id":"864040464600617228","title":"Writings","url":"writings.html","target":"","nav_menu":false,"nonclickable":false},{"id":"361237216236019909","title":"Projects","url":"projects.html","target":"","nav_menu":false,"nonclickable":false},{"id":"497557010409593207","title":"POSTS","url":"posts.html","target":"","nav_menu":false,"nonclickable":false}],
-			"361237216236019909",
-			'',
-			'active',
-			false,
-			{"navigation\/item":"<li {{#id}}id=\"{{id}}\"{{\/id}} class=\"wsite-menu-item-wrap\">\n\t<a\n\t\t{{^nonclickable}}\n\t\t\t{{^nav_menu}}\n\t\t\t\thref=\"{{url}}\"\n\t\t\t{{\/nav_menu}}\n\t\t{{\/nonclickable}}\n\t\t{{#target}}\n\t\t\ttarget=\"{{target}}\"\n\t\t{{\/target}}\n\t\t{{#membership_required}}\n\t\t\tdata-membership-required=\"{{.}}\"\n\t\t{{\/membership_required}}\n\t\tclass=\"wsite-menu-item\"\n\t\t>\n\t\t{{{title_html}}}\n\t<\/a>\n\t{{#has_children}}{{> navigation\/flyout\/list}}{{\/has_children}}\n<\/li>\n","navigation\/flyout\/list":"<div class=\"wsite-menu-wrap\" style=\"display:none\">\n\t<ul class=\"wsite-menu\">\n\t\t{{#children}}{{> navigation\/flyout\/item}}{{\/children}}\n\t<\/ul>\n<\/div>\n","navigation\/flyout\/item":"<li {{#id}}id=\"{{id}}\"{{\/id}}\n\tclass=\"wsite-menu-subitem-wrap {{#is_current}}wsite-nav-current{{\/is_current}}\"\n\t>\n\t<a\n\t\t{{^nonclickable}}\n\t\t\t{{^nav_menu}}\n\t\t\t\thref=\"{{url}}\"\n\t\t\t{{\/nav_menu}}\n\t\t{{\/nonclickable}}\n\t\t{{#target}}\n\t\t\ttarget=\"{{target}}\"\n\t\t{{\/target}}\n\t\tclass=\"wsite-menu-subitem\"\n\t\t>\n\t\t<span class=\"wsite-menu-title\">\n\t\t\t{{{title_html}}}\n\t\t<\/span>{{#has_children}}<span class=\"wsite-menu-arrow\">&gt;<\/span>{{\/has_children}}\n\t<\/a>\n\t{{#has_children}}{{> navigation\/flyout\/list}}{{\/has_children}}\n<\/li>\n"},
-			{}
-		)
-	}
-//-->
-</script>
+<script type="text/javascript" src="http://cdn2.editmysite.com/js/lang/en/stl.js?buildTime=1234&"></script><script> _W.themePlugins = [];</script><script type="text/javascript"> _W.recaptchaUrl = "https://www.google.com/recaptcha/api.js"; </script><script type="text/javascript"></script>
 		
 		
 	</head>
@@ -325,7 +330,7 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
                       <hr class="styled-hr" style="width:100%;"></hr>
                       <div style="height: 40px; overflow: hidden; width: 100%;"></div>
                     </div>
-                    <div class="main-content-column">
+                    <div class="main-content-column main-content-area">
                       <div class="paragraph">
                      <font size="4">Juntao Yang is a critic, curator, and artist.</font><br /><br />
                         <font size="4">Yang's critical writings and artistic practices focus on the traces of the operations of micro power in the specific field of visual and material culture, the visible or invisible conflicts and violence in daily existence, and the organization and fluid of the proxy of power. Yang is committed to resorting to Speech, sometimes hysterically, counteracts the silent power of ideology and the pervasive political apathy. Yang's current research focuses on planetary cinema and geological thinking, as well as toxicity and catastrophe media. Yang is currently based in New York and Nanjing.<br />&#8203;</font>
@@ -347,7 +352,7 @@ PAMLA Graduate Student Scholarship, Pacific Ancient and Modern Language Associat
                         Third Prize for Conference Paper, The 5th China-ASEAN University Postgraduate Forum on Art, 2024<br/>
                         Film &amp; Media Studies Program Scholarship, School of the Arts, Columbia University, 2024<br/>
                         Honor for Outstanding Participants,  <em>"Chinese Cinema: Histories, Methods and Ecologies"</em>  Summer School, School of Film, Xiamen University, 2024<br />
-                        Accommodation Scholarship, &#8203;Duemila30 International Film Festival, 2024<br/>
+                        Accommodation Scholarship, &#8203;Duemila30 International Film Festival, 2024<br />
                         Best Experimental Film (Kurt Kren’s Scratched Glasses) for&nbsp;&#8203;<em>Light and Cold Conversations: Atlantic, Algorithms and Visibility</em>, International Film Festival of Audiovisual Theory Students, 2023<br />&#8203;</em>
                         Best Experimental Short Film Nomination for <em>Light and Cold Conversations: Atlantic, Algorithms and Visibility</em>, <span>Ningbo Short Film Festival, 2023</span><br />
   Honourable Mention&nbsp;<span>for&nbsp;&#8203;</span><em>Light and Cold Conversations: Atlantic, Algorithms and Visibility</em>,&nbsp;<span>Varsity Film Expo, 2023</span><br />&#8203;Best AI Short for&nbsp;&#8203;<em>Light and Cold Conversations: Atlantic, Algorithms and Visibility</em>,<em>&nbsp;</em><span>Shanghai International Short Week, 2023</span><br /><br />
@@ -386,7 +391,7 @@ PAMLA Graduate Student Scholarship, Pacific Ancient and Modern Language Associat
                           <div class="conference-item"><em>"Chinese Cinema: Histories, Methods and Ecologies" Summer School</em>, School of Film, Xiamen University, China, 2024/7</div>
                           <div class="conference-item"><em>The 8th "Inspiration Booster" Creative Camp of Contemporary Art Design,</em> XLY MoMA, China, 2024/6 - 2024/7</div>
                         </div>
-                        <button id="toggle-conferences">Show More</button>
+                        <button id="toggle-conferences" class="toggle-btn">Show More</button>
                         <br /><br />
                       </div>
 
@@ -430,7 +435,7 @@ PAMLA Graduate Student Scholarship, Pacific Ancient and Modern Language Associat
                           <div class="exhibition-item"><em>Doves and Magpies Sharing a Nest</em>, The Forge Art Gallery, London, UK, 2023</div>
                           <div class="exhibition-item"><em>AI & NI</em>, 4C Gallery, Los Angeles, USA, 2023</div>
                         </div>
-                        <button id="toggle-exhibitions">Show More</button>
+                        <button id="toggle-exhibitions" class="toggle-btn">Show More</button>
                         <br /><br />
                       </div>
 
@@ -460,7 +465,7 @@ PAMLA Graduate Student Scholarship, Pacific Ancient and Modern Language Associat
                           <div class="film-festival-item">Shishan Film Festival, Chengdu, China, 2023 - <em>Official Selection</em></div>
                           <div class="film-festival-item">Shanghai International Short Week, Shanghai, China, 2023 - <em>Best AI Short</em></div>
                         </div>
-                        <button id="toggle-film-festivals">Show More</button>
+                        <button id="toggle-film-festivals" class="toggle-btn">Show More</button>
                       <br /><br />
                       </div>
 
@@ -516,16 +521,6 @@ PAMLA Graduate Student Scholarship, Pacific Ancient and Modern Language Associat
                         <u><a href="httpsDoNotCommit.txt
 /s/oAricm9WS5m2XtCShSG4tQ" target="_blank">Artist talk</a></u>, C-POP Theatre, Beijing, China, 2023<br /><br />
                       </div>
-                      <div class="paragraph">
-                        <u><font size="5">Professional Affiliations</font></u><br />
-                        China Film Critics Association, Motion Pictures and Technologies Committee (CFCA)<br />
-                        China Society of Motion Pictures and Television Engineering (CSMPTE)<br />
-                        China Science Film and Video Association (CSFVA)<br />
-                        Hubei Provincial Film Artists Association, Youth Committees<br />
-                        American Psychological Association (APA)<br />
-                        Chinese Society for Environmental Science (CSES)<br />
-                        Geological Society of China (GSC)<br />
-                      </div>
                       <div class="paragraph" style="text-align:center;">
                         <br /><br /><font size="2"><br />All Rights Reserved&nbsp;&copy;&nbsp; Juntao Yang</font>
                       </div>
@@ -548,16 +543,19 @@ PAMLA Graduate Student Scholarship, Pacific Ancient and Modern Language Associat
   <script src="https://cdn2.editmysite.com/js/site/main-customer-accounts-site.js?buildTime=1234"></script>
   <script>
     $(document).ready(function(){
+      // Slower animation speed for smoother effect
+      var animSpeed = 600; 
+
       // Conferences & Workshops
       var conferenceItems = $("#conferences .conference-item");
       if(conferenceItems.length > 10) {
         conferenceItems.slice(10).hide();
         $("#toggle-conferences").show().on("click", function(){
           if($(this).text() === "Show More"){
-            conferenceItems.slice(10).slideDown();
+            conferenceItems.slice(10).slideDown(animSpeed, "swing");
             $(this).text("Show Less");
           } else {
-            conferenceItems.slice(10).slideUp();
+            conferenceItems.slice(10).slideUp(animSpeed, "swing");
             $(this).text("Show More");
           }
         });
@@ -571,10 +569,10 @@ PAMLA Graduate Student Scholarship, Pacific Ancient and Modern Language Associat
         exhibitionItems.slice(10).hide();
         $("#toggle-exhibitions").show().on("click", function(){
           if($(this).text() === "Show More"){
-            exhibitionItems.slice(10).slideDown();
+            exhibitionItems.slice(10).slideDown(animSpeed, "swing");
             $(this).text("Show Less");
           } else {
-            exhibitionItems.slice(10).slideUp();
+            exhibitionItems.slice(10).slideUp(animSpeed, "swing");
             $(this).text("Show More");
           }
         });
@@ -588,10 +586,10 @@ PAMLA Graduate Student Scholarship, Pacific Ancient and Modern Language Associat
         filmFestivalItems.slice(10).hide();
         $("#toggle-film-festivals").show().on("click", function(){
           if($(this).text() === "Show More"){
-            filmFestivalItems.slice(10).slideDown();
+            filmFestivalItems.slice(10).slideDown(animSpeed, "swing");
             $(this).text("Show Less");
           } else {
-            filmFestivalItems.slice(10).slideUp();
+            filmFestivalItems.slice(10).slideUp(animSpeed, "swing");
             $(this).text("Show More");
           }
         });
@@ -605,10 +603,10 @@ PAMLA Graduate Student Scholarship, Pacific Ancient and Modern Language Associat
         screeningItems.slice(10).hide();
         $("#toggle-screenings").show().on("click", function(){
           if($(this).text() === "Show More"){
-            screeningItems.slice(10).slideDown();
+            screeningItems.slice(10).slideDown(animSpeed, "swing");
             $(this).text("Show Less");
           } else {
-            screeningItems.slice(10).slideUp();
+            screeningItems.slice(10).slideUp(animSpeed, "swing");
             $(this).text("Show More");
           }
         });
