@@ -9,30 +9,28 @@
 
     <!-- ============================================== -->
     <!-- [START] Favicon 图标声明 -->
-    <!-- 必须在所有外链 CSS 之前放置，提高优先级，防止浏览器回退到 Weebly 默认图标 -->
     <link rel="icon" type="image/png" href="/favicon.png">
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <!-- [END] Favicon 图标声明 -->
     <!-- ============================================== -->
 
     <!-- ============================================== -->
-    <!-- [START] 终极防闪烁逻辑 V5 (Seamless Transition) -->
-    <!-- 脚本位置调整到最顶部，确保在所有 CSS 加载前执行 -->
+    <!-- [START] 终极防闪烁逻辑 V6 (Synchronous State Injection) -->
+    <!-- 这个脚本必须放在所有 CSS 之前，确保浏览器渲染第一帧时状态已确定 -->
     <script>
         (function() {
             var path = window.location.pathname;
-            // 判断是否主页
+            // 1. 判断环境
             var isHomePage = path === "/" || path.endsWith("/index.html") || path.endsWith("/");
-            // 判断是否已访问
             var hasVisited = sessionStorage.getItem('splashVisited') === 'true';
-
-            // 核心逻辑：
-            // 只有同时满足“是主页”且“没访问过”，才给 html 加标签显示遮罩
-            // 否则（内页进入，或者回头客），什么都不做，默认 CSS 就会隐藏遮罩
+            
+            // 2. 状态分流
             if (isHomePage && !hasVisited) {
-                document.documentElement.classList.add('show-splash');
+                // 如果是新访客：立即给 html 加标记
+                // 浏览器解析到这里时 DOM 还没渲染，所以第一帧就会带有这个类
+                document.documentElement.className += ' splash-active';
             } else {
-                // 如果是从内页进来的，补上记录，防止点回首页时弹出
+                // 如果是回头客：不加标记，同时也补全记录防止漏网
                 if (!hasVisited) {
                     sessionStorage.setItem('splashVisited', 'true');
                 }
@@ -41,26 +39,82 @@
     </script>
 
     <style>
-        /* 1. 默认状态：彻底隐藏。 */
-        /* 这保证了“回头客”永远不会看到黑色一闪而过。 */
+        /* --- 基础状态 --- */
+        
+        /* 默认情况：彻底隐藏遮罩层 */
+        /* 这保证了“回头客”看到的直接是干净的网页，绝对没有黑色闪烁 */
         #splash-overlay {
-            display: none !important;
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-color: #000000;
+            z-index: 999999;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            opacity: 1; /* 初始不透明 */
         }
 
-        /* 2. 激活状态：只有当 JS 判断需要显示时，才显示。 */
-        html.show-splash #splash-overlay {
+        /* --- 激活状态 (新访客) --- */
+        
+        /* 只有当 JS 加上 splash-active 类时，这些规则才生效 */
+        /* 因为 JS 在 CSS 前运行，所以第一帧渲染就是黑色的，绝对没有白色闪烁 */
+        html.splash-active #splash-overlay {
             display: flex !important;
         }
-
-        /* 3. 增强保险：强制背景黑 */
-        /* 这是为了防止首帧白光。但在点击进入的一瞬间，我们会移除这个类，*/
-        /* 让背景瞬间变回网页原本的颜色（白），只保留遮罩层的黑色淡出。 */
-        html.show-splash, 
-        html.show-splash body {
+        
+        /* 强制背景黑：防止首帧白光 */
+        html.splash-active, 
+        html.splash-active body {
             background-color: #000000 !important;
         }
+
+        /* --- 离场状态 (动画中) --- */
+        
+        /* 当 JS 添加 .fading-out 时： */
+        /* 1. 强制显示 (防止移除 splash-active 后遮罩突然消失) */
+        /* 2. 开始透明度过渡 */
+        #splash-overlay.fading-out {
+            display: flex !important;
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            /* 2.5s 的极致丝滑淡出 */
+            transition: opacity 2.5s ease, visibility 2.5s ease;
+        }
+
+        /* 图片样式 */
+        #splash-overlay img {
+            max-width: 85%;
+            max-height: 80vh;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            /* 电影感推拉镜头 */
+            transition: transform 2.5s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+        #splash-overlay:hover img {
+            transform: scale(1.02);
+            opacity: 0.95;
+        }
+
+        /* 文字样式 */
+        .enter-text {
+            margin-top: 30px;
+            font-family: "Georgia", serif;
+            font-size: 13px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: #b0b0b0;
+            opacity: 0.6;
+            animation: pulse 3s infinite ease-in-out;
+        }
+        @keyframes pulse {
+            0% { opacity: 0.3; } 50% { opacity: 0.8; } 100% { opacity: 0.3; }
+        }
     </style>
-    <!-- [END] 终极防闪烁逻辑 V5 -->
+    <!-- [END] 终极防闪烁逻辑 V6 -->
     <!-- ============================================== -->
 		
 		<link id="wsite-base-style" rel="stylesheet" type="text/css" href="http://cdn2.editmysite.com/css/sites.css?buildTime=1234" />
@@ -191,119 +245,8 @@ body.wsite-background {background-attachment: fixed !important;}.wsite-backgroun
 </style>
 
 <!-- ============================================== -->
-<!-- [START] 封面遮罩层样式 (Splash Page CSS) -->
-<style>
-  /* 遮罩层容器 */
-  #splash-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: #000000;
-      z-index: 999999; 
-      /* 注意：这里不写 display 属性，完全由 head 中的样式控制 */
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      cursor: pointer;
-      
-      /* 注意：这里移除了默认的 transition opacity */
-      /* 这样页面加载时不会有任何渐变，是硬切入，防止闪烁 */
-  }
-  
-  /* 只有当添加了 .fading-out 类时，才启用过渡效果 */
-  #splash-overlay.fading-out {
-      /* 关键修改：加上 display: flex !important */
-      /* 因为我们将要立即移除 html 上的 show-splash 类（这会导致 overlay 消失） */
-      /* 所以这里必须强制接管 display 属性，保证动画过程中遮罩层不消失 */
-      display: flex !important;
-      transition: opacity 2.5s ease, visibility 2.5s ease;
-      opacity: 0;
-      visibility: hidden;
-      pointer-events: none;
-  }
-
-  /* 封面图片 */
-  #splash-overlay img {
-      max-width: 85%;
-      max-height: 80vh;
-      width: auto;
-      height: auto;
-      object-fit: contain;
-      
-      /* 极其缓慢、丝滑的电影感推拉镜头 */
-      transition: transform 2.5s cubic-bezier(0.19, 1, 0.22, 1);
-  }
-
-  /* 鼠标悬停时 */
-  #splash-overlay:hover img {
-      transform: scale(1.02); 
-      opacity: 0.95;
-  }
-
-  /* 提示文字样式 */
-  .enter-text {
-      margin-top: 30px;
-      font-family: "Georgia", serif;
-      font-size: 13px; 
-      letter-spacing: 4px; 
-      text-transform: uppercase;
-      color: #b0b0b0;
-      opacity: 0.6;
-      animation: pulse 3s infinite ease-in-out; 
-  }
-
-  @keyframes pulse {
-      0% { opacity: 0.3; }
-      50% { opacity: 0.8; }
-      100% { opacity: 0.3; }
-  }
-</style>
-<!-- [END] 封面遮罩层样式 -->
-<!-- ============================================== -->
-
-		<script src='files/templateArtifacts.js?1712751521'></script>
-<script>
-var STATIC_BASE = '//cdn1.editmysite.com/';
-var ASSETS_BASE = '//cdn2.editmysite.com/';
-var STYLE_PREFIX = 'wsite';
-</script>
-<script src='https://cdn2.editmysite.com/js/jquery-1.8.3.min.js'></script>
-
-<script type="text/javascript" src="http://cdn2.editmysite.com/js/lang/en/stl.js?buildTime=1234&"></script>
-<script src="http://cdn2.editmysite.com/js/site/main.js?buildTime=1234"></script><script type="text/javascript">
-		function initCustomerAccountsModels() {
-					(function(){_W.setup_rpc({"url":"\/ajax\/api\/JsonRPC\/CustomerAccounts\/","actions":{"CustomerAccounts":[{"name":"login","len":2,"multiple":false,"standalone":false},{"name":"logout","len":0,"multiple":false,"standalone":false},{"name":"getSessionDetails","len":0,"multiple":false,"standalone":false},{"name":"getAccountDetails","len":0,"multiple":false,"standalone":false},{"name":"getOrders","len":0,"multiple":false,"standalone":false},{"name":"register","len":4,"multiple":false,"standalone":false},{"name":"emailExists","len":1,"multiple":false,"standalone":false},{"name":"passwordReset","len":1,"multiple":false,"standalone":false},{"name":"passwordUpdate","len":3,"multiple":false,"standalone":false},{"name":"validateSession","len":1,"multiple":false,"standalone":false}]},"namespace":"_W.CustomerAccounts.RPC"});
-_W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":"_W.CustomerAccounts.BackboneModelData","collection_namespace":"_W.CustomerAccounts.BackboneCollectionData","bootstrap_namespace":"_W.CustomerAccounts.BackboneBootstrap","models":{"CustomerAccounts":{"_class":"CustomerAccounts.Model.CustomerAccounts","defaults":null,"validation":null,"types":null,"idAttribute":null,"keydefs":null}},"collections":{"CustomerAccounts":{"_class":"CustomerAccounts.Collection.CustomerAccounts"}},"bootstrap":[]});
-})();
-		}
-		if(document.createEvent && document.addEventListener) {
-			var initEvt = document.createEvent('Event');
-			initEvt.initEvent('customerAccountsModelsInitialized', true, false);
-			document.dispatchEvent(initEvt);
-		} else if(document.documentElement.initCustomerAccountsModels === 0){
-			document.documentElement.initCustomerAccountsModels++
-		}
-		</script>
-		<script type="text/javascript"> _W = _W || {}; _W.securePrefix='UNSET'; </script><script>_W = _W || {};
-			_W.customerLocale = "en_US";
-			_W.storeName = null;
-			_W.isCheckoutReskin = false;
-			_W.storeCountry = "HK";
-			_W.storeCurrency = "HKD";
-			_W.storeEuPrivacyPolicyUrl = "";
-			com_currentSite = "713576850827693055";
-			com_userID = "148137552";</script><script type="text/javascript">_W.configDomain = "www.weebly.com";</script><script>_W.relinquish && _W.relinquish()</script>
-<script type="text/javascript" src="http://cdn2.editmysite.com/js/lang/en/stl.js?buildTime=1234&"></script><script> _W.themePlugins = [];</script><script type="text/javascript"> _W.recaptchaUrl = "https://www.google.com/recaptcha/api.js"; </script><script type="text/javascript"></script>
-		
-		
-	</head>
-	<body class="no-header-page  wsite-page-projects wsite-theme-light">
-    
-    <!-- ============================================== -->
-    <!-- [START] 封面遮罩层 HTML (Splash Page HTML) -->
-    <!-- 注意：这里的图片路径使用了你网站中已有的背景图。如果想换图，替换 src 属性即可 -->
+<!-- [START] 封面遮罩层 HTML (Splash Page HTML) -->
+<!-- 注意：这里的图片路径使用了你网站中已有的背景图。如果想换图，替换 src 属性即可 -->
     <div id="splash-overlay" onclick="enterSite()">
         <img src="https://img.juntaoyang.site/%E4%BD%A0%E5%BE%88%E9%9A%BE%E7%9C%8B%E8%A7%81....png" alt="Click to Enter">
         <!-- 新增的提示文字 -->
@@ -660,7 +603,7 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 
                       <div class="section-gap"></div>
 
-                      <div class="paragraph">
+                      <div class="paragraph" style="text-align:left;">
                         <u><font size="5">Residencies<br /></font></u>
                         <!-- Spacing Added -->
                         <div style="height: 5px;"></div>
@@ -811,7 +754,7 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
         // 同时，我们在 CSS 里用 #splash-overlay.fading-out { display: flex !important } 
         // 保证了遮罩层本身不会消失，而是慢慢变透明。
         // 效果：黑色遮罩变淡 -> 露出白底 (而不是原来的：黑底 -> 遮罩变淡(还是黑的) -> 突然变白)
-        document.documentElement.classList.remove('show-splash');
+        document.documentElement.classList.remove('splash-active');
 
         // 3. 在 sessionStorage 中记录“已访问”
         sessionStorage.setItem('splashVisited', 'true');
