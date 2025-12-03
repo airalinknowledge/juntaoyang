@@ -133,6 +133,79 @@
 .wsite-background {background-image: url("/uploads/1/4/8/1/148137552/background-images/1199586110.jpg") !important;background-repeat: no-repeat !important;background-position: 50% 50% !important;background-size: 100% !important;background-color: transparent !important;background: inherit;}
 body.wsite-background {background-attachment: fixed !important;}.wsite-background.wsite-custom-background{ background-size: cover !important}
 </style>
+
+<!-- ============================================== -->
+<!-- [START] 封面遮罩层样式 (Splash Page CSS) -->
+<style>
+  /* 遮罩层容器：固定定位、全屏、最高层级 */
+  #splash-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      /* 【核心修改】背景改为纯黑，完美融合图片边缘，消除生硬的对比框 */
+      background-color: #000000;
+      z-index: 999999; 
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      /* 页面淡出效果，从黑夜过渡到白昼 */
+      /* 【修改】将时间从 1.2s 延长到 2.5s，利用漫长的灰阶过渡来适应人眼，避免刺眼 */
+      transition: opacity 2.5s ease, visibility 2.5s ease; 
+  }
+
+  /* 封面图片：自适应屏幕大小，保持比例 */
+  #splash-overlay img {
+      max-width: 85%;
+      max-height: 80vh;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      
+      /* 移除之前的阴影，因为在黑色背景下不需要阴影来区分边界 */
+      /* box-shadow: 0 10px 30px rgba(0,0,0,0.08); */
+
+      /* 保持极其缓慢、丝滑的电影感推拉镜头 */
+      transition: transform 2.5s cubic-bezier(0.19, 1, 0.22, 1), opacity 0.5s ease;
+  }
+
+  /* 鼠标悬停时：非常微小的放大，营造呼吸感 */
+  #splash-overlay:hover img {
+      transform: scale(1.02); 
+      opacity: 0.95; /* 稍微变暗一点点，增加互动反馈 */
+  }
+
+  /* 提示文字样式 */
+  .enter-text {
+      margin-top: 30px;
+      font-family: "Georgia", serif;
+      font-size: 13px; 
+      letter-spacing: 4px; 
+      text-transform: uppercase;
+      /* 【修改】文字改为银灰色，在黑色背景上清晰但不刺眼 */
+      color: #b0b0b0;
+      opacity: 0.6;
+      animation: pulse 3s infinite ease-in-out; 
+  }
+
+  @keyframes pulse {
+      0% { opacity: 0.3; }
+      50% { opacity: 0.8; }
+      100% { opacity: 0.3; }
+  }
+
+  .splash-hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+  }
+</style>
+<!-- [END] 封面遮罩层样式 -->
+<!-- ============================================== -->
+
 		<script src='files/templateArtifacts.js?1712751521'></script>
 <script>
 var STATIC_BASE = '//cdn1.editmysite.com/';
@@ -169,7 +242,20 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 		
 		
 	</head>
-	<body class="no-header-page  wsite-page-projects wsite-theme-light"><div id="wrapper">
+	<body class="no-header-page  wsite-page-projects wsite-theme-light">
+    
+    <!-- ============================================== -->
+    <!-- [START] 封面遮罩层 HTML (Splash Page HTML) -->
+    <!-- 注意：这里的图片路径使用了你网站中已有的背景图。如果想换图，替换 src 属性即可 -->
+    <div id="splash-overlay" onclick="enterSite()">
+        <img src="https://img.juntaoyang.site/%E4%BD%A0%E5%BE%88%E9%9A%BE%E7%9C%8B%E8%A7%81....png" alt="Click to Enter">
+        <!-- 新增的提示文字 -->
+        <div class="enter-text">Enter Site</div>
+    </div>
+    <!-- [END] 封面遮罩层 HTML -->
+    <!-- ============================================== -->
+
+    <div id="wrapper">
 
 	<div id="navigation">
     <div id="navigation-wrap">
@@ -648,5 +734,44 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
       }
     });
   </script>
+
+<!-- ============================================== -->
+<!-- [START] 封面遮罩层控制脚本 -->
+<script>
+    // 页面加载完成后立即执行
+    document.addEventListener("DOMContentLoaded", function() {
+        // 检查 sessionStorage 中是否有 'splashVisited' 标记
+        var hasVisited = sessionStorage.getItem('splashVisited');
+        
+        // 如果有标记（说明已经来过），直接隐藏遮罩层，不显示
+        if (hasVisited === 'true') {
+            var overlay = document.getElementById('splash-overlay');
+            if(overlay) {
+                overlay.style.display = 'none'; 
+            }
+        }
+    });
+
+    // 点击进入网站的逻辑
+    function enterSite() {
+        var overlay = document.getElementById('splash-overlay');
+        
+        // 1. 添加隐藏类，触发 CSS 中的淡出动画
+        overlay.classList.add('splash-hidden');
+        
+        // 2. 在 sessionStorage 中记录“已访问”
+        // 这样只要浏览器标签页不关闭，下次回到 index.html 就不会再显示封面
+        sessionStorage.setItem('splashVisited', 'true');
+        
+        // 3. 等动画结束后（2600毫秒），彻底移除元素，避免遮挡点击
+        // 【修改】这里的时间要略微大于 CSS 中的 transition 时间 (2.5s -> 2600ms)
+        setTimeout(function(){
+            overlay.style.display = 'none';
+        }, 2600);
+    }
+</script>
+<!-- [END] 封面遮罩层控制脚本 -->
+<!-- ============================================== -->
+
 </body>
 </html>
