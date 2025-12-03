@@ -12,37 +12,22 @@
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
 
     <!-- ============================================== -->
-    <!-- [START] V9 零闪烁方案 (Dynamic CSS Injection) -->
-    <!-- 原理：JS 在渲染前同步注入正确的 CSS 规则，彻底消除时序差导致的闪烁 -->
-    <script>
-        (function() {
-            var path = window.location.pathname;
-            var isHomePage = path === "/" || path.endsWith("/index.html") || path.endsWith("/");
-            var hasVisited = sessionStorage.getItem('splashVisited') === 'true';
-            
-            // 决定初始状态：默认隐藏，只有"首次访问主页"才显示
-            var displayValue = 'none';
-            if (isHomePage && !hasVisited) {
-                displayValue = 'flex';
-            } else {
-                // 如果不需要显示，补全记录防止后续跳转回来时误判
-                if (!hasVisited) sessionStorage.setItem('splashVisited', 'true');
-            }
-
-            // 核心魔法：使用 document.write 同步写入样式
-            // 这会阻塞浏览器解析后续 HTML，直到样式规则建立完成
-            // 因此，当 #splash-overlay 第一次被渲染时，它的 display 属性就已经是确定的了
-            document.write('<style>#splash-overlay { display: ' + displayValue + ' !important; }</style>');
-        })();
-    </script>
-
+    <!-- [START] V12 方案：临时背景接力 + 自毁机制 -->
+    <!-- 策略：
+         1. document.write 注入 html{background:#000} (防止首屏闪白)
+         2. document.write 注入 #splash-overlay{display:flex} (显示遮罩)
+         3. 渲染完成后，立即销毁 html 的黑背景，只留遮罩层。
+         这样当遮罩层淡出时，下方已经是正常的网页内容。 
+    -->
     <style>
-        /* 1. 遮罩层基础样式 */
-        /* 注意：这里不声明 display 属性，完全由上面的 JS 动态注入控制 */
+        /* 1. 遮罩层默认状态：隐藏 */
+        /* JS 会在需要时注入样式将其改为 flex */
         #splash-overlay {
+            display: none; 
+            
             position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background-color: #000000; /* 纯黑背景 */
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background-color: #000000; /* 遮罩层本身的黑底 */
             z-index: 999999;
             flex-direction: column;
             justify-content: center;
@@ -50,14 +35,13 @@
             cursor: pointer;
         }
 
-        /* 2. 离场动画状态 */
-        /* 当点击进入时，JS 会添加这个类 */
+        /* 2. 离场动画 */
         #splash-overlay.fading-out {
-            display: flex !important; /* 保证动画过程中可见 */
+            display: flex !important; /* 动画期间保持 flex 布局 */
             opacity: 0;
             visibility: hidden;
             pointer-events: none;
-            /* 2.5秒缓慢淡出：黑色 -> 透明 */
+            /* 2.5秒缓慢淡出 */
             transition: opacity 2.5s ease, visibility 2.5s ease;
         }
 
@@ -74,7 +58,40 @@
         }
         @keyframes pulse { 0% { opacity: 0.3; } 50% { opacity: 0.8; } 100% { opacity: 0.3; } }
     </style>
-    <!-- [END] V9 零闪烁方案 -->
+
+    <script>
+        (function() {
+            var path = window.location.pathname;
+            // 兼容各种主页路径写法
+            var isHomePage = path === "/" || path.endsWith("/index.html") || path.endsWith("/") || path === "";
+            var hasVisited = sessionStorage.getItem('splashVisited') === 'true';
+            
+            // 核心逻辑：只有在 "是主页" 且 "没访问过" 时执行
+            if (isHomePage && !hasVisited) {
+                // [第一棒] 注入临时黑背景，防止白屏闪烁
+                // 给 style 标签加个 ID，方便过河拆桥
+                document.write('<style id="splash-temp-bg">html { background-color: #000 !important; }</style>');
+                
+                // [第二棒] 显式开启遮罩层
+                document.write('<style>#splash-overlay { display: flex !important; }</style>');
+
+                // [交接] 渲染完成后，立即销毁第一棒
+                // 使用双重 requestAnimationFrame 确保在下一帧（遮罩层已渲染上屏）执行
+                requestAnimationFrame(function() {
+                    requestAnimationFrame(function() {
+                        var tempBg = document.getElementById('splash-temp-bg');
+                        if (tempBg) tempBg.parentNode.removeChild(tempBg);
+                        // 此时 html 背景恢复默认（白），但用户看不到，因为被 #splash-overlay 挡住了
+                        // 这为之后的淡出做好了准备
+                    });
+                });
+            } else {
+                // 非主页或已访问，补全记录
+                if (!hasVisited) sessionStorage.setItem('splashVisited', 'true');
+            }
+        })();
+    </script>
+    <!-- [END] V12 方案 -->
     <!-- ============================================== -->
 		
 		<link id="wsite-base-style" rel="stylesheet" type="text/css" href="http://cdn2.editmysite.com/css/sites.css?buildTime=1234" />
@@ -243,11 +260,10 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 	<body class="no-header-page  wsite-page-projects wsite-theme-light">
     
     <!-- ============================================== -->
-    <!-- [START] 封面遮罩层 HTML (Splash Page HTML) -->
-    <!-- 注意：这里的图片路径使用了你网站中已有的背景图。如果想换图，替换 src 属性即可 -->
+    <!-- [START] 封面遮罩层 HTML -->
+    <!-- 路径保持原样 -->
     <div id="splash-overlay" onclick="enterSite()">
         <img src="https://img.juntaoyang.site/%E4%BD%A0%E5%BE%88%E9%9A%BE%E7%9C%8B%E8%A7%81....png" alt="Click to Enter">
-        <!-- 新增的提示文字 -->
         <div class="enter-text">Enter Site</div>
     </div>
     <!-- [END] 封面遮罩层 HTML -->
@@ -736,32 +752,37 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 <!-- ============================================== -->
 <!-- [START] 封面遮罩层控制脚本 -->
 <script>
-    // 页面加载完成后立即执行
-    // 移除这里重复的隐藏逻辑，因为头部的阻塞脚本已经处理了初始隐藏
-    // 这里的脚本只负责处理点击进入的动作
-
-    // 点击进入网站的逻辑
     function enterSite() {
         var overlay = document.getElementById('splash-overlay');
         
-        // 1. 添加一个“fading-out”类来触发过渡效果
+        // 1. 开始淡出动画
         overlay.classList.add('fading-out');
         
-        // 2. 关键修改：立即移除 show-splash 类！
-        // 这会瞬间把 html 上的黑色背景去掉，恢复网页默认的白底。
-        // 同时，我们在 CSS 里用 #splash-overlay.fading-out { display: flex !important } 
-        // 保证了遮罩层本身不会消失，而是慢慢变透明。
-        // 效果：黑色遮罩变淡 -> 露出白底 (而不是原来的：黑底 -> 遮罩变淡(还是黑的) -> 突然变白)
-        document.documentElement.classList.remove('splash-active');
-
-        // 3. 在 sessionStorage 中记录“已访问”
+        // 2. 标记已访问
         sessionStorage.setItem('splashVisited', 'true');
         
-        // 4. 等动画结束后（2600毫秒），彻底移除元素，避免遮挡点击
+        // 3. 安全检查：如果临时背景还在，立即移除
+        // 虽然上面的 requestAnimationFrame 应该已经移除它了，但为了万无一失
+        var tempBg = document.getElementById('splash-temp-bg');
+        if (tempBg) tempBg.parentNode.removeChild(tempBg);
+
+        // 4. 动画结束后隐藏 DOM
         setTimeout(function(){
             overlay.style.display = 'none';
         }, 2600);
     }
+    
+    // BFCache (浏览器往返缓存) 兼容处理
+    // 确保用户点击后退按钮回到首页时，不会再次看到黑色背景或遮罩
+    window.addEventListener('pageshow', function(e) {
+        if (e.persisted && sessionStorage.getItem('splashVisited') === 'true') {
+            var overlay = document.getElementById('splash-overlay');
+            if (overlay) overlay.style.display = 'none';
+            
+            var tempBg = document.getElementById('splash-temp-bg');
+            if (tempBg) tempBg.parentNode.removeChild(tempBg);
+        }
+    });
 </script>
 <!-- [END] 封面遮罩层控制脚本 -->
 <!-- ============================================== -->
