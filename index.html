@@ -20,43 +20,44 @@
 <link href='http://cdn2.editmysite.com/fonts/Cabin/font.css?2' rel='stylesheet' type='text/css' />
 
 <!-- ============================================== -->
-<!-- [START] 核心修复：智能防闪烁逻辑 (Smart Anti-Flash Logic) -->
-<!-- 这一步至关重要：它会判断当前页面是不是首页。如果不是，强制隐藏遮罩。 -->
+<!-- [START] 终极防闪烁逻辑 (Ultimate Anti-Flash Logic) -->
+<!-- 逻辑反转：默认隐藏，只有满足条件才显示。彻底杜绝闪烁。 -->
+<style>
+    /* 1. 默认状态：彻底隐藏，优先级最高 */
+    #splash-overlay {
+        display: none !important;
+    }
+    
+    /* 2. 激活状态：只有当 html 标签上有 'show-splash' 类时，才显示 */
+    html.show-splash #splash-overlay {
+        display: flex !important;
+    }
+</style>
+
 <script>
     (function() {
-        // 1. 获取当前页面路径
+        // 获取路径
         var path = window.location.pathname;
-        
-        // 2. 判断当前是否是“首页”
-        // 逻辑：路径为空、路径是根目录 /、或者路径结尾是 index.html
+        // 判断是否主页
         var isHomePage = path === "/" || path.endsWith("/index.html") || path.endsWith("/");
-
-        // 3. 检查是否已有访问记录
+        // 判断是否访问过
         var hasVisited = sessionStorage.getItem('splashVisited') === 'true';
 
-        // 4. 核心判断：
-        // 如果已经访问过 (hasVisited) -> 隐藏
-        // 或者，如果当前根本不是首页 (!isHomePage) -> 强制隐藏（修复你的问题）
-        if (hasVisited || !isHomePage) {
-            document.documentElement.classList.add('no-splash');
-            
-            // 额外优化：
-            // 如果用户是从外部链接直接点进内页（比如 artworks.html），
-            // 我们应该视为他已经“进站”了。
-            // 这样当他点击导航栏回到 About (index.html) 时，就不会再弹出遮罩层打扰他了。
-            if (!isHomePage) {
+        // 核心判断：
+        // 只有同时满足：是主页 (isHomePage) 且 没访问过 (!hasVisited)
+        // 才给 html 加类，显示遮罩
+        if (isHomePage && !hasVisited) {
+            document.documentElement.classList.add('show-splash');
+        } else {
+            // 如果是内页进来，或者已经访问过，确保记录已存在
+            // 这样点回主页时也不会显示
+            if (!hasVisited) {
                 sessionStorage.setItem('splashVisited', 'true');
             }
         }
     })();
 </script>
-<style>
-    /* 配合上面的脚本：如果有 no-splash 类，彻底隐藏遮罩层 */
-    html.no-splash #splash-overlay {
-        display: none !important;
-    }
-</style>
-<!-- [END] 核心修复 -->
+<!-- [END] 终极防闪烁逻辑 -->
 <!-- ============================================== -->
 
 <style type='text/css'>
@@ -178,27 +179,26 @@ body.wsite-background {background-attachment: fixed !important;}.wsite-backgroun
 <!-- ============================================== -->
 <!-- [START] 封面遮罩层样式 (Splash Page CSS) -->
 <style>
-  /* 遮罩层容器：固定定位、全屏、最高层级 */
+  /* 遮罩层容器 */
   #splash-overlay {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      /* 【核心修改】背景改为纯黑，完美融合图片边缘，消除生硬的对比框 */
       background-color: #000000;
       z-index: 999999; 
-      display: flex;
+      /* display: flex;  <-- 移除这一行，显示与否完全由上面的 Head 样式控制 */
       flex-direction: column;
       justify-content: center;
       align-items: center;
       cursor: pointer;
-      /* 页面淡出效果，从黑夜过渡到白昼 */
-      /* 【修改】将时间从 1.2s 延长到 2.5s，利用漫长的灰阶过渡来适应人眼，避免刺眼 */
+      
+      /* 页面淡出效果 */
       transition: opacity 2.5s ease, visibility 2.5s ease; 
   }
 
-  /* 封面图片：自适应屏幕大小，保持比例 */
+  /* 封面图片 */
   #splash-overlay img {
       max-width: 85%;
       max-height: 80vh;
@@ -206,17 +206,14 @@ body.wsite-background {background-attachment: fixed !important;}.wsite-backgroun
       height: auto;
       object-fit: contain;
       
-      /* 移除之前的阴影，因为在黑色背景下不需要阴影来区分边界 */
-      /* box-shadow: 0 10px 30px rgba(0,0,0,0.08); */
-
-      /* 保持极其缓慢、丝滑的电影感推拉镜头 */
+      /* 极其缓慢、丝滑的电影感推拉镜头 */
       transition: transform 2.5s cubic-bezier(0.19, 1, 0.22, 1), opacity 0.5s ease;
   }
 
-  /* 鼠标悬停时：非常微小的放大，营造呼吸感 */
+  /* 鼠标悬停时 */
   #splash-overlay:hover img {
       transform: scale(1.02); 
-      opacity: 0.95; /* 稍微变暗一点点，增加互动反馈 */
+      opacity: 0.95;
   }
 
   /* 提示文字样式 */
@@ -226,7 +223,6 @@ body.wsite-background {background-attachment: fixed !important;}.wsite-backgroun
       font-size: 13px; 
       letter-spacing: 4px; 
       text-transform: uppercase;
-      /* 【修改】文字改为银灰色，在黑色背景上清晰但不刺眼 */
       color: #b0b0b0;
       opacity: 0.6;
       animation: pulse 3s infinite ease-in-out; 
