@@ -18,6 +18,47 @@
 <link href='http://cdn2.editmysite.com/fonts/Cardo/font.css?2' rel='stylesheet' type='text/css' />
 <link href='http://cdn2.editmysite.com/fonts/Amaranth/font.css?2' rel='stylesheet' type='text/css' />
 <link href='http://cdn2.editmysite.com/fonts/Cabin/font.css?2' rel='stylesheet' type='text/css' />
+
+<!-- ============================================== -->
+<!-- [START] 核心修复：智能防闪烁逻辑 (Smart Anti-Flash Logic) -->
+<!-- 这一步至关重要：它会判断当前页面是不是首页。如果不是，强制隐藏遮罩。 -->
+<script>
+    (function() {
+        // 1. 获取当前页面路径
+        var path = window.location.pathname;
+        
+        // 2. 判断当前是否是“首页”
+        // 逻辑：路径为空、路径是根目录 /、或者路径结尾是 index.html
+        var isHomePage = path === "/" || path.endsWith("/index.html") || path.endsWith("/");
+
+        // 3. 检查是否已有访问记录
+        var hasVisited = sessionStorage.getItem('splashVisited') === 'true';
+
+        // 4. 核心判断：
+        // 如果已经访问过 (hasVisited) -> 隐藏
+        // 或者，如果当前根本不是首页 (!isHomePage) -> 强制隐藏（修复你的问题）
+        if (hasVisited || !isHomePage) {
+            document.documentElement.classList.add('no-splash');
+            
+            // 额外优化：
+            // 如果用户是从外部链接直接点进内页（比如 artworks.html），
+            // 我们应该视为他已经“进站”了。
+            // 这样当他点击导航栏回到 About (index.html) 时，就不会再弹出遮罩层打扰他了。
+            if (!isHomePage) {
+                sessionStorage.setItem('splashVisited', 'true');
+            }
+        }
+    })();
+</script>
+<style>
+    /* 配合上面的脚本：如果有 no-splash 类，彻底隐藏遮罩层 */
+    html.no-splash #splash-overlay {
+        display: none !important;
+    }
+</style>
+<!-- [END] 核心修复 -->
+<!-- ============================================== -->
+
 <style type='text/css'>
 .wsite-elements.wsite-not-footer:not(.wsite-header-elements) div.paragraph, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) p, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-block .product-title, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-description, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .wsite-form-field label, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .wsite-form-field label, #wsite-content div.paragraph, #wsite-content p, #wsite-content .product-block .product-title, #wsite-content .product-description, #wsite-content .wsite-form-field label, #wsite-content .wsite-form-field label, .blog-sidebar div.paragraph, .blog-sidebar p, .blog-sidebar .wsite-form-field label, .blog-sidebar .wsite-form-field label {font-family:"Georgia" !important;}
 #wsite-content div.paragraph, #wsite-content p, #wsite-content .product-block .product-title, #wsite-content .product-description, #wsite-content .wsite-form-field label, #wsite-content .wsite-form-field label, .blog-sidebar div.paragraph, .blog-sidebar p, .blog-sidebar .wsite-form-field label, .blog-sidebar .wsite-form-field label {}
@@ -739,18 +780,8 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 <!-- [START] 封面遮罩层控制脚本 -->
 <script>
     // 页面加载完成后立即执行
-    document.addEventListener("DOMContentLoaded", function() {
-        // 检查 sessionStorage 中是否有 'splashVisited' 标记
-        var hasVisited = sessionStorage.getItem('splashVisited');
-        
-        // 如果有标记（说明已经来过），直接隐藏遮罩层，不显示
-        if (hasVisited === 'true') {
-            var overlay = document.getElementById('splash-overlay');
-            if(overlay) {
-                overlay.style.display = 'none'; 
-            }
-        }
-    });
+    // 移除这里重复的隐藏逻辑，因为头部的阻塞脚本已经处理了初始隐藏
+    // 这里的脚本只负责处理点击进入的动作
 
     // 点击进入网站的逻辑
     function enterSite() {
