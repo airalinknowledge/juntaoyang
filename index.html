@@ -20,44 +20,38 @@
 <link href='http://cdn2.editmysite.com/fonts/Cabin/font.css?2' rel='stylesheet' type='text/css' />
 
 <!-- ============================================== -->
-<!-- [START] 终极防闪烁逻辑 (Ultimate Anti-Flash Logic) -->
-<!-- 逻辑反转：默认隐藏，只有满足条件才显示。彻底杜绝闪烁。 -->
+<!-- [START] 终极防闪烁逻辑 V2 (No-Flash Logic) -->
 <style>
-    /* 1. 默认状态：彻底隐藏，优先级最高 */
+    /* 1. 默认状态：必须是【显示】的。 */
+    /* 这样首次加载时，背景直接是黑的，不会闪烁白光。 */
     #splash-overlay {
-        display: none !important;
-    }
-    
-    /* 2. 激活状态：只有当 html 标签上有 'show-splash' 类时，才显示 */
-    html.show-splash #splash-overlay {
-        display: flex !important;
+        display: flex;
     }
 </style>
 
 <script>
     (function() {
-        // 获取路径
         var path = window.location.pathname;
-        // 判断是否主页
+        // 判断是否是主页
         var isHomePage = path === "/" || path.endsWith("/index.html") || path.endsWith("/");
         // 判断是否访问过
         var hasVisited = sessionStorage.getItem('splashVisited') === 'true';
 
-        // 核心判断：
-        // 只有同时满足：是主页 (isHomePage) 且 没访问过 (!hasVisited)
-        // 才给 html 加类，显示遮罩
-        if (isHomePage && !hasVisited) {
-            document.documentElement.classList.add('show-splash');
-        } else {
-            // 如果是内页进来，或者已经访问过，确保记录已存在
-            // 这样点回主页时也不会显示
+        // 核心判断：如果 不需要 显示遮罩层（因为不是主页，或者已经来过）
+        // 我们必须在浏览器画出黑色背景之前，立刻把它隐藏掉
+        if (!isHomePage || hasVisited) {
+            // 使用 document.write 写入样式是目前最快、最能防止内容闪烁的方法
+            // 它会在 HTML 解析阶段直接生效，比 classList.add 更快
+            document.write('<style>#splash-overlay { display: none !important; }</style>');
+            
+            // 如果是从内页直接进来的，补上“已访问”标记，防止点回主页时弹出
             if (!hasVisited) {
                 sessionStorage.setItem('splashVisited', 'true');
             }
         }
     })();
 </script>
-<!-- [END] 终极防闪烁逻辑 -->
+<!-- [END] 终极防闪烁逻辑 V2 -->
 <!-- ============================================== -->
 
 <style type='text/css'>
@@ -188,7 +182,8 @@ body.wsite-background {background-attachment: fixed !important;}.wsite-backgroun
       height: 100%;
       background-color: #000000;
       z-index: 999999; 
-      /* display: flex;  <-- 移除这一行，显示与否完全由上面的 Head 样式控制 */
+      /* 这里的样式是基础样式，显示与否由 Head 中的阻塞脚本控制 */
+      display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
