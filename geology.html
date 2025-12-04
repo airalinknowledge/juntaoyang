@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Texture of the Earth and Skin We're In</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <style>
+        /* --- 核心美学：磨砂暗夜 (Matte Dark) --- */
+        :root {
+            --text-main: #e0e0e0; 
+            --text-dim: #888888;
+            /* 暗金配色 */
+            --accent-color: #d4b465; 
+            --border-color: rgba(255, 255, 255, 0.15);
+            
+            --font-serif: "Times New Roman", "Songti SC", serif;
+            --font-mono: "Courier New", "Courier", monospace;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: transparent; 
+            color: var(--text-main);
+            overflow-x: hidden;
+            font-family: var(--font-serif);
+            overscroll-behavior-y: none; 
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.5s ease;
+        }
+        
+        a:hover {
+            color: var(--accent-color);
+        }
+
+        /* --- 导航栏 (Embedded Nav) --- */
+        .top-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 2.5rem 4vw; /* 与页面边距对齐 */
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            z-index: 60; /* 位于噪点层之上 */
+            pointer-events: none; /* 允许点击穿透空白区域 */
+            box-sizing: border-box;
+            mix-blend-mode: difference; /* 增强文字在复杂背景上的可读性 */
+        }
+
+        .nav-logo {
+            font-family: var(--font-serif);
+            font-size: 1.1rem;
+            color: #e0e0e0; /* 强制浅色，配合 difference 混合模式 */
+            letter-spacing: 1px;
+            pointer-events: auto;
+            font-weight: bold;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+
+        .nav-menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            gap: 2.5rem;
+            pointer-events: auto;
+        }
+
+        .nav-item a {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: #aaa; /* 略暗 */
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: color 0.4s ease;
+            position: relative;
+        }
+
+        .nav-item a:hover {
+            color: var(--accent-color);
+        }
+
+        /* 悬停下划线动画 */
+        .nav-item a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0%;
+            height: 1px;
+            background: var(--accent-color);
+            transition: width 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        .nav-item a:hover::after {
+            width: 100%;
+        }
+
+        @media (max-width: 768px) {
+            .top-nav {
+                padding: 1.5rem;
+                flex-direction: column;
+                gap: 1rem;
+                align-items: flex-start;
+                /* 移动端增加渐变背景以防看不清 */
+                background: linear-gradient(to bottom, rgba(0,0,0,0.9), transparent);
+                mix-blend-mode: normal;
+            }
+            .nav-menu {
+                gap: 1.2rem;
+                flex-wrap: wrap;
+            }
+            .nav-logo {
+                color: var(--text-main);
+            }
+        }
+
+        /* --- 噪点纹理层 --- */
+        .noise-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 50; 
+            opacity: 0.05; 
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        /* --- P5 Canvas --- */
+        #canvas-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1; 
+        }
+
+        /* --- 滚动容器 --- */
+        .scroll-container {
+            position: relative;
+            z-index: 10;
+            /* 为顶部导航栏留出空间，防止内容被遮挡 */
+            padding-top: 60px; 
+        }
+
+        /* --- 通用版式 --- */
+        .stratum {
+            min-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 6rem 8vw;
+            box-sizing: border-box;
+            position: relative;
+        }
+
+        .align-left { align-items: flex-start; text-align: left; }
+        .align-center { align-items: center; text-align: center; }
+        .align-right { align-items: flex-end; text-align: right; }
+
+        .meta {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: var(--accent-color);
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            letter-spacing: 2px;
+            border-bottom: 1px solid var(--accent-color);
+            padding-bottom: 3px;
+            text-transform: uppercase;
+        }
+
+        h1, h2, h3 {
+            font-family: var(--font-mono);
+            color: var(--text-main);
+            text-transform: uppercase;
+            font-weight: 400;
+        }
+
+        h1 { 
+            font-size: 2.5rem; 
+            letter-spacing: -1px; 
+            margin-bottom: 1rem; 
+            line-height: 1.2;
+        }
+        
+        .subtitle {
+            font-family: var(--font-serif);
+            font-size: 1.2rem;
+            color: var(--text-dim);
+            font-style: italic;
+            margin-bottom: 2rem;
+            max-width: 700px;
+        }
+
+        /* [修改] 独立、舒展的引注样式 */
+        .quote-box {
+            font-family: var(--font-serif);
+            font-size: 1rem; /* 稍微加大字号 */
+            line-height: 1.8; /* 增加行高 */
+            color: #ccc;
+            text-align: center;
+            /* 增加顶部间距，使其下沉 */
+            margin-top: 6rem; 
+            margin-bottom: 2rem;
+            /* 增加宽度，让两侧舒展 */
+            max-width: 900px; 
+            width: 100%;
+            opacity: 0.9;
+            /* 自身居中对齐 */
+            align-self: center;
+        }
+
+        .quote-author {
+            display: block;
+            margin-top: 1.5rem; /* 作者名与引文的距离也稍微拉开 */
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 2px; /* 增加字间距 */
+        }
+
+        h2 { font-size: 1.4rem; margin-bottom: 2rem; letter-spacing: 1px;}
+        h3 { font-size: 1.1rem; margin-bottom: 0.5rem; }
+
+        .intro-box {
+            max-width: 800px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+            border-left: 1px solid var(--border-color);
+            padding-left: 2rem;
+        }
+
+        /* --- 模块 B: 文献列表 --- */
+        .pub-section {
+            width: 100%;
+            max-width: 800px;
+            text-align: right;
+            margin-bottom: 3rem;
+        }
+
+        .pub-group-title {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--text-dim);
+            border-bottom: 1px dashed var(--border-color);
+            padding-bottom: 0.5rem;
+            margin-bottom: 2rem;
+            display: inline-block;
+        }
+
+        .pub-item {
+            margin-bottom: 3rem; 
+            padding-right: 1.5rem;
+            border-right: 2px solid transparent;
+            /* 缓慢的颜色和背景过渡 */
+            transition: border-color 0.6s ease, background-color 0.6s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        /* 悬停时：无位移，仅有沉稳的背景光和边框显现 */
+        .pub-item:hover {
+            border-right-color: var(--accent-color);
+            /* 极淡的金色渐变背景 */
+            background: linear-gradient(to left, rgba(212, 180, 101, 0.05), transparent);
+        }
+
+        .pub-title {
+            font-size: 1.15rem;
+            margin-bottom: 0.5rem;
+            display: block;
+            color: var(--text-main);
+            line-height: 1.3;
+            transition: color 0.5s ease;
+            text-decoration: none; /* 移除下划线，保持简洁 */
+        }
+        
+        .pub-item:hover .pub-title {
+            color: #fff; /* 微亮 */
+            text-shadow: 0 0 10px rgba(212, 180, 101, 0.3); /* 链接光晕 */
+        }
+
+        .pub-info {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--accent-color);
+            line-height: 1.4;
+            margin-bottom: 0.8rem;
+            opacity: 0.8;
+            transition: opacity 0.5s ease;
+        }
+        
+        .pub-item:hover .pub-info {
+            opacity: 1;
+        }
+
+        .pub-abstract {
+            font-family: var(--font-serif);
+            font-size: 0.9rem;
+            color: #888;
+            line-height: 1.6;
+            margin-top: 0.5rem;
+            max-width: 600px;
+            margin-left: auto; 
+            transition: color 0.6s ease;
+        }
+        
+        .pub-item:hover .pub-abstract {
+            color: #bbb; /* 阅读时稍微变亮 */
+        }
+
+        /* --- 模块 C: Research --- */
+        .research-block {
+            width: 100%;
+            max-width: 800px;
+            margin-bottom: 5rem;
+            border-left: 1px solid var(--border-color);
+            padding-left: 2rem;
+            transition: border-color 0.8s ease;
+        }
+        
+        .research-block:hover {
+            border-left-color: rgba(212, 180, 101, 0.3);
+        }
+
+        .project-title {
+            font-size: 1.4rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            display: block;
+            line-height: 1.3;
+            cursor: pointer;
+            transition: text-shadow 0.6s ease;
+        }
+        
+        .project-title:hover {
+            text-shadow: 0 0 15px rgba(212, 180, 101, 0.2); 
+        }
+        
+        .project-desc {
+            font-family: var(--font-serif);
+            font-size: 1rem;
+            color: #ccc;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            max-width: 700px;
+        }
+
+        .conference-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--text-dim);
+        }
+
+        .conference-item {
+            margin-bottom: 0.8rem;
+            padding-left: 1.2rem;
+            position: relative;
+            line-height: 1.5;
+            transition: color 0.4s ease;
+            cursor: default;
+        }
+        
+        .conference-item:hover {
+            color: #bbb;
+        }
+
+        .conference-item::before {
+            content: '+';
+            position: absolute;
+            left: -5px;
+            color: var(--accent-color);
+            font-weight: bold;
+            opacity: 0.7;
+        }
+
+        .conf-date {
+            color: #666;
+            margin-left: 0.5rem;
+        }
+
+        /* --- 模块 D: Artworks --- */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            width: 100%;
+            max-width: 1100px;
+        }
+
+        .art-card {
+            background: rgba(20, 20, 20, 0.4);
+            border: 1px solid var(--border-color);
+            transition: border-color 0.8s ease, background-color 0.8s ease;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+            position: relative;
+        }
+
+        .art-card:hover {
+            border-color: rgba(212, 180, 101, 0.6);
+            background: rgba(212, 180, 101, 0.05); 
+        }
+
+        .art-preview {
+            height: 200px;
+            background: #111;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 1px solid var(--border-color);
+            overflow: hidden;
+            transition: border-color 0.8s ease;
+        }
+        
+        .art-card:hover .art-preview {
+            border-bottom-color: rgba(212, 180, 101, 0.3);
+        }
+
+        .art-preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1), filter 1.2s ease;
+            filter: grayscale(60%) contrast(1.1);
+        }
+
+        .art-card:hover .art-preview img {
+            transform: scale(1.03); 
+            filter: grayscale(0%) contrast(1);
+        }
+
+        .art-info { padding: 1.5rem; }
+        .art-title { 
+            font-size: 1.1rem; 
+            margin-bottom: 0.5rem; 
+            font-family: var(--font-serif);
+            transition: color 0.5s ease;
+        }
+        
+        .art-card:hover .art-title {
+            color: #fff;
+        }
+        
+        .art-link { font-family: var(--font-mono); font-size: 0.7rem; color: var(--accent-color); text-transform: uppercase; letter-spacing: 1px; }
+
+        /* --- 深度计 --- */
+        .side-ruler {
+            position: fixed; top: 0; bottom: 0; right: 0; width: 1px;
+            background: rgba(255, 255, 255, 0.05); z-index: 40;
+        }
+        .ruler-cursor {
+            position: absolute; top: 0; right: 0; width: 4px; height: 20px;
+            background-color: var(--accent-color);
+            box-shadow: -2px 0 10px rgba(212, 180, 101, 0.3);
+            transition: top 0.1s linear; 
+        }
+        .depth-ghost-readout {
+            position: fixed; bottom: 20px; right: 20px;
+            font-family: var(--font-mono); font-size: 10px; letter-spacing: 2px;
+            color: var(--text-main); opacity: 0.3; z-index: 40; pointer-events: none; text-align: right;
+        }
+
+        @media (max-width: 768px) {
+            .stratum { padding: 4rem 1.5rem; align-items: flex-start; text-align: left; }
+            .align-right, .align-center { align-items: flex-start; text-align: left; }
+            .pub-section, .core-sample-container { text-align: left; border-right: none; padding-right: 0; }
+            .pub-item { border-right: none; border-left: 2px solid transparent; padding-right: 0; padding-left: 1.5rem; }
+            /* 移动端保持左侧指示 */
+            .pub-item:hover { border-left-color: var(--accent-color); padding-left: 1.5rem; background: linear-gradient(to right, rgba(212, 180, 101, 0.05), transparent); }
+            .pub-abstract { margin-left: 0; }
+            .project-grid { grid-template-columns: 1fr; }
+            .side-ruler, .depth-ghost-readout { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="noise-overlay"></div>
+    <div id="canvas-container"></div>
+
+    <!-- 导航栏 -->
+    <nav class="top-nav">
+        <a href="index.html" class="nav-logo">JUNTAO YANG</a>
+        <ul class="nav-menu">
+            <li class="nav-item"><a href="index.html">About</a></li>
+            <li class="nav-item"><a href="artworks.html">Artworks</a></li>
+            <li class="nav-item"><a href="writings.html">Writings</a></li>
+            <li class="nav-item"><a href="projects.html">Projects</a></li>
+            <li class="nav-item"><a href="posts.html">Posts</a></li>
+        </ul>
+    </nav>
+
+    <!-- 深度UI -->
+    <div class="side-ruler"><div class="ruler-cursor" id="ruler-cursor"></div></div>
+    <div class="depth-ghost-readout">Z-AXIS: -<span id="depth-val">00.00</span>km</div>
+
+    <div class="scroll-container">
+        
+        <!-- 地层 I: Title (Left) -->
+        <section class="stratum align-left">
+            <div class="intro-box">
+                <span class="meta">PROJECT INDEX</span>
+                <h1>Texture of the Earth and Skin We're In</h1>
+                <div class="subtitle">
+                    Geological Thinking, Anthropocene Cinema, and the Imaginations Beyond Humanbeing
+                </div>
+            </div>
+            
+            <!-- [修改] 移出 .intro-box，独立居中 -->
+            <div class="quote-box">
+                "An abstract, intellectual understanding of deep time comes easily enough — I know how many zeros to place after the 10 when I mean billions. Getting it into the gut is quite another matter. Deep time is so alien we can really only comprehend it as a metaphor."
+                <span class="quote-author">— Stephen Jay Gould, Time’s Arrow, Time’s Cycle</span>
+            </div>
+        </section>
+
+        <!-- 地层 II: Publications (Right) -->
+        <section class="stratum align-right">
+            
+            <span class="meta">SECTION II: PUBLICATIONS</span>
+            
+            <div class="pub-section">
+                <div class="pub-group-title">PEER-REVIEWED ARTICLES</div>
+                
+                <!-- Article 1: Unlinked -->
+                <div class="pub-item" onclick="triggerRipple(event)">
+                    <span class="pub-title">The Earth That Holds Us: The Geological Turn in Film and Media Studies</span>
+                    <div class="pub-info">
+                        Theoretical Studies in Literature and Art, East China Normal University Press<br>
+                        Incoming
+                    </div>
+                    <div class="pub-abstract">
+                        I attempt to sketch the geological turn within film and media studies and the broader humanities, demonstrating how this perspective facilitates perceiving trans-species entanglements beyond anthropocentrism, while still harboring the risk of overlooking political economy and the unequal distribution of power.
+                    </div>
+                </div>
+
+                <!-- Article 2: Linked -->
+                <div class="pub-item" onclick="triggerRipple(event)">
+                    <!-- [修改] 转换为链接 -->
+                    <a href="https://juntaoyang.site/uploads/Juntao%20Yang_Materiality,%20Geoaesthetics%20and%20Planetary%20Futures_The%20Geology%20of%20Media%20in%20the%20Context%20of%20Anthropocene.pdf" target="_blank" class="pub-title">
+                        Materiality, Geoaesthetics and Planetary Futures: The Geology of Media in the Context of Anthropocene
+                    </a>
+                    <div class="pub-info">
+                        The Journal of Contemporary Art Criticism, Vol 1 Issue 2 (2025)<br>
+                        Review of Theatre and Film, Issue 6 (2024)
+                    </div>
+                    <div class="pub-abstract">
+                        In this article, I trace three theoretical lineages of media geology in a broad sense: media archaeology, ecopoetics, and the geological turn. Through this intellectual archaeology, I elucidate how a geological perspective in media studies helps us address the crises of the Anthropocene (or alternative terms). By introducing Sasha Litvintseva’s notion of Geological Filmmaking, I argue that resorting to non-human modes of representation intervenes in and complicates Jussi Parikka’s technicist framework. Finally, I analyze Chinese filmmaker Zhao Liang's documentary <em>Behemoth</em> (2016) on mining cities in Inner Mongolia, adding a Global South perspective to this sometimes overly Eurocentric theory.
+                    </div>
+                </div>
+            </div>
+
+            <div class="pub-section">
+                <div class="pub-group-title">REVIEWS & ESSAYS</div>
+                
+                <!-- Marxt: Linked -->
+                <div class="pub-item" onclick="triggerRipple(event)">
+                    <!-- [修改] 转换为链接 -->
+                    <a href="https://www.peopleoftheenvironment.org/blog/lukas-marxt-how-do-we-mediate-haunted-toxicity" target="_blank" class="pub-title">
+                        Lukas Marxt: How Do We Mediate Haunted Toxicity?
+                    </a>
+                    <div class="pub-info">Edge Effects, 2026</div>
+                    <div class="pub-abstract">
+                        In this essay, I explore how his film <em>Among The Palms The Bomb, or: Looking for Reflections in the Toxic Field of Plenty</em> (2024) mediates invisible toxicity (and its history) in a complex, layered manner.
+                    </div>
+                </div>
+
+                <!-- Porous Words: Unlinked -->
+                <div class="pub-item" onclick="triggerRipple(event)">
+                    <span class="pub-title">Porous Words, Stones from Other Tongues</span>
+                    <div class="pub-info">
+                        Gadfly, 2025<br>
+                        Journal of Experimental Practice, 2025
+                    </div>
+                    <div class="pub-abstract">
+                        In this essay, borrowing the Chinese metaphor of "stones from other hills", I demonstrate the value of obscure language.
+                    </div>
+                </div>
+
+                <!-- Light: Linked -->
+                <div class="pub-item" onclick="triggerRipple(event)">
+                    <!-- [修改] 转换为链接 -->
+                    <a href="https://juntaoyang.site/uploads/light_and_cold_conversations_Juntao_Yang.pdf" target="_blank" class="pub-title">
+                        Light and Cold Conversations: Digital Agency, Speculative Aesthetics, and Conspiracy Sympathizers
+                    </a>
+                    <div class="pub-info">Imaginary Z, 2023</div>
+                    <div class="pub-abstract">
+                        Curatorial statement for the exhibition of the same name. This essay explores the political urgency of speculative creation using highly material digital media.
+                    </div>
+                </div>
+
+                <!-- Sudden: Linked -->
+                <div class="pub-item" onclick="triggerRipple(event)">
+                    <!-- [修改] 转换为链接 -->
+                    <a href="https://mp.weixin.qq.com/s/cdMjyF0wYb5q0NEMFrLtFQ" target="_blank" class="pub-title">
+                        A Sudden Interruption: All Silence Is A Hidden Space
+                    </a>
+                    <div class="pub-info">Buoyant Views, Buoyant Art, 2023</div>
+                    <div class="pub-abstract">
+                        This exhibition review explores artistic practices that complicate local memories and private narratives.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 地层 III: Ongoing Research (Left) -->
+        <section class="stratum align-left">
+            
+            <span class="meta">SECTION III: ONGOING RESEARCH</span>
+
+            <!-- Project 1 -->
+            <div class="research-block">
+                <span class="project-title" onclick="triggerRipple(event)">
+                    An Unsettling Ground: Deep Now, Post-Wenchuan Documentary and The Making of Earthquake-Media
+                </span>
+                
+                <div class="project-desc">
+                    This ongoing project stems from my MA thesis. Revolving around what I term "Earthquake-Media," I conceptualize the earthquake as a more-than-human generative geological force that disrupts and reconfigures relations. In Wenchuan, the earthquake, through its suddenness and violence, refused real-time recording and legitimate representation, collapsing seemingly stable temporality and creating a profound temporal vacuum I call the "deep now." This vacuum demands survivors confront and engage in distinct aesthetic mediations, yet these temporal investments are often competing. This "deep now" is further complicated by the authoritarian government's refusal of political accountability.
+                </div>
+
+                <ul class="conference-list">
+                    <li class="conference-item">Society for Cinema and Media Studies (SCMS) Annual Conference <span class="conf-date">Chicago, Mar 2026</span></li>
+                    <li class="conference-item">The 29th Annual Harvard East Asia Society Conference <span class="conf-date">Harvard, Feb 2026</span></li>
+                    <li class="conference-item">Zoom-In 2026, Film and Media Studies <span class="conf-date">Columbia, Feb 2026</span></li>
+                    <li class="conference-item">Futurities II: Transnational Exchange <span class="conf-date">Columbia, Aug 2025</span></li>
+                    <li class="conference-item">SEAA-SNU Anthropology 2025 <span class="conf-date">Seoul Nat. Univ, July 2025</span></li>
+                    <li class="conference-item">20th Annual Cinema and Media Studies Graduate Student Conference <span class="conf-date">UChicago, Apr 2025</span></li>
+                    <li class="conference-item">Mediated Futures Conference <span class="conf-date">UC Irvine, Apr 2025</span></li>
+                    <li class="conference-item">Common Ground Graduate Conference <span class="conf-date">Indiana Univ, Mar 2025</span></li>
+                    <li class="conference-item">2025 NYU Cinema Studies Student Conference <span class="conf-date">NYU, Feb 2025</span></li>
+                </ul>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="research-block">
+                <span class="project-title" onclick="triggerRipple(event)">
+                    Mediating Elemental Ghosts: Media Archaeology as Planetary Sorcery
+                </span>
+                <ul class="conference-list">
+                    <li class="conference-item">
+                        Xiamen University School of Film Youth Forum
+                        <span class="conf-date">July 2025</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 地层 IV: Artworks (Center) -->
+        <section class="stratum align-center">
+            <span class="meta">SECTION IV: ARTWORKS</span>
+            
+            <div class="project-grid">
+                <a href="https://juntaoyang.site/you-can-hardly-see.html" target="_blank" class="art-card" onclick="triggerRipple(event)">
+                    <div class="art-preview">
+                        <!-- [修改] 绝对路径 -->
+                        <img src="https://img.juntaoyang.site/%E4%BD%A0%E5%BE%88%E9%9A%BE%E7%9C%8B%E8%A7%81....png" alt="You Can Hardly See">
+                    </div>
+                    <div class="art-info">
+                        <div class="art-title">You Can Hardly See</div>
+                        <span class="art-link">VIEW PROJECT →</span>
+                    </div>
+                </a>
+
+                <a href="https://juntaoyang.site/light-and-cold-conversation-atlantic-algorithmic-and-visibility.html" target="_blank" class="art-card" onclick="triggerRipple(event)">
+                    <div class="art-preview">
+                        <!-- [修改] 绝对路径 -->
+                        <img src="https://juntaoyang.site/uploads/yuanzikongjian24.jpg" alt="Light and Cold Conversation">
+                    </div>
+                    <div class="art-info">
+                        <div class="art-title">Light and Cold Conversation</div>
+                        <span class="art-link">VIEW PROJECT →</span>
+                    </div>
+                </a>
+
+                <a href="https://juntaoyang.site/naked-wounds-and-the-abandoned.html" target="_blank" class="art-card" onclick="triggerRipple(event)">
+                    <div class="art-preview">
+                        <!-- [修改] 绝对路径 -->
+                        <img src="https://juntaoyang.site/uploads/innovart.jpg" alt="Naked Wounds and the Abandoned">
+                    </div>
+                    <div class="art-info">
+                        <div class="art-title">Naked Wounds and the Abandoned</div>
+                        <span class="art-link">VIEW PROJECT →</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- 底部 -->
+        <section class="stratum align-center" style="min-height: 40vh;">
+            <div style="opacity: 0.5; font-family: var(--font-mono); font-size: 0.8rem;">END OF ARCHIVE</div>
+        </section>
+    </div>
+
+    <script>
+        let canvas;
+        const REZ = 5; 
+        let cols, rows;
+        let field = [];
+        let ripples = []; 
+        
+        let targetScroll = 0;
+        let currentScroll = 0;
+        
+        const CONFIG = {
+            noiseScale: 0.003,
+            maskScale: 0.0008, 
+            numIsolines: 150,      
+            lineAlpha: 90,        
+            scrollLerp: 0.02,     
+        };
+
+        function setup() {
+            canvas = createCanvas(windowWidth, windowHeight);
+            canvas.parent('canvas-container');
+            
+            cols = 1 + Math.ceil(width / REZ);
+            rows = 1 + Math.ceil(height / REZ);
+            
+            for (let i = 0; i < cols; i++) {
+                field[i] = new Float32Array(rows);
+            }
+            
+            strokeJoin(ROUND);
+            noFill();
+            background(20);
+            noiseDetail(4, 0.5);
+        }
+
+        function mousePressed() {
+            ripples.push(new HaloRipple(mouseX, mouseY));
+        }
+
+        window.triggerRipple = function(e) {
+            let x = e.clientX;
+            let y = e.clientY;
+            ripples.push(new HaloRipple(x, y));
+        }
+
+        function draw() {
+            background(20); 
+
+            let actualScroll = window.scrollY;
+            let maxScroll = document.body.scrollHeight - window.innerHeight;
+            let progressRaw = constrain(actualScroll / maxScroll, 0, 1);
+            targetScroll = progressRaw;
+            currentScroll = lerp(currentScroll, targetScroll, CONFIG.scrollLerp);
+            
+            // UI Update
+            let cursorEl = document.getElementById('ruler-cursor');
+            if(cursorEl) {
+                let screenH = window.innerHeight;
+                let topPos = currentScroll * (screenH - 20);
+                cursorEl.style.top = topPos + 'px';
+            }
+            let depthValEl = document.getElementById('depth-val');
+            if(depthValEl) {
+                let depthKm = (currentScroll * 14).toFixed(2);
+                if (depthKm < 10) depthKm = "0" + depthKm;
+                depthValEl.innerText = depthKm;
+            }
+
+            // Physics Update (Static Geology)
+            let zOff = currentScroll * 0.05 + frameCount * 0.00001;
+
+            // Terrain Generation
+            for (let i = 0; i < cols; i++) {
+                for (let j = 0; j < rows; j++) {
+                    let x = i * REZ;
+                    let y = j * REZ;
+                    
+                    let n = noise(x * CONFIG.noiseScale, y * CONFIG.noiseScale, zOff);
+                    let heightVal = Math.pow(n, 1.2); 
+                    let mask = noise(x * CONFIG.maskScale + 100, y * CONFIG.maskScale + 100, zOff * 0.5);
+                    mask = Math.pow(mask, 1.5); 
+                    field[i][j] = heightVal * mask;
+                }
+            }
+
+            // Draw Isolines
+            stroke(255, 255, 255, CONFIG.lineAlpha); 
+            strokeWeight(0.3); 
+
+            for (let i = 0; i < cols - 1; i++) {
+                for (let j = 0; j < rows - 1; j++) {
+                    let x = i * REZ;
+                    let y = j * REZ;
+                    let valTL = field[i][j];
+                    let valTR = field[i+1][j];
+                    let valBR = field[i+1][j+1];
+                    let valBL = field[i][j+1];
+
+                    let minLvl = Math.floor(Math.min(valTL, valTR, valBR, valBL) * CONFIG.numIsolines);
+                    let maxLvl = Math.floor(Math.max(valTL, valTR, valBR, valBL) * CONFIG.numIsolines);
+
+                    if (maxLvl > minLvl) {
+                        for (let k = minLvl + 1; k <= maxLvl; k++) {
+                            let threshold = k / CONFIG.numIsolines;
+                            let state = getState(valTL, valTR, valBR, valBL, threshold);
+                            
+                            let a = createVector(x + REZ * (threshold - valTL) / (valTR - valTL), y);
+                            let b = createVector(x + REZ, y + REZ * (threshold - valTR) / (valBR - valTR));
+                            let c = createVector(x + REZ * (threshold - valBL) / (valBR - valBL), y + REZ);
+                            let d = createVector(x, y + REZ * (threshold - valTL) / (valBL - valTL));
+
+                            switch (state) {
+                                case 1:  drawLine(c, d); break;
+                                case 2:  drawLine(b, c); break;
+                                case 3:  drawLine(b, d); break;
+                                case 4:  drawLine(a, b); break;
+                                case 5:  drawLine(a, d); drawLine(b, c); break;
+                                case 6:  drawLine(a, c); break;
+                                case 7:  drawLine(a, d); break;
+                                case 8:  drawLine(a, d); break;
+                                case 9:  drawLine(a, c); break;
+                                case 10: drawLine(a, b); drawLine(c, d); break;
+                                case 11: drawLine(a, b); break;
+                                case 12: drawLine(b, d); break;
+                                case 13: drawLine(b, c); break;
+                                case 14: drawLine(c, d); break;
+                            }
+                        }
+                    }
+                }
+            }
+            
+            // Draw Ripples
+            for (let i = ripples.length - 1; i >= 0; i--) {
+                let r = ripples[i];
+                r.update();
+                r.display();
+                if (r.isDead()) {
+                    ripples.splice(i, 1);
+                }
+            }
+        }
+
+        class HaloRipple {
+            constructor(x, y) {
+                this.x = x; this.y = y;
+                this.lifespan = 255; this.maxRadius = 120; this.currentRadius = 0;
+            }
+            update() {
+                this.lifespan -= 1.5; // [调整] 光晕消失得更慢，更沉稳
+                this.currentRadius = lerp(this.currentRadius, this.maxRadius, 0.02); // 扩散更慢
+            }
+            display() {
+                noStroke();
+                let alphaBase = this.lifespan * 0.6; 
+                for (let r = 0; r < 20; r++) {
+                    let size = this.currentRadius * (1.0 - r * 0.04);
+                    let layerAlpha = map(r, 0, 20, 0, alphaBase * 0.05); 
+                    fill(225, 230, 240, layerAlpha);
+                    circle(this.x, this.y, size * 2);
+                }
+                fill(240, 245, 255, alphaBase * 0.2);
+                circle(this.x, this.y, this.currentRadius * 0.3);
+            }
+            isDead() { return this.lifespan < 0; }
+        }
+
+        function getState(tl, tr, br, bl, t) {
+            return (tl >= t ? 8 : 0) + (tr >= t ? 4 : 0) + (br >= t ? 2 : 0) + (bl >= t ? 1 : 0);
+        }
+
+        function drawLine(v1, v2) {
+            line(v1.x, v1.y, v2.x, v2.y);
+        }
+
+        function windowResized() {
+            resizeCanvas(windowWidth, windowHeight);
+            cols = 1 + Math.ceil(width / REZ);
+            rows = 1 + Math.ceil(height / REZ);
+            for (let i = 0; i < cols; i++) {
+                field[i] = new Float32Array(rows);
+            }
+        }
+    </script>
+</body>
+</html>
