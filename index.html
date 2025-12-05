@@ -13,18 +13,10 @@
 
     <!-- ============================================== -->
     <!-- [START] V12 方案：临时背景接力 + 自毁机制 -->
-    <!-- 策略：
-         1. document.write 注入 html{background:#000} (防止首屏闪白)
-         2. document.write 注入 #splash-overlay{display:flex} (显示遮罩)
-         3. 渲染完成后，立即销毁 html 的黑背景，只留遮罩层。
-         这样当遮罩层淡出时，下方已经是正常的网页内容。 
-    -->
     <style>
         /* 1. 遮罩层默认状态：隐藏 */
-        /* JS 会在需要时注入样式将其改为 flex */
         #splash-overlay {
             display: none; 
-            
             position: fixed;
             top: 0; left: 0; width: 100vw; height: 100vh;
             background-color: #000000; /* 遮罩层本身的黑底 */
@@ -69,20 +61,16 @@
             // 核心逻辑：只有在 "是主页" 且 "没访问过" 时执行
             if (isHomePage && !hasVisited) {
                 // [第一棒] 注入临时黑背景，防止白屏闪烁
-                // 给 style 标签加个 ID，方便过河拆桥
                 document.write('<style id="splash-temp-bg">html { background-color: #000 !important; }</style>');
                 
                 // [第二棒] 显式开启遮罩层
                 document.write('<style>#splash-overlay { display: flex !important; }</style>');
 
                 // [交接] 渲染完成后，立即销毁第一棒
-                // 使用双重 requestAnimationFrame 确保在下一帧（遮罩层已渲染上屏）执行
                 requestAnimationFrame(function() {
                     requestAnimationFrame(function() {
                         var tempBg = document.getElementById('splash-temp-bg');
                         if (tempBg) tempBg.parentNode.removeChild(tempBg);
-                        // 此时 html 背景恢复默认（白），但用户看不到，因为被 #splash-overlay 挡住了
-                        // 这为之后的淡出做好了准备
                     });
                 });
             } else {
@@ -99,13 +87,185 @@
 <link rel="stylesheet" type="text/css" href="http://cdn2.editmysite.com/css/social-icons.css?buildtime=1234" media="screen,projection" />
 <link rel="stylesheet" type="text/css" href="files/main_style.css?1712751537" title="wsite-theme-css" />
 <link href='http://cdn2.editmysite.com/fonts/Maven_Pro/font.css?2' rel='stylesheet' type='text/css' />
-
 <link href='http://cdn2.editmysite.com/fonts/Alike/font.css?2' rel='stylesheet' type='text/css' />
 <link href='http://cdn2.editmysite.com/fonts/Cardo/font.css?2' rel='stylesheet' type='text/css' />
 <link href='http://cdn2.editmysite.com/fonts/Amaranth/font.css?2' rel='stylesheet' type='text/css' />
 <link href='http://cdn2.editmysite.com/fonts/Cabin/font.css?2' rel='stylesheet' type='text/css' />
 
+<!-- [START] 注入：美学升级补丁 (V4 - 深岩蓝 + 磨砂质感) -->
+<style>
+    /* --- 0. 变量定义 --- */
+    :root {
+        --font-serif: "Times New Roman", "Songti SC", "SimSun", serif;
+        --font-mono: "Courier New", "Courier", monospace;
+        
+        /* [核心修改] 色彩系统：更低明度，更强质感 */
+        --bg-paper: #f4f4f2;    /* 稍微灰一点的米白，配合磨砂 */
+        --text-ink: #1e1e1e;    /* 极深灰，接近黑 */
+        --text-meta: #5c5c5c;   /* 中灰 */
+        
+        /* [核心修改] 强调色：深岩蓝 / 普鲁士蓝 */
+        /* 不再是普通的蓝色，而是一种像矿石或墨水一样的深蓝灰色 */
+        --accent-slate: #3A4B5C; 
+        
+        --line-light: #d1d1d1;
+    }
+
+    /* --- 1. 全局字体与背景重置 --- */
+    body, #wrapper {
+        font-family: var(--font-serif) !important;
+        background-color: var(--bg-paper) !important;
+        background-image: none !important; 
+        color: var(--text-ink) !important;
+    }
+
+    /* [核心修改] 磨砂纹理层 (Matte Texture) */
+    /* 增加了 opacity，调整了 frequency，让颗粒感更细腻、更明显 */
+    .noise-overlay {
+        position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+        /* 使用 fractalNoise 模拟纸张纤维或岩石表面 */
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        opacity: 0.08; /* 提高一点可见度，制造“磨砂”感 */
+        pointer-events: none;
+        z-index: -1;
+        mix-blend-mode: multiply; /* 混合模式，让纹理融入背景色 */
+    }
+
+    /* --- 2. 文本样式升级 --- */
+    .paragraph, p, div {
+        font-family: var(--font-serif) !important;
+        line-height: 1.8 !important;
+        font-size: 16px !important;
+    }
+
+    /* 标题：安静、学术 */
+    h2, .wsite-content-title {
+        font-family: var(--font-serif) !important;
+        font-weight: normal !important;
+        letter-spacing: 2px !important;
+        text-transform: uppercase !important;
+        margin-bottom: 2rem !important;
+        border-bottom: 1px solid var(--line-light); 
+        padding-bottom: 10px;
+    }
+
+    /* --- 3. 布局与间距 --- */
+    .main-content-area {
+        width: 98% !important;
+        max-width: 900px !important; 
+        margin: 0 auto !important; 
+    }
+
+    /* 控制板块间距 */
+    .section-gap {
+        height: 50px !important; 
+        width: 100%;
+        clear: both;
+        display: block; 
+    }
+
+    /* 板块标题 (Education, Awards, etc) */
+    .paragraph font[size="5"] { 
+        font-family: var(--font-mono) !important;
+        font-size: 14px !important;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-weight: bold;
+        border-bottom: none !important;
+        text-decoration: none !important; 
+        display: block;
+        margin-top: 40px !important; 
+        margin-bottom: 10px !important;
+        color: var(--accent-slate); /* 标题也使用深岩蓝，统一色调 */
+        opacity: 0.8;
+    }
+    
+    .paragraph u { text-decoration: none !important; }
+
+    /* --- 4. 列表一致性 --- */
+    .conference-item, 
+    .exhibition-item, 
+    .film-festival-item, 
+    .screening-item,
+    .award-item,
+    .residency-item,
+    .teaching-item,
+    .talk-item
+    {
+        font-family: var(--font-serif) !important;
+        padding: 0 !important; 
+        margin-bottom: 0px !important;
+        border: none !important;
+        background: none !important;
+        margin-top: 8px !important;
+        display: block;
+    }
+
+    /* [核心修改] 链接样式：深岩蓝 + 质感 */
+    .main-content-column a {
+        color: var(--text-ink) !important;
+        text-decoration: none !important;
+        /* 默认状态下划线颜色很浅，像铅笔痕迹 */
+        border-bottom: 1px solid rgba(58, 75, 92, 0.2); 
+        transition: all 0.3s ease;
+    }
+
+    .main-content-column a:hover {
+        color: var(--accent-slate) !important; /* 深岩蓝文字 */
+        border-bottom-color: var(--accent-slate); /* 深岩蓝下划线 */
+        background: transparent !important; 
+    }
+    
+    .conference-item em, .exhibition-item em, .award-item em, .residency-item em, .talk-item em, .teaching-item em {
+        font-family: var(--font-serif) !important;
+        color: var(--text-ink);
+        font-style: italic;
+    }
+
+    /* 展开按钮 */
+    .toggle-btn {
+        font-family: var(--font-mono) !important;
+        font-size: 12px !important;
+        color: var(--text-meta) !important;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        border: none;
+        padding: 10px 0;
+        background: transparent;
+        cursor: pointer;
+        text-decoration: underline !important;
+        text-underline-offset: 4px;
+        margin-top: 10px;
+        display: inline-block;
+        opacity: 0.7;
+    }
+    
+    .toggle-btn:hover {
+        color: var(--accent-slate) !important;
+        opacity: 1;
+    }
+    
+    /* [核心修改] 导航栏：深岩蓝下划线 */
+    .wsite-menu-default a {
+        font-family: var(--font-mono) !important;
+        font-size: 13px !important;
+        letter-spacing: 1px !important;
+        color: var(--text-meta) !important;
+        transition: color 0.3s ease;
+    }
+    .wsite-menu-default a:hover, #active a {
+        color: var(--accent-slate) !important; /* 文字变深 */
+        background: transparent !important;
+        /* 下划线：不再是高亮，而是稳重 */
+        border-bottom: 2px solid var(--accent-slate); 
+    }
+
+</style>
+<!-- [END] 美学升级补丁 -->
+
+
 <style type='text/css'>
+/* 保留 Weebly 必须的 CSS，防止布局崩坏 */
 .wsite-elements.wsite-not-footer:not(.wsite-header-elements) div.paragraph, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) p, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-block .product-title, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-description, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .wsite-form-field label, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .wsite-form-field label, #wsite-content div.paragraph, #wsite-content p, #wsite-content .product-block .product-title, #wsite-content .product-description, #wsite-content .wsite-form-field label, #wsite-content .wsite-form-field label, .blog-sidebar div.paragraph, .blog-sidebar p, .blog-sidebar .wsite-form-field label, .blog-sidebar .wsite-form-field label {font-family:"Georgia" !important;}
 #wsite-content div.paragraph, #wsite-content p, #wsite-content .product-block .product-title, #wsite-content .product-description, #wsite-content .wsite-form-field label, #wsite-content .wsite-form-field label, .blog-sidebar div.paragraph, .blog-sidebar p, .blog-sidebar .wsite-form-field label, .blog-sidebar .wsite-form-field label {}
 .wsite-elements.wsite-footer div.paragraph, .wsite-elements.wsite-footer p, .wsite-elements.wsite-footer .product-block .product-title, .wsite-elements.wsite-footer .product-description, .wsite-elements.wsite-footer .wsite-form-field label, .wsite-elements.wsite-footer .wsite-form-field label{}
@@ -155,15 +315,14 @@
 <style>
     /* 使用 !important 强制覆盖所有默认样式 */
     .main-content-area {
-        width: 98% !important; /* 强制宽度为 98% */
-        max-width: 100% !important; /* 取消最大宽度限制 */
+        width: 98% !important; 
+        max-width: 100% !important; 
         margin-left: 0 !important;
-        margin-right: 0 !important; /* 强制右侧无边距 */
-        padding-right: 2% !important; /* 仅留极少的内部填充 */
-        box-sizing: border-box !important; /* 确保 padding 不会撑破布局 */
+        margin-right: 0 !important; 
+        padding-right: 2% !important; 
+        box-sizing: border-box !important; 
     }
 
-    /* 针对移动设备 */
     @media screen and (max-width: 767px) {
         .main-content-area {
             width: 100% !important;
@@ -217,8 +376,9 @@
 }
 </style>
 <style>
-.wsite-background {background-image: url("/uploads/1/4/8/1/148137552/background-images/1199586110.jpg") !important;background-repeat: no-repeat !important;background-position: 50% 50% !important;background-size: 100% !important;background-color: transparent !important;background: inherit;}
-body.wsite-background {background-attachment: fixed !important;}.wsite-background.wsite-custom-background{ background-size: cover !important}
+/* 覆盖原本的背景图 CSS */
+.wsite-background {background-image: none !important; background-color: #f9f9f7 !important;}
+body.wsite-background {background-attachment: fixed !important;}
 </style>
 
 		<script src='files/templateArtifacts.js?1712751521'></script>
@@ -259,6 +419,9 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 	</head>
 	<body class="no-header-page  wsite-page-projects wsite-theme-light">
     
+    <!-- 噪点纹理层 -->
+    <div class="noise-overlay"></div>
+
     <!-- ============================================== -->
     <!-- [START] 封面遮罩层 HTML -->
     <!-- 路径保持原样 -->
@@ -443,38 +606,37 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
                       </div>
                       <div class="section-gap"></div>
                       <div class="paragraph" style="text-align:left;">
-                        <u><font size="5">Education&nbsp;</font></u><br />
-                        <!-- Spacing Added -->
-                        <div style="height: 5px;"></div>
-                        MA in Film and Media Studies ( Emergent Media Studies ), School of the Arts, Columbia University, USA, 2024-2026<br />
-                        BA in Drama and Film-and-Television Literature, School of Arts, Wuhan University, China, 2020-2024<br /><br />
+                        <u><font size="5">Education&nbsp;</font></u>
+                        
+                        <div class="award-item">MA in Film and Media Studies ( Emergent Media Studies ), School of the Arts, Columbia University, USA, 2024-2026</div>
+                        <div class="award-item">BA in Drama and Film-and-Television Literature, School of Arts, Wuhan University, China, 2020-2024</div>
                       </div>
 
                       <div class="section-gap"></div>
 
                       <div class="paragraph">
-                        <u><font size="5">Awards</font></u><br />
-                        <!-- Spacing Added -->
-                        <div style="height: 5px;"></div>
-                        PAMLA Graduate Student Scholarship, Pacific Ancient and Modern Language Association 2025 Conference, 2025<br/>
-                        Best Short Film Award &amp; Best Editing Award for <em style="display:inline; white-space:normal;">Light and Cold Conversations: Atlantic, Algorithms and Visibility</em>, Perfect Tense Short Film Festival in 20th Anniversary Celebration of the School of Communication, Fujian Normal University, 2024<br />
-                        First Prize for Paper, The 1st "Outstanding Academic Paper Award for China Eastern Media Art", 2024<br/>
-                        Third Prize for Paper, The 6th 'Wang Guangqi Cup' National College Student Paper Competition in Art Disciplines, 2024<br />
-                        Third Prize for Conference Paper, The 5th China-ASEAN University Postgraduate Forum on Art, 2024<br />
-                        Film &amp; Media Studies Program Scholarship, School of the Arts, Columbia University, 2024<br />
-                        Honor for Outstanding Participants,  <em>"Chinese Cinema: Histories, Methods and Ecologies"</em>  Summer School, School of Film, Xiamen University, 2024<br />
-                        Accommodation Scholarship, Duemila30 International Film Festival, 2024<br />
-                        Best Experimental Film (Kurt Kren’s Scratched Glasses) for&nbsp;<em>Light and Cold Conversations: Atlantic, Algorithms and Visibility</em>, International Film Festival of Audiovisual Theory Students, 2023<br />
-                        Best Experimental Short Film Nomination for <em>Light and Cold Conversations: Atlantic, Algorithms and Visibility</em>, <span>Ningbo Short Film Festival, 2023</span><br />
-  Honourable Mention&nbsp;<span>for&nbsp;</span><em>Light and Cold Conversations: Atlantic, Algorithms and Visibility</em>,&nbsp;<span>Varsity Film Expo, 2023</span><br />Best AI Short for&nbsp;<em>Light and Cold Conversations: Atlantic, Algorithms and Visibility</em>,<em>&nbsp;</em><span>Shanghai International Short Week, 2023</span><br /><br />
-  </div>
+                        <u><font size="5">Awards</font></u>
+                        
+                        <div id="awards">
+                            <div class="award-item">PAMLA Graduate Student Scholarship, Pacific Ancient and Modern Language Association 2025 Conference, 2025</div>
+                            <div class="award-item">Best Short Film Award &amp; Best Editing Award for <em style="display:inline; white-space:normal;">Light and Cold Conversations: Atlantic, Algorithms and Visibility</em>, Perfect Tense Short Film Festival in 20th Anniversary Celebration of the School of Communication, Fujian Normal University, 2024</div>
+                            <div class="award-item">First Prize for Paper, The 1st "Outstanding Academic Paper Award for China Eastern Media Art", 2024</div>
+                            <div class="award-item">Third Prize for Paper, The 6th 'Wang Guangqi Cup' National College Student Paper Competition in Art Disciplines, 2024</div>
+                            <div class="award-item">Third Prize for Conference Paper, The 5th China-ASEAN University Postgraduate Forum on Art, 2024</div>
+                            <div class="award-item">Film &amp; Media Studies Program Scholarship, School of the Arts, Columbia University, 2024</div>
+                            <div class="award-item">Honor for Outstanding Participants,  <em>"Chinese Cinema: Histories, Methods and Ecologies"</em>  Summer School, School of Film, Xiamen University, 2024</div>
+                            <div class="award-item">Accommodation Scholarship, Duemila30 International Film Festival, 2024</div>
+                            <div class="award-item">Best Experimental Film (Kurt Kren’s Scratched Glasses) for&nbsp;<em>Light and Cold Conversations: Atlantic, Algorithms and Visibility</em>, International Film Festival of Audiovisual Theory Students, 2023</div>
+                            <div class="award-item">Best Experimental Short Film Nomination for <em>Light and Cold Conversations: Atlantic, Algorithms and Visibility</em>, <span>Ningbo Short Film Festival, 2023</span></div>
+                            <div class="award-item">Honourable Mention&nbsp;<span>for&nbsp;</span><em>Light and Cold Conversations: Atlantic, Algorithms and Visibility</em>,&nbsp;<span>Varsity Film Expo, 2023</span></div>
+                            <div class="award-item">Best AI Short for&nbsp;<em>Light and Cold Conversations: Atlantic, Algorithms and Visibility</em>,<em>&nbsp;</em><span>Shanghai International Short Week, 2023</span></div>
+                        </div>
+                      </div>
 
                       <div class="section-gap"></div>
 
                       <div class="paragraph">
-                        <u><font size="5">Conferences &amp; Workshops</font></u><br />
-                        <!-- Spacing Added -->
-                        <div style="height: 5px;"></div>
+                        <u><font size="5">Conferences &amp; Workshops</font></u>
                         <div id="conferences">
 
                           <div class="conference-item"><em>Society for Cinema and Media Studies (SCMS) 2026 Annual Conference</em>, Chicago, USA, 2026/3</div>
@@ -516,9 +678,7 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
                       <div class="section-gap"></div>
 
                       <div class="paragraph">
-                        <u><font size="5">Exhibitions (selection)</font></u><br />
-                        <!-- Spacing Added -->
-                        <div style="height: 5px;"></div>
+                        <u><font size="5">Exhibitions (selection)</font></u>
                         <div id="exhibitions">
                           <div class="exhibition-item"><em>The Great Rupture: Archaeology of the Apocalyptic Future</em>, Central Art Museum, Hangzhou, 2025</div>
                           <div class="exhibition-item"><em>City in the Mirror: The Creative Narratives of AIGC's Future Imagery</em>, Center for Digital Innovation and Humanities Education, Macau University of Science and Technology, Macau, 2025</div>
@@ -563,9 +723,7 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
                       <div class="section-gap"></div>
 
                       <div class="paragraph">
-                        <u><font size="5">Film Festivals (selection)</font></u><br />
-                        <!-- Spacing Added -->
-                        <div style="height: 5px;"></div>
+                        <u><font size="5">Film Festivals (selection)</font></u>
                         <div id="film-festivals">
                           <div class="film-festival-item">FESTIVAL ANGAELICA, USA, 2025 - <em>Official Selection</em></div>
                           <div class="film-festival-item">Kuala Lumpur International Film Awards, Kuala Lumpur, Malaysia, 2025 - <em>Official Selection</em></div>
@@ -596,9 +754,7 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
                       <div class="section-gap"></div>
 
                       <div class="paragraph">
-                        <u><font size="5">Screenings</font></u><br />
-                        <!-- Spacing Added -->
-                        <div style="height: 5px;"></div>
+                        <u><font size="5">Screenings</font></u>
                         <div id="screenings">
 
                           <div class="screening-item"><em><u><a href="https://www.lakesidefilmfestival.com/films2025/la-sur-real-shorts">Curated Short Film Program, La Sur Real: Edition IV</a></u></em>, Lakeside Film Festival, Berlin, German, 2025</div>
@@ -618,41 +774,35 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
                       <div class="section-gap"></div>
 
                       <div class="paragraph">
-                        <u><font size="5">Residencies<br /></font></u>
-                        <!-- Spacing Added -->
-                        <div style="height: 5px;"></div>
-                        <em>Nanshan Artist Community,</em> Chongqing, China&nbsp;&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;&nbsp; 2024/5/25 - 2024/6/14<br />
-                        <em>Migratory Bird 300,</em> Aranya Theatre Festival, Qinhuangdao, China&nbsp;&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;&nbsp; 2023/6/8 - 2023/6/21<br /><br />
+                        <u><font size="5">Residencies</font></u>
+                        <div class="residency-item"><em>Nanshan Artist Community,</em> Chongqing, China&nbsp;&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;&nbsp; 2024/5/25 - 2024/6/14</div>
+                        <div class="residency-item"><em>Migratory Bird 300,</em> Aranya Theatre Festival, Qinhuangdao, China&nbsp;&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;&nbsp; 2023/6/8 - 2023/6/21</div>
                       </div>
 
                       <div class="section-gap"></div>
 
                       <div class="paragraph">
-                        <u><font size="5">Teaching Experience</font></u><br />
-                        <!-- Spacing Added -->
-                        <div style="height: 5px;"></div>
-                        "Texture of the Earth and Skin We're In: Geological Thinking, Anthropocene Cinema, and the Imaginations Beyond Humanbeing" courses, Radiance Academy, online, 2024&nbsp;&nbsp;&nbsp; (<em>at high school &amp; undergraduate levels, <u><a href="syllabus.html" target="_blank">click here for the syllabus</a></u></em>)<br /><br />
+                        <u><font size="5">Teaching Experience</font></u>
+                        <div class="teaching-item">"Texture of the Earth and Skin We're In: Geological Thinking, Anthropocene Cinema, and the Imaginations Beyond Humanbeing" courses, Radiance Academy, online, 2024&nbsp;&nbsp;&nbsp; (<em>at high school &amp; undergraduate levels, <u><a href="syllabus.html" target="_blank">click here for the syllabus</a></u></em>)</div>
                       </div>
 
                       <div class="section-gap"></div>
 
                       <div class="paragraph">
-                        <u><font size="5">Talks &amp; Interviews</font></u><br />
-                        <!-- Spacing Added -->
-                        <div style="height: 5px;"></div>
-                        <u><a href="https://mp.weixin.qq.com/s/emznMENbR0EbiGNm2IyYyQ" target="_blank">Panel Talk</a></u>, <em>Thematic Screening of Multi-Screen Video Short Films</em>, China Academy of Art, Hangzhou, 2025<br />
-
-                        <u><a href="https://mp.weixin.qq.com/s/FxY6OtlHM6bSdNDa7oV9DA" target="_blank">Panel Talk</a></u>, <em>Wuhan University Graduate Student Academic Science and Technology Festival "Distorted Imagination: Technological Rethinking under the Annotation of Cinema”</em>, School of Arts, Wuhan University, Wuhan, 2024<br />
-
-                        <u><a href="https://044artstudio.com/artists" target="_blank">Artists Interview</a></u>, 044 ART STUDIO, Online, 2024<br />
-                        Artists Interview, Jiangsu Business Daily, Nanjing, 2024<br />
-                        <u><a href="GOOGOLtalk.html" target="_blank">Artist Panel Talk</a></u>, <em>GOOGOL</em>, Online, 2024<br />
-                        <u><a href="https://www.xiaohongshu.com/explore/66619b2f000000000c01b3fb?app_platform=android&amp;ignoreEngage=true&amp;app_version=8.39.0&amp;share_from_user_hidden=true&amp;type=normal&amp;author_share=1&amp;xhsshare=WeixinSession&amp;shareRedId=N0xHMDM9RUE2NzUyOTgwNjY0OTc9NTxO&amp;apptime=1717687112&amp;share_id=4f70ca260d5848adb599a2d74a239521" target="_blank">Artist Interview</a></u>, <em>"Breathe With the Plants"</em>, Xì | Collective, 2024<br />
-                        <span style="color:rgb(0, 0, 0)">Artist talk, </span>Wuhan Photography Art Centre, Wuhan, China, 2023<br />
-                        <u><a href="https://mp.weixin.qq.com/s/LceWwIAWW9sofBra7_AgKA" target="_blank">Invited lecture</a></u>, "How did it start?" The First Round Table of the Occulf, Umay Art Project, Online, 2023<br />
-                        Invited Lecture, Advance Art Museum, Changsha, China, 2023<br />
-                        <u><a href="https://mp.weixin.qq.com/s/XgwA910JrW2Ra7zy_YppLQ" target="_blank">Artist Interview</a></u>, <em>"Independent Artists, in Nanjing"</em>, Nanjing Cultural Life Guide, 2023<br />
-                        <u><a href="https://mp.weixin.qq.com/s/oAricm9WS5m2XtCShSG4tQ" target="_blank">Artist talk</a></u>, C-POP Theatre, Beijing, China, 2023<br /><br />
+                        <u><font size="5">Talks &amp; Interviews</font></u>
+                        <div id="talks">
+                            <div class="talk-item"><u><a href="https://mp.weixin.qq.com/s/emznMENbR0EbiGNm2IyYyQ" target="_blank">Panel Talk</a></u>, <em>Thematic Screening of Multi-Screen Video Short Films</em>, China Academy of Art, Hangzhou, 2025</div>
+                            <div class="talk-item"><u><a href="https://mp.weixin.qq.com/s/FxY6OtlHM6bSdNDa7oV9DA" target="_blank">Panel Talk</a></u>, <em>Wuhan University Graduate Student Academic Science and Technology Festival "Distorted Imagination: Technological Rethinking under the Annotation of Cinema”</em>, School of Arts, Wuhan University, Wuhan, 2024</div>
+                            <div class="talk-item"><u><a href="https://044artstudio.com/artists" target="_blank">Artists Interview</a></u>, 044 ART STUDIO, Online, 2024</div>
+                            <div class="talk-item">Artists Interview, Jiangsu Business Daily, Nanjing, 2024</div>
+                            <div class="talk-item"><u><a href="GOOGOLtalk.html" target="_blank">Artist Panel Talk</a></u>, <em>GOOGOL</em>, Online, 2024</div>
+                            <div class="talk-item"><u><a href="https://www.xiaohongshu.com/explore/66619b2f000000000c01b3fb?app_platform=android&amp;ignoreEngage=true&amp;app_version=8.39.0&amp;share_from_user_hidden=true&amp;type=normal&amp;author_share=1&amp;xhsshare=WeixinSession&amp;shareRedId=N0xHMDM9RUE2NzUyOTgwNjY0OTc9NTxO&amp;apptime=1717687112&amp;share_id=4f70ca260d5848adb599a2d74a239521" target="_blank">Artist Interview</a></u>, <em>"Breathe With the Plants"</em>, Xì | Collective, 2024</div>
+                            <div class="talk-item"><span style="color:rgb(0, 0, 0)">Artist talk, </span>Wuhan Photography Art Centre, Wuhan, China, 2023</div>
+                            <div class="talk-item"><u><a href="https://mp.weixin.qq.com/s/LceWwIAWW9sofBra7_AgKA" target="_blank">Invited lecture</a></u>, "How did it start?" The First Round Table of the Occulf, Umay Art Project, Online, 2023</div>
+                            <div class="talk-item">Invited Lecture, Advance Art Museum, Changsha, China, 2023</div>
+                            <div class="talk-item"><u><a href="https://mp.weixin.qq.com/s/XgwA910JrW2Ra7zy_YppLQ" target="_blank">Artist Interview</a></u>, <em>"Independent Artists, in Nanjing"</em>, Nanjing Cultural Life Guide, 2023</div>
+                            <div class="talk-item"><u><a href="https://mp.weixin.qq.com/s/oAricm9WS5m2XtCShSG4tQ" target="_blank">Artist talk</a></u>, C-POP Theatre, Beijing, China, 2023</div>
+                        </div>
                       </div>
                       <div class="paragraph" style="text-align:center;">
                         <br /><br /><font size="2"><br />All Rights Reserved&nbsp;&copy;&nbsp; Juntao Yang</font>
