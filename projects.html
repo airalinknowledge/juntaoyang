@@ -1,351 +1,439 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<title>Juntao Yang</title>
-<meta name="description" content="juntaoyang" />
+<head>
+    <title>Projects - Juntao Yang</title>
+    <meta name="description" content="Projects by Juntao Yang" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
 
-		
-		<link id="wsite-base-style" rel="stylesheet" type="text/css" href="http://cdn2.editmysite.com/css/sites.css?buildTime=1234" />
-<link rel="stylesheet" type="text/css" href="http://cdn2.editmysite.com/css/old/fancybox.css?1234" />
-<link rel="stylesheet" type="text/css" href="http://cdn2.editmysite.com/css/social-icons.css?buildtime=1234" media="screen,projection" />
-<link rel="stylesheet" type="text/css" href="files/main_style.css?1712751537" title="wsite-theme-css" />
-<link href='http://cdn2.editmysite.com/fonts/Maven_Pro/font.css?2' rel='stylesheet' type='text/css' />
+    <link id="wsite-base-style" rel="stylesheet" type="text/css" href="http://cdn2.editmysite.com/css/sites.css?buildTime=1234" />
+    <link rel="stylesheet" type="text/css" href="files/main_style.css?1714489767" title="wsite-theme-css" />
+    <link href='http://cdn2.editmysite.com/fonts/Cardo/font.css?2' rel='stylesheet' type='text/css' />
+    <link href='http://cdn2.editmysite.com/fonts/Maven_Pro/font.css?2' rel='stylesheet' type='text/css' />
+    <link href='http://cdn2.editmysite.com/fonts/Alike/font.css?2' rel='stylesheet' type='text/css' />
 
-<link href='http://cdn2.editmysite.com/fonts/Alike/font.css?2' rel='stylesheet' type='text/css' />
-<link href='http://cdn2.editmysite.com/fonts/Cardo/font.css?2' rel='stylesheet' type='text/css' />
-<link href='http://cdn2.editmysite.com/fonts/Amaranth/font.css?2' rel='stylesheet' type='text/css' />
-<link href='http://cdn2.editmysite.com/fonts/Cabin/font.css?2' rel='stylesheet' type='text/css' />
-<style type='text/css'>
-.wsite-elements.wsite-not-footer:not(.wsite-header-elements) div.paragraph, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) p, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-block .product-title, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-description, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .wsite-form-field label, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .wsite-form-field label, #wsite-content div.paragraph, #wsite-content p, #wsite-content .product-block .product-title, #wsite-content .product-description, #wsite-content .wsite-form-field label, #wsite-content .wsite-form-field label, .blog-sidebar div.paragraph, .blog-sidebar p, .blog-sidebar .wsite-form-field label, .blog-sidebar .wsite-form-field label {font-family:"Georgia" !important;}
-#wsite-content div.paragraph, #wsite-content p, #wsite-content .product-block .product-title, #wsite-content .product-description, #wsite-content .wsite-form-field label, #wsite-content .wsite-form-field label, .blog-sidebar div.paragraph, .blog-sidebar p, .blog-sidebar .wsite-form-field label, .blog-sidebar .wsite-form-field label {}
-.wsite-elements.wsite-footer div.paragraph, .wsite-elements.wsite-footer p, .wsite-elements.wsite-footer .product-block .product-title, .wsite-elements.wsite-footer .product-description, .wsite-elements.wsite-footer .wsite-form-field label, .wsite-elements.wsite-footer .wsite-form-field label{}
-.wsite-elements.wsite-not-footer:not(.wsite-header-elements) h2, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-long .product-title, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-large .product-title, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-small .product-title, #wsite-content h2, #wsite-content .product-long .product-title, #wsite-content .product-large .product-title, #wsite-content .product-small .product-title, .blog-sidebar h2 {font-family:"Georgia" !important;font-style:normal !important;letter-spacing: 5px !important;}
-#wsite-content h2, #wsite-content .product-long .product-title, #wsite-content .product-large .product-title, #wsite-content .product-small .product-title, .blog-sidebar h2 {}
-.wsite-elements.wsite-footer h2, .wsite-elements.wsite-footer .product-long .product-title, .wsite-elements.wsite-footer .product-large .product-title, .wsite-elements.wsite-footer .product-small .product-title{}
-#wsite-title {font-family:"Alike" !important;text-transform:  none !important;letter-spacing: -1px !important;}
-.wsite-menu-default a {font-family:"Cardo" !important;text-transform:  uppercase !important;letter-spacing: 2px !important;}
-.wsite-menu a {}
-.wsite-image div, .wsite-caption {font-family:"Amaranth" !important;}
-.galleryCaptionInnerText {}
-.fancybox-title {}
-.wslide-caption-text {}
-.wsite-phone {}
-.wsite-headline,.wsite-header-section .wsite-content-title {font-family:"Cabin" !important;}
-.wsite-headline-paragraph,.wsite-header-section .paragraph {}
-.wsite-button-inner {}
-.wsite-not-footer blockquote {}
-.wsite-footer blockquote {}
-.blog-header h2 a {}
-#wsite-content h2.wsite-product-title {}
-.wsite-product .wsite-product-price a {}
-@media screen and (min-width: 767px) {.wsite-elements.wsite-not-footer:not(.wsite-header-elements) div.paragraph, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) p, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-block .product-title, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-description, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .wsite-form-field label, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .wsite-form-field label, #wsite-content div.paragraph, #wsite-content p, #wsite-content .product-block .product-title, #wsite-content .product-description, #wsite-content .wsite-form-field label, #wsite-content .wsite-form-field label, .blog-sidebar div.paragraph, .blog-sidebar p, .blog-sidebar .wsite-form-field label, .blog-sidebar .wsite-form-field label {line-height:33px !important;}
-#wsite-content div.paragraph, #wsite-content p, #wsite-content .product-block .product-title, #wsite-content .product-description, #wsite-content .wsite-form-field label, #wsite-content .wsite-form-field label, .blog-sidebar div.paragraph, .blog-sidebar p, .blog-sidebar .wsite-form-field label, .blog-sidebar .wsite-form-field label {}
-.wsite-elements.wsite-footer div.paragraph, .wsite-elements.wsite-footer p, .wsite-elements.wsite-footer .product-block .product-title, .wsite-elements.wsite-footer .product-description, .wsite-elements.wsite-footer .wsite-form-field label, .wsite-elements.wsite-footer .wsite-form-field label{}
-.wsite-elements.wsite-not-footer:not(.wsite-header-elements) h2, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-long .product-title, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-large .product-title, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-small .product-title, #wsite-content h2, #wsite-content .product-long .product-title, #wsite-content .product-large .product-title, #wsite-content .product-small .product-title, .blog-sidebar h2 {font-size:100px !important;line-height:75px !important;}
-#wsite-content h2, #wsite-content .product-long .product-title, #wsite-content .product-large .product-title, #wsite-content .product-small .product-title, .blog-sidebar h2 {}
-.wsite-elements.wsite-footer h2, .wsite-elements.wsite-footer .product-long .product-title, .wsite-elements.wsite-footer .product-large .product-title, .wsite-elements.wsite-footer .product-small .product-title{}
-#wsite-title {font-size:23px !important;}
-.wsite-menu-default a {font-size:14px !important;}
-.wsite-menu a {}
-.wsite-image div, .wsite-caption {}
-.galleryCaptionInnerText {}
-.fancybox-title {}
-.wslide-caption-text {}
-.wsite-phone {}
-.wsite-headline,.wsite-header-section .wsite-content-title {}
-.wsite-headline-paragraph,.wsite-header-section .paragraph {}
-.wsite-button-inner {}
-.wsite-not-footer blockquote {}
-.wsite-footer blockquote {}
-.blog-header h2 a {}
-#wsite-content h2.wsite-product-title {}
-.wsite-product .wsite-product-price a {}
-}
-</style>
-<!-- 新增样式：限制正文内容宽度 -->
-<style>
-    /* 限制正文内容区域宽度，增加两侧留白 */
-    .main-content-area {
-        max-width: 90%; /* 可以调整这个值来改变内容宽度 */
-        margin-left: 0%;
-        margin-right: 10%;
-    }
-
-    /* 针对移动设备，取消宽度限制，让内容全宽显示 */
-    @media screen and (max-width: 767px) {
-        .main-content-area {
-            max-width: 100%;
+    <style>
+        /* --- 0. 全局变量 --- */
+        :root {
+            --font-serif: "Times New Roman", "Songti SC", "SimSun", serif;
+            --font-mono: "Courier New", "Courier", monospace;
+            --bg-paper: #f4f4f2;
+            --text-ink: #1e1e1e;
+            --text-meta: #5c5c5c;
+            --accent-slate: #3A4B5C; 
         }
-    }
-</style>
-<style>
-.wsite-background {background-image: url("/uploads/1/4/8/1/148137552/background-images/1199586110.jpg") !important;background-repeat: no-repeat !important;background-position: 50% 50% !important;background-size: 100% !important;background-color: transparent !important;background: inherit;}
-body.wsite-background {background-attachment: fixed !important;}.wsite-background.wsite-custom-background{ background-size: cover !important}
-</style>
-		<script src='files/templateArtifacts.js?1712751521'></script>
-<script>
-var STATIC_BASE = '//cdn1.editmysite.com/';
-var ASSETS_BASE = '//cdn2.editmysite.com/';
-var STYLE_PREFIX = 'wsite';
-</script>
-<script src='https://cdn2.editmysite.com/js/jquery-1.8.3.min.js'></script>
 
-<script type="text/javascript" src="http://cdn2.editmysite.com/js/lang/en/stl.js?buildTime=1234&"></script>
-<script src="http://cdn2.editmysite.com/js/site/main.js?buildTime=1234"></script><script type="text/javascript">
-		function initCustomerAccountsModels() {
-					(function(){_W.setup_rpc({"url":"\/ajax\/api\/JsonRPC\/CustomerAccounts\/","actions":{"CustomerAccounts":[{"name":"login","len":2,"multiple":false,"standalone":false},{"name":"logout","len":0,"multiple":false,"standalone":false},{"name":"getSessionDetails","len":0,"multiple":false,"standalone":false},{"name":"getAccountDetails","len":0,"multiple":false,"standalone":false},{"name":"getOrders","len":0,"multiple":false,"standalone":false},{"name":"register","len":4,"multiple":false,"standalone":false},{"name":"emailExists","len":1,"multiple":false,"standalone":false},{"name":"passwordReset","len":1,"multiple":false,"standalone":false},{"name":"passwordUpdate","len":3,"multiple":false,"standalone":false},{"name":"validateSession","len":1,"multiple":false,"standalone":false}]},"namespace":"_W.CustomerAccounts.RPC"});
-_W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":"_W.CustomerAccounts.BackboneModelData","collection_namespace":"_W.CustomerAccounts.BackboneCollectionData","bootstrap_namespace":"_W.CustomerAccounts.BackboneBootstrap","models":{"CustomerAccounts":{"_class":"CustomerAccounts.Model.CustomerAccounts","defaults":null,"validation":null,"types":null,"idAttribute":null,"keydefs":null}},"collections":{"CustomerAccounts":{"_class":"CustomerAccounts.Collection.CustomerAccounts"}},"bootstrap":[]});
-})();
-		}
-		if(document.createEvent && document.addEventListener) {
-			var initEvt = document.createEvent('Event');
-			initEvt.initEvent('customerAccountsModelsInitialized', true, false);
-			document.dispatchEvent(initEvt);
-		} else if(document.documentElement.initCustomerAccountsModels === 0){
-			document.documentElement.initCustomerAccountsModels++
-		}
-		</script>
-		<script type="text/javascript"> _W = _W || {}; _W.securePrefix='UNSET'; </script><script>_W = _W || {};
-			_W.customerLocale = "en_US";
-			_W.storeName = null;
-			_W.isCheckoutReskin = false;
-			_W.storeCountry = "HK";
-			_W.storeCurrency = "HKD";
-			_W.storeEuPrivacyPolicyUrl = "";
-			com_currentSite = "713576850827693055";
-			com_userID = "148137552";</script><script type="text/javascript">_W.configDomain = "www.weebly.com";</script><script>_W.relinquish && _W.relinquish()</script>
-<script type="text/javascript" src="http://cdn2.editmysite.com/js/lang/en/stl.js?buildTime=1234&"></script><script> _W.themePlugins = [];</script><script type="text/javascript"> _W.recaptchaUrl = "https://www.google.com/recaptcha/api.js"; </script><script type="text/javascript"><!--
-	var IS_ARCHIVE = 1;
-	
-	function initFlyouts(){
-		initPublishedFlyoutMenus(
-			[{"id":"356461667194310790","title":"About","url":"index.html","target":"","nav_menu":false,"nonclickable":false},{"id":"444862601486980856","title":"ARTWORKS","url":"artworks.html","target":"","nav_menu":false,"nonclickable":false},{"id":"864040464600617228","title":"Writings","url":"writings.html","target":"","nav_menu":false,"nonclickable":false},{"id":"361237216236019909","title":"Projects","url":"projects.html","target":"","nav_menu":false,"nonclickable":false},{"id":"497557010409593207","title":"POSTS","url":"posts.html","target":"","nav_menu":false,"nonclickable":false}],
-			"361237216236019909",
-			'',
-			'active',
-			false,
-			{"navigation\/item":"<li {{#id}}id=\"{{id}}\"{{\/id}} class=\"wsite-menu-item-wrap\">\n\t<a\n\t\t{{^nonclickable}}\n\t\t\t{{^nav_menu}}\n\t\t\t\thref=\"{{url}}\"\n\t\t\t{{\/nav_menu}}\n\t\t{{\/nonclickable}}\n\t\t{{#target}}\n\t\t\ttarget=\"{{target}}\"\n\t\t{{\/target}}\n\t\t{{#membership_required}}\n\t\t\tdata-membership-required=\"{{.}}\"\n\t\t{{\/membership_required}}\n\t\tclass=\"wsite-menu-item\"\n\t\t>\n\t\t{{{title_html}}}\n\t<\/a>\n\t{{#has_children}}{{> navigation\/flyout\/list}}{{\/has_children}}\n<\/li>\n","navigation\/flyout\/list":"<div class=\"wsite-menu-wrap\" style=\"display:none\">\n\t<ul class=\"wsite-menu\">\n\t\t{{#children}}{{> navigation\/flyout\/item}}{{\/children}}\n\t<\/ul>\n<\/div>\n","navigation\/flyout\/item":"<li {{#id}}id=\"{{id}}\"{{\/id}}\n\tclass=\"wsite-menu-subitem-wrap {{#is_current}}wsite-nav-current{{\/is_current}}\"\n\t>\n\t<a\n\t\t{{^nonclickable}}\n\t\t\t{{^nav_menu}}\n\t\t\t\thref=\"{{url}}\"\n\t\t\t{{\/nav_menu}}\n\t\t{{\/nonclickable}}\n\t\t{{#target}}\n\t\t\ttarget=\"{{target}}\"\n\t\t{{\/target}}\n\t\tclass=\"wsite-menu-subitem\"\n\t\t>\n\t\t<span class=\"wsite-menu-title\">\n\t\t\t{{{title_html}}}\n\t\t<\/span>{{#has_children}}<span class=\"wsite-menu-arrow\">&gt;<\/span>{{\/has_children}}\n\t<\/a>\n\t{{#has_children}}{{> navigation\/flyout\/list}}{{\/has_children}}\n<\/li>\n"},
-			{}
-		)
-	}
-//-->
-</script>
-		
-		
-	</head>
-	<body class="no-header-page  wsite-page-projects wsite-theme-light"><div id="wrapper">
+        /* --- 1. 基础重置 --- */
+        body, #wrapper {
+            font-family: var(--font-serif) !important;
+            background-color: var(--bg-paper) !important;
+            background-image: none !important; 
+            color: var(--text-ink) !important;
+        }
 
-	<div id="navigation">
-    <div id="navigation-wrap">
-  	 	<div id="nav">
-	      <div class="sitename"><span class="wsite-logo">
+        .wsite-background {background-image: none !important; background-color: transparent !important;}
+        body.wsite-background {background-attachment: fixed !important;}
 
-	
-	<span class="wsite-title-placeholder">&nbsp;</span><span style="display:none">
-	<span style="display:none">&nbsp;</span>
-	</span>
-	
+        /* 特效层 */
+        .noise-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.09; pointer-events: none; z-index: 50; mix-blend-mode: multiply; 
+        }
 
-</span></div>
-				<ul class="wsite-menu-default">
-						<li id="pg356461667194310790" class="wsite-menu-item-wrap">
-							<a
-										href="index.html"
-								class="wsite-menu-item"
-								>
-								About
-							</a>
-							
-						</li>
-						<li id="pg444862601486980856" class="wsite-menu-item-wrap">
-							<a
-										href="artworks.html"
-								class="wsite-menu-item"
-								>
-								ARTWORKS
-							</a>
-							
-						</li>
-						<li id="pg864040464600617228" class="wsite-menu-item-wrap">
-							<a
-										href="writings.html"
-								class="wsite-menu-item"
-								>
-								Writings
-							</a>
-							
-						</li>
-						<li id="active" class="wsite-menu-item-wrap">
-							<a
-										href="projects.html"
-								class="wsite-menu-item"
-								>
-								Projects
-							</a>
-							
-						</li>
-						<li id="pg497557010409593207" class="wsite-menu-item-wrap">
-							<a
-										href="posts.html"
-								class="wsite-menu-item"
-								>
-								POSTS
-							</a>
-							
-						</li>
-				</ul>
-			</div>
-   	 	<div id="navmobile"><ul class="wsite-menu-default">
-		<li id="pg356461667194310790" class="wsite-menu-item-wrap">
-			<a
-						href="index.html"
-				class="wsite-menu-item"
-				>
-				About
-			</a>
-			
-		</li>
-		<li id="pg444862601486980856" class="wsite-menu-item-wrap">
-			<a
-						href="artworks.html"
-				class="wsite-menu-item"
-				>
-				ARTWORKS
-			</a>
-			
-		</li>
-		<li id="pg864040464600617228" class="wsite-menu-item-wrap">
-			<a
-						href="writings.html"
-				class="wsite-menu-item"
-				>
-				Writings
-			</a>
-			
-		</li>
-		<li id="active" class="wsite-menu-item-wrap">
-			<a
-						href="projects.html"
-				class="wsite-menu-item"
-				>
-				Projects
-			</a>
-			
-		</li>
-		<li id="pg497557010409593207" class="wsite-menu-item-wrap">
-			<a
-						href="posts.html"
-				class="wsite-menu-item"
-				>
-				POSTS
-			</a>
-			
-		</li>
-</ul>
-</div>
+        #geology-layer {
+            position: fixed; top: 0; right: 0; width: 45vw; height: 100vh;
+            z-index: 40; pointer-events: none; opacity: 0.8; mix-blend-mode: multiply; 
+            mask-image: linear-gradient(to right, transparent 0%, black 60%);
+            -webkit-mask-image: linear-gradient(to right, transparent 0%, black 60%);
+        }
+        @media (max-width: 768px) { #geology-layer { display: none; } }
+
+        /* --- 2. 文本与链接 --- */
+        .paragraph, p, div {
+            font-family: var(--font-serif) !important;
+            line-height: 1.8 !important;
+            font-size: 16px !important;
+            color: var(--text-ink) !important;
+        }
+
+        a {
+            color: var(--text-ink) !important;
+            text-decoration: none !important;
+            transition: all 0.3s ease;
+        }
+        a:hover { color: var(--accent-slate) !important; }
+        u, .paragraph u { text-decoration: none !important; }
+
+        /* --- 3. 导航栏 --- */
+        .wsite-menu-default a {
+            font-family: "Cardo", serif !important;
+            font-size: 14px !important;
+            letter-spacing: 2px !important;
+            color: var(--text-meta) !important;
+            text-transform: uppercase !important;
+            border-bottom: none; 
+            transition: color 0.3s ease;
+            padding-bottom: 5px;
+        }
+        .wsite-menu-default a:hover, #active a {
+            color: var(--accent-slate) !important;
+            background: transparent !important;
+            border-bottom: 2px solid var(--accent-slate); 
+        }
+
+        /* --- 4. 标题样式 (关键修正) --- */
+        
+        /* 默认样式 (移动端) */
+        h2, .wsite-content-title {
+            font-family: var(--font-serif) !important;
+            font-weight: normal !important;
+            letter-spacing: 2px !important;
+            text-transform: uppercase !important;
+            margin-bottom: 2rem !important;
+            border-bottom: none !important;
+            padding-bottom: 0px !important;
+            color: var(--text-ink) !important;
+            text-align: left;
+        }
+
+        /* [修复] 桌面端大标题样式 - 强制放大至 100px */
+        @media screen and (min-width: 768px) {
+            h2, .wsite-content-title {
+                font-size: 100px !important;
+                line-height: 1.1 !important; /* 调整行高防止切断 */
+                letter-spacing: 5px !important;
+                margin-top: 20px !important;
+            }
+        }
+
+        .project-section-subtitle {
+            font-family: var(--font-serif);
+            font-size: 1.4rem;
+            color: var(--text-ink);
+            border-bottom: 1px solid rgba(0,0,0,0.1); 
+            padding-bottom: 10px;
+            margin-bottom: 40px;
+            letter-spacing: 1px;
+            font-weight: normal;
+        }
+
+        /* --- 5. 项目卡片 --- */
+        .projects-container {
+            max-width: 950px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 45;
+        }
+
+        .project-block { margin-bottom: 20px; }
+
+        .soft-separator {
+            width: 100%; height: 1px;
+            background: linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.15) 20%, rgba(0,0,0,0.15) 80%, transparent 100%);
+            margin: 50px 0; opacity: 0.6;
+        }
+
+        .project-card {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            justify-content: space-between;
+            text-decoration: none !important;
+            cursor: pointer;
+            padding: 10px 0;
+            background-color: transparent; 
+            transition: opacity 0.4s ease;
+        }
+
+        .project-info {
+            flex: 0 0 55%;
+            padding-right: 40px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-meta {
+            font-family: var(--font-mono);
+            font-size: 12px;
+            color: var(--text-meta);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            line-height: 1.6;
+        }
+
+        .project-title {
+            font-family: var(--font-serif);
+            font-size: 1.6rem;
+            line-height: 1.3;
+            color: var(--text-ink);
+            margin-bottom: 20px;
+            font-weight: bold;
+            transition: color 0.3s ease; 
+        }
+
+        .project-card:hover .project-title {
+            color: var(--accent-slate);
+        }
+
+        .project-desc {
+            font-family: var(--font-serif);
+            font-size: 1rem;
+            line-height: 1.8;
+            color: var(--text-ink);
+            opacity: 0.9;
+        }
+
+        .project-visual {
+            flex: 0 0 40%;
+            height: 240px;
+            background-color: #e5e5e5;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            transition: box-shadow 0.3s ease;
+        }
+        
+        .project-card:hover .project-visual {
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .placeholder-box {
+            width:100%; 
+            height:100%; 
+            background: #dcdcdc; 
+            display: flex; 
+            align-items:center; 
+            justify-content:center;
+            color: #888;
+        }
+
+        @media (max-width: 768px) {
+            .project-card { flex-direction: column-reverse; }
+            .project-info { flex: none; width: 100%; padding-right: 0; padding-top: 25px; }
+            .project-visual { flex: none; width: 100%; height: 220px; }
+            .soft-separator { margin: 40px 0; }
+        }
+    </style>
+
+    <script src='files/templateArtifacts.js?1714489756'></script>
+    <script>
+        var STATIC_BASE = '//cdn1.editmysite.com/';
+        var ASSETS_BASE = '//cdn2.editmysite.com/';
+        var STYLE_PREFIX = 'wsite';
+    </script>
+    <script src='https://cdn2.editmysite.com/js/jquery-1.8.3.min.js'></script>
+    <script src="http://cdn2.editmysite.com/js/site/main.js?buildTime=1234"></script>
+</head>
+
+<body class="no-header-page wsite-page-projects wsite-theme-light">
+    
+    <div id="geology-layer"></div>
+    <div class="noise-overlay"></div>
+
+    <div id="wrapper">
+        <div id="navigation">
+            <div id="navigation-wrap">
+                <div id="nav">
+                    <div class="sitename"><span class="wsite-logo"><span class="wsite-title-placeholder">&nbsp;</span></span></div>
+                    <ul class="wsite-menu-default">
+                        <li id="pg356461667194310790" class="wsite-menu-item-wrap"><a href="index.html" class="wsite-menu-item">About</a></li>
+                        <li id="pg444862601486980856" class="wsite-menu-item-wrap"><a href="artworks.html" class="wsite-menu-item">ARTWORKS</a></li>
+                        <li id="pg864040464600617228" class="wsite-menu-item-wrap"><a href="writings.html" class="wsite-menu-item">Writings</a></li>
+                        <li id="active" class="wsite-menu-item-wrap"><a href="projects.html" class="wsite-menu-item">Projects</a></li>
+                        <li id="pg497557010409593207" class="wsite-menu-item-wrap"><a href="posts.html" class="wsite-menu-item">POSTS</a></li>
+                    </ul>
+                </div>
+                <div id="navmobile"><ul class="wsite-menu-default">
+                    <li class="wsite-menu-item-wrap"><a href="index.html" class="wsite-menu-item">About</a></li>
+                    <li class="wsite-menu-item-wrap"><a href="artworks.html" class="wsite-menu-item">ARTWORKS</a></li>
+                    <li class="wsite-menu-item-wrap"><a href="writings.html" class="wsite-menu-item">Writings</a></li>
+                    <li class="wsite-menu-item-wrap"><a href="projects.html" class="wsite-menu-item">Projects</a></li>
+                    <li class="wsite-menu-item-wrap"><a href="posts.html" class="wsite-menu-item">POSTS</a></li>
+                </ul></div>
+            </div>
+            <label id="mobile-close" class="hamburger" for="mobile-input"></label>
+        </div>
+
+        <div id="main">
+            <div id="mobile-top">
+                <label id="mobile-open" class="hamburger" for="mobile-input"></label>
+                <div class="sitename"></div>
+            </div>
+
+            <div id="content-wrapper">
+                <div id="wsite-content" class="wsite-elements wsite-not-footer">
+                    <div class="wsite-section-wrap">
+                        <div class="wsite-section wsite-body-section wsite-background-15">
+                            <div class="wsite-section-content">
+                                <div class="container">
+                                    
+                                    <div><div class="wsite-multicol"><div class="wsite-multicol-table-wrap" style="margin:0 -15px;"><table class="wsite-multicol-table"><tbody class="wsite-multicol-tbody"><tr class="wsite-multicol-tr"><td class="wsite-multicol-col" style="width:36.89%; padding:0 15px;"><div class="paragraph" style="text-align:left;"><font size="3"><strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</strong><strong>English</strong>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<a href="xiangmu.html"><font color="#2a2a2a">中文</font></a><br />&#8203;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;juntao.yang@columbia.edu</font></div></td><td class="wsite-multicol-col" style="width:63.10%; padding:0 15px;"><div class="paragraph" style="text-align:right;"><font size="4"><a href="index.html"><font color="#2a2a2a">ABOUT</font></a><font color="#2a2a2a">&nbsp; &nbsp; </font><a href="artworks.html"><font color="#2a2a2a">ARTWORKS</font></a><font color="#2a2a2a">&nbsp; &nbsp;&nbsp;</font><a href="writings.html"><font color="#2a2a2a">WRITINGS</font></a><font color="#2a2a2a">&nbsp; &nbsp; </font><strong>PROJECTS</strong><font color="#2a2a2a">&nbsp;</font>&nbsp; &nbsp;<a href="posts.html"><font color="#2a2a2a">POSTS</font></a>&nbsp;&nbsp;</font></div></td></tr></tbody></table></div></div></div>
+
+                                    <div class="wsite-spacer" style="height:50px;"></div>
+
+                                    <h2 class="wsite-content-title">PROJECTS</h2>
+                                    
+                                    <div class="wsite-spacer" style="height:100px;"></div>
+
+                                    <div class="projects-container">
+
+                                        <h3 class="project-section-subtitle">Ongoing Projects</h3>
+
+                                        <div class="project-block">
+                                            <a href="geology.html" class="project-card">
+                                                <div class="project-info">
+                                                    <div class="project-meta">
+                                                        2023 - Present <br>
+                                                        RESEARCH / WRITINGS / ARTWORKS / TEACHING
+                                                    </div>
+                                                    <div class="project-title">
+                                                        Texture of the Earth and Skin We're In
+                                                    </div>
+                                                    <div class="project-desc">
+                                                        Geological Thinking, Anthropocene Cinema, and the Imaginations Beyond Humanbeing. An ongoing research project exploring the intersection of media geology and planetary aesthetics.
+                                                    </div>
+                                                </div>
+                                                <div class="project-visual">
+                                                    <div class="placeholder-box">
+                                                        <span style="font-family:'Courier'; font-size:12px; letter-spacing:1px;">[ IMAGE ARCHIVE ]</span>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+
+                                        <div class="soft-separator"></div>
+
+                                        <div class="project-block">
+                                            <a href="kajiemiaoEN.html" class="project-card">
+                                                <div class="project-info">
+                                                    <div class="project-meta">
+                                                        2024 - Present <br>
+                                                        RESEARCH / ARCHIVE
+                                                    </div>
+                                                    <div class="project-title">
+                                                        Immunology between Sacred Beliefs and Local Wars
+                                                    </div>
+                                                    <div class="project-desc">
+                                                        Scientific-Catholic Colonialism, Multispecies Imaginations, and Chinese BCG Vaccine. Investigating the biopolitical entanglements of immunity and warfare.
+                                                    </div>
+                                                </div>
+                                                <div class="project-visual">
+                                                    <div class="placeholder-box">
+                                                        <span style="font-family:'Courier'; font-size:12px; letter-spacing:1px;">[ IMAGE ARCHIVE ]</span>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+
+                                        <div class="wsite-spacer" style="height:100px;"></div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-		<label id="mobile-close" class="hamburger" for="mobile-input"></label>
-	</div>
 
-  <div id="main">
-
-    <div id="mobile-top">
-			<label id="mobile-open" class="hamburger" for="mobile-input"></label>
-      <div class="sitename"><span class="wsite-logo">
-
-	
-	<span class="wsite-title-placeholder">&nbsp;</span><span style="display:none">
-	<span style="display:none">&nbsp;</span>
-	</span>
-	
-
-</span></div>
-    </div>
-
-  	<div id="content-wrapper">
-      <div id="wsite-content" class="wsite-elements wsite-not-footer">
-	<div class="wsite-section-wrap">
-	<div class="wsite-section wsite-body-section wsite-background-2 wsite-custom-background"  >
-		<div class="wsite-section-content">
-        <div class="container">
-			<div class="wsite-section-elements">
-				<div><div class="wsite-multicol"><div class="wsite-multicol-table-wrap" style="margin:0 -15px;">
-	<table class="wsite-multicol-table">
-		<tbody class="wsite-multicol-tbody">
-			<tr class="wsite-multicol-tr">
-				<td class="wsite-multicol-col" style="width:36.894273127753%; padding:0 15px;">
-					
-						
-
-<div class="paragraph" style="text-align:left;"><font size="3"><strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</strong><strong>English</strong>&nbsp; &nbsp; &nbsp; &nbsp;<font color="#2a2a2a">&nbsp;</font><u><a href="xiangmu.html"><font color="#2a2a2a">&#20013;&#25991;</font></a></u><br />&#8203;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;juntao.yang@columbia.edu</font></div>
-
-
-					
-				</td>				<td class="wsite-multicol-col" style="width:63.105726872247%; padding:0 15px;">
-					
-						
-
-<div class="paragraph" style="text-align:right;"><font size="4"><u><a href="http://juntaoyang.site"><font color="#2a2a2a">ABOUT</font></a></u><font color="#2a2a2a">&nbsp; &nbsp; </font><u><a href="artworks.html"><font color="#2a2a2a">ARTWORKS</font></a></u><font color="#2a2a2a">&nbsp; &nbsp;&nbsp;</font><u><a href="writings.html"><font color="#2a2a2a">WRITINGS</font></a></u><font color="#2a2a2a">&nbsp; &nbsp; </font><strong><font color="#2a2a2a">PROJECTS</font></strong><font color="#2a2a2a">&nbsp;</font>&nbsp; &nbsp;<u><a href="posts.html"><font color="#2a2a2a">POSTS</font></a></u>&nbsp;&nbsp;</font></div>
-
-
-					
-				</td>			</tr>
-		</tbody>
-	</table>
-</div></div></div>
-
-
-
-
-<div class="wsite-spacer" style="height:50px;"></div>
-
-<div class="main-content-area">
-<h2 class="wsite-content-title">Projects</h2>
-
-
-<div><div style="height: 20px; overflow: hidden; width: 100%;"></div>
-<hr class="styled-hr" style="width:100%;"></hr>
-<div style="height: 20px; overflow: hidden; width: 100%;"></div></div>
-
-
-
-<div class="paragraph"><a href="geology.html" target="_blank"><font color="#2a2a2a"><strong><font size="4">Texture of the Earth and Skin We're In: </br>Geological Thinking, Anthropocene Cinema, and the Imaginations Beyond Humanbeing</font></strong><br /><font size="3">2023 - Present</font></font></a><br /><br /></div>
-
-<div><div style="height: 20px; overflow: hidden; width: 100%;"></div>
-<hr class="styled-hr" style="width:100%;"></hr>
-<div style="height: 20px; overflow: hidden; width: 100%;"></div></div>
-
-<div class="paragraph"><a href="kajiemiaoEN.html" target="_blank"><font color="#2a2a2a"><strong><font size="4">Immunology between Sacred Beliefs and Local Wars: </br>
-Scientific - Catholic Colonialism, Multispecies Imaginations, and Chinese BCG Vaccine</font></strong><br /><font size="3">2024 - Present</font></font></a><br /><br /></div>
-
-
-</div>
-
-			</div>
-		</div>
-      </div>
-
-	</div>
-</div>
-
-</div>
-
-  	</div>
-
-  	
-
-  </div>
-
-</div>
-<script type="text/javascript" src="files/theme/plugins.js"></script>
-<script type="text/javascript" src="files/theme/custom.js"></script>
-<script type="text/javascript" src="files/theme/mobile.js"></script>
+    <script type="text/javascript" src="files/theme/plugins.js"></script>
+    <script type="text/javascript" src="files/theme/custom.js"></script>
+    <script type="text/javascript" src="files/theme/mobile.js"></script>
     <div id="customer-accounts-app"></div>
     <script src="http://cdn2.editmysite.com/js/site/main-customer-accounts-site.js?buildTime=1234"></script>
 
-		
-	</body>
+    <script>
+        new p5(function(p) {
+            let cols, rows;
+            let field = [];
+            const REZ = 8;
+            const ACCENT_COLOR = p.color(58, 75, 92);
+            
+            p.setup = function() {
+                let container = document.getElementById('geology-layer');
+                let w = container.offsetWidth;
+                let h = container.offsetHeight;
+                let cnv = p.createCanvas(w, h);
+                cnv.parent('geology-layer');
+                p.noLoop();
+                p.cols = 1 + Math.ceil(w / REZ);
+                p.rows = 1 + Math.ceil(h / REZ);
+                for (let i = 0; i < p.cols; i++) { field[i] = new Float32Array(p.rows); }
+                p.strokeJoin(p.ROUND);
+                p.noFill();
+                generateGeology();
+            };
+
+            function generateGeology() {
+                p.clear();
+                let zOff = p.random(100); 
+                for (let i = 0; i < p.cols; i++) {
+                    for (let j = 0; j < p.rows; j++) {
+                        let x = i * REZ;
+                        let y = j * REZ;
+                        let val = p.noise(x * 0.003, y * 0.003, zOff);
+                        field[i][j] = val;
+                    }
+                }
+                p.strokeWeight(1.4);
+                let numIsolines = 90;
+                for (let i = 0; i < p.cols - 1; i++) {
+                    for (let j = 0; j < p.rows - 1; j++) {
+                        let x = i * REZ;
+                        let y = j * REZ;
+                        let valTL = field[i][j]; let valTR = field[i+1][j];
+                        let valBR = field[i+1][j+1]; let valBL = field[i][j+1];
+                        let minLvl = Math.floor(Math.min(valTL, valTR, valBR, valBL) * numIsolines);
+                        let maxLvl = Math.floor(Math.max(valTL, valTR, valBR, valBL) * numIsolines);
+                        if (maxLvl > minLvl) {
+                            for (let k = minLvl + 1; k <= maxLvl; k++) {
+                                let threshold = k / numIsolines;
+                                let alpha = p.map(i, 0, p.cols, 0, 40); 
+                                ACCENT_COLOR.setAlpha(alpha);
+                                p.stroke(ACCENT_COLOR);
+                                let state = getState(valTL, valTR, valBR, valBL, threshold);
+                                let a = p.createVector(x + REZ * (threshold - valTL) / (valTR - valTL), y);
+                                let b = p.createVector(x + REZ, y + REZ * (threshold - valTR) / (valBR - valTR));
+                                let c = p.createVector(x + REZ * (threshold - valBL) / (valBR - valBL), y + REZ);
+                                let d = p.createVector(x, y + REZ * (threshold - valTL) / (valBL - valTL));
+                                switch (state) {
+                                    case 1:  drawLine(c, d); break;
+                                    case 2:  drawLine(b, c); break;
+                                    case 3:  drawLine(b, d); break;
+                                    case 4:  drawLine(a, b); break;
+                                    case 5:  drawLine(a, d); drawLine(b, c); break;
+                                    case 6:  drawLine(a, c); break;
+                                    case 7:  drawLine(a, d); break;
+                                    case 8:  drawLine(a, d); break;
+                                    case 9:  drawLine(a, c); break;
+                                    case 10: drawLine(a, b); drawLine(c, d); break;
+                                    case 11: drawLine(a, b); break;
+                                    case 12: drawLine(b, d); break;
+                                    case 13: drawLine(b, c); break;
+                                    case 14: drawLine(c, d); break;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            function getState(tl, tr, br, bl, t) { return (tl >= t ? 8 : 0) + (tr >= t ? 4 : 0) + (br >= t ? 2 : 0) + (bl >= t ? 1 : 0); }
+            function drawLine(v1, v2) { p.line(v1.x, v1.y, v2.x, v2.y); }
+            p.windowResized = function() {
+                let container = document.getElementById('geology-layer');
+                p.resizeCanvas(container.offsetWidth, container.offsetHeight);
+                p.cols = 1 + Math.ceil(p.width / REZ);
+                p.rows = 1 + Math.ceil(p.height / REZ);
+                for (let i = 0; i < p.cols; i++) { field[i] = new Float32Array(p.rows); }
+                generateGeology();
+            };
+        });
+    </script>
+</body>
 </html>

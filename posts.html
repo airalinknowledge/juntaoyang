@@ -1,86 +1,147 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <title>Posts - Juntao Yang</title>
-  <meta name="description" content="Juntao Yang's informal posts, drafts, and notes; 杨君陶的随笔与草稿" />
-  <meta name="keywords" content="Juntao Yang,杨君陶, posts, drafts, notes, 随笔, 草稿" />
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<head>
+		<title>Posts - Juntao Yang</title>
+<meta name="description" content="Juntao Yang's informal posts, drafts, and notes; 杨君陶的随笔与草稿" />
+<meta name="keywords" content="Juntao Yang,杨君陶, posts, drafts, notes, 随笔, 草稿" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <script type="text/javascript">
-    if (window.innerWidth < 768) {
-      window.location.href = "posts-mobile.html";
-    }
-  </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <script type="text/javascript">
+        if (window.innerWidth < 768) {
+          window.location.href = "posts-mobile.html";
+        }
+    </script>
+		
+		<link id="wsite-base-style" rel="stylesheet" type="text/css" href="http://cdn2.editmysite.com/css/sites.css?buildTime=1234" />
+<link rel="stylesheet" type="text/css" href="http://cdn2.editmysite.com/css/old/fancybox.css?1234" />
+<link rel="stylesheet" type="text/css" href="http://cdn2.editmysite.com/css/social-icons.css?buildtime=1234" media="screen,projection" />
+<link rel="stylesheet" type="text/css" href="files/main_style.css?1714489767" title="wsite-theme-css" />
+<link href='http://cdn2.editmysite.com/fonts/Maven_Pro/font.css?2' rel='stylesheet' type='text/css' />
 
-  <link id="wsite-base-style" rel="stylesheet" type="text/css" href="https://cdn2.editmysite.com/css/sites.css?buildTime=1234" />
-  <link rel="stylesheet" type="text/css" href="https://cdn2.editmysite.com/css/old/fancybox.css?1234" />
-  <link rel="stylesheet" type="text/css" href="https://cdn2.editmysite.com/css/social-icons.css?buildtime=1234" media="screen,projection" />
-  <link rel="stylesheet" type="text/css" href="files/main_style.css?1714489767" title="wsite-theme-css" />
-  <link href="https://cdn2.editmysite.com/fonts/Maven_Pro/font.css?2" rel="stylesheet" type="text/css" />
-  <link href="https://cdn2.editmysite.com/fonts/Alike/font.css?2" rel="stylesheet" type="text/css" />
-  <link href="https://cdn2.editmysite.com/fonts/Cardo/font.css?2" rel="stylesheet" type="text/css" />
-  <link href="https://cdn2.editmysite.com/fonts/Amaranth/font.css?2" rel="stylesheet" type="text/css" />
-  <link href="https://cdn2.editmysite.com/fonts/Cabin/font.css?2" rel="stylesheet" type="text/css" />
-  <style type="text/css">
-    /* Copied styles from your site */
-    .wsite-elements.wsite-not-footer:not(.wsite-header-elements) div.paragraph, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) p, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-block .product-title, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-description, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .wsite-form-field label, #wsite-content div.paragraph, #wsite-content p, #wsite-content .product-block .product-title, #wsite-content .product-description, #wsite-content .wsite-form-field label, .blog-sidebar div.paragraph, .blog-sidebar p, .blog-sidebar .wsite-form-field label {font-family:"Georgia" !important;}
-    #wsite-content div.paragraph, #wsite-content p, #wsite-content .product-block .product-title, #wsite-content .product-description, #wsite-content .wsite-form-field label, .blog-sidebar div.paragraph, .blog-sidebar p, .blog-sidebar .wsite-form-field label {}
-    .wsite-elements.wsite-footer div.paragraph, .wsite-elements.wsite-footer p, .wsite-elements.wsite-footer .product-block .product-title, .wsite-elements.wsite-footer .product-description, .wsite-elements.wsite-footer .wsite-form-field label {}
-    .wsite-elements.wsite-not-footer:not(.wsite-header-elements) h2, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-long .product-title, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-large .product-title, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-small .product-title, #wsite-content h2, #wsite-content .product-long .product-title, #wsite-content .product-large .product-title, #wsite-content .product-small .product-title, .blog-sidebar h2 {font-family:"Georgia" !important;font-style:normal !important;letter-spacing: 5px !important;}
-    #wsite-content h2, #wsite-content .product-long .product-title, #wsite-content .product-large .product-title, #wsite-content .product-small .product-title, .blog-sidebar h2 {}
-    .wsite-elements.wsite-footer h2, .wsite-elements.wsite-footer .product-long .product-title, .wsite-elements.wsite-footer .product-large .product-title, .wsite-elements.wsite-footer .product-small .product-title {}
-    #wsite-title {font-family:"Alike" !important;text-transform: none !important;letter-spacing: -1px !important;}
-    .wsite-menu-default a {font-family:"Cardo" !important;text-transform: uppercase !important;letter-spacing: 2px !important;}
-    .wsite-menu a {}
-    .wsite-image div, .wsite-caption {font-family:"Amaranth" !important;}
-    .galleryCaptionInnerText {}
-    .fancybox-title {}
-    .wslide-caption-text {}
-    .wsite-phone {}
-    .wsite-headline, .wsite-header-section .wsite-content-title {font-family:"Cabin" !important;}
-    .wsite-headline-paragraph, .wsite-header-section .paragraph {}
-    .wsite-button-inner {}
-    .wsite-not-footer blockquote {}
-    .wsite-footer blockquote {}
-    .blog-header h2 a {}
-    #wsite-content h2.wsite-product-title {}
-    .wsite-product .wsite-product-price a {}
-    @media screen and (min-width: 767px) {
-      .wsite-elements.wsite-not-footer:not(.wsite-header-elements) div.paragraph, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) p, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-block .product-title, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-description, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .wsite-form-field label, #wsite-content div.paragraph, #wsite-content p, #wsite-content .product-block .product-title, #wsite-content .product-description, #wsite-content .wsite-form-field label, .blog-sidebar div.paragraph, .blog-sidebar p, .blog-sidebar .wsite-form-field label {line-height:33px !important;}
-      .wsite-elements.wsite-footer div.paragraph, .wsite-elements.wsite-footer p, .wsite-elements.wsite-footer .product-block .product-title, .wsite-elements.wsite-footer .product-description, .wsite-elements.wsite-footer .wsite-form-field label {}
-      .wsite-elements.wsite-not-footer:not(.wsite-header-elements) h2, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-long .product-title, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-large .product-title, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-small .product-title, #wsite-content h2, #wsite-content .product-long .product-title, #wsite-content .product-large .product-title, #wsite-content .product-small .product-title, .blog-sidebar h2 {font-size:100px !important;line-height:75px !important;}
-      #wsite-content h2, #wsite-content .product-long .product-title, #wsite-content .product-large .product-title, #wsite-content .product-small .product-title, .blog-sidebar h2 {}
-      .wsite-elements.wsite-footer h2, .wsite-elements.wsite-footer .product-long .product-title, .wsite-elements.wsite-footer .product-large .product-title, .wsite-elements.wsite-footer .product-small .product-title {}
-      #wsite-title {font-size:23px !important;}
-      .wsite-menu-default a {font-size:14px !important;}
-      .wsite-menu a {}
-      .wsite-image div, .wsite-caption {}
-      .galleryCaptionInnerText {}
-      .fancybox-title {}
-      .wslide-caption-text {}
-      .wsite-phone {}
-      .wsite-headline, .wsite-header-section .wsite-content-title {}
-      .wsite-headline-paragraph, .wsite-header-section .paragraph {}
-      .wsite-button-inner {}
-      .wsite-not-footer blockquote {}
-      .wsite-footer blockquote {}
-      .blog-header h2 a {}
-      #wsite-content h2.wsite-product-title {}
-      .wsite-product .wsite-product-price a {}
+<link href='http://cdn2.editmysite.com/fonts/Alike/font.css?2' rel='stylesheet' type='text/css' />
+<link href='http://cdn2.editmysite.com/fonts/Cardo/font.css?2' rel='stylesheet' type='text/css' />
+<link href='http://cdn2.editmysite.com/fonts/Amaranth/font.css?2' rel='stylesheet' type='text/css' />
+<link href='http://cdn2.editmysite.com/fonts/Cabin/font.css?2' rel='stylesheet' type='text/css' />
+
+<style>
+    /* --- 0. 变量定义 (Copied from Artworks) --- */
+    :root {
+        --font-serif: "Times New Roman", "Songti SC", "SimSun", serif;
+        --font-mono: "Courier New", "Courier", monospace;
+        
+        --bg-paper: #f4f4f2;    /* 米白 */
+        --text-ink: #1e1e1e;    /* 极深灰 */
+        --text-meta: #5c5c5c;   /* 中灰 */
+        
+        /* 深岩蓝 / 普鲁士蓝 */
+        --accent-slate: #3A4B5C; 
+        
+        --line-light: #d1d1d1;
     }
-  </style>
-  <style>
-    .wsite-background {
-      background-image: url("/uploads/1/4/8/1/148137552/background-images/1199586110.jpg") !important;
-      background-repeat: no-repeat !important;
-      background-position: 50% 50% !important;
-      background-size: 100% !important;
-      background-color: transparent !important;
-      background: inherit;
+
+    /* --- 1. 全局字体与背景重置 --- */
+    body, #wrapper {
+        font-family: var(--font-serif) !important;
+        background-color: var(--bg-paper) !important;
+        background-image: none !important; 
+        color: var(--text-ink) !important;
     }
+
+    /* 覆盖旧背景 */
+    .wsite-background {background-image: none !important; background-color: transparent !important;}
     body.wsite-background {background-attachment: fixed !important;}
-    .wsite-background.wsite-custom-background { background-size: cover !important; }
+
+    /* [核心修改 1] 磨砂层提权与减淡 */
+    .noise-overlay {
+        position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        opacity: 0.09; 
+        pointer-events: none;
+        z-index: 50; /* 最顶层 */
+        mix-blend-mode: multiply; 
+    }
+
+    /* [核心修改 2] 地质层提权与可见性 */
+    #geology-layer {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 45vw; /* 占据右侧约 45% */
+        height: 100vh;
+        z-index: 40; /* 仅次于磨砂层 */
+        pointer-events: none;
+        opacity: 0.8; 
+        mix-blend-mode: multiply; 
+        /* CSS遮罩：让线条在左侧柔和消失 */
+        mask-image: linear-gradient(to right, transparent 0%, black 60%);
+        -webkit-mask-image: linear-gradient(to right, transparent 0%, black 60%);
+    }
+
+    /* 移动端隐藏等高线，保证阅读清晰 */
+    @media (max-width: 768px) {
+        #geology-layer { display: none; }
+    }
+
+    /* --- 2. 文本样式升级 --- */
+    .paragraph, p, div {
+        font-family: var(--font-serif) !important;
+        line-height: 1.8 !important;
+        font-size: 16px !important;
+        color: var(--text-ink) !important;
+    }
+
+    /* 标题：安静、学术 */
+    h2, .wsite-content-title {
+        font-family: var(--font-serif) !important;
+        font-weight: normal !important;
+        letter-spacing: 2px !important;
+        text-transform: uppercase !important;
+        margin-bottom: 2rem !important;
+        border-bottom: none !important;
+        padding-bottom: 0px !important;
+        color: var(--text-ink) !important;
+    }
+
+    /* --- 3. 布局与间距 --- */
+    .main-content-area {
+        width: 98% !important;
+        max-width: 900px !important; 
+        margin: 0 auto !important; 
+    }
+
+    /* 链接样式 */
+    a {
+        color: var(--text-ink) !important;
+        text-decoration: none !important;
+        transition: all 0.3s ease;
+    }
+
+    a:hover {
+        color: var(--accent-slate) !important; 
+    }
+    
+    .paragraph u { text-decoration: none !important; }
+
+    /* 导航栏 - 统一 Cardo */
+    .wsite-menu-default a {
+        font-family: "Cardo", serif !important;
+        font-size: 14px !important;
+        letter-spacing: 2px !important;
+        color: var(--text-meta) !important;
+        text-transform: uppercase !important;
+        border-bottom: none; 
+        transition: color 0.3s ease;
+    }
+    
+    .wsite-menu-default a:hover, #active a {
+        color: var(--accent-slate) !important;
+        background: transparent !important;
+        border-bottom: 2px solid var(--accent-slate); 
+    }
+
+    /* --- POSTS SPECIFIC STYLES (Adapted to New Theme) --- */
     
     .post-entry-card {
         width: 100%;
@@ -91,45 +152,61 @@
         height: auto;
         display: block;
         margin-bottom: 15px;
+        /* Optional: Add shadow like Artworks */
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        transition: box-shadow 0.3s ease;
+    }
+    .post-image:hover {
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     }
 
+    .post-title {
+        margin: 6px 0 4px !important;
+    }
+
+    /* Overriding old post title styles to match new serif theme */
     .post-title a {
+        font-family: var(--font-serif) !important;
+        font-size: 1.2rem !important;
+        font-weight: bold;
+        color: var(--text-ink) !important;
         text-decoration: none !important;
-        color: #555 !important;
     }
     .post-title a:hover {
-        color: #000 !important;
+        color: var(--accent-slate) !important;
     }
+    /* Remove the underline usually applied by the <u> tag in the JS */
+    .post-title u { text-decoration: none !important; }
+
 
     .post-date {
-        font-family: "Georgia", serif;
-        font-size: 12px !important; 
-        color: #888;
+        font-family: var(--font-serif) !important;
+        font-size: 14px !important; 
+        color: var(--text-meta) !important;
         margin: 0 0 6px;
+        font-style: italic;
     }
+    
     .post-excerpt {
-        font-size: 14px !important;
+        font-size: 16px !important;
+        color: var(--text-ink) !important;
+        margin: 0 0 8px !important;
+        line-height: 1.6 !important;
     }
 
-    .read-more {
-        text-decoration: underline;
-        color: #555 !important;
-        font-weight: bold;
-    }
-    .read-more:hover {
-        color: #000 !important;
-    }
-
+    /* Sidebar / News styles */
     .news-section .paragraph {
         margin-bottom: 15px;
         font-size: 15px;
     }
     .news-section a {
-        text-decoration: underline;
-        color: #555; /* 将链接颜色改为灰色 */
+        text-decoration: none;
+        color: var(--text-meta);
+        border-bottom: 1px solid transparent;
     }
     .news-section a:hover {
-        color: #000; /* 添加鼠标悬停效果 */
+        color: var(--accent-slate);
+        border-bottom: 1px solid var(--accent-slate);
     }
     
     .posts-column {
@@ -139,23 +216,6 @@
         border-left: 1px solid #e0e0e0;
         padding-left: 60px;
         height: 100%;
-    }
-
-    .post-entry-card .paragraph { 
-      margin: 6px 0 !important;
-      line-height: 1.35;
-    }
-    .post-entry-card .post-image { 
-      margin-bottom: 8px !important;
-    }
-    .post-entry-card .post-title { 
-      margin: 6px 0 4px !important;
-    }
-    .post-entry-card .post-excerpt { 
-      margin: 0 0 8px !important;
-    }
-    .wsite-elements .post-entry-card .paragraph {
-      margin: 6px 0 !important;
     }
 
     .posts-two-col { display: flex; gap: 80px; }
@@ -170,8 +230,6 @@
     .posts-left .post-entry-card, .posts-right .post-entry-card { margin: 0 0 80px; width: 100%; }
 
     @media (max-width: 767px) {
-      /* Styles for mobile are handled by redirecting to posts-mobile.html */
-      /* These styles are kept as a fallback */
       .posts-two-col { display:block; }
       .posts-left, .posts-right { width:100%; }
       .posts-right .post-entry-card:first-child { margin-top: 0; }
@@ -179,139 +237,413 @@
       .posts-column { padding-right: 15px !important; }
       .news-column { padding-left: 15px !important; }
     }
-  </style>
-  <script src="https://cdn2.editmysite.com/js/jquery-1.8.3.min.js"></script>
-  </head>
 
-<body class="no-header-page  wsite-page-index wsite-theme-light">
-  <div id="wrapper">
-    <div id="navigation">
-      <div id="navigation-wrap">
-        <div id="nav">
-          <div class="sitename">
-            <span class="wsite-logo">
-              <span class="wsite-title-placeholder">&nbsp;</span>
-              <span style="display:none"><span style="display:none">&nbsp;</span></span>
-            </span>
-          </div>
-          <ul class="wsite-menu-default">
-            <li class="wsite-menu-item-wrap"><a href="index.html" class="wsite-menu-item">About</a></li>
-            <li class="wsite-menu-item-wrap"><a href="artworks.html" class="wsite-menu-item">ARTWORKS</a></li>
-            <li class="wsite-menu-item-wrap"><a href="writings.html" class="wsite-menu-item">Writings</a></li>
-            <li class="wsite-menu-item-wrap"><a href="projects.html" class="wsite-menu-item">Projects</a></li>
-            <li id="active" class="wsite-menu-item-wrap"><a href="posts.html" class="wsite-menu-item">Posts</a></li> </ul>
-        </div>
-        <div id="navmobile">
-          <ul class="wsite-menu-default">
-            <li class="wsite-menu-item-wrap"><a href="index.html" class="wsite-menu-item">About</a></li>
-            <li class="wsite-menu-item-wrap"><a href="artworks.html" class="wsite-menu-item">ARTWORKS</a></li>
-            <li class="wsite-menu-item-wrap"><a href="writings.html" class="wsite-menu-item">Writings</a></li>
-            <li class="wsite-menu-item-wrap"><a href="projects.html" class="wsite-menu-item">Projects</a></li>
-            <li id="active" class="wsite-menu-item-wrap"><a href="posts.html" class="wsite-menu-item">Posts</a></li>
-          </ul>
-        </div>
-      </div>
-      <label id="mobile-close" class="hamburger" for="mobile-input"></label>
+    /* Decorative HR */
+    .styled-hr {
+        border: none;
+        height: 1px;
+        background-color: #ccc;
+        margin: 20px auto;
+    }
+
+</style>
+		<script src='files/templateArtifacts.js?1714489756'></script>
+<script>
+var STATIC_BASE = '//cdn1.editmysite.com/';
+var ASSETS_BASE = '//cdn2.editmysite.com/';
+var STYLE_PREFIX = 'wsite';
+</script>
+<script src='https://cdn2.editmysite.com/js/jquery-1.8.3.min.js'></script>
+
+<script type="text/javascript" src="http://cdn2.editmysite.com/js/lang/en/stl.js?buildTime=1234&"></script>
+<script src="http://cdn2.editmysite.com/js/site/main.js?buildTime=1234"></script><script type="text/javascript">
+		function initCustomerAccountsModels() {
+					(function(){_W.setup_rpc({"url":"\/ajax\/api\/JsonRPC\/CustomerAccounts\/","actions":{"CustomerAccounts":[{"name":"login","len":2,"multiple":false,"standalone":false},{"name":"logout","len":0,"multiple":false,"standalone":false},{"name":"getSessionDetails","len":0,"multiple":false,"standalone":false},{"name":"getAccountDetails","len":0,"multiple":false,"standalone":false},{"name":"getOrders","len":0,"multiple":false,"standalone":false},{"name":"register","len":4,"multiple":false,"standalone":false},{"name":"emailExists","len":1,"multiple":false,"standalone":false},{"name":"passwordReset","len":1,"multiple":false,"standalone":false},{"name":"passwordUpdate","len":3,"multiple":false,"standalone":false},{"name":"validateSession","len":1,"multiple":false,"standalone":false}]},"namespace":"_W.CustomerAccounts.RPC"});
+_W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":"_W.CustomerAccounts.BackboneModelData","collection_namespace":"_W.CustomerAccounts.BackboneCollectionData","bootstrap_namespace":"_W.CustomerAccounts.BackboneBootstrap","models":{"CustomerAccounts":{"_class":"CustomerAccounts.Model.CustomerAccounts","defaults":null,"validation":null,"types":null,"idAttribute":null,"keydefs":null}},"collections":{"CustomerAccounts":{"_class":"CustomerAccounts.Collection.CustomerAccounts"}},"bootstrap":[]});
+})();
+		}
+		if(document.createEvent && document.addEventListener) {
+			var initEvt = document.createEvent('Event');
+			initEvt.initEvent('customerAccountsModelsInitialized', true, false);
+			document.dispatchEvent(initEvt);
+		} else if(document.documentElement.initCustomerAccountsModels === 0){
+			document.documentElement.initCustomerAccountsModels++
+		}
+		</script>
+		<script type="text/javascript"> _W = _W || {}; _W.securePrefix='UNSET'; </script><script>_W = _W || {};
+			_W.customerLocale = "en_US";
+			_W.storeName = null;
+			_W.isCheckoutReskin = false;
+			_W.storeCountry = "HK";
+			_W.storeCurrency = "HKD";
+			_W.storeEuPrivacyPolicyUrl = "";
+			com_currentSite = "713576850827693055";
+			com_userID = "148137552";</script><script type="text/javascript">_W.configDomain = "www.weebly.com";</script><script>_W.relinquish && _W.relinquish()</script>
+<script type="text/javascript" src="http://cdn2.editmysite.com/js/lang/en/stl.js?buildTime=1234&"></script><script> _W.themePlugins = [];</script><script type="text/javascript"> _W.recaptchaUrl = "https://www.google.com/recaptcha/api.js"; </script><script type="text/javascript"></script>
+		
+		
+	</head>
+	<body class="no-header-page  wsite-page-posts wsite-theme-light">
+    
+    <div id="geology-layer"></div>
+    <div class="noise-overlay"></div>
+
+    <div id="wrapper">
+
+	<div id="navigation">
+    <div id="navigation-wrap">
+  	 	<div id="nav">
+	      <div class="sitename"><span class="wsite-logo">
+
+	
+	<span class="wsite-title-placeholder">&nbsp;</span><span style="display:none">
+	<span style="display:none">&nbsp;</span>
+	</span>
+	
+
+</span></div>
+				<ul class="wsite-menu-default">
+						<li id="pg356461667194310790" class="wsite-menu-item-wrap">
+							<a
+										href="index.html"
+								class="wsite-menu-item"
+								>
+								About
+							</a>
+							
+						</li>
+						<li id="pg864040464600617228" class="wsite-menu-item-wrap">
+							<a
+										href="artworks.html"
+								class="wsite-menu-item"
+								>
+								ARTWORKS
+							</a>
+							
+						</li>
+						<li id="pg361237216236019909" class="wsite-menu-item-wrap">
+							<a
+										href="writings.html"
+								class="wsite-menu-item"
+								>
+								Writings
+							</a>
+							
+						</li>
+						<li id="pg497557010409593207" class="wsite-menu-item-wrap">
+							<a
+										href="projects.html"
+								class="wsite-menu-item"
+								>
+								Projects
+							</a>
+							
+						</li>
+                        <li id="active" class="wsite-menu-item-wrap">
+							<a
+										href="posts.html"
+								class="wsite-menu-item"
+								>
+								POSTS
+							</a>
+							
+						</li>
+				</ul>
+			</div>
+   	 	<div id="navmobile"><ul class="wsite-menu-default">
+		<li id="pg356461667194310790" class="wsite-menu-item-wrap">
+			<a
+						href="index.html"
+				class="wsite-menu-item"
+				>
+				About
+			</a>
+			
+		</li>
+		<li id="pg864040464600617228" class="wsite-menu-item-wrap">
+			<a
+						href="artworks.html"
+				class="wsite-menu-item"
+				>
+				ARTWORKS
+			</a>
+			
+		</li>
+		<li id="pg361237216236019909" class="wsite-menu-item-wrap">
+			<a
+						href="writings.html"
+				class="wsite-menu-item"
+				>
+				Writings
+			</a>
+			
+		</li>
+		<li id="pg497557010409593207" class="wsite-menu-item-wrap">
+			<a
+						href="projects.html"
+				class="wsite-menu-item"
+				>
+				Projects
+			</a>
+			
+		</li>
+        <li id="active" class="wsite-menu-item-wrap">
+			<a
+						href="posts.html"
+				class="wsite-menu-item"
+								>
+								POSTS
+							</a>
+							
+		</li>
+</ul>
+</div>
     </div>
-    <div id="main">
-      <div id="mobile-top">
-        <label id="mobile-open" class="hamburger" for="mobile-input"></label>
-        <div class="sitename">
-          <span class="wsite-logo"><span class="wsite-title-placeholder">&nbsp;</span><span style="display:none"><span style="display:none">&nbsp;</span></span></span>
-        </div>
-      </div>
-      <div id="content-wrapper">
-        <div id="wsite-content" class="wsite-elements wsite-not-footer">
-          <div class="wsite-section-wrap">
-            <div class="wsite-section wsite-body-section wsite-background-5 wsite-custom-background" style="min-height: 951px; padding-bottom: 40px;">
-              <div class="wsite-section-content">
-                <div class="container">
-                  <div class="wsite-section-elements">
-                    <div>
-                      <div class="wsite-multicol">
-                        <div class="wsite-multicol-table-wrap" style="margin:0 -15px;">
-                          <table class="wsite-multicol-table">
-                            <tbody class="wsite-multicol-tbody">
-                              <tr class="wsite-multicol-tr">
-                                <td class="wsite-multicol-col" style="width:36.89%; padding:0 15px;">
-                                  <div class="paragraph" style="text-align:left;"><font size="3"><strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</strong><strong>English</strong>&nbsp; &nbsp; &nbsp; &nbsp;<font color="#2a2a2a">&nbsp;</font><u><a href="fabu.html"><font color="#2a2a2a">&#20013;&#25991;</font></a></u><br />&#8203;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;juntao.yang@columbia.edu</font></div>
-                                </td>
-                                <td class="wsite-multicol-col" style="width:63.10%; padding:0 15px;">
-                                  <div class="paragraph" style="text-align:right;"><font size="4"><u><a href="index.html"><font color="#2a2a2a">ABOUT</font></a></u><font color="#2a2a2a">&nbsp; &nbsp; </font><u><a href="artworks.html"><font color="#2a2a2a">ARTWORKS</font></a></u><font color="#2a2a2a">&nbsp; &nbsp;&nbsp;</font><u><a href="writings.html"><font color="#2a2a2a">WRITINGS</font></a></u><font color="#2a2a2a">&nbsp; &nbsp;&nbsp;</font><u><a href="projects.html"><font color="#2a2a2a">PROJECTS</font></a></u><font color="#2a2a2a">&nbsp;</font>&nbsp; &nbsp;<strong><font color="#2a2a2a">POSTS</font></strong>&nbsp;&nbsp;</font></div>
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <div>
-                        <div style="height: 50px; overflow: hidden; width: 100%;"></div>
-                        <h2 class="wsite-content-title" style="text-align:left;">Posts</h2>
-                        <div style="height: 20px; overflow: hidden; width: 100%;"></div>
-                        <hr class="styled-hr" style="width:100%;"></hr>
-                        <div style="height: 20px; overflow: hidden; width: 100%;"></div>
-                    </div>
-                    <div class="paragraph" style="text-align:left; font-style:italic; color:#555;">
-                        This page contains recent updates and fragments of my writing. These pieces may be temporary, unconsidered, and informal—unpublished now, and perhaps forever.
-                        <br><br>
-                        Click <a href="review.html" style="color: inherit;"><u>here</u></a> for my continuously updated short reviews and notes on films, theaters, performances and artworks.
-                    </div>
-                    
-                    <div style="height: 30px; overflow: hidden; width: 100%;"></div>
-                    <hr class="styled-hr" style="width:100%;"></hr>
+		<label id="mobile-close" class="hamburger" for="mobile-input"></label>
+	</div>
 
-                    <div class="wsite-spacer" style="height:50px;"></div>
-                    <div class="wsite-multicol">
-                      <div class="wsite-multicol-table-wrap" style="margin:0 -15px;">
-                        <table class="wsite-multicol-table">
-                          <tbody class="wsite-multicol-tbody">
-                            <tr class="wsite-multicol-tr">
-                              <td class="wsite-multicol-col posts-column" style="width:75%; padding:0 15px; vertical-align: top;">
-                                
-                                <div class="posts-two-col" id="posts-container" aria-live="polite">
-                                  <div class="posts-left" id="posts-left">
-                                      </div>
-                                  <div class="posts-right" id="posts-right">
-                                      </div>
-                                </div>
-                                
-                              </td>
+  <div id="main">
 
-                              <td class="wsite-multicol-col news-column" style="width:25%; padding:0 15px; vertical-align: top;">
-                                <div class="separator-wrapper">
-                                  <div class="news-section">
-                                    <div class="paragraph"><u><font size="4">News</font></u></div>
-                                    <div id="news-list"></div>
-                                  </div>
-                                  </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>
-                    <div class="paragraph" style="text-align:center;">
-                      <br /><br /><br /><br /><font size="2"><br />All Rights Reserved&nbsp;&copy;&nbsp; Juntao Yang</font>
-                    </div>
+    <div id="mobile-top">
+			<label id="mobile-open" class="hamburger" for="mobile-input"></label>
+      <div class="sitename"><span class="wsite-logo">
+
+	
+	<span class="wsite-title-placeholder">&nbsp;</span><span style="display:none">
+	<span style="display:none">&nbsp;</span>
+	</span>
+	
+
+</span></div>
+    </div>
+
+  	<div id="content-wrapper">
+      <div id="wsite-content" class="wsite-elements wsite-not-footer">
+	<div class="wsite-section-wrap">
+	<div class="wsite-section wsite-body-section wsite-background-12 wsite-custom-background"  >
+		<div class="wsite-section-content">
+        <div class="container">
+			<div class="wsite-section-elements">
+				<div><div class="wsite-multicol"><div class="wsite-multicol-table-wrap" style="margin:0 -15px;">
+	<table class="wsite-multicol-table">
+		<tbody class="wsite-multicol-tbody">
+			<tr class="wsite-multicol-tr">
+				<td class="wsite-multicol-col" style="width:36.894273127753%; padding:0 15px;">
+					
+						
+
+<div class="paragraph" style="text-align:left;"><font size="3"><strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</strong><strong>English</strong>&nbsp; &nbsp; &nbsp; &nbsp;<font color="#2a2a2a">&nbsp;</font><u><a href="fabu.html"><font color="#2a2a2a">中文</font></a></u><br />&#8203;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;juntao.yang@columbia.edu</font></div>
+
+
+					
+				</td>				<td class="wsite-multicol-col" style="width:63.105726872247%; padding:0 15px;">
+					
+						
+
+<div class="paragraph" style="text-align:right;"><font size="4"><u><a href="index.html"><font color="#2a2a2a">ABOUT</font></a></u><font color="#2a2a2a">&nbsp; &nbsp; </font><u><a href="artworks.html"><font color="#2a2a2a">ARTWORKS</font></a></u><font color="#2a2a2a">&nbsp; &nbsp; </font><u><a href="writings.html"><font color="#2a2a2a">WRITINGS</font></a></u><font color="#2a2a2a">&nbsp; &nbsp; </font><u><a href="projects.html"><font color="#2a2a2a">PROJECTS</font></a></u><font color="#2a2a2a">&nbsp;</font> &nbsp; <strong>POSTS</strong>&nbsp;&nbsp;</font></div>
+
+
+					
+				</td>			</tr>
+		</tbody>
+	</table>
+</div></div></div>
+
+<div>
+    <div style="height: 50px; overflow: hidden; width: 100%;"></div>
+    <h2 class="wsite-content-title" style="text-align:left;">Posts</h2>
+    <div style="height: 20px; overflow: hidden; width: 100%;"></div>
+    <hr class="styled-hr" style="width:100%;"></hr>
+    <div style="height: 20px; overflow: hidden; width: 100%;"></div>
+</div>
+<div class="paragraph" style="text-align:left; font-style:italic; color:var(--text-meta);">
+    This page contains recent updates and fragments of my writing. These pieces may be temporary, unconsidered, and informal—unpublished now, and perhaps forever.
+    <br><br>
+    Click <a href="review.html" style="color: inherit;"><u>here</u></a> for my continuously updated short reviews and notes on films, theaters, performances and artworks.
+</div>
+
+<div style="height: 30px; overflow: hidden; width: 100%;"></div>
+<hr class="styled-hr" style="width:100%;"></hr>
+
+<div class="wsite-spacer" style="height:50px;"></div>
+<div class="wsite-multicol">
+  <div class="wsite-multicol-table-wrap" style="margin:0 -15px;">
+    <table class="wsite-multicol-table">
+      <tbody class="wsite-multicol-tbody">
+        <tr class="wsite-multicol-tr">
+          <td class="wsite-multicol-col posts-column" style="width:75%; padding:0 15px; vertical-align: top;">
+            
+            <div class="posts-two-col" id="posts-container" aria-live="polite">
+              <div class="posts-left" id="posts-left">
                   </div>
-                </div>
-              </div>
+              <div class="posts-right" id="posts-right">
+                  </div>
             </div>
-          </div>
-        </div>
+            
+          </td>
+
+          <td class="wsite-multicol-col news-column" style="width:25%; padding:0 15px; vertical-align: top;">
+            <div class="separator-wrapper">
+              <div class="news-section">
+                <div class="paragraph"><u><font size="4">News</font></u></div>
+                <div id="news-list"></div>
+              </div>
+              </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+</div>
+</div>
+		</div>
       </div>
-    </div>
+
+	</div>
+</div>
+
+</div>
+
+  	</div>
+
+
   </div>
 
-  <script type="text/javascript" src="files/theme/plugins.js"></script>
-  <script type="text/javascript" src="files/theme/custom.js"></script>
-  <script type="text/javascript" src="files/theme/mobile.js"></script>
+</div>
+<script type="text/javascript" src="files/theme/plugins.js"></script>
+<script type="text/javascript" src="files/theme/custom.js"></script>
+<script type="text/javascript" src="files/theme/mobile.js"></script>
+<div id="customer-accounts-app"></div>
+<script src="http://cdn2.editmysite.com/js/site/main-customer-accounts-site.js?buildTime=1234"></script>
 
-  <script>
+<script>
+    new p5(function(p) {
+        let cols, rows;
+        let field = [];
+        const REZ = 8; // 分辨率
+        const ACCENT_COLOR = p.color(58, 75, 92); // #3A4B5C 深岩蓝
+        
+        p.setup = function() {
+            let container = document.getElementById('geology-layer');
+            let w = container.offsetWidth;
+            let h = container.offsetHeight;
+            let cnv = p.createCanvas(w, h);
+            cnv.parent('geology-layer');
+            
+            // [关键优化] 停止循环，只渲染一次！彻底释放CPU
+            p.noLoop();
+            
+            p.cols = 1 + Math.ceil(w / REZ);
+            p.rows = 1 + Math.ceil(h / REZ);
+            
+            for (let i = 0; i < p.cols; i++) {
+                field[i] = new Float32Array(p.rows);
+            }
+            
+            p.strokeJoin(p.ROUND);
+            p.noFill();
+            
+            // 执行一次性绘制
+            generateGeology();
+        };
+
+        function generateGeology() {
+            p.clear();
+            
+            // 静态的随机偏移量，每次刷新都不一样，但生成后静止
+            let zOff = p.random(100); 
+
+            // 生成噪点场
+            for (let i = 0; i < p.cols; i++) {
+                for (let j = 0; j < p.rows; j++) {
+                    let x = i * REZ;
+                    let y = j * REZ;
+                    // 放大比例，让线条更舒缓
+                    let val = p.noise(x * 0.003, y * 0.003, zOff);
+                    field[i][j] = val;
+                }
+            }
+
+            // 绘制等高线 - 既然是静态图，可以保持极高画质
+            p.strokeWeight(1.4); // 线条粗细
+            let numIsolines = 90; // 极高密度
+            
+            for (let i = 0; i < p.cols - 1; i++) {
+                for (let j = 0; j < p.rows - 1; j++) {
+                    let x = i * REZ;
+                    let y = j * REZ;
+                    
+                    let valTL = field[i][j];
+                    let valTR = field[i+1][j];
+                    let valBR = field[i+1][j+1];
+                    let valBL = field[i][j+1];
+
+                    let minLvl = Math.floor(Math.min(valTL, valTR, valBR, valBL) * numIsolines);
+                    let maxLvl = Math.floor(Math.max(valTL, valTR, valBR, valBL) * numIsolines);
+
+                    if (maxLvl > minLvl) {
+                        for (let k = minLvl + 1; k <= maxLvl; k++) {
+                            let threshold = k / numIsolines;
+                            
+                            // 动态透明度：越靠右越深，左侧淡出
+                            let alpha = p.map(i, 0, p.cols, 0, 40); 
+                            ACCENT_COLOR.setAlpha(alpha);
+                            p.stroke(ACCENT_COLOR);
+
+                            let state = getState(valTL, valTR, valBR, valBL, threshold);
+                            let a = p.createVector(x + REZ * (threshold - valTL) / (valTR - valTL), y);
+                            let b = p.createVector(x + REZ, y + REZ * (threshold - valTR) / (valBR - valTR));
+                            let c = p.createVector(x + REZ * (threshold - valBL) / (valBR - valBL), y + REZ);
+                            let d = p.createVector(x, y + REZ * (threshold - valTL) / (valBL - valTL));
+
+                            switch (state) {
+                                case 1:  drawLine(c, d); break;
+                                case 2:  drawLine(b, c); break;
+                                case 3:  drawLine(b, d); break;
+                                case 4:  drawLine(a, b); break;
+                                case 5:  drawLine(a, d); drawLine(b, c); break;
+                                case 6:  drawLine(a, c); break;
+                                case 7:  drawLine(a, d); break;
+                                case 8:  drawLine(a, d); break;
+                                case 9:  drawLine(a, c); break;
+                                case 10: drawLine(a, b); drawLine(c, d); break;
+                                case 11: drawLine(a, b); break;
+                                case 12: drawLine(b, d); break;
+                                case 13: drawLine(b, c); break;
+                                case 14: drawLine(c, d); break;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        function getState(tl, tr, br, bl, t) {
+            return (tl >= t ? 8 : 0) + (tr >= t ? 4 : 0) + (br >= t ? 2 : 0) + (bl >= t ? 1 : 0);
+        }
+
+        function drawLine(v1, v2) {
+            p.line(v1.x, v1.y, v2.x, v2.y);
+        }
+
+        p.windowResized = function() {
+            let container = document.getElementById('geology-layer');
+            p.resizeCanvas(container.offsetWidth, container.offsetHeight);
+            p.cols = 1 + Math.ceil(p.width / REZ);
+            p.rows = 1 + Math.ceil(p.height / REZ);
+            for (let i = 0; i < p.cols; i++) {
+                field[i] = new Float32Array(p.rows);
+            }
+            // 窗口调整大小时重新生成一次静态图
+            generateGeology();
+        };
+    });
+</script>
+
+<script>
     /* 1. 定义 Worker 端点 (Endpoint) */
-    //    确保 ?db=posts 与你的 Cloudflare Worker 环境变量 (DB_POSTS) 对应
     const ENDPOINT = 'https://posts.airalinknowledge.workers.dev/?db=posts';
   
     /* 2. 安全转义 (Escape) HTML */
@@ -320,45 +652,30 @@
     )) : '';
   
     /* 3. 日期格式化 (Format Date) */
-    //    (e.g., "October 24, 2025")
     const fmtD2 = iso => {
       if (!iso) return '';
       try {
-        // 支持 YYYY-MM-DD 或 YYYY-MM-DDTHH:MM:SS...
         const datePart = iso.split('T')[0];
         const parts = datePart.split('-');
         if (parts.length < 1) return iso;
         const d = new Date(Date.UTC(parts[0], (parts[1] || 1) - 1, parts[2] || 1));
-        // 使用 month: 'long' 来显示完整月份
         return d.toLocaleDateString('en-US', { timeZone: 'UTC', year:'numeric', month:'long', day:'2-digit' });
       } catch { return iso; }
     };
   
     /* 4. 获取所有数据 (Fetch All) */
-    //    使用 ?all=1 来让 Worker 处理所有分页，前端只请求一次
     async function fetchAll() {
-      // 添加 &all=1, cache: 'no-store' 和时间戳
       const url = ENDPOINT + '&all=1&_=' + Date.now();
       const { items = [] } = await fetch(url, { cache: 'no-store' }).then(r => r.json());
       return items;
     }
   
     /* 5. 渲染卡片 (Render Card) */
-    //    这是一个辅助函数，用于生成单个 post 卡片的 HTML
-    //    它会读取 worker 返回的属性
     const renderPostCard = (x) => {
-      // 假设你的 Notion 数据库有以下列 (并已在 Worker 中正确映射):
-      // x.title (来自 Name)
-      // x.comment (来自 Comment -> 用作摘要)
-      // x.date (来自 Date)
-      // x.link (来自 Link -> e.g., 'survival.html')
-      // x.poster (来自 Poster -> 图像 URL)
-  
       const link = x.link ? esc(x.link) : '#';
-      const title = esc(x.title || 'Untitled Post'); // 确保 title 有回退
-      const excerpt = esc(x.comment); // 使用 comment 字段作为 excerpt
+      const title = esc(x.title || 'Untitled Post'); 
+      const excerpt = esc(x.comment); 
       const date = x.date ? esc(fmtD2(x.date)) : '';
-      // 优化：添加 alt, loading="lazy", decoding="async"
       const image = x.poster ? `<a href="${link}"><img src="${esc(x.poster)}" class="post-image" alt="${title}" loading="lazy" decoding="async"></a>` : '';
   
       return `
@@ -390,7 +707,6 @@
         }
   
         // 7. 按日期排序 (Sort by Date)
-        //    (确保 Notion 中的 'Date' 属性有数据)
         items.sort((a, b) => new Date(b.date || 0) - new Date(a.date || 0));
   
         // 8. 分配到左右两栏 (Distribute to Columns)
@@ -409,7 +725,6 @@
         rightCol.innerHTML = rightItems.map(renderPostCard).join('');
       })
       .catch(e => {
-        // 捕获错误 (Catch Errors)
         const container = document.getElementById('posts-container');
         const errorMsg = `<div class="paragraph">加载失败：${esc(String(e))}</div>`;
         if (container) {
@@ -420,16 +735,13 @@
         console.error(e);
       });
 
-    /* --- STEP 6: Added News Fetching Logic --- */
+    /* --- News Fetching Logic --- */
     async function fetchNews() {
       const url = 'https://posts.airalinknowledge.workers.dev/?db=news&all=1&publishedOnly=0&_=' + Date.now();
       const { items = [] } = await fetch(url, { cache: 'no-store' }).then(r => r.json());
-      // 后端已按 Date 降序，前端不再需要排序
-      // items.sort((a,b) => new Date(b.date||0) - new Date(a.date||0));
       return items;
     }
 
-    // [START] 替换为用户提供的正确版本
     const renderNewsItem = (x) => {
       let d = '';
 
@@ -450,13 +762,12 @@
 
       return `<div class="paragraph"><b>${esc(d)}:</b> ${body}${link}</div>`;
     };
-    // [END] 替换完成
 
     // 渲染 News
     fetchNews()
       .then(list => {
         const box = document.getElementById('news-list');
-        if (!box) return; // 这个检查现在应该能通过了
+        if (!box) return; 
         if (!list.length) {
           box.innerHTML = `<div class="paragraph" style="color:#888">No updates yet.</div>`;
           return;
@@ -468,7 +779,6 @@
         if (box) box.innerHTML = `<div class="paragraph" style="color:#a00">Load failed: ${esc(String(e))}</div>`;
         console.error(e);
       });
-    /* --- End of STEP 6 --- */
   </script>
 
 </body>
