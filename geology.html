@@ -497,7 +497,6 @@
     <div class="noise-overlay"></div>
     <div id="canvas-container"></div>
 
-    <!-- 导航栏 -->
     <nav class="top-nav">
         <a href="index.html" class="nav-logo">JUNTAO YANG</a>
         <ul class="nav-menu">
@@ -509,13 +508,11 @@
         </ul>
     </nav>
 
-    <!-- 深度UI -->
     <div class="side-ruler"><div class="ruler-cursor" id="ruler-cursor"></div></div>
     <div class="depth-ghost-readout">Z-AXIS: -<span id="depth-val">00.00</span>km</div>
 
     <div class="scroll-container">
         
-        <!-- 地层 I: Title (Left) -->
         <section class="stratum align-left">
             <div class="intro-box">
                 <span class="meta">PROJECT INDEX</span>
@@ -525,14 +522,12 @@
                 </div>
             </div>
             
-            <!-- [修改] 移出 .intro-box，独立居中 -->
             <div class="quote-box">
                 "An abstract, intellectual understanding of deep time comes easily enough — I know how many zeros to place after the 10 when I mean billions. Getting it into the gut is quite another matter. Deep time is so alien we can really only comprehend it as a metaphor."
                 <span class="quote-author">— Stephen Jay Gould, Time’s Arrow, Time’s Cycle</span>
             </div>
         </section>
 
-        <!-- 地层 II: Publications (Right) -->
         <section class="stratum align-right">
             
             <span class="meta">SECTION II: PUBLICATIONS</span>
@@ -540,7 +535,6 @@
             <div class="pub-section">
                 <div class="pub-group-title">PEER-REVIEWED ARTICLES</div>
                 
-                <!-- Article 1: Unlinked -->
                 <div class="pub-item" onclick="triggerRipple(event)">
                     <span class="pub-title">The Earth That Holds Us: The Geological Turn in Film and Media Studies</span>
                     <div class="pub-info">
@@ -552,9 +546,7 @@
                     </div>
                 </div>
 
-                <!-- Article 2: Linked -->
                 <div class="pub-item" onclick="triggerRipple(event)">
-                    <!-- [修改] 转换为链接 -->
                     <a href="https://juntaoyang.site/uploads/Juntao%20Yang_Materiality,%20Geoaesthetics%20and%20Planetary%20Futures_The%20Geology%20of%20Media%20in%20the%20Context%20of%20Anthropocene.pdf" target="_blank" class="pub-title">
                         Materiality, Geoaesthetics and Planetary Futures: The Geology of Media in the Context of Anthropocene
                     </a>
@@ -570,9 +562,7 @@
             <div class="pub-section">
                 <div class="pub-group-title">REVIEWS & ESSAYS</div>
                 
-                <!-- Marxt: Linked -->
                 <div class="pub-item" onclick="triggerRipple(event)">
-                    <!-- [修改] 转换为链接 -->
                     <a href="https://www.peopleoftheenvironment.org/blog/lukas-marxt-how-do-we-mediate-haunted-toxicity" target="_blank" class="pub-title">
                         Lukas Marxt: How Do We Mediate Haunted Toxicity?
                     </a>
@@ -582,7 +572,6 @@
                     </div>
                 </div>
 
-                <!-- Porous Words: Unlinked -->
                 <div class="pub-item" onclick="triggerRipple(event)">
                     <span class="pub-title">Porous Words, Stones from Other Tongues</span>
                     <div class="pub-info">
@@ -594,9 +583,7 @@
                     </div>
                 </div>
 
-                <!-- Light: Linked -->
                 <div class="pub-item" onclick="triggerRipple(event)">
-                    <!-- [修改] 转换为链接 -->
                     <a href="https://juntaoyang.site/uploads/light_and_cold_conversations_Juntao_Yang.pdf" target="_blank" class="pub-title">
                         Light and Cold Conversations: Digital Agency, Speculative Aesthetics, and Conspiracy Sympathizers
                     </a>
@@ -606,9 +593,7 @@
                     </div>
                 </div>
 
-                <!-- Sudden: Linked -->
                 <div class="pub-item" onclick="triggerRipple(event)">
-                    <!-- [修改] 转换为链接 -->
                     <a href="https://mp.weixin.qq.com/s/cdMjyF0wYb5q0NEMFrLtFQ" target="_blank" class="pub-title">
                         A Sudden Interruption: All Silence Is A Hidden Space
                     </a>
@@ -620,12 +605,10 @@
             </div>
         </section>
 
-        <!-- 地层 III: Ongoing Research (Left) -->
         <section class="stratum align-left">
             
             <span class="meta">SECTION III: ONGOING RESEARCH</span>
 
-            <!-- Project 1 -->
             <div class="research-block">
                 <span class="project-title" onclick="triggerRipple(event)">
                     An Unsettling Ground: Deep Now, Post-Wenchuan Documentary and The Making of Earthquake-Media
@@ -648,7 +631,6 @@
                 </ul>
             </div>
 
-            <!-- Project 2 -->
             <div class="research-block">
                 <span class="project-title" onclick="triggerRipple(event)">
                     Mediating Elemental Ghosts: Media Archaeology as Planetary Sorcery
@@ -662,14 +644,26 @@
             </div>
         </section>
 
-        <!-- 地层 IV: Artworks (Center) -->
-        <section class="stratum align-center">
+        <section class="stratum align-right" style="min-height: auto; padding-top: 0; padding-bottom: 2rem;">
+            <span class="meta">SECTION: TEACHING</span>
+            <div class="pub-section">
+                 <div class="pub-item" onclick="triggerRipple(event)">
+                    <a href="/syllabus.html" class="pub-title">
+                        Texture of the Earth and Skin We're In: Geological Thinking, Anthropocene Cinema, and the Imaginations Beyond Humanbeing
+                    </a>
+                    <div class="pub-info">
+                        Radiance Academy, online, 2024
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="stratum align-center" style="justify-content: flex-start; padding-top: 2rem;">
             <span class="meta">SECTION IV: ARTWORKS</span>
             
             <div class="project-grid">
                 <a href="https://juntaoyang.site/you-can-hardly-see.html" target="_blank" class="art-card" onclick="triggerRipple(event)">
                     <div class="art-preview">
-                        <!-- [修改] 绝对路径 -->
                         <img src="https://img.juntaoyang.site/%E4%BD%A0%E5%BE%88%E9%9A%BE%E7%9C%8B%E8%A7%81....png" alt="You Can Hardly See">
                     </div>
                     <div class="art-info">
@@ -680,7 +674,6 @@
 
                 <a href="https://juntaoyang.site/light-and-cold-conversation-atlantic-algorithmic-and-visibility.html" target="_blank" class="art-card" onclick="triggerRipple(event)">
                     <div class="art-preview">
-                        <!-- [修改] 绝对路径 -->
                         <img src="https://juntaoyang.site/uploads/yuanzikongjian24.jpg" alt="Light and Cold Conversation">
                     </div>
                     <div class="art-info">
@@ -691,7 +684,6 @@
 
                 <a href="https://juntaoyang.site/naked-wounds-and-the-abandoned.html" target="_blank" class="art-card" onclick="triggerRipple(event)">
                     <div class="art-preview">
-                        <!-- [修改] 绝对路径 -->
                         <img src="https://juntaoyang.site/uploads/innovart.jpg" alt="Naked Wounds and the Abandoned">
                     </div>
                     <div class="art-info">
@@ -702,7 +694,6 @@
             </div>
         </section>
 
-        <!-- 底部 -->
         <section class="stratum align-center" style="min-height: 40vh;">
             <div style="opacity: 0.5; font-family: var(--font-mono); font-size: 0.8rem;">END OF ARCHIVE</div>
         </section>

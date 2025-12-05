@@ -11,6 +11,9 @@
     <link rel="icon" type="image/png" href="/favicon.png">
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
 
+    <!-- 引入 P5.js 用于绘制地质等高线 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+
     <!-- ============================================== -->
     <!-- [START] V12 方案：临时背景接力 + 自毁机制 -->
     <style>
@@ -92,20 +95,18 @@
 <link href='http://cdn2.editmysite.com/fonts/Amaranth/font.css?2' rel='stylesheet' type='text/css' />
 <link href='http://cdn2.editmysite.com/fonts/Cabin/font.css?2' rel='stylesheet' type='text/css' />
 
-<!-- [START] 注入：美学升级补丁 (V4 - 深岩蓝 + 磨砂质感) -->
+<!-- [START] 注入：美学升级补丁 (V9 - 静态定格极高性能版) -->
 <style>
     /* --- 0. 变量定义 --- */
     :root {
         --font-serif: "Times New Roman", "Songti SC", "SimSun", serif;
         --font-mono: "Courier New", "Courier", monospace;
         
-        /* [核心修改] 色彩系统：更低明度，更强质感 */
-        --bg-paper: #f4f4f2;    /* 稍微灰一点的米白，配合磨砂 */
-        --text-ink: #1e1e1e;    /* 极深灰，接近黑 */
+        --bg-paper: #f4f4f2;    /* 米白 */
+        --text-ink: #1e1e1e;    /* 极深灰 */
         --text-meta: #5c5c5c;   /* 中灰 */
         
-        /* [核心修改] 强调色：深岩蓝 / 普鲁士蓝 */
-        /* 不再是普通的蓝色，而是一种像矿石或墨水一样的深蓝灰色 */
+        /* 深岩蓝 / 普鲁士蓝 */
         --accent-slate: #3A4B5C; 
         
         --line-light: #d1d1d1;
@@ -119,16 +120,35 @@
         color: var(--text-ink) !important;
     }
 
-    /* [核心修改] 磨砂纹理层 (Matte Texture) */
-    /* 增加了 opacity，调整了 frequency，让颗粒感更细腻、更明显 */
+    /* [核心修改 1] 磨砂层提权与减淡 */
     .noise-overlay {
         position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-        /* 使用 fractalNoise 模拟纸张纤维或岩石表面 */
-        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-        opacity: 0.08; /* 提高一点可见度，制造“磨砂”感 */
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        opacity: 0.09; 
         pointer-events: none;
-        z-index: -1;
-        mix-blend-mode: multiply; /* 混合模式，让纹理融入背景色 */
+        z-index: 50; /* 最顶层 */
+        mix-blend-mode: multiply; 
+    }
+
+    /* [核心修改 2] 地质层提权与可见性 */
+    #geology-layer {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 45vw; /* 占据右侧约 45% */
+        height: 100vh;
+        z-index: 40; /* 仅次于磨砂层 */
+        pointer-events: none;
+        opacity: 0.8; 
+        mix-blend-mode: multiply; 
+        /* CSS遮罩：让线条在左侧柔和消失 */
+        mask-image: linear-gradient(to right, transparent 0%, black 60%);
+        -webkit-mask-image: linear-gradient(to right, transparent 0%, black 60%);
+    }
+
+    /* 移动端隐藏等高线，保证阅读清晰 */
+    @media (max-width: 768px) {
+        #geology-layer { display: none; }
     }
 
     /* --- 2. 文本样式升级 --- */
@@ -167,7 +187,7 @@
     /* 板块标题 (Education, Awards, etc) */
     .paragraph font[size="5"] { 
         font-family: var(--font-mono) !important;
-        font-size: 16px !important; /* [修改] 从 14px 增大到 16px */
+        font-size: 16px !important; 
         text-transform: uppercase;
         letter-spacing: 2px;
         font-weight: bold;
@@ -176,7 +196,7 @@
         display: block;
         margin-top: 40px !important; 
         margin-bottom: 10px !important;
-        color: var(--accent-slate); /* 标题也使用深岩蓝，统一色调 */
+        color: var(--accent-slate); 
         opacity: 0.8;
     }
     
@@ -201,18 +221,17 @@
         display: block;
     }
 
-    /* [核心修改] 链接样式：深岩蓝 + 质感 */
+    /* 链接样式 */
     .main-content-column a {
         color: var(--text-ink) !important;
         text-decoration: none !important;
-        /* 默认状态下划线颜色很浅，像铅笔痕迹 */
         border-bottom: 1px solid rgba(58, 75, 92, 0.2); 
         transition: all 0.3s ease;
     }
 
     .main-content-column a:hover {
-        color: var(--accent-slate) !important; /* 深岩蓝文字 */
-        border-bottom-color: var(--accent-slate); /* 深岩蓝下划线 */
+        color: var(--accent-slate) !important; 
+        border-bottom-color: var(--accent-slate); 
         background: transparent !important; 
     }
     
@@ -245,7 +264,7 @@
         opacity: 1;
     }
     
-    /* [核心修改] 导航栏：深岩蓝下划线 */
+    /* 导航栏 */
     .wsite-menu-default a {
         font-family: var(--font-mono) !important;
         font-size: 13px !important;
@@ -254,9 +273,8 @@
         transition: color 0.3s ease;
     }
     .wsite-menu-default a:hover, #active a {
-        color: var(--accent-slate) !important; /* 文字变深 */
+        color: var(--accent-slate) !important;
         background: transparent !important;
-        /* 下划线：不再是高亮，而是稳重 */
         border-bottom: 2px solid var(--accent-slate); 
     }
 
@@ -419,6 +437,9 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 	</head>
 	<body class="no-header-page  wsite-page-projects wsite-theme-light">
     
+    <!-- 地质层：等高线 -->
+    <div id="geology-layer"></div>
+
     <!-- 噪点纹理层 -->
     <div class="noise-overlay"></div>
 
@@ -601,7 +622,7 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
                     </div>
                     <div class="main-content-column main-content-area">
                       <div class="paragraph">
-                     <font size="4">Juntao Yang is a critic, curator, and artist.</font><br /><br />
+                     <font size="4">Juntao Yang is a scholar, critic, and artist.</font><br /><br />
                         <font size="4">Yang's critical writings and artistic practices focus on the traces of the operations of micro power in the specific field of visual and material culture, the visible or invisible conflicts and violence in daily existence, and the organization and fluid of the proxy of power. Yang is committed to resorting to Speech, sometimes hysterically, counteracts the silent power of ideology and the pervasive political apathy. Yang's current research focuses on planetary cinema and geological thinking, as well as toxicity and catastrophe media. Yang is currently based in New York and Nanjing.<br /></font>
                       </div>
                       <div class="section-gap"></div>
@@ -935,7 +956,133 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
     });
 </script>
 <!-- [END] 封面遮罩层控制脚本 -->
+
 <!-- ============================================== -->
+<!-- [START] Geology P5 Script (克制版等高线 - 静态定格极高性能版) -->
+<script>
+    new p5(function(p) {
+        let cols, rows;
+        let field = [];
+        const REZ = 8; // 分辨率
+        const ACCENT_COLOR = p.color(58, 75, 92); // #3A4B5C 深岩蓝
+        
+        p.setup = function() {
+            let container = document.getElementById('geology-layer');
+            let w = container.offsetWidth;
+            let h = container.offsetHeight;
+            let cnv = p.createCanvas(w, h);
+            cnv.parent('geology-layer');
+            
+            // [关键优化] 停止循环，只渲染一次！彻底释放CPU
+            p.noLoop();
+            
+            p.cols = 1 + Math.ceil(w / REZ);
+            p.rows = 1 + Math.ceil(h / REZ);
+            
+            for (let i = 0; i < p.cols; i++) {
+                field[i] = new Float32Array(p.rows);
+            }
+            
+            p.strokeJoin(p.ROUND);
+            p.noFill();
+            
+            // 执行一次性绘制
+            generateGeology();
+        };
+
+        function generateGeology() {
+            p.clear();
+            
+            // 静态的随机偏移量，每次刷新都不一样，但生成后静止
+            let zOff = p.random(100); 
+
+            // 生成噪点场
+            for (let i = 0; i < p.cols; i++) {
+                for (let j = 0; j < p.rows; j++) {
+                    let x = i * REZ;
+                    let y = j * REZ;
+                    // 放大比例，让线条更舒缓
+                    let val = p.noise(x * 0.003, y * 0.003, zOff);
+                    field[i][j] = val;
+                }
+            }
+
+            // 绘制等高线 - 既然是静态图，可以保持极高画质
+            p.strokeWeight(1.4); // 线条粗细
+            let numIsolines = 90; // 极高密度
+            
+            for (let i = 0; i < p.cols - 1; i++) {
+                for (let j = 0; j < p.rows - 1; j++) {
+                    let x = i * REZ;
+                    let y = j * REZ;
+                    
+                    let valTL = field[i][j];
+                    let valTR = field[i+1][j];
+                    let valBR = field[i+1][j+1];
+                    let valBL = field[i][j+1];
+
+                    let minLvl = Math.floor(Math.min(valTL, valTR, valBR, valBL) * numIsolines);
+                    let maxLvl = Math.floor(Math.max(valTL, valTR, valBR, valBL) * numIsolines);
+
+                    if (maxLvl > minLvl) {
+                        for (let k = minLvl + 1; k <= maxLvl; k++) {
+                            let threshold = k / numIsolines;
+                            
+                            // 动态透明度：越靠右越深，左侧淡出
+                            let alpha = p.map(i, 0, p.cols, 0, 40); 
+                            ACCENT_COLOR.setAlpha(alpha);
+                            p.stroke(ACCENT_COLOR);
+
+                            let state = getState(valTL, valTR, valBR, valBL, threshold);
+                            let a = p.createVector(x + REZ * (threshold - valTL) / (valTR - valTL), y);
+                            let b = p.createVector(x + REZ, y + REZ * (threshold - valTR) / (valBR - valTR));
+                            let c = p.createVector(x + REZ * (threshold - valBL) / (valBR - valBL), y + REZ);
+                            let d = p.createVector(x, y + REZ * (threshold - valTL) / (valBL - valTL));
+
+                            switch (state) {
+                                case 1:  drawLine(c, d); break;
+                                case 2:  drawLine(b, c); break;
+                                case 3:  drawLine(b, d); break;
+                                case 4:  drawLine(a, b); break;
+                                case 5:  drawLine(a, d); drawLine(b, c); break;
+                                case 6:  drawLine(a, c); break;
+                                case 7:  drawLine(a, d); break;
+                                case 8:  drawLine(a, d); break;
+                                case 9:  drawLine(a, c); break;
+                                case 10: drawLine(a, b); drawLine(c, d); break;
+                                case 11: drawLine(a, b); break;
+                                case 12: drawLine(b, d); break;
+                                case 13: drawLine(b, c); break;
+                                case 14: drawLine(c, d); break;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        function getState(tl, tr, br, bl, t) {
+            return (tl >= t ? 8 : 0) + (tr >= t ? 4 : 0) + (br >= t ? 2 : 0) + (bl >= t ? 1 : 0);
+        }
+
+        function drawLine(v1, v2) {
+            p.line(v1.x, v1.y, v2.x, v2.y);
+        }
+
+        p.windowResized = function() {
+            let container = document.getElementById('geology-layer');
+            p.resizeCanvas(container.offsetWidth, container.offsetHeight);
+            p.cols = 1 + Math.ceil(p.width / REZ);
+            p.rows = 1 + Math.ceil(p.height / REZ);
+            for (let i = 0; i < p.cols; i++) {
+                field[i] = new Float32Array(p.rows);
+            }
+            // 窗口调整大小时重新生成一次静态图
+            generateGeology();
+        };
+    });
+</script>
+<!-- [END] Geology P5 Script -->
 
 </body>
 </html>
