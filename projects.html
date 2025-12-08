@@ -84,10 +84,8 @@
             border-bottom: 2px solid var(--accent-slate); 
         }
 
-        /* --- 4. 标题样式 --- */
-        
-        /* 默认样式 (移动端) */
-        h2, .wsite-content-title {
+        /* --- 4. 大标题样式 (PROJECTS) --- */
+        #projects-page-title {
             font-family: var(--font-serif) !important;
             font-weight: normal !important;
             letter-spacing: 2px !important;
@@ -97,13 +95,14 @@
             padding-bottom: 0px !important;
             color: var(--text-ink) !important;
             text-align: left;
+            font-size: 32px !important; 
         }
 
-        /* 桌面端大标题样式 - 强制放大至 100px */
         @media screen and (min-width: 768px) {
-            h2, .wsite-content-title {
-                font-size: 100px !important;
-                line-height: 1.1 !important; 
+            #projects-page-title {
+                /* [调整] 稍微减小大标题字号，并收紧行高 */
+                font-size: 90px !important;
+                line-height: 1.0 !important; 
                 letter-spacing: 5px !important;
                 margin-top: 20px !important;
             }
@@ -165,13 +164,15 @@
             line-height: 1.6;
         }
 
-        /* [修改] 项目标题加大 */
+        /* [调整] 项目标题：字号适中，行距收紧 */
         .project-title {
             font-family: var(--font-serif);
-            font-size: 2.2rem; /* 加大字体 */
-            line-height: 1.2;
+            /* 1.9rem 约等于 30px，比之前 38px 小，比默认 16px 大 */
+            font-size: 1.9rem !important; 
+            /* 收紧行间距，防止多行时太散 */
+            line-height: 1.1 !important; 
             color: var(--text-ink);
-            margin-bottom: 20px;
+            margin-bottom: 15px; /* 下方间距也稍微收紧 */
             font-weight: bold;
             transition: color 0.3s ease; 
         }
@@ -198,7 +199,6 @@
             transition: box-shadow 0.3s ease;
         }
         
-        /* 图片特效：默认灰度+模糊 */
         .project-visual img {
             width: 100%;
             height: 100%;
@@ -208,7 +208,6 @@
             mix-blend-mode: normal; 
         }
 
-        /* 悬停特效：清晰+彩色+放大 */
         .project-card:hover .project-visual img {
             filter: grayscale(0%) contrast(1.1) brightness(1.05) blur(0px);
             transform: scale(1.03);
@@ -223,6 +222,7 @@
             .project-info { flex: none; width: 100%; padding-right: 0; padding-top: 25px; }
             .project-visual { flex: none; width: 100%; height: 220px; }
             .soft-separator { margin: 40px 0; }
+            .project-title { font-size: 1.6rem !important; }
         }
     </style>
 
@@ -282,7 +282,7 @@
 
                                     <div class="wsite-spacer" style="height:50px;"></div>
 
-                                    <h2 class="wsite-content-title">PROJECTS</h2>
+                                    <h2 class="wsite-content-title" id="projects-page-title">PROJECTS</h2>
                                     
                                     <div class="wsite-spacer" style="height:100px;"></div>
 
