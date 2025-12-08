@@ -266,6 +266,28 @@
     width: 100px; 
     margin: 80px auto; 
 }
+
+/* [新增] 移动端专属样式：强制小字体 */
+@media screen and (max-width: 767px) {
+    .writing-section-title {
+        font-size: 20px !important; /* 强制缩小 Section 标题 */
+        margin-bottom: 25px !important;
+    }
+    .writing-title {
+        font-size: 16px !important; /* 强制缩小条目标题，与正文(16px)一致 */
+        line-height: 1.5 !important;
+    }
+    .writing-details {
+        font-size: 14px !important; /* 强制缩小细节信息 */
+        padding-left: 0 !important; /* 移动端取消缩进以节省空间 */
+    }
+    .writings-body {
+        padding: 0 10px !important;
+    }
+    .writing-entry {
+        margin-bottom: 30px !important;
+    }
+}
 </style>
 <style>
 /* 覆盖旧背景 */
