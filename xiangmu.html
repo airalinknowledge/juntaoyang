@@ -7,6 +7,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <!-- [新增] 引入 P5.js 库 (与创作页面保持一致) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
 		
 		<link id="wsite-base-style" rel="stylesheet" type="text/css" href="http://cdn2.editmysite.com/css/sites.css?buildTime=1234" />
 <link rel="stylesheet" type="text/css" href="http://cdn2.editmysite.com/css/old/fancybox.css?1234" />
@@ -18,6 +20,106 @@
 <link href='http://cdn2.editmysite.com/fonts/Cardo/font.css?2' rel='stylesheet' type='text/css' />
 <link href='http://cdn2.editmysite.com/fonts/Amaranth/font.css?2' rel='stylesheet' type='text/css' />
 <link href='http://cdn2.editmysite.com/fonts/Cabin/font.css?2' rel='stylesheet' type='text/css' />
+
+<!-- [START] 注入：美学升级补丁 (V9 - 静态定格极高性能版) - 与创作页面一致 -->
+<style>
+    /* --- 0. 变量定义 --- */
+    :root {
+        --font-serif: "Times New Roman", "Songti SC", "SimSun", serif;
+        --font-mono: "Courier New", "Courier", monospace;
+        
+        --bg-paper: #f4f4f2;    /* 米白 */
+        --text-ink: #1e1e1e;    /* 极深灰 */
+        --text-meta: #5c5c5c;   /* 中灰 */
+        
+        /* 深岩蓝 / 普鲁士蓝 */
+        --accent-slate: #3A4B5C; 
+        
+        --line-light: #d1d1d1;
+    }
+
+    /* --- 1. 全局字体与背景重置 --- */
+    /* 强制覆盖所有背景，确保纸张颜色可见 */
+    body, #wrapper, .wsite-background {
+        font-family: var(--font-serif) !important;
+        background-color: var(--bg-paper) !important;
+        background-image: none !important; /* 去掉原有背景图 */
+        color: var(--text-ink) !important;
+    }
+
+    /* [核心修改 1] 磨砂层 */
+    .noise-overlay {
+        position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        opacity: 0.09; 
+        pointer-events: none;
+        z-index: 999; /* 放在极高层级，覆盖一切 */
+        mix-blend-mode: multiply; 
+    }
+
+    /* [核心修改 2] 地质层 */
+    #geology-layer {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 45vw; /* 占据右侧约 45% */
+        height: 100vh;
+        z-index: 50; /* 仅次于磨砂层，但在内容之上 */
+        pointer-events: none;
+        opacity: 0.8; 
+        mix-blend-mode: multiply; 
+        /* CSS遮罩：让线条在左侧柔和消失 */
+        mask-image: linear-gradient(to right, transparent 0%, black 60%);
+        -webkit-mask-image: linear-gradient(to right, transparent 0%, black 60%);
+    }
+
+    /* 移动端隐藏等高线，保证阅读清晰 */
+    @media (max-width: 768px) {
+        #geology-layer { display: none; }
+    }
+
+    /* --- 2. 文本样式升级 --- */
+    .paragraph, p, div, h2, h3, .wsite-content-title {
+        font-family: var(--font-serif) !important;
+        color: var(--text-ink) !important;
+    }
+
+    /* 标题：安静、学术 */
+    h2, .wsite-content-title {
+        font-weight: normal !important;
+        letter-spacing: 2px !important;
+        text-transform: uppercase !important;
+        margin-bottom: 2rem !important;
+        border-bottom: 1px solid var(--line-light); 
+        padding-bottom: 10px;
+    }
+
+    /* 链接样式 */
+    a {
+        color: var(--text-ink) !important;
+        text-decoration: none !important;
+        transition: all 0.3s ease;
+    }
+
+    a:hover {
+        color: var(--accent-slate) !important; 
+    }
+    
+    /* 导航栏 */
+    .wsite-menu-default a {
+        font-family: var(--font-mono) !important;
+        font-size: 13px !important;
+        letter-spacing: 1px !important;
+        color: var(--text-meta) !important;
+    }
+    .wsite-menu-default a:hover, #active a {
+        color: var(--accent-slate) !important;
+        background: transparent !important;
+        border-bottom: 2px solid var(--accent-slate); 
+    }
+</style>
+<!-- [END] 美学升级补丁 -->
+
 <style type='text/css'>
 .wsite-elements.wsite-not-footer:not(.wsite-header-elements) div.paragraph, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) p, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-block .product-title, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-description, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .wsite-form-field label, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .wsite-form-field label, #wsite-content div.paragraph, #wsite-content p, #wsite-content .product-block .product-title, #wsite-content .product-description, #wsite-content .wsite-form-field label, #wsite-content .wsite-form-field label, .blog-sidebar div.paragraph, .blog-sidebar p, .blog-sidebar .wsite-form-field label, .blog-sidebar .wsite-form-field label {font-family:"Georgia" !important;}
 #wsite-content div.paragraph, #wsite-content p, #wsite-content .product-block .product-title, #wsite-content .product-description, #wsite-content .wsite-form-field label, #wsite-content .wsite-form-field label, .blog-sidebar div.paragraph, .blog-sidebar p, .blog-sidebar .wsite-form-field label, .blog-sidebar .wsite-form-field label {}
@@ -65,16 +167,13 @@
 .wsite-product .wsite-product-price a {}
 }
 </style>
-<!-- 新增样式：限制正文内容宽度 -->
+<!-- 限制正文内容宽度 (保留原项目页面的排版优化) -->
 <style>
-    /* 限制正文内容区域宽度，增加两侧留白 */
     .main-content-area {
-        max-width: 90%; /* 可以调整这个值来改变内容宽度 */
+        max-width: 90%; 
         margin-left: 0%;
         margin-right: 10%;
     }
-
-    /* 针对移动设备，取消宽度限制，让内容全宽显示 */
     @media screen and (max-width: 767px) {
         .main-content-area {
             max-width: 100%;
@@ -82,8 +181,9 @@
     }
 </style>
 <style>
-.wsite-background {background-image: url("/uploads/1/4/8/1/148137552/background-images/1199586110.jpg") !important;background-repeat: no-repeat !important;background-position: 50% 50% !important;background-size: 100% !important;background-color: transparent !important;background: inherit;}
-body.wsite-background {background-attachment: fixed !important;}.wsite-background.wsite-custom-background{ background-size: cover !important}
+/* 覆盖旧背景 */
+.wsite-background {background-image: none !important; background-color: transparent !important;}
+body.wsite-background {background-attachment: fixed !important;}
 </style>
 		<script src='files/templateArtifacts.js?1712751521'></script>
 <script>
@@ -136,7 +236,13 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 		
 		
 	</head>
-	<body class="no-header-page  wsite-page-xiangmu wsite-theme-light"><div id="wrapper">
+	<body class="no-header-page  wsite-page-xiangmu wsite-theme-light">
+    
+    <!-- [新增] 地质层与磨砂层 -->
+    <div id="geology-layer"></div>
+    <div class="noise-overlay"></div>
+
+    <div id="wrapper">
 
 	<div id="navigation">
     <div id="navigation-wrap">
@@ -208,7 +314,7 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
   	<div id="content-wrapper">
       <div id="wsite-content" class="wsite-elements wsite-not-footer">
 	<div class="wsite-section-wrap">
-	<div class="wsite-section wsite-body-section wsite-background-19 wsite-custom-background"  >
+	<div class="wsite-section wsite-body-section wsite-background-19 wsite-custom-background" style="height: auto;" >
 		<div class="wsite-section-content">
         <div class="container">
 			<div class="wsite-section-elements">
@@ -242,10 +348,8 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 <div class="main-content-area">
 <h2 class="wsite-content-title">&#39033;&#30446;</h2>
 
-
-<div><div style="height: 20px; overflow: hidden; width: 100%;"></div>
-<hr class="styled-hr" style="width:100%;"></hr>
-<div style="height: 20px; overflow: hidden; width: 100%;"></div></div>
+<!-- [优化] 去掉冗余的 hr 块，仅保留内容间隔 -->
+<div><div style="height: 20px; overflow: hidden; width: 100%;"></div></div>
 
 <div class="paragraph"><a href="kajiemiaoCN.html" target="_blank"><font color="#2a2a2a"><strong><font size="4">神圣信仰与局部战争之间的免疫学：</br>科学 - 天主教殖民主义，西南少数民族的跨物种想象与中国卡介苗</font></strong><br /><font size="3">2024 - 至今</font></font></a><br /><br /></div>
 
@@ -279,6 +383,132 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
     <div id="customer-accounts-app"></div>
     <script src="http://cdn2.editmysite.com/js/site/main-customer-accounts-site.js?buildTime=1234"></script>
 
+<!-- ============================================== -->
+<!-- [START] Geology P5 Script (克制版等高线 - 静态定格极高性能版) -->
+<script>
+    new p5(function(p) {
+        let cols, rows;
+        let field = [];
+        const REZ = 8; // 分辨率
+        const ACCENT_COLOR = p.color(58, 75, 92); // #3A4B5C 深岩蓝
+        
+        p.setup = function() {
+            let container = document.getElementById('geology-layer');
+            let w = container.offsetWidth;
+            let h = container.offsetHeight;
+            let cnv = p.createCanvas(w, h);
+            cnv.parent('geology-layer');
+            
+            // [关键优化] 停止循环，只渲染一次！彻底释放CPU
+            p.noLoop();
+            
+            p.cols = 1 + Math.ceil(w / REZ);
+            p.rows = 1 + Math.ceil(h / REZ);
+            
+            for (let i = 0; i < p.cols; i++) {
+                field[i] = new Float32Array(p.rows);
+            }
+            
+            p.strokeJoin(p.ROUND);
+            p.noFill();
+            
+            // 执行一次性绘制
+            generateGeology();
+        };
+
+        function generateGeology() {
+            p.clear();
+            
+            // 静态的随机偏移量，每次刷新都不一样，但生成后静止
+            let zOff = p.random(100); 
+
+            // 生成噪点场
+            for (let i = 0; i < p.cols; i++) {
+                for (let j = 0; j < p.rows; j++) {
+                    let x = i * REZ;
+                    let y = j * REZ;
+                    // 放大比例，让线条更舒缓
+                    let val = p.noise(x * 0.003, y * 0.003, zOff);
+                    field[i][j] = val;
+                }
+            }
+
+            // 绘制等高线 - 既然是静态图，可以保持极高画质
+            p.strokeWeight(1.4); // 线条粗细
+            let numIsolines = 90; // 极高密度
+            
+            for (let i = 0; i < p.cols - 1; i++) {
+                for (let j = 0; j < p.rows - 1; j++) {
+                    let x = i * REZ;
+                    let y = j * REZ;
+                    
+                    let valTL = field[i][j];
+                    let valTR = field[i+1][j];
+                    let valBR = field[i+1][j+1];
+                    let valBL = field[i][j+1];
+
+                    let minLvl = Math.floor(Math.min(valTL, valTR, valBR, valBL) * numIsolines);
+                    let maxLvl = Math.floor(Math.max(valTL, valTR, valBR, valBL) * numIsolines);
+
+                    if (maxLvl > minLvl) {
+                        for (let k = minLvl + 1; k <= maxLvl; k++) {
+                            let threshold = k / numIsolines;
+                            
+                            // 动态透明度：越靠右越深，左侧淡出
+                            let alpha = p.map(i, 0, p.cols, 0, 40); 
+                            ACCENT_COLOR.setAlpha(alpha);
+                            p.stroke(ACCENT_COLOR);
+
+                            let state = getState(valTL, valTR, valBR, valBL, threshold);
+                            let a = p.createVector(x + REZ * (threshold - valTL) / (valTR - valTL), y);
+                            let b = p.createVector(x + REZ, y + REZ * (threshold - valTR) / (valBR - valTR));
+                            let c = p.createVector(x + REZ * (threshold - valBL) / (valBR - valBL), y + REZ);
+                            let d = p.createVector(x, y + REZ * (threshold - valTL) / (valBL - valTL));
+
+                            switch (state) {
+                                case 1:  drawLine(c, d); break;
+                                case 2:  drawLine(b, c); break;
+                                case 3:  drawLine(b, d); break;
+                                case 4:  drawLine(a, b); break;
+                                case 5:  drawLine(a, d); drawLine(b, c); break;
+                                case 6:  drawLine(a, c); break;
+                                case 7:  drawLine(a, d); break;
+                                case 8:  drawLine(a, d); break;
+                                case 9:  drawLine(a, c); break;
+                                case 10: drawLine(a, b); drawLine(c, d); break;
+                                case 11: drawLine(a, b); break;
+                                case 12: drawLine(b, d); break;
+                                case 13: drawLine(b, c); break;
+                                case 14: drawLine(c, d); break;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        function getState(tl, tr, br, bl, t) {
+            return (tl >= t ? 8 : 0) + (tr >= t ? 4 : 0) + (br >= t ? 2 : 0) + (bl >= t ? 1 : 0);
+        }
+
+        function drawLine(v1, v2) {
+            p.line(v1.x, v1.y, v2.x, v2.y);
+        }
+
+        p.windowResized = function() {
+            let container = document.getElementById('geology-layer');
+            p.resizeCanvas(container.offsetWidth, container.offsetHeight);
+            p.cols = 1 + Math.ceil(p.width / REZ);
+            p.rows = 1 + Math.ceil(p.height / REZ);
+            for (let i = 0; i < p.cols; i++) {
+                field[i] = new Float32Array(p.rows);
+            }
+            // 窗口调整大小时重新生成一次静态图
+            generateGeology();
+        };
+    });
+</script>
+<!-- [END] Geology P5 Script -->
 		
 	</body>
 </html>

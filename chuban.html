@@ -70,7 +70,8 @@
 <style>
     /* --- 0. 变量定义 --- */
     :root {
-        --font-serif: "Times New Roman", "Songti SC", "SimSun", serif;
+        /* [修改] 统一字体变量，与 guanyu.html 保持一致 */
+        --font-serif: "Georgia", "Songti SC", "SimSun", "Times New Roman", serif;
         --font-mono: "Courier New", "Courier", monospace;
         
         --bg-paper: #f4f4f2;    /* 米白 */
@@ -179,15 +180,15 @@
         color: var(--accent-slate) !important;
     }
     
-    /* [修复] 导航栏 - 恢复为 Cardo (非打字机风格) */
+    /* [修改] 导航栏 - 统一与 guanyu.html 一致 */
     .wsite-menu-default a {
-        font-family: "Cardo", serif !important; /* 恢复 Cardo */
-        font-size: 14px !important; /* 恢复 14px */
-        letter-spacing: 2px !important; /* 恢复 2px */
+        font-family: var(--font-serif) !important; /* 统一使用衬线字体 */
+        font-size: 14px !important;
+        letter-spacing: 2px !important;
         color: var(--text-meta) !important;
-        text-transform: uppercase !important; 
-        border-bottom: none; /* 导航栏不需要默认下划线 */
-        transition: color 0.3s ease; 
+        transition: color 0.3s ease;
+        text-transform: uppercase !important;
+        border-bottom: none;
     }
     .wsite-menu-default a:hover, #active a {
         color: var(--accent-slate) !important;
@@ -443,7 +444,7 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 <div class="wsite-spacer" style="height:50px;"></div>
 
 <h2 class="wsite-content-title">出版</h2>
-<div><div style="height: 20px; overflow: hidden; width: 100%;"></div><hr class="styled-hr" style="width:100%;"></hr><div style="height: 20px; overflow: hidden; width: 100%;"></div></div>
+<!-- [修改] 移除了此处多余的横线代码 -->
 <div class="wsite-spacer" style="height:40px;"></div>
 
 <div class="writings-body">
@@ -470,12 +471,12 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
     <div class="writing-section">
         <h3 class="writing-section-title">评论写作</h3>
         <div class="writing-entry">
-            <p class="writing-title">Lukas Marxt: How Do We Mediate Haunted Toxicity?</p>
+            <p class="writing-title"><a href="https://www.peopleoftheenvironment.org/blog/lukas-marxt-how-do-we-mediate-haunted-toxicity" target="_blank">Lukas Marxt: How Do We Mediate Haunted Toxicity?</a></p>
             <p class="writing-details">Edge Effects, 2026</p>
         </div>
         <div class="writing-entry">
-            <p class="writing-title">A Defense of Obscurity, or Stones from Other Hills: Translating Judith Butler</p>
-            <p class="writing-details">Gadfly, 2025</p>
+            <p class="writing-title"><a href="/uploads/gadfly_Juntao_stones.pdf" target="_blank">A Defense of Obscurity, or Stones from Other Hills: Translating Judith Butler</a></p>
+            <p class="writing-details">Gadfly, 2025<br>Earlier version also seen in <em>Journal of Experimental Practice</em>, 2025</p>
         </div>
         <div class="writing-entry">
             <p class="writing-title"><a href="/uploads/JuntaoYang_Stepping_Through_Cures_and_Curses_How_the_Traces_of_Herb_Scattering_Breathing_and_Memorizing_Mediate_Collective_Trauma_and_Public_Healing.pdf#page=39">Stepping Through Cures/Curses, or Herbary: Co-respiration (2023)</a></p>
@@ -501,7 +502,16 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
         <h3 class="writing-section-title">会议展示</h3>
 
         <div class="writing-entry">
-            <p class="writing-title"><em>Hunting the Sensibles: Performing Anthropology Across Media</em> [多学科工作坊]</p>
+            <p class="writing-title"><em>An Unsettling Ground: Deep Now, Post-Wenchuan Documentary and The Making of Earthquake-Media</em> [口头报告]</p>
+            <p class="writing-details">
+            - 电影与媒介研究学会 (SCMS) 2026年会, 芝加哥, 美国, 2026/3/26 - 3/29<br>
+            - 第29届哈佛东亚协会年会, 哈佛大学, 美国, 2026/2/13 - 2/14<br>
+            - Zoom-In 2026, 电影与媒介研究, 哥伦比亚大学, 美国, 2026/2/6 - 2/7<br>
+            - <a href="https://arts.columbia.edu/events/futurities-ii-transnational-exchange-chinese-and-american-film-and-media-theories">"Futurities II: The Transnational Exchange of Chinese and American Film and Media Theories"</a>, 哥伦比亚大学, 美国, 2025/8/27</p>
+        </div>
+
+        <div class="writing-entry">
+            <p class="writing-title"><em><a href="/uploads/aaa-2025-annual-meeting-ghosts-full-program.pdf#page=787" target="_blank">Hunting the Sensibles: Performing Anthropology Across Media</a></em> [多学科工作坊]</p>
             <p class="writing-details">- 2025 美国人类学协会年会, 新奥尔良, 美国, 2025/11/21</p>
         </div>
         
@@ -527,7 +537,7 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 - <a href="/uploads/[ABSTRACT]_SEAA-SNU_Anthropology_2025_in_Seoul.pdf#page=105">SEAA-SNU 人类学2025会议 "塑造未来：作为实践的东亚"</a>, 首尔大学, 韩国, 2025/7/14-7/16<br>
 - <a href="https://voices.uchicago.edu/failingmedia/" target="_blank">第20届电影与媒介研究研究生年会 "Failing Media"</a>, 芝加哥大学, 美国, 2025/4/25-4/26<br>
 - "Mediated Futures" 研究生跨学科会议, 加州大学尔湾分校, 美国, 2025/4/25 - 4/27<br>
-- <a href="https://voices.uchicago.edu/failingmedia/" target="_blank">Common Ground 研究生会议 "Media Studies in/at/form The Margins"</a>, 印第安纳大学伯明顿分校, 美国, 2025/3/7 - 3/8<br>
+- <a href="https://iucommonground.github.io/" target="_blank">Common Ground 研究生会议 "Media Studies in/at/form The Margins"</a>, 印第安纳大学伯明顿分校, 美国, 2025/3/7 - 3/8<br>
 - <a href="https://tisch.nyu.edu/cinema-studies/events/spring-2025/student-conference.html">2025 纽约大学电影研究学生会议 "Templates"</a>, 纽约大学, 美国, 2025/2/28 - 3/1</p>
         </div>
 
@@ -547,7 +557,7 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
             <p class="writing-title chinese-title">“媒介物质性的新视角：人类世语境下的地质学电影批评” [口头报告（部分）]</p>
             <p class="writing-details">（修订后发表为 “物质性，地质美学与行星未来：人类世语境下的媒介地质学”）<br>
             - 北京国际电影节·第32届大学生电影节 第六届国际青年学者论坛，北京师范大学，中国，2025/4<br>
-            - 第六届媒介物质性论坛，清华大学，中国，2025/3/29-3/30<br>
+            - <a href="/uploads/media_materiality.pdf" target="_blank">第六届媒介物质性论坛</a>，清华大学，中国，2025/3/29-3/30<br>
             - 2024中国东部传媒艺术论坛，南京大学，中国，2024/12/14<br>
             - “全球共通：数字时代的共同体想象 ”学术大会暨2024 年浙江省传播学会年会，浙大宁波理工学院，中国，2024/12/13 - 12/14<br>
             - 第十二届海峡两岸生态文学年会暨后人类语境下的生态批评与生态文学研讨会，集美大学，中国，2024/10/11 - 10/13</p>
