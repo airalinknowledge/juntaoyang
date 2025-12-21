@@ -503,7 +503,7 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 					
 						
 
-<div class="paragraph" style="text-align:left;"><font size="3"><strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</strong><strong>English</strong>&nbsp; &nbsp; &nbsp; &nbsp;<font color="#2a2a2a">&nbsp;</font><u><a href="fabu.html"><font color="#2a2a2a">中文</font></a></u><br />&#8203;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;juntao.yang@columbia.edu</a></font></div>
+<div class="paragraph" style="text-align:left;"><font size="3"><strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</strong><strong>English</strong>&nbsp; &nbsp; &nbsp; &nbsp;<font color="#2a2a2a">&nbsp;</font><u><a href="fabu.html"><font color="#2a2a2a">中文</font></a></u><br />&#8203;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;juntao.yang@columbia.edu</a></a></font></div>
 
 
 					
@@ -583,7 +583,7 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
   </div>
 
 </div>
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="text/javascript" src="files/theme/plugins.js"></script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="text/javascript" src="files/theme/plugins.js"></script>
 <script type="text/javascript" src="files/theme/custom.js"></script>
 <script type="text/javascript" src="files/theme/mobile.js"></script>
 <div id="customer-accounts-app"></div>
@@ -840,10 +840,20 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
         const box = document.getElementById('news-list');
         if (!box) return; 
         if (!list.length) {
-          box.innerHTML = `<div class="paragraph" style="color:#888">No updates yet.</div>`;
+          box.innerHTML = '<div class="paragraph" style="font-style:italic; color:var(--text-meta);">暂无新闻。</div>';
           return;
         }
+        // 按日期排序
+        list.sort((a, b) => new Date(b.date || b.dateRange?.start || 0) - new Date(a.date || a.dateRange?.start || 0));
         box.innerHTML = list.map(renderNewsItem).join('');
       })
       .catch(e => {
-        c
+        const box = document.getElementById('news-list');
+        if (box) {
+          box.innerHTML = '<div class="paragraph" style="color:var(--text-meta);">新闻加载失败。</div>';
+        }
+        console.error('News fetch error:', e);
+      });
+</script>
+</body>
+</html>
