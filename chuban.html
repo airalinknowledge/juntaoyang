@@ -22,7 +22,6 @@
 <link href='http://cdn2.editmysite.com/fonts/Cardo/font.css?2' rel='stylesheet' type='text/css' />
 <link href='http://cdn2.editmysite.com/fonts/Amaranth/font.css?2' rel='stylesheet' type='text/css' />
 <link href='http://cdn2.editmysite.com/fonts/Cabin/font.css?2' rel='stylesheet' type='text/css' />
-
 <style type='text/css'>
 .wsite-elements.wsite-not-footer:not(.wsite-header-elements) div.paragraph, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) p, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-block .product-title, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-description, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .wsite-form-field label, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .wsite-form-field label, #wsite-content div.paragraph, #wsite-content p, #wsite-content .product-block .product-title, #wsite-content .product-description, #wsite-content .wsite-form-field label, #wsite-content .wsite-form-field label, .blog-sidebar div.paragraph, .blog-sidebar p, .blog-sidebar .wsite-form-field label, .blog-sidebar .wsite-form-field label {font-family:"Georgia" !important;}
 #wsite-content div.paragraph, #wsite-content p, #wsite-content .product-block .product-title, #wsite-content .product-description, #wsite-content .wsite-form-field label, #wsite-content .wsite-form-field label, .blog-sidebar div.paragraph, .blog-sidebar p, .blog-sidebar .wsite-form-field label, .blog-sidebar .wsite-form-field label {}
@@ -70,7 +69,6 @@
 .wsite-product .wsite-product-price a {}
 }
 </style>
-
 <style>
     /* --- 0. 变量定义 --- */
     :root {
@@ -184,7 +182,19 @@
         color: var(--accent-slate) !important;
     }
     
-    /* [修复] 导航栏 - 依赖上方原生代码，这里只做微调 */
+    /* [修复] 导航栏 - 严格同步 Artworks 样式 */
+    /* 彻底删除了之前的 Courier New 强制覆盖规则，改为 Cardo/Serif */
+    .wsite-menu-default a {
+        font-family: "Cardo", "Songti SC", "SimSun", serif !important; 
+        font-size: 14px !important; 
+        letter-spacing: 2px !important; 
+        color: var(--text-meta) !important;
+        text-transform: uppercase !important;
+        border-bottom: none; 
+        transition: color 0.3s ease;
+    }
+    
+    /* 仅在悬停和当前激活项下显示下划线 (Border) */
     .wsite-menu-default a:hover, #active a {
         color: var(--accent-slate) !important;
         background: transparent !important;
