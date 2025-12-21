@@ -183,19 +183,23 @@
     }
     
     /* [修复] 导航栏 - 强制统一字体样式 (Courier New) 以匹配其他页面 */
-    /* 解决 CSS 权重问题：使用 !important 覆盖 Weebly 自动生成的样式 */
-    .wsite-menu-default a {
-        font-family: var(--font-mono) !important;
+    /* 解决方案：移除CSS变量 + 提高选择器特异性，确保覆盖Weebly默认样式 */
+    body .wsite-menu-default a,
+    #wrapper .wsite-menu-default a {
+        font-family: "Courier New", "Courier", monospace !important;
         font-size: 13px !important;
         letter-spacing: 1px !important;
-        color: var(--text-meta) !important;
+        color: #5c5c5c !important;
         text-transform: none !important; /* 覆盖 Weebly 默认的大写设置 */
     }
     
-    .wsite-menu-default a:hover, #active a {
-        color: var(--accent-slate) !important;
+    body .wsite-menu-default a:hover,
+    body #active a,
+    #wrapper .wsite-menu-default a:hover,
+    #wrapper #active a {
+        color: #3A4B5C !important;
         background: transparent !important;
-        border-bottom: 2px solid var(--accent-slate); 
+        border-bottom: 2px solid #3A4B5C !important;
     }
     
     /* 分隔线优化 */
@@ -431,7 +435,7 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 					
 						
 
-<div class="paragraph" style="text-align:left;"><font size="3"><strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</strong><u><a href="writings.html"><font color="#2a2a2a">English</font></a></u>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<strong>&#20013;&#25991;</strong><br />&#8203;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;juntao.yang@columbia.edu</font></div>
+<div class="paragraph" style="text-align:left;"><font size="3"><strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</strong><u><a href="writings.html"><font color="#2a2a2a">English</font></a></u>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<strong>&#20013;&#25991;</strong><br />&#8203;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b3d9c6ddc7d2dc9dcad2ddd4f3d0dcdfc6ded1dad29dd6d7c6">[email&#160;protected]</a></font></div>
 
 
 					
@@ -611,7 +615,7 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
   </div>
 
 </div>
-<script type="text/javascript" src="files/theme/plugins.js"></script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="text/javascript" src="files/theme/plugins.js"></script>
 <script type="text/javascript" src="files/theme/custom.js"></script>
 <script type="text/javascript" src="files/theme/mobile.js"></script>
     <div id="customer-accounts-app"></div>
@@ -731,13 +735,3 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
             let container = document.getElementById('geology-layer');
             p.resizeCanvas(container.offsetWidth, container.offsetHeight);
             p.cols = 1 + Math.ceil(p.width / REZ);
-            p.rows = 1 + Math.ceil(p.height / REZ);
-            for (let i = 0; i < p.cols; i++) {
-                field[i] = new Float32Array(p.rows);
-            }
-            generateGeology();
-        };
-    });
-</script>
-</body>
-</html>

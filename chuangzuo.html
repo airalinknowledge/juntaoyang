@@ -25,7 +25,7 @@
 <style>
     /* --- 0. 变量定义 --- */
     :root {
-        --font-serif: "Times New Roman", "Songti SC", "SimSun", serif;
+        --font-serif: "Georgia", "Songti SC", "SimSun", "Times New Roman", serif;
         --font-mono: "Courier New", "Courier", monospace;
         
         --bg-paper: #f4f4f2;    /* 米白 */
@@ -47,24 +47,24 @@
         color: var(--text-ink) !important;
     }
 
-    /* [核心修改 1] 磨砂层 */
+    /* [核心修改 1] 磨砂层提权与减淡 */
     .noise-overlay {
         position: fixed; top: 0; left: 0; width: 100%; height: 100%;
         background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
         opacity: 0.09; 
         pointer-events: none;
-        z-index: 999; /* 放在极高层级，覆盖一切 */
+        z-index: 50; /* 最顶层 */
         mix-blend-mode: multiply; 
     }
 
-    /* [核心修改 2] 地质层 */
+    /* [核心修改 2] 地质层提权与可见性 */
     #geology-layer {
         position: fixed;
         top: 0;
         right: 0;
         width: 45vw; /* 占据右侧约 45% */
         height: 100vh;
-        z-index: 50; /* 仅次于磨砂层，但在内容之上(视情况而定，这里设为50可能盖住内容，建议 pointer-events: none) */
+        z-index: 40; /* 仅次于磨砂层 */
         pointer-events: none;
         opacity: 0.8; 
         mix-blend-mode: multiply; 
@@ -79,19 +79,23 @@
     }
 
     /* --- 2. 文本样式升级 --- */
-    .paragraph, p, div, h2, h3, .wsite-content-title {
+    .paragraph, p, div {
         font-family: var(--font-serif) !important;
+        line-height: 1.8 !important;
+        font-size: 16px !important;
         color: var(--text-ink) !important;
     }
 
-    /* 标题：安静、学术 */
+    /* 标题：安静、学术 - 同步去掉下划线 */
     h2, .wsite-content-title {
+        font-family: var(--font-serif) !important;
         font-weight: normal !important;
         letter-spacing: 2px !important;
         text-transform: uppercase !important;
         margin-bottom: 2rem !important;
-        /* border-bottom: 1px solid var(--line-light);  <-- 已移除底边框 */
-        padding-bottom: 10px;
+        border-bottom: none !important; /* 移除下划线 */
+        padding-bottom: 0px !important;
+        color: var(--text-ink) !important;
     }
 
     /* 链接样式 */
@@ -105,17 +109,42 @@
         color: var(--accent-slate) !important; 
     }
     
-    /* 导航栏 */
-    .wsite-menu-default a {
-        font-family: var(--font-mono) !important;
-        font-size: 13px !important;
-        letter-spacing: 1px !important;
-        color: var(--text-meta) !important;
+    /* 移除段落内u标签的下划线（用于右侧导航栏和中英文切换） */
+    .paragraph u { text-decoration: none !important; }
+
+    /* --- 3. 布局与间距 --- */
+    .main-content-area {
+        width: 98% !important;
+        max-width: 900px !important; 
+        margin: 0 auto !important; 
     }
-    .wsite-menu-default a:hover, #active a {
-        color: var(--accent-slate) !important;
+
+    /* 同步 artworks.html 的辅助线样式 */
+    .decorative-hr {
+        border: none;
+        height: 1px;
+        background-color: #ccc;
+        width: 100px; 
+        margin: 80px auto; /* 上下留白 */
+    }
+    
+    /* 导航栏 - 强制Georgia字体，提高气质感 */
+    /* 解决方案：移除CSS变量 + 提高选择器特异性，确保覆盖Weebly默认的Cardo字体 */
+    body .wsite-menu-default a,
+    #wrapper .wsite-menu-default a {
+        font-family: "Georgia", "Songti SC", "SimSun", "Times New Roman", serif !important;
+        font-size: 14px !important;
+        letter-spacing: 2px !important;
+        color: #5c5c5c !important;
+        transition: color 0.3s ease;
+    }
+    body .wsite-menu-default a:hover,
+    body #active a,
+    #wrapper .wsite-menu-default a:hover,
+    #wrapper #active a {
+        color: #3A4B5C !important;
         background: transparent !important;
-        border-bottom: 2px solid var(--accent-slate); 
+        border-bottom: 2px solid #3A4B5C !important;
     }
 </style>
 <!-- [END] 美学升级补丁 -->
@@ -377,7 +406,7 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 					
 						
 
-<div class="paragraph" style="text-align:left;"><font size="3"><strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</strong><u><a href="artworks.html"><font color="#2a2a2a">English</font></a></u>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<strong>中文</strong><br />&#8203;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;juntao.yang@columbia.edu</font></div>
+<div class="paragraph" style="text-align:left;"><font size="3"><strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</strong><u><a href="artworks.html"><font color="#2a2a2a">English</font></a></u>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<strong>中文</strong><br />&#8203;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="751f001b01141a5b0c141b1235161a190018171c145b101100">[email&#160;protected]</a></font></div>
 
 
 					
@@ -405,6 +434,7 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 
 <!-- ******** 以下是修改的作品列表部分 ******** -->
 <div class="artworks-container">
+    <div><div style="height: 20px; overflow: hidden; width: 100%;"></div><hr class="styled-hr" style="width:100%;"></hr><div style="height: 20px; overflow: hidden; width: 100%;"></div></div>
     <!-- 作品 1: 图片在左 -->
     <div class="artwork-item-new">
         <div class="artwork-image-new">
@@ -518,7 +548,7 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
   </div>
 
 </div>
-<script type="text/javascript" src="files/theme/plugins.js"></script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="text/javascript" src="files/theme/plugins.js"></script>
 <script type="text/javascript" src="files/theme/custom.js"></script>
 <script type="text/javascript" src="files/theme/mobile.js"></script>
     <div id="customer-accounts-app"></div>
@@ -642,14 +672,3 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
             p.cols = 1 + Math.ceil(p.width / REZ);
             p.rows = 1 + Math.ceil(p.height / REZ);
             for (let i = 0; i < p.cols; i++) {
-                field[i] = new Float32Array(p.rows);
-            }
-            // 窗口调整大小时重新生成一次静态图
-            generateGeology();
-        };
-    });
-</script>
-<!-- [END] Geology P5 Script -->
-		
-	</body>
-</html>
