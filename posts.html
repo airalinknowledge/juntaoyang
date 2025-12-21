@@ -103,6 +103,30 @@
         padding-bottom: 0px !important;
         color: var(--text-ink) !important;
     }
+    
+    /* --- 新增：大标题样式 (与 Writings/Projects 保持一致) --- */
+    #posts-page-title {
+        font-family: var(--font-serif) !important;
+        font-weight: normal !important;
+        letter-spacing: 2px !important;
+        text-transform: uppercase !important;
+        margin-bottom: 2rem !important;
+        border-bottom: none !important;
+        padding-bottom: 0px !important;
+        color: var(--text-ink) !important;
+        text-align: left;
+        /* 移动端默认 */
+        font-size: 32px !important; 
+    }
+
+    @media screen and (min-width: 768px) {
+        #posts-page-title {
+            font-size: 100px !important;
+            line-height: 75px !important; 
+            letter-spacing: 2px !important;
+        }
+    }
+
 
     /* --- 3. 布局与间距 --- */
     .main-content-area {
@@ -451,7 +475,7 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 
 <div>
     <div style="height: 50px; overflow: hidden; width: 100%;"></div>
-    <h2 class="wsite-content-title" style="text-align:left;">Posts</h2>
+    <h2 class="wsite-content-title" id="posts-page-title" style="text-align:left;">Posts</h2>
     <div style="height: 20px; overflow: hidden; width: 100%;"></div>
     <hr class="styled-hr" style="width:100%;"></hr>
     <div style="height: 20px; overflow: hidden; width: 100%;"></div>

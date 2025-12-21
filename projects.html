@@ -95,16 +95,17 @@
             padding-bottom: 0px !important;
             color: var(--text-ink) !important;
             text-align: left;
+            /* 移动端默认 */
             font-size: 32px !important; 
         }
 
         @media screen and (min-width: 768px) {
             #projects-page-title {
-                /* [调整] 稍微减小大标题字号，并收紧行高 */
-                font-size: 90px !important;
-                line-height: 1.0 !important; 
-                letter-spacing: 5px !important;
-                margin-top: 20px !important;
+                /* [调整] 这里的参数已修正，与 Writings 页面保持完全一致 */
+                font-size: 100px !important;
+                line-height: 75px !important; 
+                letter-spacing: 2px !important;
+                /* margin-top: 20px !important;  <-- 移除此行，消除位置偏差 */
             }
         }
 

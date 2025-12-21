@@ -7,7 +7,6 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- [新增] 引入 P5.js 库 -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
 
   <script type="text/javascript">
@@ -26,11 +25,10 @@
   <link href="https://cdn2.editmysite.com/fonts/Amaranth/font.css?2" rel="stylesheet" type="text/css" />
   <link href="https://cdn2.editmysite.com/fonts/Cabin/font.css?2" rel="stylesheet" type="text/css" />
 
-  <!-- [START] 注入：美学升级补丁 (V9 - 静态定格极高性能版) -->
   <style>
     /* --- 0. 变量定义 --- */
     :root {
-        --font-serif: "Times New Roman", "Songti SC", "SimSun", serif;
+        --font-serif: "Georgia", "Songti SC", "SimSun", serif; /* [修改] 优先使用 Georgia 匹配 chuban */
         --font-mono: "Courier New", "Courier", monospace;
         
         --bg-paper: #f4f4f2;    /* 米白 */
@@ -89,14 +87,23 @@
         color: var(--text-ink) !important;
     }
 
-    /* 标题：安静、学术 */
+    /* [修改] 标题样式：完全匹配 chuban.html 的大字号风格 */
     h2, .wsite-content-title {
+        font-family: "Georgia", serif !important; /* 强制 Georgia */
         font-weight: normal !important;
-        letter-spacing: 2px !important;
+        letter-spacing: 5px !important; /* 增大字间距 */
         text-transform: uppercase !important;
-        margin-bottom: 2rem !important;
-        border-bottom: 1px solid var(--line-light); 
-        padding-bottom: 10px;
+        margin-bottom: 0 !important; /* 由 Spacer 控制间距 */
+        border-bottom: none !important; /* 去掉下划线 */
+        padding-bottom: 0 !important;
+    }
+
+    /* [新增] 桌面端强制大字号 (100px) */
+    @media screen and (min-width: 767px) {
+        h2, .wsite-content-title {
+            font-size: 100px !important;
+            line-height: 75px !important;
+        }
     }
 
     /* 链接样式 */
@@ -123,8 +130,6 @@
         border-bottom: 2px solid var(--accent-slate); 
     }
   </style>
-  <!-- [END] 美学升级补丁 -->
-
   <style type="text/css">
     /* Copied styles from your site - keeping specific overrides */
     .wsite-elements.wsite-not-footer:not(.wsite-header-elements) div.paragraph, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) p, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-block .product-title, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-description, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .wsite-form-field label, #wsite-content div.paragraph, #wsite-content p, #wsite-content .product-block .product-title, #wsite-content .product-description, #wsite-content .wsite-form-field label, .blog-sidebar div.paragraph, .blog-sidebar p, .blog-sidebar .wsite-form-field label {font-family:"Georgia" !important;}
@@ -230,7 +235,6 @@
 
 <body class="no-header-page  wsite-page-index wsite-theme-light">
   
-  <!-- [新增] 地质层与磨砂层 -->
   <div id="geology-layer"></div>
   <div class="noise-overlay"></div>
 
@@ -297,12 +301,9 @@
                       </div>
                     </div>
                     
-                    <div>
-                        <div style="height: 50px; overflow: hidden; width: 100%;"></div>
-                        <h2 class="wsite-content-title" style="text-align:left;">发布</h2>
-                        <!-- [修改] 去除了这里原本多余的 hr 和间距块 -->
-                        <div style="height: 20px; overflow: hidden; width: 100%;"></div>
-                    </div>
+                    <div class="wsite-spacer" style="height:50px;"></div>
+                    <h2 class="wsite-content-title">发布</h2>
+                    <div class="wsite-spacer" style="height:100px;"></div>
                     <div class="paragraph" style="text-align:left; font-style:italic; color:#555;">
                         此页面包含我最近的更新和一些写作片段。这些内容可能是临时的、未经深思熟虑的、非正式的——现在尚未发表，也许永远不会。
                         <br><br>
@@ -318,31 +319,22 @@
                             <tr class="wsite-multicol-tr">
                               <td class="wsite-multicol-col posts-column" style="width:75%; padding:0 15px; vertical-align: top;">
                                 
-                                <!-- [START] Dynamic Posts Container -->
                                 <div class="posts-two-col" id="posts-container" aria-live="polite">
                                   <div class="posts-left" id="posts-left">
-                                      <!-- Static content removed, will be filled by JS -->
-                                  </div>
+                                      </div>
                                   <div class="posts-right" id="posts-right">
-                                      <!-- Static content removed, will be filled by JS -->
-                                  </div>
+                                      </div>
                                 </div>
-                                <!-- [END] Dynamic Posts Container -->
-                                
-                              </td>
+                                </td>
 
                               <td class="wsite-multicol-col news-column" style="width:25%; padding:0 15px; vertical-align: top;">
                                 <div class="separator-wrapper">
                                   <div class="news-section">
                                     <div class="paragraph"><u><font size="4">消息</font></u></div>
                                     
-                                    <!-- [START] Dynamic News List -->
                                     <div id="news-list">
-                                      <!-- Static content removed, will be filled by JS -->
+                                      </div>
                                     </div>
-                                    <!-- [END] Dynamic News List -->
-
-                                  </div>
                                 </div>
                               </td>
                             </tr>
@@ -367,7 +359,6 @@
   <script type="text/javascript" src="files/theme/custom.js"></script>
   <script type="text/javascript" src="files/theme/mobile.js"></script>
 
-  <!-- [START] Dynamic Content Script (Localized for Chinese) -->
   <script>
     /* 1. 定义 Worker 端点 (Endpoint) */
     const ENDPOINT = 'https://posts.airalinknowledge.workers.dev/?db=posts';
@@ -511,11 +502,7 @@
         console.error(e);
       });
   </script>
-  <!-- [END] Dynamic Content Script -->
-
-<!-- ============================================== -->
-<!-- [START] Geology P5 Script (克制版等高线 - 静态定格极高性能版) -->
-<script>
+  <script>
     new p5(function(p) {
         let cols, rows;
         let field = [];
@@ -638,7 +625,5 @@
         };
     });
 </script>
-<!-- [END] Geology P5 Script -->
-
 </body>
 </html>

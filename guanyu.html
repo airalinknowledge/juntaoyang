@@ -156,6 +156,7 @@
     }
 
     /* --- 3. 布局与间距 --- */
+    /* 注意：此处的 max-width: 900px 将会被下方的 !important 样式覆盖，从而实现 index.html 的全宽效果 */
     .main-content-area {
         width: 98% !important;
         max-width: 900px !important; 
@@ -312,6 +313,69 @@
 #wsite-content h2.wsite-product-title {}
 .wsite-product .wsite-product-price a {}
 }</style>
+<style>
+    /* 使用 !important 强制覆盖所有默认样式 (此处添加了 index.html 中的强制样式) */
+    .main-content-area {
+        width: 98% !important; 
+        max-width: 100% !important; 
+        margin-left: 0 !important;
+        margin-right: 0 !important; 
+        padding-right: 2% !important; 
+        box-sizing: border-box !important; 
+    }
+
+    @media screen and (max-width: 767px) {
+        .main-content-area {
+            width: 100% !important;
+            padding-right: 10px !important;
+        }
+    }
+
+/* 正文区域：链接颜色继承正文颜色 */
+.main-content-column a,
+.main-content-column a:visited,
+.main-content-column a:hover,
+.main-content-column a:active {
+  color: inherit !important;
+}
+
+.main-content-column a * { color: inherit !important; }
+.main-content-column font[color] { color: inherit !important; }
+
+.main-content-column a {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.main-content-column a:hover { text-decoration-thickness: 2px; }
+
+/* 展开/收缩按钮美化 */
+.toggle-btn {
+    background: none;
+    border: none;
+    padding: 10px 0;
+    margin-top: 5px;
+    font-family: "Georgia", serif;
+    font-size: 16px;
+    color: #666;
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    transition: color 0.3s ease, opacity 0.3s ease;
+    outline: none;
+}
+
+.toggle-btn:hover {
+    color: #000;
+    opacity: 0.8;
+}
+
+/* 板块间距控制 */
+.section-gap {
+    height: 10px; /* Modified from 25px */
+    width: 100%;
+    clear: both;
+}
+</style>
 <style>
     /* 覆盖背景 */
     .wsite-background {background-image: none !important; background-color: #f9f9f7 !important;}

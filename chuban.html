@@ -7,10 +7,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- 引入 P5.js 用于绘制地质等高线 -->
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
-		
-		<link id="wsite-base-style" rel="stylesheet" type="text/css" href="http://cdn2.editmysite.com/css/sites.css?buildTime=1234" />
+
+    <link id="wsite-base-style" rel="stylesheet" type="text/css" href="http://cdn2.editmysite.com/css/sites.css?buildTime=1234" />
 <link rel="stylesheet" type="text/css" href="http://cdn2.editmysite.com/css/old/fancybox.css?1234" />
 <link rel="stylesheet" type="text/css" href="http://cdn2.editmysite.com/css/social-icons.css?buildtime=1234" media="screen,projection" />
 <link rel="stylesheet" type="text/css" href="files/main_style.css?1714489767" title="wsite-theme-css" />
@@ -180,16 +182,16 @@
         color: var(--accent-slate) !important;
     }
     
-    /* [修改] 导航栏 - 统一与 guanyu.html 一致 */
+    /* [修复] 导航栏 - 强制统一字体样式 (Courier New) 以匹配其他页面 */
+    /* 解决 CSS 权重问题：使用 !important 覆盖 Weebly 自动生成的样式 */
     .wsite-menu-default a {
-        font-family: var(--font-serif) !important; /* 统一使用衬线字体 */
-        font-size: 14px !important;
-        letter-spacing: 2px !important;
+        font-family: var(--font-mono) !important;
+        font-size: 13px !important;
+        letter-spacing: 1px !important;
         color: var(--text-meta) !important;
-        transition: color 0.3s ease;
-        text-transform: uppercase !important;
-        border-bottom: none;
+        text-transform: none !important; /* 覆盖 Weebly 默认的大写设置 */
     }
+    
     .wsite-menu-default a:hover, #active a {
         color: var(--accent-slate) !important;
         background: transparent !important;
@@ -202,13 +204,16 @@
         opacity: 0.5;
     }
 
-    /* 原有 chuban.html 样式适配 */
+    /* [核心比例修复 - 匹配 writings.html 英文版格调] */
     .writings-body {
-        max-width: 900px;
-        margin: 0 auto;
-        padding: 0 15px;
-        font-family: "Georgia", serif !important;
+        max-width: 900px !important; /* 恢复为 900px */
+        width: auto !important;
+        margin: 0 auto !important; /* 居中 */
+        padding: 0 15px !important; /* 两侧留白 */
+        box-sizing: border-box !important; 
+        font-family: var(--font-serif) !important;
     }
+
     .writing-section {
         margin-bottom: 0;
     }
@@ -217,7 +222,7 @@
         font-weight: normal;
         letter-spacing: 1px;
         margin-bottom: 50px;
-        font-family: "Georgia", serif !important;
+        font-family: var(--font-serif) !important;
         text-align: center;
         border-bottom: none;
         padding-bottom: 0;
@@ -233,7 +238,7 @@
         font-style: italic;
         margin-bottom: 8px;
         line-height: 1.5;
-        font-family: "Georgia", serif !important;
+        font-family: var(--font-serif) !important;
     }
     .writing-title a {
         text-decoration: none;
@@ -249,7 +254,7 @@
         color: #555;
         line-height: 1.7;
         padding-left: 25px;
-        font-family: "Georgia", serif !important;
+        font-family: var(--font-serif) !important;
     }
     .writing-details a {
         text-decoration: underline;
@@ -273,8 +278,12 @@
         font-style: normal !important;
     }
     
-    /* [新增] 移动端专属样式：强制小字体 */
+    /* [新增] 移动端专属样式：强制小字体与全宽 */
     @media screen and (max-width: 767px) {
+        .writings-body {
+            width: 100% !important;
+            padding-right: 10px !important;
+        }
         .writing-section-title {
             font-size: 20px !important; /* 强制缩小 Section 标题 */
             margin-bottom: 25px !important;
@@ -286,9 +295,6 @@
         .writing-details {
             font-size: 14px !important; /* 强制缩小细节信息 */
             padding-left: 0 !important; /* 移动端取消缩进以节省空间 */
-        }
-        .writings-body {
-            padding: 0 10px !important;
         }
         .writing-entry {
             margin-bottom: 30px !important;
@@ -444,8 +450,7 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 <div class="wsite-spacer" style="height:50px;"></div>
 
 <h2 class="wsite-content-title">出版</h2>
-<!-- [修改] 移除了此处多余的横线代码 -->
-<div class="wsite-spacer" style="height:40px;"></div>
+<div class="wsite-spacer" style="height:100px;"></div>
 
 <div class="writings-body">
 
@@ -660,7 +665,7 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
                 }
             }
 
-            // 绘制等高线 - 既然是静态图，可以保持极高画质
+            // 绘制等高线
             p.strokeWeight(1.4); // 线条粗细
             let numIsolines = 90; // 极高密度
             
@@ -730,7 +735,6 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
             for (let i = 0; i < p.cols; i++) {
                 field[i] = new Float32Array(p.rows);
             }
-            // 窗口调整大小时重新生成一次静态图
             generateGeology();
         };
     });
