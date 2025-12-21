@@ -21,9 +21,9 @@
 <link href='http://cdn2.editmysite.com/fonts/Amaranth/font.css?2' rel='stylesheet' type='text/css' />
 <link href='http://cdn2.editmysite.com/fonts/Cabin/font.css?2' rel='stylesheet' type='text/css' />
 
-<!-- [START] 注入：美学升级补丁 (V9 - 静态定格极高性能版) -->
+<!-- [START] 注入：美学升级补丁 (V9 - 已对齐 guanyu.html) -->
 <style>
-    /* --- 0. 变量定义 --- */
+    /* --- 0. 变量定义 (与 guanyu.html 完全一致) --- */
     :root {
         --font-serif: "Georgia", "Songti SC", "SimSun", "Times New Roman", serif;
         --font-mono: "Courier New", "Courier", monospace;
@@ -39,46 +39,44 @@
     }
 
     /* --- 1. 全局字体与背景重置 --- */
-    /* 强制覆盖所有背景，确保纸张颜色可见 */
     body, #wrapper, .wsite-background {
         font-family: var(--font-serif) !important;
         background-color: var(--bg-paper) !important;
-        background-image: none !important; /* 去掉原有背景图 */
+        background-image: none !important; 
         color: var(--text-ink) !important;
     }
 
-    /* [核心修改 1] 磨砂层提权与减淡 */
+    /* [核心修改 1] 磨砂层 */
     .noise-overlay {
         position: fixed; top: 0; left: 0; width: 100%; height: 100%;
         background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
         opacity: 0.09; 
         pointer-events: none;
-        z-index: 50; /* 最顶层 */
+        z-index: 50; 
         mix-blend-mode: multiply; 
     }
 
-    /* [核心修改 2] 地质层提权与可见性 */
+    /* [核心修改 2] 地质层 */
     #geology-layer {
         position: fixed;
         top: 0;
         right: 0;
-        width: 45vw; /* 占据右侧约 45% */
+        width: 45vw; 
         height: 100vh;
-        z-index: 40; /* 仅次于磨砂层 */
+        z-index: 40; 
         pointer-events: none;
         opacity: 0.8; 
         mix-blend-mode: multiply; 
-        /* CSS遮罩：让线条在左侧柔和消失 */
         mask-image: linear-gradient(to right, transparent 0%, black 60%);
         -webkit-mask-image: linear-gradient(to right, transparent 0%, black 60%);
     }
 
-    /* 移动端隐藏等高线，保证阅读清晰 */
     @media (max-width: 768px) {
         #geology-layer { display: none; }
     }
 
     /* --- 2. 文本样式升级 --- */
+    /* 强制统一所有段落字体大小和行高，对齐 guanyu.html */
     .paragraph, p, div {
         font-family: var(--font-serif) !important;
         line-height: 1.8 !important;
@@ -86,15 +84,15 @@
         color: var(--text-ink) !important;
     }
 
-    /* 标题：安静、学术 - 同步去掉下划线 */
+    /* 标题样式：对齐 guanyu.html (带下划线，大写，间距一致) */
     h2, .wsite-content-title {
         font-family: var(--font-serif) !important;
         font-weight: normal !important;
         letter-spacing: 2px !important;
         text-transform: uppercase !important;
         margin-bottom: 2rem !important;
-        border-bottom: none !important; /* 移除下划线 */
-        padding-bottom: 0px !important;
+        border-bottom: none !important; /* [修改] 移除下划线 */
+        padding-bottom: 10px !important;
         color: var(--text-ink) !important;
     }
 
@@ -119,32 +117,94 @@
         margin: 0 auto !important; 
     }
 
-    /* 同步 artworks.html 的辅助线样式 */
     .decorative-hr {
         border: none;
         height: 1px;
         background-color: #ccc;
         width: 100px; 
-        margin: 80px auto; /* 上下留白 */
+        margin: 80px auto; 
     }
     
-    /* 导航栏 - 强制Georgia字体，提高气质感 */
-    /* 解决方案：移除CSS变量 + 提高选择器特异性，确保覆盖Weebly默认的Cardo字体 */
-    body .wsite-menu-default a,
-    #wrapper .wsite-menu-default a {
-        font-family: "Georgia", "Songti SC", "SimSun", "Times New Roman", serif !important;
+    /* --- 4. 导航栏 (严格对齐 guanyu.html) --- */
+    .wsite-menu-default a {
+        font-family: var(--font-serif) !important;
         font-size: 14px !important;
         letter-spacing: 2px !important;
-        color: #5c5c5c !important;
+        color: var(--text-meta) !important;
         transition: color 0.3s ease;
     }
-    body .wsite-menu-default a:hover,
-    body #active a,
-    #wrapper .wsite-menu-default a:hover,
-    #wrapper #active a {
-        color: #3A4B5C !important;
+    /* 悬停和选中状态 */
+    .wsite-menu-default a:hover,
+    #active a {
+        color: var(--accent-slate) !important;
         background: transparent !important;
-        border-bottom: 2px solid #3A4B5C !important;
+        border-bottom: 2px solid var(--accent-slate) !important;
+    }
+
+    /* --- 5. 作品列表特定样式 (保留自 chuangzuo.html) --- */
+    .artworks-container {
+        padding-top: 0px; 
+    }
+    .artwork-item-new {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        margin-bottom: 20px; 
+    }
+    .artwork-image-new, .artwork-description-new {
+        width: 100%; 
+    }
+    .artwork-image-new a {
+        display: block;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        transition: box-shadow 0.3s ease;
+    }
+    .artwork-image-new a:hover {
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+    .artwork-image-new img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+    .artwork-description-new {
+        padding: 20px 0;
+    }
+    .artwork-description-new a {
+        text-decoration: none !important;
+    }
+    .artwork-title-new {
+        font-size: 1.2em; 
+        font-weight: bold;
+        font-family: var(--font-serif) !important;
+        color: var(--text-ink);
+        margin-bottom: 5px;
+    }
+    .artwork-details-new {
+        font-size: 1em;
+        color: var(--text-meta);
+        margin-top: 8px;
+        font-family: var(--font-serif) !important;
+    }
+    /* 桌面端样式 */
+    @media screen and (min-width: 768px) {
+        .artwork-item-new {
+            flex-wrap: nowrap;
+            gap: 80px; 
+        }
+        .artwork-image-new {
+            width: 40%; 
+        }
+        .artwork-description-new {
+            width: 55%; 
+            padding: 0;
+        }
+        .artwork-item-new.reverse-layout .artwork-image-new {
+            order: 2; 
+        }
+        .artwork-item-new.reverse-layout .artwork-description-new {
+            text-align: right;
+        }
     }
 </style>
 <!-- [END] 美学升级补丁 -->
@@ -194,70 +254,6 @@
 .blog-header h2 a {}
 #wsite-content h2.wsite-product-title {}
 .wsite-product .wsite-product-price a {}
-}
-/* 新增的自定义样式，用于图文错落布局，不依赖外部库 */
-.artworks-container {
-    padding-top: 0px; /* 重置内边距 */
-}
-.artwork-item-new {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    margin-bottom: 20px; /* 作品之间的间距 */
-}
-.artwork-image-new, .artwork-description-new {
-    width: 100%; /* 移动端默认全宽 */
-}
-.artwork-image-new a {
-    display: block;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    transition: box-shadow 0.3s ease;
-}
-.artwork-image-new a:hover {
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-}
-.artwork-image-new img {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-.artwork-description-new {
-    padding: 20px 0;
-}
-.artwork-description-new a {
-    text-decoration: none;
-}
-.artwork-title-new {
-    font-size: 1.2em; /* 调整字体大小以匹配原有风格 */
-    font-weight: bold;
-    font-family: "Georgia", serif !important;
-}
-.artwork-details-new {
-    font-size: 1em;
-    color: #2a2a2a;
-    margin-top: 8px;
-    font-family: "Georgia", serif !important;
-}
-/* 桌面端样式 */
-@media screen and (min-width: 768px) {
-    .artwork-item-new {
-        flex-wrap: nowrap;
-        gap: 80px; /* 拉大图片和文字之间的间距 */
-    }
-    .artwork-image-new {
-        width: 40%; /* 调小图片宽度 */
-    }
-    .artwork-description-new {
-        width: 55%; /* 相应调整文字宽度 */
-        padding: 0;
-    }
-    /* 使用独立的类来实现错落效果 */
-    .artwork-item-new.reverse-layout .artwork-image-new {
-        order: 2; /* 将图片排到后面 */
-    }
-    .artwork-item-new.reverse-layout .artwork-description-new {
-        text-align: right;
-    }
 }
 </style>
 <style>
@@ -406,7 +402,7 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 					
 						
 
-<div class="paragraph" style="text-align:left;"><font size="3"><strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</strong><u><a href="artworks.html"><font color="#2a2a2a">English</font></a></u>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<strong>中文</strong><br />&#8203;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="751f001b01141a5b0c141b1235161a190018171c145b101100">[email&#160;protected]</a></font></div>
+<div class="paragraph" style="text-align:left;"><font size="3"><strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</strong><u><a href="artworks.html"><font color="#2a2a2a">English</font></a></u>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<strong>中文</strong><br />&#8203;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;juntao.yang@columbia.edu</a></font></div>
 
 
 					
@@ -428,7 +424,7 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 <h2 class="wsite-content-title">创作</h2>
 
 <!-- [新增] 与 artworks.html 保持一致的间距 -->
-<div class="wsite-spacer" style="height:100px;"></div>
+<div class="wsite-spacer" style="height:50px;"></div>
 
 <!-- [已删除] 原来这里有一个多余的 <hr> 横线块 -->
 
@@ -672,3 +668,4 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
             p.cols = 1 + Math.ceil(p.width / REZ);
             p.rows = 1 + Math.ceil(p.height / REZ);
             for (let i = 0; i < p.cols; i++) {
+}
