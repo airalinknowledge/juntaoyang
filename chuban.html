@@ -22,6 +22,197 @@
 <link href='http://cdn2.editmysite.com/fonts/Cardo/font.css?2' rel='stylesheet' type='text/css' />
 <link href='http://cdn2.editmysite.com/fonts/Amaranth/font.css?2' rel='stylesheet' type='text/css' />
 <link href='http://cdn2.editmysite.com/fonts/Cabin/font.css?2' rel='stylesheet' type='text/css' />
+
+<!-- [START] 样式注入：完全同步 chuangzuo.html 的样式定义 -->
+<style>
+    /* --- 0. 变量定义 (直接复制自 chuangzuo.html) --- */
+    :root {
+        --font-serif: "Georgia", "Songti SC", "SimSun", "Times New Roman", serif;
+        --font-mono: "Courier New", "Courier", monospace;
+        
+        --bg-paper: #f4f4f2;    /* 米白 */
+        --text-ink: #1e1e1e;    /* 极深灰 */
+        --text-meta: #5c5c5c;   /* 中灰 */
+        
+        /* 深岩蓝 / 普鲁士蓝 */
+        --accent-slate: #3A4B5C; 
+        
+        --line-light: #d1d1d1;
+    }
+
+    /* --- 1. 全局字体与背景重置 --- */
+    body, #wrapper, .wsite-background {
+        font-family: var(--font-serif) !important;
+        background-color: var(--bg-paper) !important;
+        background-image: none !important; 
+        color: var(--text-ink) !important;
+    }
+
+    /* [核心] 磨砂层 */
+    .noise-overlay {
+        position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        opacity: 0.09; 
+        pointer-events: none;
+        z-index: 50; 
+        mix-blend-mode: multiply; 
+    }
+
+    /* [核心] 地质层 */
+    #geology-layer {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 45vw; 
+        height: 100vh;
+        z-index: 40; 
+        pointer-events: none;
+        opacity: 0.8; 
+        mix-blend-mode: multiply; 
+        mask-image: linear-gradient(to right, transparent 0%, black 60%);
+        -webkit-mask-image: linear-gradient(to right, transparent 0%, black 60%);
+    }
+
+    @media (max-width: 768px) {
+        #geology-layer { display: none; }
+    }
+
+    /* --- 2. 文本样式升级 (这是 chuangzuo.html 的核心代码，之前 chuban 缺了这个) --- */
+    /* 强制统一所有段落字体大小和行高，对齐 chuangzuo/guanyu */
+    .paragraph, p, div {
+        font-family: var(--font-serif) !important;
+        line-height: 1.8 !important;
+        font-size: 16px !important;
+        color: var(--text-ink) !important;
+    }
+
+    /* 标题样式 */
+    h2, .wsite-content-title {
+        font-family: var(--font-serif) !important;
+        font-weight: normal !important;
+        letter-spacing: 2px !important;
+        text-transform: uppercase !important;
+        margin-bottom: 2rem !important;
+        border-bottom: none !important; 
+        padding-bottom: 10px !important;
+        color: var(--text-ink) !important;
+    }
+
+    /* 链接样式 */
+    a {
+        color: var(--text-ink) !important;
+        text-decoration: none !important;
+        transition: all 0.3s ease;
+    }
+
+    a:hover {
+        color: var(--accent-slate) !important; 
+    }
+    
+    .paragraph u { text-decoration: none !important; }
+
+    /* --- 3. 布局与间距 --- */
+    /* 容器控制 */
+    .writings-body {
+        max-width: 900px !important; 
+        width: auto !important;
+        margin: 0 auto !important; 
+        padding: 0 15px !important; 
+        box-sizing: border-box !important; 
+        font-family: var(--font-serif) !important;
+    }
+
+    .decorative-hr, .styled-hr {
+        border: none;
+        height: 1px;
+        background-color: var(--line-light) !important;
+        width: 100px; 
+        margin: 80px auto; 
+        opacity: 0.5;
+    }
+    
+    /* --- 4. 导航栏 (严格复制 chuangzuo.html) --- */
+    .wsite-menu-default a {
+        font-family: var(--font-serif) !important;
+        font-size: 14px !important;
+        letter-spacing: 2px !important;
+        color: var(--text-meta) !important;
+        transition: color 0.3s ease;
+        text-transform: uppercase !important;
+    }
+    .wsite-menu-default a:hover,
+    #active a {
+        color: var(--accent-slate) !important;
+        background: transparent !important;
+        border-bottom: 2px solid var(--accent-slate) !important;
+    }
+
+    /* --- 5. 出版页专属样式 (基于 chuangzuo 字体规则微调) --- */
+    .writing-section-title {
+        font-size: 1.8em !important; /* 强制覆盖 div 的 16px */
+        font-weight: normal;
+        letter-spacing: 1px;
+        margin-bottom: 50px;
+        font-family: var(--font-serif) !important;
+        text-align: center;
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+    .writing-section {
+        margin-bottom: 0;
+    }
+    .writing-entry {
+        margin-bottom: 40px;
+    }
+    .conference-section .writing-entry {
+        margin-bottom: 65px;
+    }
+    .writing-title {
+        font-size: 1.15em !important; /* 强制覆盖 div 的 16px */
+        font-style: italic;
+        margin-bottom: 8px;
+        line-height: 1.5 !important;
+        font-family: var(--font-serif) !important;
+    }
+    .writing-details {
+        font-size: 1em !important;
+        color: #555 !important;
+        line-height: 1.7 !important;
+        padding-left: 25px;
+        font-family: var(--font-serif) !important;
+    }
+    .writing-title a {
+        border-bottom: 1px solid rgba(58, 75, 92, 0.2); 
+    }
+    .writing-title a:hover {
+        border-bottom-color: var(--accent-slate);
+    }
+    /* 中文标题不斜体 */
+    .chinese-title, .talks-list .writing-title {
+        font-style: normal !important;
+    }
+    
+    /* 移动端适配 */
+    @media screen and (max-width: 767px) {
+        .writings-body {
+            width: 100% !important;
+            padding-right: 10px !important;
+        }
+        .writing-section-title {
+            font-size: 20px !important;
+            margin-bottom: 25px !important;
+        }
+        .writing-title {
+            font-size: 16px !important;
+        }
+        .writing-details {
+            font-size: 14px !important;
+            padding-left: 0 !important;
+        }
+    }
+</style>
+<!-- [END] 样式注入 -->
+
 <style type='text/css'>
 .wsite-elements.wsite-not-footer:not(.wsite-header-elements) div.paragraph, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) p, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-block .product-title, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-description, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .wsite-form-field label, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .wsite-form-field label, #wsite-content div.paragraph, #wsite-content p, #wsite-content .product-block .product-title, #wsite-content .product-description, #wsite-content .wsite-form-field label, #wsite-content .wsite-form-field label, .blog-sidebar div.paragraph, .blog-sidebar p, .blog-sidebar .wsite-form-field label, .blog-sidebar .wsite-form-field label {font-family:"Georgia" !important;}
 #wsite-content div.paragraph, #wsite-content p, #wsite-content .product-block .product-title, #wsite-content .product-description, #wsite-content .wsite-form-field label, #wsite-content .wsite-form-field label, .blog-sidebar div.paragraph, .blog-sidebar p, .blog-sidebar .wsite-form-field label, .blog-sidebar .wsite-form-field label {}
@@ -68,241 +259,6 @@
 #wsite-content h2.wsite-product-title {}
 .wsite-product .wsite-product-price a {}
 }
-</style>
-<style>
-    /* --- 0. 变量定义 --- */
-    :root {
-        /* [修改] 统一字体变量，与 artworks.html 保持一致 */
-        --font-serif: "Times New Roman", "Songti SC", "SimSun", serif;
-        --font-mono: "Courier New", "Courier", monospace;
-        
-        --bg-paper: #f4f4f2;    /* 米白 */
-        --text-ink: #1e1e1e;    /* 极深灰 */
-        --text-meta: #5c5c5c;   /* 中灰 */
-        
-        /* 深岩蓝 / 普鲁士蓝 */
-        --accent-slate: #3A4B5C; 
-        
-        --line-light: #d1d1d1;
-    }
-
-    /* --- 1. 全局字体与背景重置 --- */
-    /* 强制覆盖所有背景，确保纸张颜色可见 */
-    body, #wrapper, .wsite-background {
-        font-family: var(--font-serif) !important;
-        background-color: var(--bg-paper) !important;
-        background-image: none !important; /* 去掉原有背景图 */
-        color: var(--text-ink) !important;
-    }
-
-    /* [核心修改 1] 磨砂层 */
-    .noise-overlay {
-        position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-        opacity: 0.09; 
-        pointer-events: none;
-        z-index: 999; /* 放在极高层级，覆盖一切 */
-        mix-blend-mode: multiply; 
-    }
-
-    /* [核心修改 2] 地质层 */
-    #geology-layer {
-        position: fixed;
-        top: 0;
-        right: 0;
-        width: 45vw; /* 占据右侧约 45% */
-        height: 100vh;
-        z-index: 50; /* 在内容之上，配合 pointer-events: none 不影响点击 */
-        pointer-events: none;
-        opacity: 0.8; 
-        mix-blend-mode: multiply; 
-        /* CSS遮罩：让线条在左侧柔和消失，这对文字页面尤为重要 */
-        mask-image: linear-gradient(to right, transparent 0%, black 60%);
-        -webkit-mask-image: linear-gradient(to right, transparent 0%, black 60%);
-    }
-
-    /* 移动端隐藏等高线，保证阅读清晰 */
-    @media (max-width: 768px) {
-        #geology-layer { display: none; }
-    }
-
-    /* --- 2. 文本样式升级 --- */
-    .paragraph, p, div, h2, h3, .wsite-content-title, .writing-title, .writing-details {
-        font-family: var(--font-serif) !important;
-        color: var(--text-ink) !important;
-    }
-
-    /* 标题：安静、学术 */
-    h2, .wsite-content-title, .writing-section-title {
-        font-weight: normal !important;
-        letter-spacing: 2px !important;
-        text-transform: uppercase !important;
-        margin-bottom: 2rem !important;
-        font-family: var(--font-serif) !important;
-        color: var(--text-ink) !important;
-    }
-    
-    /* [修改] 针对大标题移除下划线 */
-    h2, .wsite-content-title {
-        border-bottom: none !important;
-        padding-bottom: 0 !important;
-    }
-    
-    .writing-section-title {
-        border-bottom: 1px solid var(--line-light) !important;
-        padding-bottom: 15px !important;
-        text-align: left !important; /* 强制左对齐，更符合阅读习惯 */
-        margin-bottom: 30px !important;
-    }
-
-    /* [核心修正] 链接样式 - 仅针对正文区域 (.writings-body) 生效 */
-    /* 这样右上角的 "English / 中文" 就会保持默认的无下划线状态，与 Index 保持一致 */
-    .writings-body a {
-        color: var(--text-ink) !important;
-        text-decoration: none !important;
-        transition: all 0.3s ease;
-        border-bottom: 1px solid rgba(58, 75, 92, 0.2); 
-    }
-
-    .writings-body a:hover {
-        color: var(--accent-slate) !important; 
-        border-bottom-color: var(--accent-slate);
-    }
-    
-    /* 确保 u 标签（右上角中文使用了 <u>）不强制显示下划线 */
-    .paragraph u { text-decoration: none !important; }
-
-    /* 通用链接颜色（针对非正文区域，如右上角） */
-    a {
-        color: var(--text-ink) !important;
-        text-decoration: none;
-        transition: color 0.3s ease;
-    }
-    a:hover {
-        color: var(--accent-slate) !important;
-    }
-    
-    /* [修复] 导航栏 - 严格同步 Artworks 样式 */
-    /* 彻底删除了之前的 Courier New 强制覆盖规则，改为 Cardo/Serif */
-    .wsite-menu-default a {
-        font-family: "Cardo", "Songti SC", "SimSun", serif !important; 
-        font-size: 14px !important; 
-        letter-spacing: 2px !important; 
-        color: var(--text-meta) !important;
-        text-transform: uppercase !important;
-        border-bottom: none; 
-        transition: color 0.3s ease;
-    }
-    
-    /* 仅在悬停和当前激活项下显示下划线 (Border) */
-    .wsite-menu-default a:hover, #active a {
-        color: var(--accent-slate) !important;
-        background: transparent !important;
-        border-bottom: 2px solid var(--accent-slate); 
-    }
-    
-    /* 分隔线优化 */
-    .decorative-hr, .styled-hr {
-        background-color: var(--line-light) !important;
-        opacity: 0.5;
-    }
-
-    /* [核心比例修复 - 匹配 writings.html 英文版格调] */
-    .writings-body {
-        max-width: 900px !important; /* 恢复为 900px */
-        width: auto !important;
-        margin: 0 auto !important; /* 居中 */
-        padding: 0 15px !important; /* 两侧留白 */
-        box-sizing: border-box !important; 
-        font-family: var(--font-serif) !important;
-    }
-
-    .writing-section {
-        margin-bottom: 0;
-    }
-    .writing-section-title {
-        font-size: 1.8em;
-        font-weight: normal;
-        letter-spacing: 1px;
-        margin-bottom: 50px;
-        font-family: var(--font-serif) !important;
-        text-align: center;
-        border-bottom: none;
-        padding-bottom: 0;
-    }
-    .writing-entry {
-        margin-bottom: 40px;
-    }
-    .conference-section .writing-entry {
-        margin-bottom: 65px;
-    }
-    .writing-title {
-        font-size: 1.15em;
-        font-style: italic;
-        margin-bottom: 8px;
-        line-height: 1.5;
-        font-family: var(--font-serif) !important;
-    }
-    .writing-title a {
-        text-decoration: none;
-        color: #333;
-        transition: color 0.3s ease;
-    }
-    .writing-title a:hover {
-        color: #000;
-        text-decoration: underline;
-    }
-    .writing-details {
-        font-size: 1em;
-        color: #555;
-        line-height: 1.7;
-        padding-left: 25px;
-        font-family: var(--font-serif) !important;
-    }
-    .writing-details a {
-        text-decoration: underline;
-        color: #444;
-    }
-    .writing-details a:hover {
-        color: #000;
-    }
-    .talks-list .writing-title {
-        font-style: normal;
-    }
-    .decorative-hr {
-        border: none;
-        height: 1px;
-        background-color: #ccc;
-        width: 100px;
-        margin: 80px auto;
-    }
-    /* 特定于中文标题的样式，取消斜体 */
-    .chinese-title {
-        font-style: normal !important;
-    }
-    
-    /* [新增] 移动端专属样式：强制小字体与全宽 */
-    @media screen and (max-width: 767px) {
-        .writings-body {
-            width: 100% !important;
-            padding-right: 10px !important;
-        }
-        .writing-section-title {
-            font-size: 20px !important; /* 强制缩小 Section 标题 */
-            margin-bottom: 25px !important;
-        }
-        .writing-title {
-            font-size: 16px !important; /* 强制缩小条目标题，与正文(16px)一致 */
-            line-height: 1.5 !important;
-        }
-        .writing-details {
-            font-size: 14px !important; /* 强制缩小细节信息 */
-            padding-left: 0 !important; /* 移动端取消缩进以节省空间 */
-        }
-        .writing-entry {
-            margin-bottom: 30px !important;
-        }
-    }
 </style>
 <style>
 /* 覆盖旧背景 */
@@ -434,7 +390,7 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 					
 						
 
-<div class="paragraph" style="text-align:left;"><font size="3"><strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</strong><u><a href="writings.html"><font color="#2a2a2a">English</font></a></u>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<strong>&#20013;&#25991;</strong><br />&#8203;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b3d9c6ddc7d2dc9dcad2ddd4f3d0dcdfc6ded1dad29dd6d7c6">[email&#160;protected]</a></font></div>
+<div class="paragraph" style="text-align:left;"><font size="3"><strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</strong><u><a href="writings.html"><font color="#2a2a2a">English</font></a></u>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<strong>&#20013;&#25991;</strong><br />&#8203;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;juntao.yang@columbia.edu</a></font></div>
 
 
 					
@@ -734,4 +690,13 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
             let container = document.getElementById('geology-layer');
             p.resizeCanvas(container.offsetWidth, container.offsetHeight);
             p.cols = 1 + Math.ceil(p.width / REZ);
-}
+            p.rows = 1 + Math.ceil(p.height / REZ);
+            for (let i = 0; i < p.cols; i++) {
+                field[i] = new Float32Array(p.rows);
+            }
+            generateGeology();
+        };
+    });
+</script>
+</body>
+</html>

@@ -26,9 +26,9 @@
   <link href="https://cdn2.editmysite.com/fonts/Cabin/font.css?2" rel="stylesheet" type="text/css" />
 
   <style>
-    /* --- 0. 变量定义 --- */
+    /* --- 0. 变量定义 (严格同步 chuban.html) --- */
     :root {
-        --font-serif: "Georgia", "Songti SC", "SimSun", serif; /* [修改] 优先使用 Georgia 匹配 chuban */
+        --font-serif: "Georgia", "Songti SC", "SimSun", "Times New Roman", serif;
         --font-mono: "Courier New", "Courier", monospace;
         
         --bg-paper: #f4f4f2;    /* 米白 */
@@ -42,68 +42,61 @@
     }
 
     /* --- 1. 全局字体与背景重置 --- */
-    /* 强制覆盖所有背景，确保纸张颜色可见 */
     body, #wrapper, .wsite-background {
         font-family: var(--font-serif) !important;
         background-color: var(--bg-paper) !important;
-        background-image: none !important; /* 去掉原有背景图 */
+        background-image: none !important; 
         color: var(--text-ink) !important;
     }
 
-    /* [核心修改 1] 磨砂层 */
+    /* [核心] 磨砂层 */
     .noise-overlay {
         position: fixed; top: 0; left: 0; width: 100%; height: 100%;
         background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
         opacity: 0.09; 
         pointer-events: none;
-        z-index: 999; /* 放在极高层级，覆盖一切 */
+        z-index: 999;
         mix-blend-mode: multiply; 
     }
 
-    /* [核心修改 2] 地质层 */
+    /* [核心] 地质层 */
     #geology-layer {
         position: fixed;
         top: 0;
         right: 0;
-        width: 45vw; /* 占据右侧约 45% */
+        width: 45vw; 
         height: 100vh;
-        z-index: 50; /* 仅次于磨砂层，但在内容之上 */
+        z-index: 50; 
         pointer-events: none;
         opacity: 0.8; 
         mix-blend-mode: multiply; 
-        /* CSS遮罩：让线条在左侧柔和消失 */
         mask-image: linear-gradient(to right, transparent 0%, black 60%);
         -webkit-mask-image: linear-gradient(to right, transparent 0%, black 60%);
     }
 
-    /* 移动端隐藏等高线，保证阅读清晰 */
     @media (max-width: 768px) {
         #geology-layer { display: none; }
     }
 
     /* --- 2. 文本样式升级 --- */
-    .paragraph, p, div, h2, h3, .wsite-content-title {
+    /* 强制统一所有段落字体大小和行高 */
+    .paragraph, p, div {
         font-family: var(--font-serif) !important;
+        line-height: 1.8 !important;
+        font-size: 16px !important;
         color: var(--text-ink) !important;
     }
 
-    /* [修改] 标题样式：完全匹配 chuban.html 的大字号风格 */
+    /* 标题样式 */
     h2, .wsite-content-title {
-        font-family: "Georgia", serif !important; /* 强制 Georgia */
+        font-family: var(--font-serif) !important;
         font-weight: normal !important;
-        letter-spacing: 5px !important; /* 增大字间距 */
+        letter-spacing: 2px !important;
         text-transform: uppercase !important;
-        margin-bottom: 0 !important; /* 由 Spacer 控制间距 */
-        border-bottom: none !important; /* 去掉下划线 */
-        padding-bottom: 0 !important;
-    }
-
-    /* [新增] 桌面端强制大字号 (100px) */
-    @media screen and (min-width: 767px) {
-        h2, .wsite-content-title {
-            font-size: 100px !important;
-            line-height: 75px !important;
-        }
+        margin-bottom: 2rem !important;
+        border-bottom: none !important; 
+        padding-bottom: 10px !important;
+        color: var(--text-ink) !important;
     }
 
     /* 链接样式 */
@@ -117,27 +110,45 @@
         color: var(--accent-slate) !important; 
     }
     
-    /* 导航栏 */
+    /* [重要修正] 删除 .paragraph u { text-decoration: none !important; } 
+       原因：这行代码导致了右侧导航、文章标题和“此处”链接的下划线消失。
+    */
+
+    /* --- 4. 导航栏 (完全同步 chuban.html 的字体) --- */
     .wsite-menu-default a {
-        font-family: var(--font-mono) !important;
-        font-size: 13px !important;
-        letter-spacing: 1px !important;
+        font-family: var(--font-serif) !important; /* [修正] 使用衬线体 (Georgia等) */
+        font-size: 14px !important;
+        letter-spacing: 2px !important;
         color: var(--text-meta) !important;
+        transition: color 0.3s ease;
+        text-transform: uppercase !important;
     }
-    .wsite-menu-default a:hover, #active a {
+    .wsite-menu-default a:hover,
+    #active a {
         color: var(--accent-slate) !important;
         background: transparent !important;
-        border-bottom: 2px solid var(--accent-slate); 
+        border-bottom: 2px solid var(--accent-slate) !important;
+    }
+    
+    /* [新增] 桌面端强制大字号 (100px) - 适配发布页 */
+    @media screen and (min-width: 767px) {
+        h2, .wsite-content-title {
+            font-size: 100px !important;
+            line-height: 75px !important;
+        }
+    }
+
+    /* [新增] 恢复文章标题加粗 */
+    .post-title, .post-title u {
+        font-weight: bold !important; 
     }
   </style>
   <style type="text/css">
     /* Copied styles from your site - keeping specific overrides */
-    .wsite-elements.wsite-not-footer:not(.wsite-header-elements) div.paragraph, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) p, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-block .product-title, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-description, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .wsite-form-field label, #wsite-content div.paragraph, #wsite-content p, #wsite-content .product-block .product-title, #wsite-content .product-description, #wsite-content .wsite-form-field label, .blog-sidebar div.paragraph, .blog-sidebar p, .blog-sidebar .wsite-form-field label {font-family:"Georgia" !important;}
-    
-    /* ... existing font styles ... */
+    .wsite-elements.wsite-not-footer:not(.wsite-header-elements) div.paragraph, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) p, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-block .product-title, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-description, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .wsite-form-field label, #wsite-content div.paragraph, #wsite-content p, #wsite-content .product-block .product-title, #wsite-content .product-description, #wsite-content .wsite-form-field label, .blog-sidebar div.paragraph, .blog-sidebar p, .blog-sidebar .wsite-form-field label, .blog-sidebar .wsite-form-field label {font-family:"Georgia" !important;}
     
     .wsite-background {
-      background-image: none !important; /* 覆盖旧背景 */
+      background-image: none !important; 
       background-color: transparent !important;
     }
     body.wsite-background {background-attachment: fixed !important;}
@@ -221,7 +232,6 @@
     .posts-left .post-entry-card, .posts-right .post-entry-card { margin: 0 0 80px; width: 100%; }
 
     @media (max-width: 767px) {
-      /* 移动端样式由 fabu-mobile.html 处理 */
       .posts-two-col { display:block; }
       .posts-left, .posts-right { width:100%; }
       .posts-right .post-entry-card:first-child { margin-top: 0; }
@@ -239,35 +249,58 @@
   <div class="noise-overlay"></div>
 
   <div id="wrapper">
-    <div id="navigation">
-      <div id="navigation-wrap">
-        <div id="nav">
-          <div class="sitename">
-            <span class="wsite-logo">
-              <span class="wsite-title-placeholder">&nbsp;</span>
-              <span style="display:none"><span style="display:none">&nbsp;</span></span>
-            </span>
-          </div>
-          <ul class="wsite-menu-default">
-            <li class="wsite-menu-item-wrap"><a href="guanyu.html" class="wsite-menu-item">关于</a></li>
-            <li class="wsite-menu-item-wrap"><a href="chuangzuo.html" class="wsite-menu-item">创作</a></li>
-            <li class="wsite-menu-item-wrap"><a href="chuban.html" class="wsite-menu-item">出版</a></li>
-            <li class="wsite-menu-item-wrap"><a href="xiangmu.html" class="wsite-menu-item">项目</a></li>
-            <li id="active" class="wsite-menu-item-wrap"><a href="fabu.html" class="wsite-menu-item">发布</a></li>
-          </ul>
-        </div>
-        <div id="navmobile">
-          <ul class="wsite-menu-default">
-            <li class="wsite-menu-item-wrap"><a href="guanyu.html" class="wsite-menu-item">关于</a></li>
-            <li class="wsite-menu-item-wrap"><a href="chuangzuo.html" class="wsite-menu-item">创作</a></li>
-            <li class="wsite-menu-item-wrap"><a href="chuban.html" class="wsite-menu-item">出版</a></li>
-            <li class="wsite-menu-item-wrap"><a href="xiangmu.html" class="wsite-menu-item">项目</a></li>
-            <li id="active" class="wsite-menu-item-wrap"><a href="fabu.html" class="wsite-menu-item">发布</a></li>
-          </ul>
-        </div>
-      </div>
-      <label id="mobile-close" class="hamburger" for="mobile-input"></label>
+	<div id="navigation">
+    <div id="navigation-wrap">
+  	 	<div id="nav">
+	      <div class="sitename"><span class="wsite-logo">
+
+	
+	<span class="wsite-title-placeholder">&nbsp;</span><span style="display:none">
+	<span style="display:none">&nbsp;</span>
+	</span>
+	
+
+</span></div>
+				<ul class="wsite-menu-default">
+						<li id="pg356461667194310790" class="wsite-menu-item-wrap">
+							<a href="guanyu.html" class="wsite-menu-item">关于</a>
+						</li>
+						<li id="pg444862601486980856" class="wsite-menu-item-wrap">
+							<a href="chuangzuo.html" class="wsite-menu-item">创作</a>
+						</li>
+						<li id="pg864040464600617228" class="wsite-menu-item-wrap">
+							<a href="chuban.html" class="wsite-menu-item">出版</a>
+						</li>
+						<li id="pg361237216236019909" class="wsite-menu-item-wrap">
+							<a href="xiangmu.html" class="wsite-menu-item">项目</a>
+						</li>
+						<li id="active" class="wsite-menu-item-wrap">
+							<a href="fabu.html" class="wsite-menu-item">发布</a>
+						</li>
+				</ul>
+			</div>
+   	 	<div id="navmobile"><ul class="wsite-menu-default">
+		<li id="pg356461667194310790" class="wsite-menu-item-wrap">
+			<a href="guanyu.html" class="wsite-menu-item">关于</a>
+		</li>
+		<li id="pg444862601486980856" class="wsite-menu-item-wrap">
+			<a href="chuangzuo.html" class="wsite-menu-item">创作</a>
+		</li>
+		<li id="pg864040464600617228" class="wsite-menu-item-wrap">
+			<a href="chuban.html" class="wsite-menu-item">出版</a>
+		</li>
+		<li id="pg361237216236019909" class="wsite-menu-item-wrap">
+			<a href="xiangmu.html" class="wsite-menu-item">项目</a>
+		</li>
+		<li id="pg497557010409593207" class="wsite-menu-item-wrap">
+			<a href="fabu.html" class="wsite-menu-item">发布</a>
+		</li>
+</ul>
+</div>
     </div>
+		<label id="mobile-close" class="hamburger" for="mobile-input"></label>
+	</div>
+
     <div id="main">
       <div id="mobile-top">
         <label id="mobile-open" class="hamburger" for="mobile-input"></label>
@@ -307,7 +340,8 @@
                     <div class="paragraph" style="text-align:left; font-style:italic; color:#555;">
                         此页面包含我最近的更新和一些写作片段。这些内容可能是临时的、未经深思熟虑的、非正式的——现在尚未发表，也许永远不会。
                         <br><br>
-                        点击<a href="review.html" style="color: inherit;"><u>此处</u></a>查看我持续更新中的艺术短评与札记。
+                        <!-- [修正] 强制恢复“此处”的加粗和下划线 -->
+                        点击<a href="review.html" style="color: inherit; font-weight: bold; text-decoration: underline;">此处</a>查看我持续更新中的艺术短评与札记。
                     </div>
                     <div style="height: 30px; overflow: hidden; width: 100%;"></div>
                     <hr class="styled-hr" style="width:100%;"></hr>
@@ -330,6 +364,7 @@
                               <td class="wsite-multicol-col news-column" style="width:25%; padding:0 15px; vertical-align: top;">
                                 <div class="separator-wrapper">
                                   <div class="news-section">
+                                    <!-- [修正] 确保这里的 u 标签不再被CSS隐藏 -->
                                     <div class="paragraph"><u><font size="4">消息</font></u></div>
                                     
                                     <div id="news-list">
