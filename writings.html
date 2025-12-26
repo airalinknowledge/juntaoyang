@@ -1,336 +1,252 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<title>Juntao Yang</title>
-<meta name="description" content="Juntao Yang's Personal Page; 杨君陶的个人网页" />
-<meta name="keywords" content="Juntao Yang,杨君陶,当代艺术,电影,Film,contemporary art,轻巧而冷淡的对谈,大西洋,算法,可见性" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		
+<head>
+    <title>Writings - Juntao Yang</title>
+    <meta name="description" content="Writings by Juntao Yang" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
 
-		<link id="wsite-base-style" rel="stylesheet" type="text/css" href="http://cdn2.editmysite.com/css/sites.css?buildTime=1234" />
-<link rel="stylesheet" type="text/css" href="http://cdn2.editmysite.com/css/old/fancybox.css?1234" />
-<link rel="stylesheet" type="text/css" href="http://cdn2.editmysite.com/css/social-icons.css?buildtime=1234" media="screen,projection" />
-<link rel="stylesheet" type="text/css" href="files/main_style.css?1714489767" title="wsite-theme-css" />
-<link href='http://cdn2.editmysite.com/fonts/Maven_Pro/font.css?2' rel='stylesheet' type='text/css' />
+    <link id="wsite-base-style" rel="stylesheet" type="text/css" href="http://cdn2.editmysite.com/css/sites.css?buildTime=1234" />
+    <link rel="stylesheet" type="text/css" href="http://cdn2.editmysite.com/css/old/fancybox.css?1234" />
+    <link rel="stylesheet" type="text/css" href="http://cdn2.editmysite.com/css/social-icons.css?buildtime=1234" media="screen,projection" />
+    <link rel="stylesheet" type="text/css" href="files/main_style.css?1714489767" title="wsite-theme-css" />
+    <link href='http://cdn2.editmysite.com/fonts/Maven_Pro/font.css?2' rel='stylesheet' type='text/css' />
+    <link href='http://cdn2.editmysite.com/fonts/Alike/font.css?2' rel='stylesheet' type='text/css' />
+    <link href='http://cdn2.editmysite.com/fonts/Cardo/font.css?2' rel='stylesheet' type='text/css' />
+    <link href='http://cdn2.editmysite.com/fonts/Amaranth/font.css?2' rel='stylesheet' type='text/css' />
+    <link href='http://cdn2.editmysite.com/fonts/Cabin/font.css?2' rel='stylesheet' type='text/css' />
 
-<link href='http://cdn2.editmysite.com/fonts/Alike/font.css?2' rel='stylesheet' type='text/css' />
-<link href='http://cdn2.editmysite.com/fonts/Cardo/font.css?2' rel='stylesheet' type='text/css' />
-<link href='http://cdn2.editmysite.com/fonts/Amaranth/font.css?2' rel='stylesheet' type='text/css' />
-<link href='http://cdn2.editmysite.com/fonts/Cabin/font.css?2' rel='stylesheet' type='text/css' />
+    <style>
+        /* --- 0. 变量定义 (完全同步 Artworks/Writings) --- */
+        :root {
+            --font-serif: "Times New Roman", "Songti SC", "SimSun", serif;
+            --font-mono: "Courier New", "Courier", monospace;
+            
+            --bg-paper: #f4f4f2;    /* 米白 */
+            --text-ink: #1e1e1e;    /* 极深灰 */
+            --text-meta: #5c5c5c;   /* 中灰 */
+            
+            --accent-slate: #3A4B5C; /* 深岩蓝 */
+            --line-light: #d1d1d1;
+        }
 
-<style>
-    /* --- 0. 变量定义 --- */
-    :root {
-        --font-serif: "Times New Roman", "Songti SC", "SimSun", serif;
-        --font-mono: "Courier New", "Courier", monospace;
+        /* --- 1. 全局样式重置 --- */
+        body, #wrapper {
+            font-family: var(--font-serif) !important;
+            background-color: var(--bg-paper) !important;
+            background-image: none !important; 
+            color: var(--text-ink) !important;
+        }
+
+        /* 磨砂层 */
+        .noise-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.09; 
+            pointer-events: none;
+            z-index: 50; 
+            mix-blend-mode: multiply; 
+        }
+
+        /* 地质层 */
+        #geology-layer {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 45vw; 
+            height: 100vh;
+            z-index: 40; 
+            pointer-events: none;
+            opacity: 0.8; 
+            mix-blend-mode: multiply; 
+            mask-image: linear-gradient(to right, transparent 0%, black 60%);
+            -webkit-mask-image: linear-gradient(to right, transparent 0%, black 60%);
+        }
+
+        @media (max-width: 768px) {
+            #geology-layer { display: none; }
+        }
+
+        /* --- 2. 文本与链接 --- */
+        .paragraph, p, div {
+            font-family: var(--font-serif) !important;
+            line-height: 1.8 !important;
+            font-size: 16px !important;
+            color: var(--text-ink) !important;
+        }
+
+        h2, .wsite-content-title {
+            font-family: var(--font-serif) !important;
+            font-weight: normal !important;
+            letter-spacing: 2px !important;
+            text-transform: uppercase !important;
+            margin-bottom: 2rem !important;
+            border-bottom: none !important; 
+            padding-bottom: 0px !important;
+            color: var(--text-ink) !important;
+        }
+
+        a {
+            color: var(--text-ink) !important;
+            text-decoration: none !important;
+            transition: all 0.3s ease;
+        }
+        a:hover { color: var(--accent-slate) !important; }
         
-        --bg-paper: #f4f4f2;    /* 米白 */
-        --text-ink: #1e1e1e;    /* 极深灰 */
-        --text-meta: #5c5c5c;   /* 中灰 */
+        .paragraph u { text-decoration: none !important; }
+
+        /* --- 3. 侧边导航栏样式 --- */
+        .wsite-menu-default a {
+            font-family: "Cardo", serif !important; 
+            font-size: 14px !important; 
+            letter-spacing: 2px !important; 
+            color: var(--text-meta) !important;
+            text-transform: uppercase !important;
+            border-bottom: none; 
+            transition: color 0.3s ease;
+        }
         
-        /* 深岩蓝 / 普鲁士蓝 */
-        --accent-slate: #3A4B5C; 
-        
-        --line-light: #d1d1d1;
-    }
+        .wsite-menu-default a:hover, #active a {
+            color: var(--accent-slate) !important;
+            background: transparent !important;
+            border-bottom: 2px solid var(--accent-slate); 
+        }
 
-    /* --- 1. 全局字体与背景重置 --- */
-    /* 强制覆盖所有背景，确保纸张颜色可见 */
-    body, #wrapper, .wsite-background {
-        font-family: var(--font-serif) !important;
-        background-color: var(--bg-paper) !important;
-        background-image: none !important; /* 去掉原有背景图 */
-        color: var(--text-ink) !important;
-    }
+        .decorative-hr {
+            border: none;
+            height: 1px;
+            background-color: #ccc;
+            width: 100px; 
+            margin: 80px auto; 
+        }
 
-    /* [核心修改 1] 磨砂层 */
-    .noise-overlay {
-        position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-        opacity: 0.09; 
-        pointer-events: none;
-        z-index: 999; /* 放在极高层级，覆盖一切 */
-        mix-blend-mode: multiply; 
-    }
+        /* --- 4. Writings 内容容器 --- */
+        .writings-body {
+            padding-top: 0px;
+            position: relative;
+            z-index: 45;
+            max-width: 900px;
+            margin: 0 auto;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
 
-    /* [核心修改 2] 地质层 */
-    #geology-layer {
-        position: fixed;
-        top: 0;
-        right: 0;
-        width: 45vw; /* 占据右侧约 45% */
-        height: 100vh;
-        z-index: 50; /* 在内容之上，配合 pointer-events: none 不影响点击 */
-        pointer-events: none;
-        opacity: 0.8; 
-        mix-blend-mode: multiply; 
-        /* CSS遮罩：让线条在左侧柔和消失，这对文字页面尤为重要 */
-        mask-image: linear-gradient(to right, transparent 0%, black 60%);
-        -webkit-mask-image: linear-gradient(to right, transparent 0%, black 60%);
-    }
+        .writing-section {
+            margin-bottom: 0;
+        }
 
-    /* 移动端隐藏等高线，保证阅读清晰 */
-    @media (max-width: 768px) {
-        #geology-layer { display: none; }
-    }
+        .writing-section-title {
+            font-family: var(--font-serif);
+            font-size: 1.8em;
+            font-weight: normal;
+            letter-spacing: 1px;
+            margin-bottom: 50px;
+            text-align: center;
+            border-bottom: none;
+            padding-bottom: 0;
+        }
 
-    /* --- 2. 文本样式升级 --- */
-    .paragraph, p, div, h2, h3, .wsite-content-title, .writing-title, .writing-details {
-        font-family: var(--font-serif) !important;
-        color: var(--text-ink) !important;
-    }
+        .writing-entry {
+            margin-bottom: 40px;
+        }
 
-    /* 标题：安静、学术 */
-    h2, .wsite-content-title, .writing-section-title {
-        font-weight: normal !important;
-        letter-spacing: 2px !important;
-        text-transform: uppercase !important;
-        margin-bottom: 2rem !important;
-        font-family: var(--font-serif) !important;
-        color: var(--text-ink) !important;
-    }
-    
-    /* [修改] 针对大标题移除下划线 */
-    h2, .wsite-content-title {
-        border-bottom: none !important;
-        padding-bottom: 0 !important;
-    }
-    
-    .writing-section-title {
-        border-bottom: 1px solid var(--line-light) !important;
-        padding-bottom: 15px !important;
-        text-align: left !important; /* 强制左对齐，更符合阅读习惯 */
-        margin-bottom: 30px !important;
-    }
+        .writing-title {
+            font-size: 17px !important;
+            line-height: 1.65 !important;
+            margin-bottom: 4px !important;
+            font-weight: normal;
+            font-style: normal;
+        }
 
-    /* [核心修正] 链接样式 - 仅针对正文区域 (.writings-body) 生效 */
-    /* 这样右上角的 "English / 中文" 就会保持默认的无下划线状态，与 Index 保持一致 */
-    .writings-body a {
-        color: var(--text-ink) !important;
-        text-decoration: none !important;
-        transition: all 0.3s ease;
-        border-bottom: 1px solid rgba(58, 75, 92, 0.2); 
-    }
+        .writing-title em {
+            font-style: italic;
+        }
 
-    .writings-body a:hover {
-        color: var(--accent-slate) !important; 
-        border-bottom-color: var(--accent-slate);
-    }
-    
-    /* 确保 u 标签（右上角中文使用了 <u>）不强制显示下划线 */
-    .paragraph u { text-decoration: none !important; }
+        .writing-title a {
+            border-bottom: 1px solid rgba(58, 75, 92, 0.2);
+        }
 
-    /* 通用链接颜色（针对非正文区域，如右上角） */
-    a {
-        color: var(--text-ink) !important;
-        text-decoration: none;
-        transition: color 0.3s ease;
-    }
-    a:hover {
-        color: var(--accent-slate) !important;
-    }
-    
-    /* [修复] 导航栏 - 恢复为 Cardo (非打字机风格) */
-    .wsite-menu-default a {
-        font-family: "Cardo", serif !important; /* 恢复 Cardo */
-        font-size: 14px !important; /* 恢复 14px */
-        letter-spacing: 2px !important; /* 恢复 2px */
-        color: var(--text-meta) !important;
-        text-transform: uppercase !important; 
-        border-bottom: none; /* 导航栏不需要默认下划线 */
-        transition: color 0.3s ease; 
-    }
-    .wsite-menu-default a:hover, #active a {
-        color: var(--accent-slate) !important;
-        background: transparent !important;
-        border-bottom: 2px solid var(--accent-slate); 
-    }
-    
-    /* 分隔线优化 */
-    .decorative-hr, .styled-hr {
-        background-color: var(--line-light) !important;
-        opacity: 0.5;
-    }
-</style>
+        .writing-title a:hover {
+            border-bottom-color: var(--accent-slate);
+        }
+
+        .writing-details {
+            font-size: 15px !important;
+            line-height: 1.7 !important;
+            color: var(--text-meta) !important;
+            padding-left: 20px;
+            margin-top: 0 !important;
+            font-style: normal;
+        }
+
+        .writing-details a {
+            border-bottom: 1px solid rgba(58, 75, 92, 0.2);
+        }
+
+        .writing-details a:hover {
+            border-bottom-color: var(--accent-slate);
+        }
+
+        /* --- Conference Section specific --- */
+        .conference-section .writing-details {
+            padding-left: 20px;
+        }
+
+        .conference-section .writing-title {
+            font-weight: normal;
+        }
+
+        /* --- Responsive adjustments for Mobile --- */
+        @media (max-width: 768px) {
+            .writing-title {
+                font-size: 16px !important;
+            }
+            .writing-details {
+                font-size: 14px !important;
+                padding-left: 0 !important;
+            }
+            .writings-body {
+                padding: 0 10px !important;
+            }
+            .writing-entry {
+                margin-bottom: 30px !important;
+            }
+        }
+    </style>
 <style type='text/css'>
+/* 以下内容完全同步 Writings 的 Typography 设置 */
 .wsite-elements.wsite-not-footer:not(.wsite-header-elements) div.paragraph, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) p, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-block .product-title, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-description, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .wsite-form-field label, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .wsite-form-field label, #wsite-content div.paragraph, #wsite-content p, #wsite-content .product-block .product-title, #wsite-content .product-description, #wsite-content .wsite-form-field label, #wsite-content .wsite-form-field label, .blog-sidebar div.paragraph, .blog-sidebar p, .blog-sidebar .wsite-form-field label, .blog-sidebar .wsite-form-field label {font-family:"Georgia" !important;}
-#wsite-content div.paragraph, #wsite-content p, #wsite-content .product-block .product-title, #wsite-content .product-description, #wsite-content .wsite-form-field label, #wsite-content .wsite-form-field label, .blog-sidebar div.paragraph, .blog-sidebar p, .blog-sidebar .wsite-form-field label, .blog-sidebar .wsite-form-field label {}
-.wsite-elements.wsite-footer div.paragraph, .wsite-elements.wsite-footer p, .wsite-elements.wsite-footer .product-block .product-title, .wsite-elements.wsite-footer .product-description, .wsite-elements.wsite-footer .wsite-form-field label, .wsite-elements.wsite-footer .wsite-form-field label{}
-.wsite-elements.wsite-not-footer:not(.wsite-header-elements) h2, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-long .product-title, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-large .product-title, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-small .product-title, #wsite-content h2, #wsite-content .product-long .product-title, #wsite-content .product-large .product-title, #wsite-content .product-small .product-title, .blog-sidebar h2 {font-size:100px !important;line-height:75px !important;}
-#wsite-content h2, #wsite-content .product-long .product-title, #wsite-content .product-large .product-title, #wsite-content .product-small .product-title, .blog-sidebar h2 {}
-.wsite-elements.wsite-footer h2, .wsite-elements.wsite-footer .product-long .product-title, .wsite-elements.wsite-footer .product-large .product-title, .wsite-elements.wsite-footer .product-small .product-title{}
-#wsite-title {font-size:23px !important;}
-.wsite-menu-default a {font-size:14px !important;}
-.wsite-menu a {}
-.wsite-image div, .wsite-caption {}
-.galleryCaptionInnerText {}
-.fancybox-title {}
-.wslide-caption-text {}
-.wsite-phone {}
-.wsite-headline,.wsite-header-section .wsite-content-title {}
-.wsite-headline-paragraph,.wsite-header-section .paragraph {}
-.wsite-button-inner {}
-.wsite-not-footer blockquote {}
-.wsite-footer blockquote {}
-.blog-header h2 a {}
-#wsite-content h2.wsite-product-title {}
-.wsite-product .wsite-product-price a {}
-@media screen and (min-width: 767px) {.wsite-elements.wsite-not-footer:not(.wsite-header-elements) div.paragraph, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) p, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-block .product-title, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-description, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .wsite-form-field label, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .wsite-form-field label, #wsite-content div.paragraph, #wsite-content p, #wsite-content .product-block .product-title, #wsite-content .product-description, #wsite-content .wsite-form-field label, #wsite-content .wsite-form-field label, .blog-sidebar div.paragraph, .blog-sidebar p, .blog-sidebar .wsite-form-field label, .blog-sidebar .wsite-form-field label {line-height:33px !important;}
-#wsite-content div.paragraph, #wsite-content p, #wsite-content .product-block .product-title, #wsite-content .product-description, #wsite-content .wsite-form-field label, #wsite-content .wsite-form-field label, .blog-sidebar div.paragraph, .blog-sidebar p, .blog-sidebar .wsite-form-field label, .blog-sidebar .wsite-form-field label {}
-.wsite-elements.wsite-footer div.paragraph, .wsite-elements.wsite-footer p, .wsite-elements.wsite-footer .product-block .product-title, .wsite-elements.wsite-footer .product-description, .wsite-elements.wsite-footer .wsite-form-field label, .wsite-elements.wsite-footer .wsite-form-field label{}
-.wsite-elements.wsite-not-footer:not(.wsite-header-elements) h2, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-long .product-title, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-large .product-title, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-small .product-title, #wsite-content h2, #wsite-content .product-long .product-title, #wsite-content .product-large .product-title, #wsite-content .product-small .product-title, .blog-sidebar h2 {font-size:100px !important;line-height:75px !important;}
-#wsite-content h2, #wsite-content .product-long .product-title, #wsite-content .product-large .product-title, #wsite-content .product-small .product-title, .blog-sidebar h2 {}
-.wsite-elements.wsite-footer h2, .wsite-elements.wsite-footer .product-long .product-title, .wsite-elements.wsite-footer .product-large .product-title, .wsite-elements.wsite-footer .product-small .product-title{}
-#wsite-title {font-size:23px !important;}
-.wsite-menu-default a {font-size:14px !important;}
-.wsite-menu a {}
-.wsite-image div, .wsite-caption {}
-.galleryCaptionInnerText {}
-.fancybox-title {}
-.wslide-caption-text {}
-.wsite-phone {}
-.wsite-headline,.wsite-header-section .wsite-content-title {}
-.wsite-headline-paragraph,.wsite-header-section .paragraph {}
-.wsite-button-inner {}
-.wsite-not-footer blockquote {}
-.wsite-footer blockquote {}
-.blog-header h2 a {}
-#wsite-content h2.wsite-product-title {}
-.wsite-product .wsite-product-price a {}
-}
-/* 新增的自定义样式 */
-.writings-body {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 0 15px;
-    font-family: "Georgia", serif !important; 
-}
-.writing-section {
-    margin-bottom: 0; 
-}
-.writing-section-title {
-    font-size: 1.8em; 
-    font-weight: normal;
-    letter-spacing: 1px;
-    margin-bottom: 50px; /* DEBUG FIX: 拉大标题和条目间距 */
-    font-family: "Georgia", serif !important;
-    text-align: center; 
-    border-bottom: none; 
-    padding-bottom: 0;
-}
-.writing-entry {
-    margin-bottom: 40px; 
-}
-.conference-section .writing-entry {
-    margin-bottom: 65px;
-}
-.writing-title {
-    font-size: 1.15em;
-    font-style: normal; /* <-- 已修正 */
-    margin-bottom: 8px;
-    line-height: 1.5;
-    font-family: "Georgia", serif !important;
-}
-.writing-title a {
-    text-decoration: none;
-    color: #333;
-    transition: color 0.3s ease;
-}
-.writing-title a:hover {
-    color: #000;
-    text-decoration: underline;
-}
-.writing-details {
-    font-size: 1em;
-    color: #555;
-    line-height: 1.7;
-    padding-left: 25px; 
-    font-family: "Georgia", serif !important;
-}
-.writing-details a {
-    text-decoration: underline;
-    color: #444;
-}
-.writing-details a:hover {
-    color: #000;
-}
-.talks-list .writing-title {
-    font-style: normal;
-}
-.decorative-hr {
-    border: none;
-    height: 1px;
-    background-color: #ccc;
-    width: 100px; 
-    margin: 80px auto; 
-}
+.wsite-elements.wsite-not-footer:not(.wsite-header-elements) h2, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-long .product-title, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-large .product-title, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-small .product-title, #wsite-content h2, #wsite-content .product-long .product-title, #wsite-content .product-large .product-title, #wsite-content .product-small .product-title, .blog-sidebar h2 {font-family:"Georgia" !important;font-style:normal !important;letter-spacing: 5px !important;}
+#wsite-title {font-family:"Alike" !important;text-transform:  none !important;letter-spacing: -1px !important;}
+.wsite-menu-default a {font-family:"Cardo" !important;text-transform:  uppercase !important;letter-spacing: 2px !important;}
+.wsite-image div, .wsite-caption {font-family:"Amaranth" !important;}
+.wsite-headline,.wsite-header-section .wsite-content-title {font-family:"Cabin" !important;}
 
-/* [新增] 移动端专属样式：强制小字体 */
-@media screen and (max-width: 767px) {
-    .writing-section-title {
-        font-size: 20px !important; /* 强制缩小 Section 标题 */
-        margin-bottom: 25px !important;
-    }
-    .writing-title {
-        font-size: 16px !important; /* 强制缩小条目标题，与正文(16px)一致 */
-        line-height: 1.5 !important;
-    }
-    .writing-details {
-        font-size: 14px !important; /* 强制缩小细节信息 */
-        padding-left: 0 !important; /* 移动端取消缩进以节省空间 */
-    }
-    .writings-body {
-        padding: 0 10px !important;
-    }
-    .writing-entry {
-        margin-bottom: 30px !important;
-    }
+@media screen and (min-width: 767px) {
+    .wsite-elements.wsite-not-footer:not(.wsite-header-elements) div.paragraph, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) p, #wsite-content div.paragraph, #wsite-content p {line-height:33px !important;}
+    .wsite-elements.wsite-not-footer:not(.wsite-header-elements) h2, #wsite-content h2 {font-size:100px !important;line-height:75px !important;}
+    #wsite-title {font-size:23px !important;}
+    .wsite-menu-default a {font-size:14px !important;}
 }
 </style>
 <style>
-/* 覆盖旧背景 */
 .wsite-background {background-image: none !important; background-color: transparent !important;}
 body.wsite-background {background-attachment: fixed !important;}
 </style>
-		<script src='files/templateArtifacts.js?1714489756'></script>
+    <script src='files/templateArtifacts.js?1714489756'></script>
 <script>
 var STATIC_BASE = '//cdn1.editmysite.com/';
 var ASSETS_BASE = '//cdn2.editmysite.com/';
 var STYLE_PREFIX = 'wsite';
 </script>
 <script src='https://cdn2.editmysite.com/js/jquery-1.8.3.min.js'></script>
-
 <script type="text/javascript" src="http://cdn2.editmysite.com/js/lang/en/stl.js?buildTime=1234&"></script>
-<script src="http://cdn2.editmysite.com/js/site/main.js?buildTime=1234"></script><script type="text/javascript">
-		function initCustomerAccountsModels() {
-					(function(){_W.setup_rpc({"url":"\/ajax\/api\/JsonRPC\/CustomerAccounts\/","actions":{"CustomerAccounts":[{"name":"login","len":2,"multiple":false,"standalone":false},{"name":"logout","len":0,"multiple":false,"standalone":false},{"name":"getSessionDetails","len":0,"multiple":false,"standalone":false},{"name":"getAccountDetails","len":0,"multiple":false,"standalone":false},{"name":"getOrders","len":0,"multiple":false,"standalone":false},{"name":"register","len":4,"multiple":false,"standalone":false},{"name":"emailExists","len":1,"multiple":false,"standalone":false},{"name":"passwordReset","len":1,"multiple":false,"standalone":false},{"name":"passwordUpdate","len":3,"multiple":false,"standalone":false},{"name":"validateSession","len":1,"multiple":false,"standalone":false}]},"namespace":"_W.CustomerAccounts.RPC"});
-_W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":"_W.CustomerAccounts.BackboneModelData","collection_namespace":"_W.CustomerAccounts.BackboneCollectionData","bootstrap_namespace":"_W.CustomerAccounts.BackboneBootstrap","models":{"CustomerAccounts":{"_class":"CustomerAccounts.Model.CustomerAccounts","defaults":null,"validation":null,"types":null,"idAttribute":null,"keydefs":null}},"collections":{"CustomerAccounts":{"_class":"CustomerAccounts.Collection.CustomerAccounts"}},"bootstrap":[]});
-})();
-		}
-		if(document.createEvent && document.addEventListener) {
-			var initEvt = document.createEvent('Event');
-			initEvt.initEvent('customerAccountsModelsInitialized', true, false);
-			document.dispatchEvent(initEvt);
-		} else if(document.documentElement.initCustomerAccountsModels === 0){
-			document.documentElement.initCustomerAccountsModels++
-		}
-		</script>
-		<script type="text/javascript"> _W = _W || {}; _W.securePrefix='UNSET'; </script><script>_W = _W || {};
-			_W.customerLocale = "en_US";
-			_W.storeName = null;
-			_W.isCheckoutReskin = false;
-			_W.storeCountry = "HK";
-			_W.storeCurrency = "HKD";
-			_W.storeEuPrivacyPolicyUrl = "";
-			com_currentSite = "713576850827693055";
-			com_userID = "148137552";</script><script type="text/javascript">_W.configDomain = "www.weebly.com";</script><script>_W.relinquish && _W.relinquish()</script>
-<script type="text/javascript" src="http://cdn2.editmysite.com/js/lang/en/stl.js?buildTime=1234&"></script><script> _W.themePlugins = [];</script><script type="text/javascript"> _W.recaptchaUrl = "https://www.google.com/recaptcha/api.js"; </script><script type="text/javascript"></script>
-		
-		
-	</head>
-	<body class="no-header-page  wsite-page-guanyu wsite-theme-light">
+<script src="http://cdn2.editmysite.com/js/site/main.js?buildTime=1234"></script>
+</head>
+
+<body class="no-header-page wsite-page-projects wsite-theme-light">
     
     <div id="geology-layer"></div>
     <div class="noise-overlay"></div>
@@ -341,108 +257,34 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
     <div id="navigation-wrap">
   	 	<div id="nav">
 	      <div class="sitename"><span class="wsite-logo">
-
-	
 	<span class="wsite-title-placeholder">&nbsp;</span><span style="display:none">
 	<span style="display:none">&nbsp;</span>
 	</span>
-	
-
 </span></div>
 				<ul class="wsite-menu-default">
 						<li id="pg356461667194310790" class="wsite-menu-item-wrap">
-							<a
-										href="index.html"
-								class="wsite-menu-item"
-								>
-								About
-							</a>
-							
+							<a href="index.html" class="wsite-menu-item">About</a>
 						</li>
 						<li id="pg444862601486980856" class="wsite-menu-item-wrap">
-							<a
-										href="artworks.html"
-								class="wsite-menu-item"
-								>
-								ARTWORKS
-							</a>
-							
+							<a href="artworks.html" class="wsite-menu-item">ARTWORKS</a>
 						</li>
 						<li id="active" class="wsite-menu-item-wrap">
-							<a
-										href="writings.html"
-								class="wsite-menu-item"
-								>
-								Writings
-							</a>
-							
+							<a href="writings.html" class="wsite-menu-item">Writings</a>
 						</li>
 						<li id="pg361237216236019909" class="wsite-menu-item-wrap">
-							<a
-										href="projects.html"
-								class="wsite-menu-item"
-								>
-								Projects
-							</a>
-							
+							<a href="projects.html" class="wsite-menu-item">Projects</a>
 						</li>
 						<li id="pg497557010409593207" class="wsite-menu-item-wrap">
-							<a
-										href="posts.html"
-								class="wsite-menu-item"
-								>
-								POSTS
-							</a>
-							
+							<a href="posts.html" class="wsite-menu-item">POSTS</a>
 						</li>
 				</ul>
 			</div>
    	 	<div id="navmobile"><ul class="wsite-menu-default">
-		<li id="pg356461667194310790" class="wsite-menu-item-wrap">
-			<a
-						href="index.html"
-				class="wsite-menu-item"
-				>
-				About
-			</a>
-			
-		</li>
-		<li id="pg444862601486980856" class="wsite-menu-item-wrap">
-			<a
-						href="artworks.html"
-				class="wsite-menu-item"
-				>
-				ARTWORKS
-			</a>
-			
-		</li>
-		<li id="active" class="wsite-menu-item-wrap">
-			<a
-						href="writings.html"
-				class="wsite-menu-item"
-				>
-				Writings
-			</a>
-			
-		</li>
-		<li id="pg361237216236019909" class="wsite-menu-item-wrap">
-			<a
-						href="projects.html"
-				class="wsite-menu-item"
-				>
-				Projects
-			</a>
-			
-		</li>
-		<li id="pg497557010409593207" class="wsite-menu-item-wrap">
-			<a
-						href="posts.html"
-				class="wsite-menu-item"
-				>
-				POSTS
-			</a>
-			
-		</li>
+		<li id="pg356461667194310790" class="wsite-menu-item-wrap"><a href="index.html" class="wsite-menu-item">About</a></li>
+		<li id="pg444862601486980856" class="wsite-menu-item-wrap"><a href="artworks.html" class="wsite-menu-item">ARTWORKS</a></li>
+		<li id="active" class="wsite-menu-item-wrap"><a href="writings.html" class="wsite-menu-item">Writings</a></li>
+		<li id="pg361237216236019909" class="wsite-menu-item-wrap"><a href="projects.html" class="wsite-menu-item">Projects</a></li>
+		<li id="pg497557010409593207" class="wsite-menu-item-wrap"><a href="posts.html" class="wsite-menu-item">POSTS</a></li>
 </ul>
 </div>
     </div>
@@ -454,20 +296,16 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
     <div id="mobile-top">
 			<label id="mobile-open" class="hamburger" for="mobile-input"></label>
       <div class="sitename"><span class="wsite-logo">
-
-	
 	<span class="wsite-title-placeholder">&nbsp;</span><span style="display:none">
 	<span style="display:none">&nbsp;</span>
 	</span>
-	
-
 </span></div>
     </div>
 
   	<div id="content-wrapper">
       <div id="wsite-content" class="wsite-elements wsite-not-footer">
 	<div class="wsite-section-wrap">
-	<div class="wsite-section wsite-body-section wsite-background-15" >
+	<div class="wsite-section wsite-body-section wsite-background-12 wsite-custom-background"  >
 		<div class="wsite-section-content">
         <div class="container">
 			<div class="wsite-section-elements">
@@ -476,13 +314,9 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 		<tbody class="wsite-multicol-tbody">
 			<tr class="wsite-multicol-tr">
 				<td class="wsite-multicol-col" style="width:36.894273127753%; padding:0 15px;">
-					
-<div class="paragraph" style="text-align:left;"><font size="3"><strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</strong><strong>English</strong>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<u><a href="chuban.html"><font color="#2a2a2a">中文</font></a></u><br />&#8203;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;juntao.yang@columbia.edu</font></div>
-					
+<div class="paragraph" style="text-align:left;"><font size="3"><strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</strong><strong>English</strong>&nbsp; &nbsp; &nbsp; &nbsp;<font color="#2a2a2a">&nbsp;</font><u><a href="chuban.html"><font color="#2a2a2a">中文</font></a></u><br />&#8203;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="96fce3f8e2f7f9b8eff7f8f1d6f5f9fae3fbf4fff7b8f3f2e3">[email&#160;protected]</a></font></div>
 				</td>				<td class="wsite-multicol-col" style="width:63.105726872247%; padding:0 15px;">
-					
-<div class="paragraph" style="text-align:right;"><font size="4"><u><a href="index.html"><font color="#2a2a2a">ABOUT</font></u></strong><font color="#2a2a2a">&nbsp; &nbsp; </font><u><a href="artworks.html"><font color="#2a2a2a">ARTWORKS</font></a></u><font color="#2a2a2a">&nbsp; &nbsp;&nbsp;</font><strong><font color="#2a2a2a">WRITINGS</font></a></strong><font color="#2a2a2a">&nbsp; &nbsp;&nbsp;</font><u><a href="projects.html"><font color="#2a2a2a">PROJECTS</font></a></u><font color="#2a2a2a">&nbsp;</font>&nbsp; &nbsp;<u><a href="posts.html"><font color="#2a2a2a">POSTS</font></a></u>&nbsp;&nbsp;</font></div>
-					
+<div class="paragraph" style="text-align:right;"><font size="4"><u><a href="index.html"><font color="#2a2a2a">ABOUT</font></a></u><font color="#2a2a2a">&nbsp; &nbsp; </font><u><a href="artworks.html"><font color="#2a2a2a">ARTWORKS</font></a></u><font color="#2a2a2a">&nbsp; &nbsp; </font><strong><font color="#2a2a2a">WRITINGS</font></strong><font color="#2a2a2a">&nbsp; &nbsp; </font><u><a href="projects.html"><font color="#2a2a2a">PROJECTS</font></a></u><font color="#2a2a2a">&nbsp; &nbsp; </font><u><a href="posts.html"><font color="#2a2a2a">POSTS</font></a></u>&nbsp;&nbsp;</font></div>
 				</td>			</tr>
 		</tbody>
 	</table>
@@ -490,7 +324,8 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 
 <div class="wsite-spacer" style="height:50px;"></div>
 
-<h2 class="wsite-content-title">Writings</h2>
+<h2 class="wsite-content-title">WRITINGS</h2>
+
 <div class="wsite-spacer" style="height:100px;"></div>
 
 <div class="writings-body">
@@ -503,7 +338,7 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
             <p class="writing-details"><em>Theoretical Studies in Literature and Art</em>, East China Normal University Press, Incoming<br>(Written in Chinese)</p>
         </div>
         <div class="writing-entry">
-            <p class="writing-title"><a href="/uploads/Precarious Attachments_A Critical Reading of Judith Butler’s The Psychic Life of Power_Theories in Subjection (1997).pdf">Precarious Attachments: A Critical Reading of Judith Butler's The Psychic Life of Power: Theories in Subjection (1997)</a></p>
+            <p class="writing-title"><a href="/uploads/Precarious Attachments_A Critical Reading of Judith Butler's The Psychic Life of Power_Theories in Subjection (1997).pdf">Precarious Attachments: A Critical Reading of Judith Butler's The Psychic Life of Power: Theories in Subjection (1997)</a></p>
             <p class="writing-details"><em>The Journal of Contemporary Art Criticism</em>, Asia Technology Research Institute,Volume 1 Issue 2 (2025)</p>
         </div>
         <div class="writing-entry">
@@ -576,7 +411,6 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
             <p class="writing-details">- Xiamen University School of Film 2025 Youth Forum "The Death of Cinema, The Love for Film: From Aesthetic Traditions to Digital Intelligence Revolution", Xiamen University, China, July 12, 2025</p>
         </div>
 
-
         <div class="writing-entry">
             <p class="writing-title">Fault Lines and Echoing Strata: Attunement and Unsecurement through East Asia's Earthquake–Media [Oral Presentations]</p>
             <p class="writing-details">
@@ -592,7 +426,6 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
             <p class="writing-details">- Big Stuff Heritage Conference "Skills and Machines: A Living Partnership", University of Canberra, Australia, October 14–17, 2025<br/>
 - The International Committee for the Conservation of the Industrial Heritage Congress 2025 "Heritage in action: Legacies of industry in future making", Kiruna, Sweden, August 25–30, 2025</p>
         </div>
-
 
          <div class="writing-entry">
             <p class="writing-title">Stepping Through Cures/Curses: How the Traces of Herb Scattering, Breathing, and Memorizing Mediate Collective Trauma and Public Healing [Oral Presentations]</p>
@@ -637,10 +470,14 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
         </div>
     </div>
 
+    <div class="wsite-spacer" style="height:100px;"></div>
+
 </div>
+
 </div>
 		</div>
       </div>
+
 	</div>
 </div>
 
@@ -648,12 +485,11 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 
   	</div>
 
-  
 
   </div>
 
 </div>
-<script type="text/javascript" src="files/theme/plugins.js"></script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="text/javascript" src="files/theme/plugins.js"></script>
 <script type="text/javascript" src="files/theme/custom.js"></script>
 <script type="text/javascript" src="files/theme/mobile.js"></script>
     <div id="customer-accounts-app"></div>
@@ -663,8 +499,8 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
     new p5(function(p) {
         let cols, rows;
         let field = [];
-        const REZ = 8; // 分辨率
-        const ACCENT_COLOR = p.color(58, 75, 92); // #3A4B5C 深岩蓝
+        const REZ = 8;
+        const ACCENT_COLOR = p.color(58, 75, 92);
         
         p.setup = function() {
             let container = document.getElementById('geology-layer');
@@ -673,7 +509,6 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
             let cnv = p.createCanvas(w, h);
             cnv.parent('geology-layer');
             
-            // [关键优化] 停止循环，只渲染一次！彻底释放CPU
             p.noLoop();
             
             p.cols = 1 + Math.ceil(w / REZ);
@@ -686,30 +521,23 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
             p.strokeJoin(p.ROUND);
             p.noFill();
             
-            // 执行一次性绘制
             generateGeology();
         };
 
         function generateGeology() {
             p.clear();
-            
-            // 静态的随机偏移量，每次刷新都不一样，但生成后静止
             let zOff = p.random(100); 
-
-            // 生成噪点场
             for (let i = 0; i < p.cols; i++) {
                 for (let j = 0; j < p.rows; j++) {
                     let x = i * REZ;
                     let y = j * REZ;
-                    // 放大比例，让线条更舒缓
                     let val = p.noise(x * 0.003, y * 0.003, zOff);
                     field[i][j] = val;
                 }
             }
 
-            // 绘制等高线 - 既然是静态图，可以保持极高画质
-            p.strokeWeight(1.4); // 线条粗细
-            let numIsolines = 90; // 极高密度
+            p.strokeWeight(1.4); 
+            let numIsolines = 90; 
             
             for (let i = 0; i < p.cols - 1; i++) {
                 for (let j = 0; j < p.rows - 1; j++) {
@@ -727,13 +555,11 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
                     if (maxLvl > minLvl) {
                         for (let k = minLvl + 1; k <= maxLvl; k++) {
                             let threshold = k / numIsolines;
-                            
-                            // 动态透明度：越靠右越深，左侧淡出
                             let alpha = p.map(i, 0, p.cols, 0, 40); 
                             ACCENT_COLOR.setAlpha(alpha);
                             p.stroke(ACCENT_COLOR);
 
-                            let state = getState(valTL, valTR, valBR, valBL, threshold);
+                            let state = (valTL >= threshold ? 8 : 0) + (valTR >= threshold ? 4 : 0) + (valBR >= threshold ? 2 : 0) + (valBL >= threshold ? 1 : 0);
                             let a = p.createVector(x + REZ * (threshold - valTL) / (valTR - valTL), y);
                             let b = p.createVector(x + REZ, y + REZ * (threshold - valTR) / (valBR - valTR));
                             let c = p.createVector(x + REZ * (threshold - valBL) / (valBR - valBL), y + REZ);
@@ -761,10 +587,6 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
             }
         }
 
-        function getState(tl, tr, br, bl, t) {
-            return (tl >= t ? 8 : 0) + (tr >= t ? 4 : 0) + (br >= t ? 2 : 0) + (bl >= t ? 1 : 0);
-        }
-
         function drawLine(v1, v2) {
             p.line(v1.x, v1.y, v2.x, v2.y);
         }
@@ -777,10 +599,10 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
             for (let i = 0; i < p.cols; i++) {
                 field[i] = new Float32Array(p.rows);
             }
-            // 窗口调整大小时重新生成一次静态图
             generateGeology();
         };
     });
 </script>
+
 </body>
 </html>
