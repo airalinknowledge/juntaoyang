@@ -153,6 +153,7 @@
         margin-bottom: 2rem !important;
         border-bottom: 1px solid var(--line-light); 
         padding-bottom: 10px;
+        color: var(--text-ink) !important;
     }
 
     /* --- 3. 布局与间距 --- */
@@ -196,7 +197,9 @@
     .award-item,
     .residency-item,
     .teaching-item,
-    .talk-item
+    .talk-item,
+    .institute-item,
+    .coverage-item
     {
         font-family: var(--font-serif) !important;
         padding: 0 !important; 
@@ -206,6 +209,26 @@
         margin-top: 8px !important;
         display: block;
         color: var(--text-ink) !important;
+    }
+
+    /* Institutes 特殊样式 */
+    .institute-item {
+        margin-bottom: 16px !important;
+    }
+    .faculty-list {
+        font-size: 0.85em !important;
+        color: var(--text-meta) !important;
+        margin-top: 2px !important;
+        line-height: 1.4 !important;
+        opacity: 0.8;
+        padding-left: 20px !important; /* 增加缩进 */
+    }
+
+    /* Coverage 特殊样式 */
+    .coverage-type {
+        color: var(--text-meta);
+        font-style: italic;
+        font-size: 0.95em;
     }
 
     /* 链接样式 */
@@ -223,7 +246,7 @@
     }
     
     /* 强调/作品名样式 */
-    .conference-item em, .exhibition-item em, .award-item em, .residency-item em, .talk-item em, .teaching-item em {
+    .conference-item em, .exhibition-item em, .award-item em, .residency-item em, .talk-item em, .teaching-item em, .institute-item em, .coverage-item em {
         font-family: var(--font-serif) !important;
         color: var(--text-ink);
         font-style: italic; /* 中文斜体支持取决于字体，通常也可以不斜体改用书名号，但此处保持CSS一致 */
@@ -312,7 +335,8 @@
 .blog-header h2 a {}
 #wsite-content h2.wsite-product-title {}
 .wsite-product .wsite-product-price a {}
-}</style>
+}
+</style>
 <style>
     /* 使用 !important 强制覆盖所有默认样式 (此处添加了 index.html 中的强制样式) */
     .main-content-area {
@@ -526,18 +550,38 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 <div style="height: 40px; overflow: hidden; width: 100%;"></div></div>
 
 <div class="main-content-column main-content-area">
-<div class="paragraph">&#26472;&#21531;&#38518;&#65292;&#20889;&#20316;&#32773;&#65292;&#31574;&#23637;&#20154;&#65292;&#33402;&#26415;&#23478;&#12290;<br /><br />杨君陶的批评写作和艺术实践专注于视觉物质文化特定场域中微观权力运作的痕迹，日常生存状态中可见或不可见的冲突与暴力，以及权力代理物的组织与流变；杨君陶致力于诉诸言说（有时是歇斯底里的）以拮抗意识形态的沉默力量与普遍存在的政治冷感症。他目前的研究重点在于行星电影与地质思维，毒性与灾难媒介等。他目前工作于纽约和南京。<br /><br /></div>
+<div class="paragraph">&#26472;&#21531;&#38518;&#65292;&#20889;&#20316;&#32773;&#65292;&#31574;&#23637;&#20154;&#65292;&#33402;&#26415;&#23478;&#12290;<br /><br />杨君陶的批评写作和艺术实践专注于视觉物质文化特定场域中微观权力运作的痕迹，日常生存状态中可见或不可见的冲突与暴力，以及权力代理物的组织与流变；杨君陶致力于诉诸言说（有时是歇斯底里的）以拮抗意识形态的沉默力量与普遍存在的政治冷感症。他目前的研究重点在于行星电影与地质思维，毒性与灾难媒介等。他目前工作于布鲁克林和南京。<br /><br /></div>
 
 <div class="section-gap"></div>
 
 <div class="paragraph" style="text-align:left;"><font size="5"><u>&#25945;&#32946;</u></font>
-<div class="award-item">&#21733;&#20262;&#27604;&#20122;&#22823;&#23398;&#65292;&#30005;&#24433;&#19982;&#23186;&#20171;&#30740;&#31350;&#65288;&#26032;&#20852;&#23186;&#20171;&#30740;&#31350;&#65289;&#65292;&#25991;&#23398;&#30805;&#22763;&#65292;2024-2026</div>
-<div class="award-item">&#27494;&#27721;&#22823;&#23398;&#65292;&#25103;&#21095;&#24433;&#35270;&#25991;&#23398;&#65292;&#33402;&#26415;&#23398;&#22763;&#65292;<span style="color:rgb(0, 0, 0)">&nbsp;2020-2024</span></div>
+<div class="award-item">哥伦比亚大学，艺术学院，电影与媒介研究（新兴媒介研究）文学硕士，美国，2024-2026</div>
+<div class="award-item">武汉大学，艺术学院，戏剧影视文学文学学士，中国，2020-2024</div>
 </div>
 
 <div class="section-gap"></div>
 
-<div class="paragraph"><u><font size="5">&#22870;&#39033;</font></u>
+<div class="paragraph">
+<u><font size="5">研习班与工作坊</font></u>
+<div id="institutes">
+    <div class="institute-item">
+        暑期研习班，“媒介美学 VII：被排斥的媒介”，西北大学传播学院，2025
+        <div class="faculty-list">合作导师：Michael B. Gillespie, Cait McKinney, Kartik Nair, Genevieve Yue, Michael Metzger, Dilip Gaonkar</div>
+    </div>
+    <div class="institute-item">
+        暑期研习班，“华语电影：历史、方法与生态”，厦门大学电影学院，2024    
+        <div class="faculty-list">合作导师：焦雄屏, 罗卡, 李道新, 罗岗, 吴国坤, 井迎瑞, 许维贤, 张吉安</div>
+    </div>
+    <div class="institute-item">
+        创意营，“创造力发生器”（第八期），许燎源当代艺术设计博物馆，2024
+        <div class="faculty-list">合作导师：许燎源</div>
+    </div>
+</div>
+</div>
+
+<div class="section-gap"></div>
+
+<div class="paragraph"><u><font size="5">奖项与荣誉</font></u>
 <div id="awards">
 <div class="award-item">PAMLA Graduate Student Scholarship, Pacific Ancient and Modern Language Association 2025 Conference, 2025</div>
 <div class="award-item">“将来式”单元最佳短片奖 & 最佳剪辑奖，授予《轻巧而冷淡的对谈：大西洋，算法与可见性》，未完成式 · 福建师大传播学院建院二十周年短片交流展, 2024</div>
@@ -550,47 +594,7 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 <div class="award-item">最佳实验电影（Kurt Kren’s Scratched Glasses），授予《轻巧而冷淡的对谈：大西洋，算法与可见性》，International Film Festival of Audiovisual Theory Students，2023</div>
 <div class="award-item">最佳实验电影提名，授予《轻巧而冷淡的对谈：大西洋，算法与可见性》，北纬30°短片节，2023</div>
 <div class="award-item">荣誉提及，授予《轻巧而冷淡的对谈：大西洋，算法与可见性》，Varsity Film Expo，2023</div>
-<div class="award-item">最佳AI短片，授予《轻巧而冷淡的对谈：大西洋，算法与可见性》，SHISW翠麟短片奖，2023</div>
 </div>
-</div>
-
-<div class="section-gap"></div>
-
-<div class="paragraph"><u><font size="5">学术活动</font></u>
- <div id="conferences">
-<div class="conference-item">电影与媒介研究学会 (SCMS) 2026年会，芝加哥，美国，2026/3</div>
-<div class="conference-item">第29届哈佛东亚协会年会，哈佛大学，美国，2026/2</div>
-<div class="conference-item">Zoom-In 2026，电影与媒介研究，哥伦比亚大学，美国，2026/2</div>
-
-<div class="conference-item">2025 Annual Meeting of the American Anthropological Association，New Orleans，美国，2025/11</div>
-<div class="conference-item">Pacific Ancient and Modern Language Association Annual Convention，San Francisco，美国，2025/11</div>
-<div class="conference-item">Big Stuff Heritage Conference，主题： "Skills and Machines: A Living Paternership"，堪培拉大学，澳大利亚，2025/10</div>
-<div class="conference-item">Taboo-Transgression-Transcendence in Art & Science 2025，Kino Šiška，斯洛文尼亚，2025/9</div>
- <div class="conference-item">The International Committee for the Conservation of the Industrial Heritage Congress 2025，论坛主题：“Heritage in action: Legacies of industry in future making”，瑞典，2025/8</div>
-<div class="conference-item">Futurities II: The Transnational Exchange of Chinese and American Film and Media Theories，哥伦比亚大学，美国，2025/8</div>
- <div class="conference-item">2025 Rhetoric, Media and Publics Summer Institute: Excluded Media VII，Northwestern University，美国，2025/7</div>
- <div class="conference-item">SEAA-SNU Anthropology 2025 Conference，论讨主题：“Shaping Futures: East Asia as Practice”，Seoul National University，韩国，2025/7</div>
- <div class="conference-item">2025厦门大学青年电影论坛，论讨主题：“电影之爱与电影之死：从传统美学到数智革命”，厦门大学，中国，2025/7</div>
-<div class="conference-item">The 20th annual Cinema and Media Studies Graduate Student Conference，论坛主题：“Failing Media”， The University of Chicago，美国，2025/4</div>
- <div class="conference-item">北京国际电影节·第32届大学生电影节：第六届国际青年学者论坛，分论坛主题：“重奏：媒介更迭的探索与展望”，北京师范大学，中国，2025/4</div>
- <div class="conference-item">Mediated Futures: Graduate Student Interdisciplinary Conference on Environment, Space, Future, and Media in Southeast and East Asian Cultural and Art Practices， University of California, Irvine，美国，2025/4</div>
- <div class="conference-item">第六届媒介物质性论坛，清华大学，中国，2025/3</div>
- <div class="conference-item">Common Ground Graduate Conference 2025，论坛主题：“Media Studies in/at/from the Margins”，Indiana University Bloomington，美国，2025/3</div>
-<div class="conference-item">2025 NYU Cinema Studies Student Conference，论坛主题：“Templates”, New York University，美国，2025/2 - 2025/3</div>
- <div class="conference-item">甘肃省第二届新闻传播学研究生学术论坛，兰州大学，中国，2025/1</div>
-<div class="conference-item">安徽省第十六届新闻传播学科研究生论坛，论坛主题：“嬗变 · 融合 · 创新：数智时代的媒介边界与传播想象”，安徽大学，中国，2024/12</div>
- <div class="conference-item">数智时代的艺术学学科发展国际研讨会，分论坛主题：“数智时代的艺术媒介、机构和景象”，武汉理工大学，中国，2024/12</div>
-<div class="conference-item">2024中国东部传媒艺术论坛，论坛主题：“数智化语境的电影与新视听艺术”，分论坛主题：“数智时代影视媒介理论新进展”，南京大学，中国，2024/12</div>
-<div class="conference-item">全球共通：数字时代的共同体想象学术大会暨2024 年浙江省传播学会年会，浙大宁波理工学院，中国，2024/12</div>
-<div class="conference-item">首届数智影视创研论坛，论坛主题：“数智影视：新技术·新方法·新美学”，分论坛主题：“数智影视的本体思考”，重庆大学，中国，2024/12</div>
-<div class="conference-item">第六届 "青年与影像 · 电影的跨界与未来" 研究生学术论坛，福建师范大学，中国，2024/11</div>
- <div class="conference-item">首届生态影像理论与创作研究论坛，西南石油大学，中国，2024/11</div>
- <div class="conference-item">第五届中国 - 东盟高校研究生艺术学论坛，论坛主题：“数智时代艺术研究的范式变革与话语创新”，广西艺术学院，中国，2024/10</div>
-<div class="conference-item">第十二届海峡两岸生态文学年会暨后人类语境下的生态批评与生态文学研讨会，分论坛主题：“人类世与后人类批评”，集美大学，中国，2024/10</div>
-<div class="conference-item">“华语电影：历史、方法与生态” 暑期学校，厦门大学电影学院，中国，2024/7      -      “优秀学员”荣誉</div>
- <div class="conference-item">“创造力发生器” 高级设计人才创作营 ，许燎源设计艺术博物馆，中国，2024/6 - 2024/7</div>
-</div>
-<button id="toggle-conferences" class="toggle-btn">展开更多</button>
 </div>
 
 <div class="section-gap"></div>
@@ -719,22 +723,35 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 
 <div class="section-gap"></div>
 
-<div class="paragraph"><u><font size="5">对谈，采访与讲座</font></u>
-<div id="talks">
-<div class="talk-item"><u><a href="https://jilucommune.com/en/programs/48" target="_blank">特邀主持</a></u> (与导演 Nicolas Gourault), <em>The Other Side of Algorithms: Reclaiming the Body, Voice and Labor</em>, 纪录公社, 线上, 2025</div>
-<div class="talk-item"><u><a href="https://mp.weixin.qq.com/s/emznMENbR0EbiGNm2IyYyQ" target="_blank">沙龙对谈</a></u>, “多屏影像”短片主题展映</a></em></u>，中国美术学院，杭州，中国，2025</div>
-<div class="talk-item"><u><a href="https://mp.weixin.qq.com/s/FxY6OtlHM6bSdNDa7oV9DA" target="_blank"><font color="#000000">沙龙对谈</font></a></u></font>, 武汉大学研究生学术科技节 “失真的想象力：电影注解下的技术反思”, 武汉大学艺术学院, 武汉, 2024</div>
-<div class="talk-item"><u><a href="https://044artstudio.com/artists" target="_blank">艺术家采访</a></u>, 044 ART STUDIO, 线上, 2024</div>
-<div class="talk-item">艺术家采访,   江苏商报 , 南京，2024</div>
-<div class="talk-item"><u><a href="GOOGOLzuotanhui.html" target="_blank">艺术家对谈</a></u>, <em>GOOGOL</em>, 线上, 2024</div>
-<div class="talk-item"><u><a href="https://www.xiaohongshu.com/explore/66619b2f000000000c01b3fb?app_platform=android&ignoreEngage=true&app_version=8.39.0&share_from_user_hidden=true&type=normal&author_share=1&xhsshare=WeixinSession&shareRedId=N0xHMDM9RUE2NzUyOTgwNjY0OTc9NTxO&apptime=1717687112&share_id=4f70ca260d5848adb599a2d74a239521" target="_blank"><font color="#000000">艺术家采访</font></a></u></font>, <em>“与植物一同呼吸”</em>,     隙 | Collective , 2024</div>
-<div class="talk-item"><u><a href="https://mp.weixin.qq.com/s/LceWwIAWW9sofBra7_AgKA" target="_blank">艺术家对谈</a></u>, <em style="color:rgb(0, 0, 0)">&ldquo;&#19968;&#20999;&#26159;&#22914;&#20309;&#24320;&#22987;&#30340;&#65311;&rdquo;&mdash;&mdash;&#31070;&#31192;&#23398;&#22278;&#26700;&#20250;&#31532;&#19968;&#26399;</em>, &#20044;&#40614;&#33402;&#26415;&#35745;&#21010;, &#32447;&#19978;, 2023</div>
-<div class="talk-item"><font color="#000000">开幕发言, </font>&#21069;&#34892;&#32654;&#26415;&#39302;, &#38271;&#27801;, &#20013;&#22269;, 2023</div>
-<div class="talk-item"><u><a href="https://mp.weixin.qq.com/s/XgwA910JrW2Ra7zy_YppLQ" target="_blank"><font color="#000000">艺术家采访</font></a></u></font>, <em>“独立艺术家，在南京”</em>,      南京文化生活指南 , 2023</div>
-<div class="talk-item"><u><a href="https://mp.weixin.qq.com/s/oAricm9WS5m2XtCShSG4tQ" target="_blank"><font color="#2a2a2a">&#33402;&#26415;&#23478;&#35762;&#24231;</font></a></u><font color="#2a2a2a">, C-POP &#23454;&#39564;&#21095;&#22330;, &#21271;&#20140;</font><u><font color="#2a2a2a">,</font></u><font color="#8c48b7">&nbsp;</font>&#20013;&#22269;, 2023</div>
+<div class="paragraph">
+<u><font size="5">媒体报道</font></u>
+<div id="coverage">
+    <div class="coverage-item">
+        <a href="https://mp.weixin.qq.com/s/NZ5srXRQcjFeuJWVGR5I8g" target="_blank">“环形叙事的断裂节点——「大断裂：末世未来考古学」策展人解纪詹明信逝世一周年”</a>, 吕东其, 中心美术馆, 2025
+    </div>
+    <div class="coverage-item">
+        <a href="https://mp.weixin.qq.com/s/3VLiyiQreCES44Z5HZTDuw" target="_blank">““真实”的多棱镜：论分屏影像”</a>, 2025
+    </div>
+    <div class="coverage-item">
+        <a href="https://mp.weixin.qq.com/s/EGSDrLHYYixPOE42EdbodQ" target="_blank">“当我们感应：群体仪式的身体与共鸣记忆”</a>, ARTUNNEL, 2024
+    </div>
+    <div class="coverage-item">
+        <a href="https://mp.weixin.qq.com/s/XgwA910JrW2Ra7zy_YppLQ" target="_blank">“独立艺术家，在南京”</a>, 南京文化生活指南, 2023
+    </div>
+    <div class="coverage-item">
+        <a href="https://www.4cgallery.com/exhibition/4cexhibitionaini" target="_blank">“AI & NI”</a>, 4C Gallery, 2023
+    </div>
+    <div class="coverage-item">
+        <a href="https://mp.weixin.qq.com/s/9OmadKc95DEtzuN7nTyTUg" target="_blank">“西部呼声：点燃我的火”</a>, UCFC, 2023
+    </div>
+    <div class="coverage-item">
+        <a href="https://mp.weixin.qq.com/s/oAricm9WS5m2XtCShSG4tQ" target="_blank">“实验与创造：与三位青年电影人的对话”</a>, 浪潮电影, 2023
+    </div>
+    <div class="coverage-item">
+        <a href="https://mp.weixin.qq.com/s/dzTeXl5zJ7jUB3BTrgDfpQ" target="_blank">“植物生成的影像”</a>, 邵千豪, 武汉影像艺术中心, 2023
+    </div>
 </div>
 </div>
-
 
 <div class="section-gap"></div>
 

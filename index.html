@@ -210,7 +210,9 @@
     .award-item,
     .residency-item,
     .teaching-item,
-    .talk-item
+    .talk-item,
+    .institute-item,
+    .coverage-item
     {
         font-family: var(--font-serif) !important;
         padding: 0 !important; 
@@ -219,6 +221,26 @@
         background: none !important;
         margin-top: 8px !important;
         display: block;
+    }
+
+    /* Institutes 特殊样式 */
+    .institute-item {
+        margin-bottom: 16px !important; /* 增加间距以适应 faculty list */
+    }
+    .faculty-list {
+        font-size: 0.85em !important;
+        color: var(--text-meta) !important;
+        margin-top: 2px !important;
+        line-height: 1.4 !important;
+        opacity: 0.8;
+        padding-left: 20px !important; /* 增加缩进 */
+    }
+
+    /* Coverage 特殊样式 */
+    .coverage-type {
+        color: var(--text-meta);
+        font-style: italic;
+        font-size: 0.95em;
     }
 
     /* 链接样式 */
@@ -235,7 +257,7 @@
         background: transparent !important; 
     }
     
-    .conference-item em, .exhibition-item em, .award-item em, .residency-item em, .talk-item em, .teaching-item em {
+    .conference-item em, .exhibition-item em, .award-item em, .residency-item em, .talk-item em, .teaching-item em, .institute-item em, .coverage-item em {
         font-family: var(--font-serif) !important;
         color: var(--text-ink);
         font-style: italic;
@@ -623,20 +645,40 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
                     <div class="main-content-column main-content-area">
                       <div class="paragraph">
                      <font size="4">Juntao Yang is a scholar, critic, and artist.</font><br /><br />
-                        <font size="4">Yang's critical writings and artistic practices focus on the traces of the operations of micro power in the specific field of visual and material culture, the visible or invisible conflicts and violence in daily existence, and the organization and fluid of the proxy of power. Yang is committed to resorting to Speech, sometimes hysterically, counteracts the silent power of ideology and the pervasive political apathy. Yang's current research focuses on planetary cinema and geological thinking, as well as toxicity and catastrophe media. Yang is currently based in New York and Nanjing.<br /></font>
+                        <font size="4">Yang's critical writings and artistic practices focus on the traces of the operations of micro power in the specific field of visual and material culture, the visible or invisible conflicts and violence in daily existence, and the organization and fluid of the proxy of power. Yang is committed to resorting to Speech, sometimes hysterically, counteracts the silent power of ideology and the pervasive political apathy. Yang's current research focuses on planetary cinema and geological thinking, as well as toxicity and catastrophe media. Yang is currently based in Brooklyn and Nanjing.<br /></font>
                       </div>
                       <div class="section-gap"></div>
                       <div class="paragraph" style="text-align:left;">
                         <u><font size="5">Education&nbsp;</font></u>
                         
-                        <div class="award-item">MA in Film and Media Studies ( Emergent Media Studies ), School of the Arts, Columbia University, USA, 2024-2026</div>
-                        <div class="award-item">BA in Drama and Film-and-Television Literature, School of Arts, Wuhan University, China, 2020-2024</div>
+                        <div class="award-item">MA in Film and Media Studies ( Emergent Media Studies ), Columbia University, School of the Arts, USA, 2024-2026</div>
+                        <div class="award-item">BA in Drama and Film-and-Television Literature, Wuhan University, School of Arts, China, 2020-2024</div>
                       </div>
 
                       <div class="section-gap"></div>
 
                       <div class="paragraph">
-                        <u><font size="5">Awards</font></u>
+                        <u><font size="5">Institutes</font></u>
+                        <div id="institutes">
+                            <div class="institute-item">
+                                Summer Institute, "Media Aesthetics VII: Excluded Media", Northwestern University, School of Communication, 2025
+                                <div class="faculty-list">With: Michael B. Gillespie, Cait McKinney, Kartik Nair, Genevieve Yue, Michael Metzger, Dilip Gaonkar</div>
+                            </div>
+                            <div class="institute-item">
+                                Summer Institute, "Chinese Cinema: Histories, Methods and Ecologies", Xiamen University, School of Film, 2024    
+                                <div class="faculty-list">With: Peggy Chiao, Law Kar, Daoxin Li, Gang Luo, Kenny Ng, Yng-ruey Jiing, Wai Siam Hee, Chong Keat Aun</div>
+                            </div>
+                            <div class="institute-item">
+                                Creative Camp, "Inspiration Booster" (8th Edition), XLY MoMA, 2024
+                                <div class="faculty-list">With: Xu liaoyuan</div>
+                            </div>
+                        </div>
+                      </div>
+
+                      <div class="section-gap"></div>
+
+                      <div class="paragraph">
+                        <u><font size="5">Awards & Honors</font></u>
                         
                         <div id="awards">
                             <div class="award-item">PAMLA Graduate Student Scholarship, Pacific Ancient and Modern Language Association 2025 Conference, 2025</div>
@@ -650,50 +692,7 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
                             <div class="award-item">Best Experimental Film (Kurt Kren’s Scratched Glasses) for&nbsp;<em>Light and Cold Conversations: Atlantic, Algorithms and Visibility</em>, International Film Festival of Audiovisual Theory Students, 2023</div>
                             <div class="award-item">Best Experimental Short Film Nomination for <em>Light and Cold Conversations: Atlantic, Algorithms and Visibility</em>, <span>Ningbo Short Film Festival, 2023</span></div>
                             <div class="award-item">Honourable Mention&nbsp;<span>for&nbsp;</span><em>Light and Cold Conversations: Atlantic, Algorithms and Visibility</em>,&nbsp;<span>Varsity Film Expo, 2023</span></div>
-                            <div class="award-item">Best AI Short for&nbsp;<em>Light and Cold Conversations: Atlantic, Algorithms and Visibility</em>,<em>&nbsp;</em><span>Shanghai International Short Week, 2023</span></div>
                         </div>
-                      </div>
-
-                      <div class="section-gap"></div>
-
-                      <div class="paragraph">
-                        <u><font size="5">Conferences &amp; Workshops</font></u>
-                        <div id="conferences">
-
-                          <div class="conference-item">Society for Cinema and Media Studies (SCMS) 2026 Annual Conference, Chicago, USA, 2026/3</div>
-                          <div class="conference-item">The 29th Annual Harvard East Asia Society Conference, Harvard University, USA, 2026/2</div>
-                          <div class="conference-item">Zoom-In 2026, Film and Media Studies, Columbia University, USA, 2026/2</div>
-                          <div class="conference-item">2025 Annual Meeting of the American Anthropological Association, USA, 2025/11</div>
-                          <div class="conference-item">Pacific Ancient and Modern Language Association Annual Convention, USA, 2025/11</div>
-                          <div class="conference-item">[Aniwow! 2025] 20th China (Beijing) International Student Animation Festival, Annual Conference of China Game Studies 2025, Communication University of China, China, 2025/10</div>
-                          <div class="conference-item">Big Stuff Heritage Conference , Theme: "Skills and Machines: A Living Paternership", University of Canberra, Australia, 2025/10</div>
-                          <div class="conference-item">Taboo-Transgression-Transcendence in Art &amp; Science 2025, Interdisciplinary Conference, Slovenia, 2025/9</div>
-                          <div class="conference-item">The International Committee for the Conservation of the Industrial Heritage Congress 2025, Theme: "Heritage in action: Legacies of industry in future making", Sweden, 2025/8</div>
-                          <div class="conference-item">Futurities II: The Transnational Exchange of Chinese and American Film and Media Theories, Columbia University, USA, 2025/8</div>
-                          <div class="conference-item">2025 Rhetoric, Media and Publics Summer Institute: Excluded Media VII, Northwestern University, USA, 2025/7</div>
-                          <div class="conference-item">SEAA-SNU Anthropology 2025 Conference, Theme: "Shaping Futures: East Asia as Practice", Seoul National University, South Korea, 2025/7</div>
-                          <div class="conference-item">Xiamen University School of Film 2025 Youth Forum, Theme: "The Death of Cinema, The Love for Film: From Aesthetic Traditions to Digital Intelligence Revolution", Xiamen University, China, 2025/7</div>
-                          <div class="conference-item">The 20th annual Cinema and Media Studies Graduate Student Conference, Theme: "Failing Media", The University of Chicago, USA, 2025/4</div>
-                          <div class="conference-item">Beijing International Film Festival · The 32nd College Student Film Festival: 2025 International Young Scholars Conference, Beijing Normal University, China, 2025/4</div>
-                          <div class="conference-item">Mediated Futures: Graduate Student Interdisciplinary Conference on Environment, Space, Future, and Media in Southeast and East Asian Cultural and Art Practices, University of California, Irvine, USA, 2025/4</div>
-                          <div class="conference-item">6th Media Materiality Forum, Theme: "Digital Intelligence, Cosmotechnics, and Planetary Future", Tsinghua University, China, 2025/3</div>
-                          <div class="conference-item">Common Ground Graduate Conference 2025, Theme: "Media Studies in/at/from the Margins", Indiana University Bloomington, USA, 2025/3</div>
-                          <div class="conference-item">2025 NYU Cinema Studies Student Conference, Theme: "Template", New York University, USA, 2025/2 - 2025/3</div>
-                          <div class="conference-item">The 2nd Gansu Graduate Student Forum on Journalism and Communication, Lanzhou University, China, 2025/1</div>
-                          <div class="conference-item">The 16th Anhui Graduate Student Forum on Journalism and Communication, Theme: "Transmutation · Integration · Innovation: Media Boundaries and Communication Imagination in the Age of Digital Intelligence", Anhui University, China, 2024/12</div>
-                          <div class="conference-item">International Symposium on the Development of Artistic Disciplines in the Era of Digital Intelligence, Sub-forum Theme: "Art Media, Art Institutions and Art Landscape in the Era of Digital Intelligence", Wuhan University of Technology, China, 2024/12</div>
-                          <div class="conference-item">2024 China Eastern Media Art Forum, Forum Topic: "Film and New Audiovisual Art in the Context of Digitization", Sub-forum Theme: "New Advances in Film and Television Media Theory in the Age of Digital Intelligence", Nanjing University, China, 2024/12</div>
-                          <div class="conference-item">2024 Annual Academic Conference of Zhejiang Communication Association, Forum Topic: "Global Connectivity: Imagining Communities in the Digital Era", NingboTech University, China, 2024/12</div>
-                          <div class="conference-item">The 1st Digital Intelligence Cinema Forum, Forum Topic: "Digital Intelligence Cinema: New Technologies · New Methods · New Aesthetics", Sub-forum Theme: "Theories: Philosophy, Aesthetics, and Other Related Issues in Digital Intelligence Cinema", Chongqing University, China, 2024/12</div>
-                          <div class="conference-item">The 6th "Youth and Visual Media" Postgraduate Academic Forum, Forum Topic: "Cross-boundary and Future of Cinema", Fujian Normal University, China, 2024/11</div>
-                          <div class="conference-item">The 1st Eco-cinema Theory and Creation Research Forum, Southwest Petroleum University, China, 2024/11</div>
-                          <div class="conference-item">The 5th China-ASEAN University Postgraduate Forum on Art, Forum Topic: Paradigm Transformation and Discourse Innovation of Art Research in the Digital Intelligence Era, Guangxi Art University, China, 2024/10</div>
-                          <div class="conference-item">The 12th Ecological Literature Annual Conference Across the Taiwan Strait &amp; Academic Forum on Eco-criticism and Eco-literature in the Context of Posthumanism, Forum Topic: "Anthropocene and Posthumanism Criticism", Jimei University, China, 2024/10</div>
-                          <div class="conference-item">"Chinese Cinema: Histories, Methods and Ecologies" Summer School, School of Film, Xiamen University, China, 2024/7</div>
-                          <div class="conference-item">The 8th "Inspiration Booster" Creative Camp of Contemporary Art Design, XLY MoMA, China, 2024/6 - 2024/7</div>
-                        </div>
-                        <button id="toggle-conferences" class="toggle-btn">Show More</button>
-                        <br /><br />
                       </div>
 
                       <div class="section-gap"></div>
@@ -811,22 +810,35 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
                       <div class="section-gap"></div>
 
                       <div class="paragraph">
-                        <u><font size="5">Talks &amp; Interviews</font></u>
-                        <div id="talks">
-                            <div class="talk-item"><u><a href="https://jilucommune.com/en/programs/48" target="_blank">Invited host</a></u> (With Dir. Nicolas Gourault), <em>The Other Side of Algorithms: Reclaiming the Body, Voice and Labor</em>, Jilu Commune, Online, 2025</div>
-                            <div class="talk-item"><u><a href="https://mp.weixin.qq.com/s/emznMENbR0EbiGNm2IyYyQ" target="_blank">Panel Talk</a></u>, <em>Thematic Screening of Multi-Screen Video Short Films</em>, China Academy of Art, Hangzhou, 2025</div>
-                            <div class="talk-item"><u><a href="https://mp.weixin.qq.com/s/FxY6OtlHM6bSdNDa7oV9DA" target="_blank">Panel Talk</a></u>, <em>Wuhan University Graduate Student Academic Science and Technology Festival "Distorted Imagination: Technological Rethinking under the Annotation of Cinema”</em>, School of Arts, Wuhan University, Wuhan, 2024</div>
-                            <div class="talk-item"><u><a href="https://044artstudio.com/artists" target="_blank">Artists Interview</a></u>, 044 ART STUDIO, Online, 2024</div>
-                            <div class="talk-item">Artists Interview, Jiangsu Business Daily, Nanjing, 2024</div>
-                            <div class="talk-item"><u><a href="GOOGOLtalk.html" target="_blank">Artist Panel Talk</a></u>, <em>GOOGOL</em>, Online, 2024</div>
-                            <div class="talk-item"><u><a href="https://www.xiaohongshu.com/explore/66619b2f000000000c01b3fb?app_platform=android&amp;ignoreEngage=true&amp;app_version=8.39.0&amp;share_from_user_hidden=true&amp;type=normal&amp;author_share=1&amp;xhsshare=WeixinSession&amp;shareRedId=N0xHMDM9RUE2NzUyOTgwNjY0OTc9NTxO&amp;apptime=1717687112&amp;share_id=4f70ca260d5848adb599a2d74a239521" target="_blank">Artist Interview</a></u>, <em>"Breathe With the Plants"</em>, Xì | Collective, 2024</div>
-                            <div class="talk-item"><span style="color:rgb(0, 0, 0)">Artist talk, </span>Wuhan Photography Art Centre, Wuhan, China, 2023</div>
-                            <div class="talk-item"><u><a href="https://mp.weixin.qq.com/s/LceWwIAWW9sofBra7_AgKA" target="_blank">Invited lecture</a></u>, "How did it start?" The First Round Table of the Occulf, Umay Art Project, Online, 2023</div>
-                            <div class="talk-item">Invited Lecture, Advance Art Museum, Changsha, China, 2023</div>
-                            <div class="talk-item"><u><a href="https://mp.weixin.qq.com/s/XgwA910JrW2Ra7zy_YppLQ" target="_blank">Artist Interview</a></u>, <em>"Independent Artists, in Nanjing"</em>, Nanjing Cultural Life Guide, 2023</div>
-                            <div class="talk-item"><u><a href="https://mp.weixin.qq.com/s/oAricm9WS5m2XtCShSG4tQ" target="_blank">Artist talk</a></u>, C-POP Theatre, Beijing, China, 2023</div>
+                        <u><font size="5">Coverage</font></u>
+                        <div id="coverage">
+                            <div class="coverage-item">
+                                <a href="https://mp.weixin.qq.com/s/NZ5srXRQcjFeuJWVGR5I8g" target="_blank">"Fracture Nodes of Circular Narrative: A Curator's Note on 'The Great Rupture' and the First Anniversary of Fredric Jameson's Passing"</a>, Dongkun Lyu, Central Art Museum, 2025
+                            </div>
+                            <div class="coverage-item">
+                                <a href="https://mp.weixin.qq.com/s/3VLiyiQreCES44Z5HZTDuw" target="_blank">"The Polyprism of 'The Real': On Split-Screen Imagery"</a>, 2025
+                            </div>
+                            <div class="coverage-item">
+                                <a href="https://mp.weixin.qq.com/s/EGSDrLHYYixPOE42EdbodQ" target="_blank">"Perceiving: The Body of Group Ritual, and the Resonant Memories"</a>, ARTUNNEL, 2024
+                            </div>
+                            <div class="coverage-item">
+                                <a href="https://mp.weixin.qq.com/s/XgwA910JrW2Ra7zy_YppLQ" target="_blank">"Independent Artists, in Nanjing"</a>, Nanjing Cultural Life Guide, 2023
+                            </div>
+                            <div class="coverage-item">
+                                <a href="https://www.4cgallery.com/exhibition/4cexhibitionaini" target="_blank">"AI & NI"</a>, 4C Gallery, 2023
+                            </div>
+                            <div class="coverage-item">
+                                <a href="https://mp.weixin.qq.com/s/9OmadKc95DEtzuN7nTyTUg" target="_blank">"A Cry from Western China: Light My Fire"</a>, UCFC, 2023
+                            </div>
+                            <div class="coverage-item">
+                                <a href="https://mp.weixin.qq.com/s/oAricm9WS5m2XtCShSG4tQ" target="_blank">"Experiment and Creativity: A Conversation with Three Young Filmmakers"</a>, Lang Move Movies, 2023
+                            </div>
+                            <div class="coverage-item">
+                                <a href="https://mp.weixin.qq.com/s/dzTeXl5zJ7jUB3BTrgDfpQ" target="_blank">"Plant-generated Images"</a>, Qianhao Shao, Wuhan Photography Art Centre, 2023
+                            </div>
                         </div>
                       </div>
+
                       <div class="paragraph" style="text-align:center;">
                         <br /><br /><font size="2"><br />All Rights Reserved&nbsp;&copy;&nbsp; Juntao Yang</font>
                       </div>
@@ -852,23 +864,6 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
       // Slower animation speed for smoother effect
       var animSpeed = 600; 
 
-      // Conferences & Workshops
-      var conferenceItems = $("#conferences .conference-item");
-      if(conferenceItems.length > 10) {
-        conferenceItems.slice(10).hide();
-        $("#toggle-conferences").show().on("click", function(){
-          if($(this).text() === "Show More"){
-            conferenceItems.slice(10).slideDown(animSpeed, "swing");
-            $(this).text("Show Less");
-          } else {
-            conferenceItems.slice(10).slideUp(animSpeed, "swing");
-            $(this).text("Show More");
-          }
-        });
-      } else {
-        $("#toggle-conferences").hide();
-      }
-      
       // Exhibitions (selection)
       var exhibitionItems = $("#exhibitions .exhibition-item");
       if(exhibitionItems.length > 10) {
