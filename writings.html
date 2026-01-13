@@ -19,7 +19,7 @@
     <link href='http://cdn2.editmysite.com/fonts/Cabin/font.css?2' rel='stylesheet' type='text/css' />
 
     <style>
-        /* --- 0. 变量定义 (完全同步 Artworks/Writings) --- */
+        /* --- 0. 变量定义 --- */
         :root {
             --font-serif: "Times New Roman", "Songti SC", "SimSun", serif;
             --font-mono: "Courier New", "Courier", monospace;
@@ -172,6 +172,15 @@
             border-bottom-color: var(--accent-slate);
         }
 
+        /* 合作者样式：灰色、稍小、紧随标题 */
+        .collaborator {
+            color: var(--text-meta);
+            font-size: 15px;
+            font-weight: normal;
+            margin-left: 10px;
+            display: inline-block;
+        }
+
         .writing-details {
             font-size: 15px !important;
             line-height: 1.7 !important;
@@ -202,6 +211,11 @@
         @media (max-width: 768px) {
             .writing-title {
                 font-size: 16px !important;
+            }
+            .collaborator {
+                display: block;
+                margin-left: 0;
+                margin-top: 2px;
             }
             .writing-details {
                 font-size: 14px !important;
@@ -351,14 +365,22 @@ var STYLE_PREFIX = 'wsite';
 
     <div class="writing-section">
         <h3 class="writing-section-title">Criticism & Essays</h3>
+
         <div class="writing-entry">
             <p class="writing-title"><a href="https://www.peopleoftheenvironment.org/blog/lukas-marxt-how-do-we-mediate-haunted-toxicity" target="_blank">Lukas Marxt: How Do We Mediate Haunted Toxicity?</a></p>
             <p class="writing-details"><em>Edge Effects</em>, 2026</p>
         </div>
+
         <div class="writing-entry">
-            <p class="writing-title"><a href="/uploads/dialogue_gourault_yang_final-4.pdf" target="_blank">The Other Side of Algorithms: Reclaiming the Body, Voice and Labor", Dialogue with Nicolas Gourault</a></p>
-            <p class="writing-details">Jilu Commune, 2025</p>
+            <p class="writing-title"><a href="/uploads/dialogue_gourault_yang_final-4.pdf" target="_blank">The Other Side of Algorithms: Reclaiming the Body, Voice and Labor</a>
+                <span class="collaborator">In Conversation With Nicolas Gourault</span>
+            </p>
+            <p class="writing-details">
+                <em>InVisible Culture</em>, 2026<br>
+                Chinese version in <em>Jilu Commune</em>, 2026
+            </p>
         </div>
+
         <div class="writing-entry">
             <p class="writing-title"><a href="/uploads/gadfly_Juntao_stones.pdf" target="_blank">A Defense of Obscurity, or Stones from Other Hills: Translating Judith Butler</a></p>
             <p class="writing-details"><em>Gadfly</em>, 2025<br>Earlier version also seen in <em>Journal of Experimental Practice</em>, 2025</p>
@@ -377,7 +399,7 @@ var STYLE_PREFIX = 'wsite';
         </div>
         <div class="writing-entry">
             <p class="writing-title"><a href="https://mp.weixin.qq.com/s/cdMjyF0wYb5q0NEMFrLtFQ" target="_blank">​A Sudden Interruption: All Silence Is A Hidden Space</a></p>
-            <p class="writing-details"><em>Buoyant Views, Buoyant Art</em>, 2023 (Written in Chinese)</p>
+            <p class="writing-details"><em>Buoyant Views, Buoyant Art</em>, 2023</p>
         </div>
     </div>
     
