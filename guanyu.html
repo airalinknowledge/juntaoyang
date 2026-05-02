@@ -51,15 +51,10 @@
 
         <script>
             (function() {
-                // 检查 session storage，如果已经在 index.html 看过开屏，这里也可以跳过，或者强制每次看
-                // 这里逻辑设为：全站共享状态 (一旦进入过网站，切换语言不再显示开屏)
                 var hasVisited = sessionStorage.getItem('splashVisited') === 'true';
                 
-                // 如果需要每个页面第一次都要显示，可以去掉 !hasVisited 判断
                 if (!hasVisited) {
-                    // [第一棒] 注入临时黑背景
                     document.write('<style id="splash-temp-bg">html { background-color: #000 !important; }</style>');
-                    // [第二棒] 显式开启遮罩层
                     document.write('<style>#splash-overlay { display: flex !important; }</style>');
 
                     requestAnimationFrame(function() {
@@ -157,7 +152,6 @@
     }
 
     /* --- 3. 布局与间距 --- */
-    /* 注意：此处的 max-width: 900px 将会被下方的 !important 样式覆盖，从而实现 index.html 的全宽效果 */
     .main-content-area {
         width: 98% !important;
         max-width: 900px !important; 
@@ -174,7 +168,7 @@
 
     /* 板块标题 (Education, Awards, etc) */
     .paragraph font[size="5"] { 
-        font-family: var(--font-serif) !important; /* 中文标题也用宋体/衬线 */
+        font-family: var(--font-serif) !important;
         font-size: 18px !important; 
         font-weight: bold;
         letter-spacing: 2px;
@@ -249,7 +243,7 @@
     .conference-item em, .exhibition-item em, .award-item em, .residency-item em, .talk-item em, .teaching-item em, .institute-item em, .coverage-item em {
         font-family: var(--font-serif) !important;
         color: var(--text-ink);
-        font-style: italic; /* 中文斜体支持取决于字体，通常也可以不斜体改用书名号，但此处保持CSS一致 */
+        font-style: italic; 
     }
 
     /* 展开按钮 */
@@ -276,7 +270,7 @@
     
     /* 导航栏 */
     .wsite-menu-default a {
-        font-family: var(--font-serif) !important; /* 导航改用衬线更显气质 */
+        font-family: var(--font-serif) !important; 
         font-size: 14px !important;
         letter-spacing: 2px !important;
         color: var(--text-meta) !important;
@@ -338,7 +332,6 @@
 }
 </style>
 <style>
-    /* 使用 !important 强制覆盖所有默认样式 (此处添加了 index.html 中的强制样式) */
     .main-content-area {
         width: 98% !important; 
         max-width: 100% !important; 
@@ -355,7 +348,6 @@
         }
     }
 
-/* 正文区域：链接颜色继承正文颜色 */
 .main-content-column a,
 .main-content-column a:visited,
 .main-content-column a:hover,
@@ -395,7 +387,7 @@
 
 /* 板块间距控制 */
 .section-gap {
-    height: 10px; /* Modified from 25px */
+    height: 10px; 
     width: 100%;
     clear: both;
 }
@@ -550,12 +542,12 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 <div style="height: 40px; overflow: hidden; width: 100%;"></div></div>
 
 <div class="main-content-column main-content-area">
-<div class="paragraph">&#26472;&#21531;&#38518;&#65292;&#20889;&#20316;&#32773;&#65292;&#31574;&#23637;&#20154;&#65292;&#33402;&#26415;&#23478;&#12290;<br /><br />杨君陶的批评写作和艺术实践专注于视觉物质文化特定场域中微观权力运作的痕迹，日常生存状态中可见或不可见的冲突与暴力，以及权力代理物的组织与流变；杨君陶致力于诉诸言说（有时是歇斯底里的）以拮抗意识形态的沉默力量与普遍存在的政治冷感症。他目前的研究重点在于行星电影与地质思维，毒性与灾难媒介等。他目前工作于布鲁克林和南京。<br /><br /></div>
+<div class="paragraph">杨君陶，学者，批评家，艺术家。<br /><br />杨君陶的批评写作和艺术实践专注于视觉物质文化特定场域中微观权力运作的痕迹，日常生存状态中可见或不可见的冲突与暴力，以及权力代理物的组织与流变；杨君陶致力于诉诸言说（有时是歇斯底里的）以拮抗意识形态的沉默力量与普遍存在的政治冷感症。他目前的研究重点在于行星电影与地质思维，毒性与灾难媒介等。他目前工作于布鲁克林和南京。<br /><br /></div>
 
 <div class="section-gap"></div>
 
-<div class="paragraph" style="text-align:left;"><font size="5"><u>&#25945;&#32946;</u></font>
-<div class="award-item">加州大学伯克利，艺术学院，电影与媒介研究哲学博士，美国，2026至今</div>
+<div class="paragraph" style="text-align:left;"><font size="5"><u>教育</u></font>
+<div class="award-item">加州大学伯克利分校，电影与媒介研究哲学博士，美国，至今</div>
 <div class="award-item">哥伦比亚大学，电影与媒介研究（新兴媒介研究）文学硕士，美国，2024-2026</div>
 <div class="award-item">武汉大学，戏剧影视文学文学学士，中国，2020-2024</div>
 </div>
@@ -584,6 +576,7 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 
 <div class="paragraph"><u><font size="5">奖项与荣誉</font></u>
 <div id="awards">
+<div class="award-item">城市/地理/建筑兴趣小组旅行奖，电影与媒体研究学会 (SCMS)，2026</div>
 <div class="award-item">PAMLA Graduate Student Scholarship, Pacific Ancient and Modern Language Association 2025 Conference, 2025</div>
 <div class="award-item">“将来式”单元最佳短片奖 & 最佳剪辑奖，授予《轻巧而冷淡的对谈：大西洋，算法与可见性》，未完成式 · 福建师大传播学院建院二十周年短片交流展, 2024</div>
 <div class="award-item">一等奖，首届“中国东部传媒艺术优秀学术论文奖”，2024</div>
@@ -593,7 +586,7 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 <div class="award-item">优秀学员荣誉，“华语电影：历史、方法与生态”暑期学校，厦门大学电影学院，2024</div>
 <div class="award-item">全额住宿奖学金，Duemila30 International Film Festival，2024</div>
 <div class="award-item">最佳实验电影（Kurt Kren’s Scratched Glasses），授予《轻巧而冷淡的对谈：大西洋，算法与可见性》，International Film Festival of Audiovisual Theory Students，2023</div>
-<div class="award-item">最佳实验电影提名，授予《轻巧而冷淡的对谈：大西洋，算法与可见性》，北纬30°短片节，2023</div>
+<div class="award-item">最佳实验电影提名，授予《轻巧而冷淡的对谈：大西洋，算法与可见性》，宁波短片节，2023</div>
 <div class="award-item">荣誉提及，授予《轻巧而冷淡的对谈：大西洋，算法与可见性》，Varsity Film Expo，2023</div>
 </div>
 </div>
@@ -603,7 +596,7 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 <div class="paragraph"><u><font size="5">展览（部分）</font></u>
 <div id="exhibitions">
  <div class="exhibition-item">“大断裂：未来末世考古学”，中心美术馆，杭州，中国，2025</div>
- <div class="exhibition-item">“镜中城市：AIGC未来影像的创生叙事”，澳门科技大学数字创新与人文教育研究中心，澳门，2025</div>
+ <div class="exhibition-item">“镜中城市：AIGC未来影像的创生叙事”，澳门科技大学数字创新与人文教育研究中心，澳门，中国，2025</div>
  <div class="exhibition-item">“注记、索居、或作废的，布朗肖透过此起彼伏的并进线隔空投送”，牯岭路画廊，南京，中国，2024</div>
  <div class="exhibition-item">“当我们感应：群体仪式的身体与共鸣记忆”，锐角画廊，广州，中国，2024</div>
  <div class="exhibition-item">“Synthetic Wilderness”，John Molly Gallery，纽约，美国，2024</div>
@@ -619,61 +612,51 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
  <div class="exhibition-item">“Within Iceless Age”，theBlanc，纽约，美国，2024</div>
  <div class="exhibition-item">“Immersion”，Lockwood Annexe 5，伦敦大学金史密斯学院，伦敦，英国，2024</div>
  <div class="exhibition-item">“寂静地”，东升里13号，苏州，中国，2024</div>
-<div class="exhibition-item">“存储的无形”，GOOGOL，线上（由“ New Art City ”提供支持），2024</div>
+ <div class="exhibition-item">“存储的无形”，GOOGOL，线上（由“ New Art City ”提供支持），2024</div>
  <div class="exhibition-item">“感觉的逻辑”，象牙门画廊，上海，中国，2024</div>
  <div class="exhibition-item">“语言巴别塔”，Art Lift 艺术升降梯艺术空间，沈阳，中国，2024</div>
- <div class="exhibition-item">“向未来”，青岛市美术馆，青岛，中国，2024</div>
- <div class="exhibition-item">“时空之境”，原子空间，中国（深圳）国际文化产业博览交易会  龙湖CC创意街区分会场 “SeeDliNG” 数苗创意节，深圳，中国，2024</div>
+ <div class="exhibition-item">“向未来”，原子空间，中国（深圳）国际文化产业博览交易会 龙湖CC创意街区分会场 “SeeDliNG” 数苗创意节，深圳，中国，2024</div>
+ <div class="exhibition-item">“时空之境”，青岛市美术馆，青岛，中国，2024</div>
  <div class="exhibition-item">“Wuer · 玩 · 概念展”，InnovArt艺术空间，琶洲，中国，2024</div>
-<div class="exhibition-item">代码重构：AIGC时代的艺术探索”，鲁迅美术学院美术馆，沈阳，中国, 2024</div>
-
- <div class="exhibition-item">&ldquo;&#29983;&#38271;&#20043;&#22659;&rdquo;&#65292;&#20196;&#30707;&#30011;&#24266;&#65292;&#26223;&#24503;&#38215;&#65292;&#20013;&#22269;&#65292;2023</div>
-
- <div class="exhibition-item">&ldquo;&#29645;&#22855;&#23627;&mdash;&mdash;web3&#12289;&#20803;&#23431;&#23449;&#12289;AIGC&#26102;&#20195;&#30340;&#33402;&#26415;&#25506;&#32034;&rdquo;&#65292;&#21069;&#34892;&#32654;&#26415;&#39302;&#65292;&#38271;&#27801;&#65292;&#20013;&#22269;&#65292;2023</div>
-
- <div class="exhibition-item">&ldquo;&#20505;&#40479;300&rdquo;&#65292;&#26179;&#31070;&#20799;&#31354;&#38388;2.0&#65292;&#38463;&#37027;&#20122;&#25103;&#21095;&#33410;&#65292;&#31206;&#30343;&#23707;&#65292;&#20013;&#22269;&#65292;2023</div>
-
- <div class="exhibition-item">&ldquo;&#19990;&#20154;&#20309;&#20197;&#21796;&#37266;&#25105;&#65311;&mdash;&mdash;&#20202;&#24335;&#12289;&#31070;&#35861;&#19982;&#33402;&#26415;&#28789;&#23186;&rdquo;&#65292;798CUBE&#65292;&#21271;&#20140;&#65292;&#20013;&#22269;&#65292;2023</div>
-
- <div class="exhibition-item">&ldquo;&#28145;&#28207;&#25991;&#21270;&#26376;&#28526;&#27969;&#33402;&#26415;&#33410;&rdquo;&#65292;&#37329;&#21860;&#22346;&#33402;&#26415;&#34903;&#21306;&#65292;&#28145;&#22323;&#65292;&#20013;&#22269;&#65292;2023</div>
-
- <div class="exhibition-item">&ldquo;&#36731;&#24039;&#19982;&#20919;&#28129;&#30340;&#23545;&#35848;&#65306;&#33021;&#21160;&#24615;&#19982;&#31185;&#25216;&rdquo;&#65292;Imaginary Z，杭州，中国，2023</div>
-
- <div class="exhibition-item">&ldquo;&#26893;&#29289;&#29983;&#25104;&#24433;&#20687;&rdquo;&#65292;&#27494;&#27721;&#24433;&#20687;&#33402;&#26415;&#20013;&#24515;&#65292;&#27494;&#27721;&#65292;&#20013;&#22269;&#65292;2023</div>
-
- <div class="exhibition-item">&ldquo;&#27700;&#27969;&#20043;&#19979;&#65306;&#22478;&#24066;&#22320;&#34920;&#27700;&#31995;&#20013;&#38544;&#34255;&#30340;&#19990;&#30028;&rdquo;&#65292;&#21512;&#20316;&#31354;&#38388;&#65292;&#27784;&#38451;&#65292;&#20013;&#22269;&#65292;2023</div>
- <div class="exhibition-item">“AI &amp; NI”，4C Gallery，&#27931;&#26441;&#30710;，&#32654;&#22269;，2023</div>
-<div class="exhibition-item">“Doves and Magpies Sharing a Nest”，The Forge Art Gallery，&#20262;&#25958;，&#33521;&#22269;，2023
-</div></div>
+ <div class="exhibition-item">“代码重构：AIGC时代的艺术探索”，鲁迅美术学院美术馆，沈阳，中国, 2024</div>
+ <div class="exhibition-item">“猎奇屋——web3、元宇宙、AIGC时代的艺术探索”，前行美术馆，长沙，中国，2023</div>
+ <div class="exhibition-item">“候鸟300”，阿那亚戏剧节，秦皇岛，中国，2023</div>
+ <div class="exhibition-item">“生长之境”，列石画廊，景德镇，中国，2023</div>
+ <div class="exhibition-item">“世人何以唤我？——仪式、神话与艺术灵媒”，798CUBE，北京，中国，2023</div>
+ <div class="exhibition-item">“深港文化月潮流艺术节”，金啤坊艺术街区，深圳，中国，2023</div>
+ <div class="exhibition-item">“轻巧与冷淡的对谈：能动性与科技”，Imaginary Z，杭州，中国，2023</div>
+ <div class="exhibition-item">“植物生成影像”，武汉影像艺术中心，武汉，中国，2023</div>
+ <div class="exhibition-item">“水流之下：城市地表水系中隐藏的世界”，合作空间，沈阳，中国，2023</div>
+ <div class="exhibition-item">“Doves and Magpies Sharing a Nest”，The Forge Art Gallery，伦敦，英国，2023</div>
+ <div class="exhibition-item">“AI &amp; NI”，4C Gallery，洛杉矶，美国，2023</div>
+</div>
 <button id="toggle-exhibitions" class="toggle-btn">展开更多</button>
 </div>
 
 
 <div class="section-gap"></div>
 
-<div class="paragraph"><u><font size="5">&#30005;&#24433;&#33410;（部分）</font></u>
+<div class="paragraph"><u><font size="5">电影节（部分）</font></u>
 <div id="film-festivals">
 <div class="film-festival-item">FESTIVAL ANGAELICA, 美国, 2025 —— 官方入选</div>
 <div class="film-festival-item">Kuala Lumpur International Film Awards, 吉隆坡, 马来西亚, 2025 —— 官方入选</div>
 <div class="film-festival-item">天空青草青年电影短片艺术交流展, 成都, 中国, 2024 —— 官方入选</div>
 <div class="film-festival-item">未完成式 · 福建师大传播学院建院二十周年短片交流展, 福州, 中国, 2024 —— “将来式”单元最佳短片奖 & 最佳剪辑奖</div>
-<div class="film-festival-item">MUST华语青年电影节暨金鸡影展（澳门站）, 澳门, 中国, 2024 —— “AIGC短片竞赛”单元官方入选</div>
+<div class="film-festival-item">MUST华语青年电影节暨金鸡影展（澳门站）, 澳门, 中国, 2024 —— 官方入选</div>
 <div class="film-festival-item">British University International Students Film Festival, 新开罗, 埃及, 2024 —— 官方入选</div>
-<div class="film-festival-item">La Sur Real Film Festivsl, 柏林, 德国, 2024 —— 官方入选</div>
-<div class="film-festival-item">源点西部电影展, 西安, 中国, 2024 —— “瞩目未来” 单元官方入选</div>
-<div class="film-festival-item">北京国际电影节 · 北京大学生电影节, 北京, 中国, 2024 —— “国际大学生原创影片推选” 单元 & “重新发现计划”单元官方入选</span><br />
-<div class="film-festival-item">河东作者电影展, 运城, 中国, 2024 —— “艺术探索”单元提名</div>
-<div class="film-festival-item"><font color="#2a2a2a">Duemila30 International Film Festival, 米兰, 意大利, 2024 —— “地球回响” 单元官方入选</font></div>
-<div class="film-festival-item">International Film Festival of Audiovisual Theory Students, &#24067;&#25289;&#26684;,&nbsp;&#25463;&#20811;, 2023 &mdash;&mdash; &#26368;&#20339;&#23454;&#39564;&#30005;&#24433;（Kurt Kren’s Scratched Glasses）</div>
-<div class="film-festival-item">Varsity Film Expo, Nairobi, &#32943;&#23612;&#20122;, 2023 &mdash;&mdash; &#33635;&#35465;&#25552;&#21450;</div>
-<div class="film-festival-item">International Alternative Media Film Festival,&nbsp;&#22696;&#35199;&#21733;&#22478;, &#22696;&#35199;&#21733;, 2023 &mdash;&mdash; &#26032;&#23186;&#20171;&#21333;&#20803;&#23448;&#26041;&#20837;&#36873;&nbsp;</div>
-<div class="film-festival-item">AIU Film Festival,<span>&nbsp;</span><span>Ja</span><span>hra</span><span>, &#31185;&#23041;&#29305;,</span> 2023 &mdash;&mdash; &#23448;&#26041;&#20837;&#36873;</div>
-
-<div class="film-festival-item">&#21271;&#32428;30&deg;&#30701;&#29255;&#33410;, &#23425;&#27874;, &#20013;&#22269;, 2023 &mdash;&mdash; &#26368;&#20339;&#23454;&#39564;&#30701;&#29255;&#25552;&#21517;&nbsp;</div>
-<div class="film-festival-item">&#35199;&#24433;&middot;&#26149;&#20809;&#38738;&#24180;&#30005;&#24433;&#23637;, &#35199;&#23433;, &#20013;&#22269;, 2023 &mdash;&mdash; &ldquo;&#37326;&#28779;&rdquo;&#29305;&#21035;&#25512;&#33616;&#21333;&#20803;&#23448;&#26041;&#20837;&#36873;&nbsp;</div>
-<div class="film-festival-item">HiShorts!&#30701;&#29255;&#21608;, &#21414;&#38376;, &#20013;&#22269;, 2023 &mdash;&mdash; &#23454;&#39564;&#30701;&#29255;&#21333;&#20803;&#23448;&#26041;&#20837;&#36873;</div>
-<div class="film-festival-item">&#29422;&#23665;&#24433;&#20687;&#33410;, &#25104;&#37117;, &#20013;&#22269;, 2023 &mdash;&mdash; &#21019;&#24847;&#29305;&#33394;&#21333;&#20803;<span>&#23448;&#26041;&#20837;&#36873;</div>
-<div class="film-festival-item">SHISW&#32736;&#40607;&#30701;&#29255;&#22870;, &#19978;&#28023;, &#20013;&#22269;, 2023 &mdash;&mdash; &#26368;&#20339;AI&#30701;&#29255;</div></div>
+<div class="film-festival-item">La Sur Real Film Festival, 柏林, 德国, 2024 —— 官方入选</div>
+<div class="film-festival-item">源点西部电影展, 西安, 中国, 2024 —— 官方入选</div>
+<div class="film-festival-item">北京国际电影节 · 北京大学生电影节, 北京, 中国, 2024 —— 官方入选</div>
+<div class="film-festival-item">Duemila30 International Film Festival, 米兰, 意大利, 2024 —— 官方入选</div>
+<div class="film-festival-item">Frome International Climate Film Festival, 弗罗姆, 英国, 2024 —— 官方入选</div>
+<div class="film-festival-item">International Film Festival of Audiovisual Theory Students, 布拉格, 捷克, 2023 —— 最佳实验电影（Kurt Kren’s Scratched Glasses）</div>
+<div class="film-festival-item">Varsity Film Expo, 内罗毕, 肯尼亚, 2023 —— 荣誉提及</div>
+<div class="film-festival-item">International Alternative Media Film Festival, 墨西哥城, 墨西哥, 2023 —— 官方入选</div>
+<div class="film-festival-item">AIU Kuwait International Film Festival, 杰赫拉, 科威特, 2023 —— 官方入选</div>
+<div class="film-festival-item">宁波短片节, 宁波, 中国, 2023 —— 最佳实验短片提名</div>
+<div class="film-festival-item">西影·春光青年电影展, 西安, 中国, 2023 —— 官方入选</div>
+<div class="film-festival-item">HiShorts! 厦门短片周, 厦门, 中国, 2023 —— 官方入选</div>
+</div>
 <button id="toggle-film-festivals" class="toggle-btn">展开更多</button>
 </div>
 
@@ -683,13 +666,15 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 <div class="paragraph"><u><font size="5">放映（部分）</font></u>
 <div id="screenings">
 
+<div class="screening-item"><em><u><a href="https://mp.weixin.qq.com/s/ULUygKP3VUmnpL2YeE5Dpg">电影镇第56期放映活动“系统惯性”</a></u></em>，@411，杭州，中国，2025</div>
+
 <div class="screening-item"><em><u><a href="https://www.lakesidefilmfestival.com/films2025/la-sur-real-shorts">Curated Short Film Program, La Sur Real: Edition IV</a></u></em>，Lakeside Film Festival，柏林，德国, 2025</div>
 
 <div class="screening-item"><em><u><a href="https://www.instagram.com/reel/DIhTOWRpmfN/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank"><font color="#2a2a2a">"Memorias ocultas: territorios y cuerpos que gritan", "Entre los seres y la tierra, fuego"Seis cortometrajes</font></a></em></u>，哥伦比亚国立大学艺术学院，波哥大，哥伦比亚，2025</div>
 
 <div class="screening-item"><em><u><a href="https://mp.weixin.qq.com/s/pQrMXlqDrw24a1HtoL9JzQ" target="_blank"><font color="#2a2a2a">“多屏影像”短片主题展映</font></a></em></u>，中国美术学院，杭州，中国，2025</div>
 
- <div class="screening-item"><em><u><a href="https://mp.weixin.qq.com/s/2eJPbRy5onttHqb3tvY00Q" target="_blank"><font color="#2a2a2a">武汉大学研究生学术科技节 “失真的想象力：电影注解下的技术反思”</font></a></em></u>，武汉大学艺术学院，武汉，中国，2025</div>
+ <div class="screening-item"><em><u><a href="https://mp.weixin.qq.com/s/2eJPbRy5onttHqb3tvY00Q" target="_blank"><font color="#2a2a2a">武汉大学研究生学术科技节 “失真的想象力：电影注解下的技术反思”</font></a></em></u>，武汉大学艺术学院，武汉，中国，2024</div>
 
  <div class="screening-item"><em><u><a href="https://mp.weixin.qq.com/s/Ap6ifFvuRDjMwyRNi-s6Cw" target="_blank"><font color="#2a2a2a">实验短片展映之夜</font></a></em></u>，三角洲 The Delta INST + GODOWN，杭州，中国，2024</div>
 
@@ -697,9 +682,7 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 
  <div class="screening-item"><em><u><a href="https://mp.weixin.qq.com/s/Uw2rS5Uk5JADzRAvFa4KbQ" target="_blank">​​第八届abC艺术书展</a></u></em>，天目里，杭州，中国, 2023</div>
 
-
  <div class="screening-item"><em><u><a href="https://mp.weixin.qq.com/s/RWMzt2DKmVaVpEY2Rgkxxg" target="_blank">防波堤放映</a></u></em><em>，</em>大理，中国，2023</div>
-
 
  <div class="screening-item"><em><u><a href="https://mp.weixin.qq.com/s/oAricm9WS5m2XtCShSG4tQ" target="_blank">C-POP实验剧场</a></u></em><em>，</em>北京，中国，2023</div>
 
@@ -711,15 +694,18 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 
 <div class="section-gap"></div>
 
-<div class="paragraph"><u><font size="5">&#39547;&#30041;</font></u>
-<div class="residency-item">南山艺术家社区，&nbsp;<span>重庆，中国&nbsp;&nbsp;&nbsp;&nbsp;   | &nbsp;&nbsp;&nbsp;&nbsp;   2024/5/25 - 2024/6/14</span></div>
-<div class="residency-item"><span>&ldquo;&#20505;&#40479;300&rdquo;&#65292;&#38463;&#37027;&#20122;&#25103;&#21095;&#33410;&#65292;&#31206;&#30343;&#23707;&#65292;&#20013;&#22269;&nbsp;&nbsp;&nbsp;&nbsp;   | &nbsp;&nbsp;&nbsp;&nbsp;  2023/6/8 - 2023/6/21</span></div>
+<div class="paragraph"><u><font size="5">驻留项目</font></u>
+<div class="residency-item">东海岸亚裔美国学生联盟 (ECAASU)，远程，美国&nbsp;&nbsp;&nbsp;&nbsp;   | &nbsp;&nbsp;&nbsp;&nbsp;   2025/09 - 2026/05</div>
+<div class="residency-item">南山艺术家社区，&nbsp;重庆，中国&nbsp;&nbsp;&nbsp;&nbsp;   | &nbsp;&nbsp;&nbsp;&nbsp;   2024/5/25 - 2024/6/14</div>
+<div class="residency-item">“候鸟300”，阿那亚戏剧节，秦皇岛，中国&nbsp;&nbsp;&nbsp;&nbsp;   | &nbsp;&nbsp;&nbsp;&nbsp;  2023/6/8 - 2023/6/21</div>
 </div>
 
 <div class="section-gap"></div>
 
 <div class="paragraph"><u><font size="5">教学经历</font></u>
-<div class="teaching-item">“我们的皮囊与大地的肌理：地质学思维，人类世的电影，以及超越人类的想象力” 系列课程 ，Radiance Academy，线上，2024  &nbsp;&nbsp;&nbsp; （<em>高中 & 本科程度，在<u><a href="syllabusCN.html" target="_blank">此处查阅课程大纲</a></u></em> ）</div>
+<div class="teaching-item">讲师（自主设计课程），《媒介理论导论》，Ferryman Education，2026</div>
+<div class="teaching-item">讲师（自主设计课程），“我们的皮囊与大地的肌理：地质学思维，人类世的电影，以及超越人类的想象力” ，Radiance Academy，线上，2024  &nbsp;&nbsp;&nbsp; （<em>高中 & 本科程度，在<u><a href="syllabusCN.html" target="_blank">此处查阅课程大纲</a></u></em> ）</div>
+<div class="teaching-item">助教，《文化研究导论》（主讲：李松教授），武汉大学，2023</div>
 </div>
 
 <div class="section-gap"></div>
@@ -731,7 +717,7 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
         <a href="https://mp.weixin.qq.com/s/NZ5srXRQcjFeuJWVGR5I8g" target="_blank">“环形叙事的断裂节点——「大断裂：末世未来考古学」策展人解纪詹明信逝世一周年”</a>, 吕东其, 中心美术馆, 2025
     </div>
     <div class="coverage-item">
-        <a href="https://mp.weixin.qq.com/s/3VLiyiQreCES44Z5HZTDuw" target="_blank">““真实”的多棱镜：论分屏影像”</a>, 2025
+        <a href="https://mp.weixin.qq.com/s/3VLiyiQreCES44Z5HZTDuw" target="_blank">“‘真实’的多棱镜：论分屏影像”</a>, 2025
     </div>
     <div class="coverage-item">
         <a href="https://mp.weixin.qq.com/s/EGSDrLHYYixPOE42EdbodQ" target="_blank">“当我们感应：群体仪式的身体与共鸣记忆”</a>, ARTUNNEL, 2024
@@ -752,18 +738,6 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
         <a href="https://mp.weixin.qq.com/s/dzTeXl5zJ7jUB3BTrgDfpQ" target="_blank">“植物生成的影像”</a>, 邵千豪, 武汉影像艺术中心, 2023
     </div>
 </div>
-</div>
-
-<div class="section-gap"></div>
-
-<div class="paragraph"><u><font size="5">所属团体与机构</font></u>
-<div class="residency-item">中国电影评论学会，影像科技专业委员会</div>
-<div class="residency-item">中国电影电视技术学会</div>
-<div class="residency-item">中国科教电影电视协会</div>
-<div class="residency-item">湖北省电影家协会，青年工作委员会</div>
-<div class="residency-item">中国环境科学学会</div>
-<div class="residency-item">中国地质学会</div>
-<div class="residency-item">美国心理学会</div>
 </div>
 
 

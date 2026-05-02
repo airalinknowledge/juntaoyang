@@ -187,8 +187,18 @@
     .writing-title a:hover {
         border-bottom-color: var(--accent-slate);
     }
+    
+    /* 合作者样式：灰色、稍小、紧随标题 */
+    .collaborator {
+        color: var(--text-meta);
+        font-size: 15px;
+        font-weight: normal;
+        margin-left: 10px;
+        display: inline-block;
+    }
+    
     /* 中文标题不斜体 */
-    .chinese-title, .talks-list .writing-title {
+    .chinese-title, .talks-list .writing-title, .writing-title.chinese-title {
         font-style: normal !important;
     }
     
@@ -204,6 +214,11 @@
         }
         .writing-title {
             font-size: 16px !important;
+        }
+        .collaborator {
+            display: block;
+            margin-left: 0;
+            margin-top: 2px;
         }
         .writing-details {
             font-size: 14px !important;
@@ -417,16 +432,16 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
         <h3 class="writing-section-title">同行评审论文</h3>
         
         <div class="writing-entry">
-            <p class="writing-title chinese-title">“我们赖以生存的大地：电影与媒介研究的地质学转向”</p>
-            <p class="writing-details">- 刊于《文艺理论研究》，华东师范大学出版社，即将出版</p>
+            <p class="writing-title"><a href="http://www.scifootprint.com/Contribution/download.aspx?filetype=PeriodicalDirectoryFile&muLuId=723c4d50-b2bd-471c-8073-095ca68e9759" target="_blank">The Unsecuring and Attunement of Heterogeneous Actants: Rethinking the World and the Earth through Environmental Media</a></p>
+            <p class="writing-details">刊于 <em>Advances in Art Science</em>, Science Footprint Press, 第3卷第1期 (2026)<br>DOI 10.48014/aas.20250601001</p>
         </div>
         <div class="writing-entry">
-            <p class="writing-title"><a href="/uploads/Precarious Attachments_A Critical Reading of Judith Butler’s The Psychic Life of Power_Theories in Subjection (1997).pdf">"Precarious Attachments: A Critical Reading of Judith Butler's The Psychic Life of Power: Theories in Subjection (1997)"</a></p>
-            <p class="writing-details">- 刊于 <em>The Journal of Contemporary Art Criticism</em>, Asia Technology Research Institute, Volume 1 Issue 2 (2025)</p>
+            <p class="writing-title"><a href="/uploads/Precarious Attachments_A Critical Reading of Judith Butler's The Psychic Life of Power_Theories in Subjection (1997).pdf" target="_blank">Precarious Attachments: A Critical Reading of Judith Butler's The Psychic Life of Power: Theories in Subjection (1997)</a></p>
+            <p class="writing-details">刊于 <em>The Journal of Contemporary Art Criticism</em>, Asia Technology Research Institute, 第1卷第2期 (2025)<br>DOI 10.71113/JCAC.v1i2.352</p>
         </div>
         <div class="writing-entry">
-            <p class="writing-title chinese-title"><a href="/uploads/Juntao Yang_Materiality, Geoaesthetics and Planetary Futures_The Geology of Media in the Context of Anthropocene.pdf">“物质性，地质美学与行星未来：人类世语境下的媒介地质学”</a></p>
-            <p class="writing-details">- 刊于《戏剧与影视评论》，中国戏剧出版社，2024年第六期</p>
+            <p class="writing-title chinese-title"><a href="/uploads/Juntao Yang_Materiality, Geoaesthetics and Planetary Futures_The Geology of Media in the Context of Anthropocene.pdf" target="_blank">“物质性，地质美学与行星未来：人类世语境下的媒介地质学”</a></p>
+            <p class="writing-details">刊于《戏剧与影视评论》，中国戏剧出版社，2024年第六期</p>
         </div>
     </div>
 
@@ -434,29 +449,44 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 
     <div class="writing-section">
         <h3 class="writing-section-title">评论写作</h3>
+
         <div class="writing-entry">
-            <p class="writing-title"><a href="https://www.peopleoftheenvironment.org/blog/lukas-marxt-how-do-we-mediate-haunted-toxicity" target="_blank">Lukas Marxt: How Do We Mediate Haunted Toxicity?</a></p>
-            <p class="writing-details">Edge Effects, 2026</p>
+            <p class="writing-title"><a href="https://edgeeffects.net/among-the-palms-the-bomb/" target="_blank">Lukas Marxt: How Do We Mediate Haunted Toxicity?</a></p>
+            <p class="writing-details"><em>Edge Effects</em>, 2026</p>
         </div>
+
         <div class="writing-entry">
-            <p class="writing-title">"The Other Side of Algorithms: Reclaiming the Body, Voice and Labor", Dialogue with Nicolas Gourault</p>
-            <p class="writing-details">纪录公社, 2025</p>
+            <p class="writing-title"><a href="https://whitehotmagazine.com/articles/momentum-female-labor-obscured-body/7512" target="_blank">Voyage Into Infinity: As Glitch, Lubrication, and Momentum, Female Labor and the Obscured Body</a></p>
+            <p class="writing-details">
+                <em>Whitehot Magazine</em>, 2026<br>
+            </p>
         </div>
+
+        <div class="writing-entry">
+            <p class="writing-title"><a href="https://www.invisibleculturejournal.com/pub/nicolas-gourault/release/1" target="_blank">The Other Side of Algorithms: Reclaiming the Body, Voice and Labor</a>
+                <span class="collaborator">与 Nicolas Gourault 对谈</span>
+            </p>
+            <p class="writing-details">
+                <em>InVisible Culture</em>, 2026<br>
+                中文版见 <a href="https://jilucommune.com/cn/library/recap/30" target="_blank">《纪录公社》</a>, 2026
+            </p>
+        </div>
+
         <div class="writing-entry">
             <p class="writing-title"><a href="/uploads/gadfly_Juntao_stones.pdf" target="_blank">A Defense of Obscurity, or Stones from Other Hills: Translating Judith Butler</a></p>
-            <p class="writing-details">Gadfly, 2025<br>Earlier version also seen in <em>Journal of Experimental Practice</em>, 2025</p>
+            <p class="writing-details"><em>Gadfly</em>, 2025<br>早期版本亦见于 <em>Journal of Experimental Practice</em>, 2025</p>
         </div>
         <div class="writing-entry">
-            <p class="writing-title"><a href="/uploads/JuntaoYang_Stepping_Through_Cures_and_Curses_How_the_Traces_of_Herb_Scattering_Breathing_and_Memorizing_Mediate_Collective_Trauma_and_Public_Healing.pdf#page=39">Stepping Through Cures/Curses, or Herbary: Co-respiration (2023)</a></p>
-            <p class="writing-details">MODA Critical Review，2025</p>
+            <p class="writing-title"><a href="/uploads/MCR Issue 6 Trace.pdf" target="_blank">Stepping Through Cures/Curses, or Herbary: Co-respiration (2023)</a></p>
+            <p class="writing-details"><em>MODA Critical Review</em>, 2025</p>
         </div>
         <div class="writing-entry">
-            <p class="writing-title chinese-title"><a href="https://mp.weixin.qq.com/s/2Qo2SAe7MscwARqoK2msOQ" target="_blank">“从《中国》到《CK2K2X》：想象的伪装与异军突起”</a></p>
-            <p class="writing-details">湖北省电影家协会青年委员会专栏，2023</p>
+            <p class="writing-title chinese-title"><a href="/uploads/From China to CK2K2X_The Camouflage of Imagination and The Emergence of The Heterodox.pdf" target="_blank">“从《中国》到《CK2K2X》：想象的伪装与异军突起”</a></p>
+            <p class="writing-details">湖北省电影家协会青年委员会，2023</p>
         </div>
         <div class="writing-entry">
-            <p class="writing-title chinese-title"><a href="https://mp.weixin.qq.com/s/pudCgdXn5oZk23n-0E4NMw" target="_blank">“轻巧与冷淡的对谈：数字能动性，推测性美学，阴谋论同情者”</a></p>
-            <p class="writing-details">Imaginary Z，2023</p>
+            <p class="writing-title chinese-title"><a href="uploads/light_and_cold_conversations_Juntao_Yang.pdf" target="_blank">“轻巧与冷淡的对谈：数字能动性，推测性美学，阴谋论同情者”</a></p>
+            <p class="writing-details"><em>Imaginary Z</em>, 2023</p>
         </div>
         <div class="writing-entry">
             <p class="writing-title chinese-title"><a href="https://mp.weixin.qq.com/s/cdMjyF0wYb5q0NEMFrLtFQ" target="_blank">“猝然中断：每一次沉默都是隐蔽空间”</a></p>
@@ -472,15 +502,15 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
         <div class="writing-entry">
             <p class="writing-title"><em>An Unsettling Ground: Deep Now, Post-Wenchuan Documentary and The Making of Earthquake-Media</em> [口头报告]</p>
             <p class="writing-details">
+            - Rendering Violence in Textual and Visual Media Conference, 宾夕法尼亚州立大学, 美国, 2026/4/24 - 4/25<br>
             - 电影与媒介研究学会 (SCMS) 2026年会, 芝加哥, 美国, 2026/3/26 - 3/29<br>
-            - 第29届哈佛东亚协会年会, 哈佛大学, 美国, 2026/2/13 - 2/14<br>
-            - Zoom-In 2026, 电影与媒介研究, 哥伦比亚大学, 美国, 2026/2/6 - 2/7<br>
-            - <a href="https://arts.columbia.edu/events/futurities-ii-transnational-exchange-chinese-and-american-film-and-media-theories">"Futurities II: The Transnational Exchange of Chinese and American Film and Media Theories"</a>, 哥伦比亚大学, 美国, 2025/8/27</p>
+            - <a href="https://heasconference.hsites.harvard.edu/conference-schedule" target="_blank">第29届哈佛东亚协会年会</a>, 哈佛大学, 美国, 2026/2/13 - 2/14<br>
+            - <a href="https://arts.columbia.edu/events/futurities-ii-transnational-exchange-chinese-and-american-film-and-media-theories" target="_blank">"Futurities II: The Transnational Exchange of Chinese and American Film and Media Theories"</a>, 哥伦比亚大学, 美国, 2025/8/27</p>
         </div>
 
         <div class="writing-entry">
-            <p class="writing-title"><em><a href="/uploads/aaa-2025-annual-meeting-ghosts-full-program.pdf#page=787" target="_blank">Hunting the Sensibles: Performing Anthropology Across Media</a></em> [多学科工作坊]</p>
-            <p class="writing-details">- 2025 美国人类学协会年会, 新奥尔良, 美国, 2025/11/21</p>
+            <p class="writing-title"><em>Hunting the Sensibles: Performing Anthropology Across Media</em> [多学科工作坊，与 Xiaohui Liu, Pengrui Ou, Wang Xue Sophia, Renee Yu Jin 及 Yuwan Zhang 共同参与]</p>
+            <p class="writing-details">- <a href="/uploads/aaa-2025-annual-meeting-ghosts-full-program.pdf#page=787" target="_blank">2025 美国人类学协会年会</a>, 新奥尔良, 美国, 2025/11/21</p>
         </div>
         
         <div class="writing-entry">
@@ -490,7 +520,7 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 
         <div class="writing-entry">
             <p class="writing-title chinese-title">“幽灵，资本，模拟器：解剖《P.T. 》(2014)，一则媒介考古学小品” [口头报告]</p>
-            <p class="writing-details">- 2025中国游戏研究双城年会，[Aniwow! 2025] 中国（北京）国际大学生动画节, 中国传媒大学, 中国, 2025/10/25-26</p>
+            <p class="writing-details">- 2025中国游戏研究双城年会，[Aniwow! 2025] 中国（北京）国际大学生动画节, 中国传媒大学, 中国, 2025/10/25 - 10/26</p>
         </div>
         
         <div class="writing-entry">
@@ -501,31 +531,30 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
         <div class="writing-entry">
             <p class="writing-title"><em>Fault Lines and Echoing Strata: Attunement and Unsecurement through East Asia's Earthquake–Media</em> [口头报告]</p>
             <p class="writing-details">
-- <a href="https://arts.columbia.edu/events/futurities-ii-transnational-exchange-chinese-and-american-film-and-media-theories">"Futurities II: The Transnational Exchange of Chinese and American Film and Media Theories"</a>, 哥伦比亚大学, 美国, 2025/8/27<br>
-- <a href="/uploads/[ABSTRACT]_SEAA-SNU_Anthropology_2025_in_Seoul.pdf#page=105">SEAA-SNU 人类学2025会议 "塑造未来：作为实践的东亚"</a>, 首尔大学, 韩国, 2025/7/14-7/16<br>
-- <a href="https://voices.uchicago.edu/failingmedia/" target="_blank">第20届电影与媒介研究研究生年会 "Failing Media"</a>, 芝加哥大学, 美国, 2025/4/25-4/26<br>
-- "Mediated Futures" 研究生跨学科会议, 加州大学尔湾分校, 美国, 2025/4/25 - 4/27<br>
-- <a href="https://iucommonground.github.io/" target="_blank">Common Ground 研究生会议 "Media Studies in/at/form The Margins"</a>, 印第安纳大学伯明顿分校, 美国, 2025/3/7 - 3/8<br>
-- <a href="https://tisch.nyu.edu/cinema-studies/events/spring-2025/student-conference.html">2025 纽约大学电影研究学生会议 "Templates"</a>, 纽约大学, 美国, 2025/2/28 - 3/1</p>
+            - <a href="/uploads/[ABSTRACT]_SEAA-SNU_Anthropology_2025_in_Seoul.pdf#page=105" target="_blank">SEAA-SNU 人类学2025会议 "塑造未来：作为实践的东亚"</a>, 首尔大学, 韩国, 2025/7/14 - 7/16<br>
+            - <a href="https://voices.uchicago.edu/failingmedia/" target="_blank">第20届电影与媒介研究研究生年会 "Failing Media"</a>, 芝加哥大学, 美国, 2025/4/25 - 4/26<br>
+            - "Mediated Futures" 研究生跨学科会议, 加州大学尔湾分校, 美国, 2025/4/25 - 4/26<br>
+            - <a href="https://iucommonground.github.io/" target="_blank">Common Ground 研究生会议 "Media Studies in/at/form The Margins"</a>, 印第安纳大学伯明顿分校, 美国, 2025/3/7 - 3/8<br>
+            - <a href="https://tisch.nyu.edu/cinema-studies/events/spring-2025/student-conference.html" target="_blank">2025 纽约大学电影研究学生会议 "Templates"</a>, 纽约大学, 美国, 2025/2/28 - 3/1</p>
         </div>
 
          <div class="writing-entry">
-            <p class="writing-title"><em>Porous Heritage, Chemical Exposure Victims, Suppressed Vulnerability/Sensitivity</em> [口头报告]</p>
-            <p class="writing-details">- Big Stuff 会议 "技能与机器", 堪培拉大学, 澳大利亚, 2025/10/14 - 10/17<br>
-- 国际工业遗产保护委员会大会 "行动中的遗产", 基律纳, 瑞典, 2025/8/25-30</p>
+            <p class="writing-title"><em>Porous Heritage, Chemical Exposure Victims, Suppressed Vulnerability/Sensitivity: Activate the Embodied Experience of Industrial Heritage Among a Wider Population</em> [口头报告]</p>
+            <p class="writing-details">- Big Stuff 会议 "Skills and Machines: A Living Partnership", 堪培拉大学, 澳大利亚, 2025/10/14 - 10/17<br>
+            - 国际工业遗产保护委员会大会 "Heritage in action: Legacies of industry in future making", 基律纳, 瑞典, 2025/8/25 - 8/30</p>
         </div>
 
          <div class="writing-entry">
             <p class="writing-title"><em>Stepping Through Cures/Curses: How the Traces of Herb Scattering, Breathing, and Memorizing Mediate Collective Trauma and Public Healing</em> [口头报告]</p>
             <p class="writing-details">
-            - <a href="https://avarts.ionio.gr/ttt/" target="_blank">Taboo-Transgression-Transcendence in Art & Science 2025, 跨学科会议</a>, Kino Šiška, 斯洛文尼亚, 2025/9/9-9/13</p>
+            - <a href="https://avarts.ionio.gr/ttt/" target="_blank">Taboo-Transgression-Transcendence in Art & Science 2025, 跨学科会议</a>, Kino Šiška, 斯洛文尼亚, 2025/9/9 - 9/13</p>
         </div>
 
         <div class="writing-entry">
             <p class="writing-title chinese-title">“媒介物质性的新视角：人类世语境下的地质学电影批评” [口头报告（部分）]</p>
             <p class="writing-details">（修订后发表为 “物质性，地质美学与行星未来：人类世语境下的媒介地质学”）<br>
             - 北京国际电影节·第32届大学生电影节 第六届国际青年学者论坛，北京师范大学，中国，2025/4<br>
-            - <a href="/uploads/media_materiality.pdf" target="_blank">第六届媒介物质性论坛</a>，清华大学，中国，2025/3/29-3/30<br>
+            - <a href="/uploads/media_materiality.pdf" target="_blank">第六届媒介物质性论坛</a>，清华大学，中国，2025/3/29 - 3/30<br>
             - 2024中国东部传媒艺术论坛，南京大学，中国，2024/12/14<br>
             - “全球共通：数字时代的共同体想象 ”学术大会暨2024 年浙江省传播学会年会，浙大宁波理工学院，中国，2024/12/13 - 12/14<br>
             - 第十二届海峡两岸生态文学年会暨后人类语境下的生态批评与生态文学研讨会，集美大学，中国，2024/10/11 - 10/13</p>
@@ -537,15 +566,15 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
     <div class="writing-section">
         <h3 class="writing-section-title">对谈</h3>
         <div class="writing-entry">
-            <p class="writing-title talks-list"><a href="https://mp.weixin.qq.com/s/emznMENbR0EbiGNm2IyYyQ" target="_blank">“多屏影像”短片主题展映</a></p>
+            <p class="writing-title talks-list chinese-title"><a href="https://mp.weixin.qq.com/s/emznMENbR0EbiGNm2IyYyQ" target="_blank">“多屏影像”短片主题展映</a></p>
             <p class="writing-details">沙龙对谈嘉宾, 中国美术学院，杭州，2025</p>
         </div>
         <div class="writing-entry">
-            <p class="writing-title talks-list"><a href="https://mp.weixin.qq.com/s/FxY6OtlHM6bSdNDa7oV9DA" target="_blank">“失真的想象力：电影注解下的技术反思”</a></p>
+            <p class="writing-title talks-list chinese-title"><a href="https://mp.weixin.qq.com/s/FxY6OtlHM6bSdNDa7oV9DA" target="_blank">“失真的想象力：电影注解下的技术反思”</a></p>
             <p class="writing-details">沙龙对谈, 武汉大学艺术学院, 2024</p>
         </div>
         <div class="writing-entry">
-            <p class="writing-title talks-list"><a href="https://mp.weixin.qq.com/s/LceWwIAWW9sofBra7_AgKA" target="_blank">“一切是如何开始的？”——神秘学圆桌会第一期</a></p>
+            <p class="writing-title talks-list chinese-title"><a href="https://mp.weixin.qq.com/s/LceWwIAWW9sofBra7_AgKA" target="_blank">“一切是如何开始的？”——神秘学圆桌会第一期</a></p>
             <p class="writing-details">特邀讲座, 乌麦艺术计划, 线上, 2023</p>
         </div>
     </div>
