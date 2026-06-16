@@ -11,7 +11,7 @@
     <link rel="icon" type="image/png" href="/favicon.png">
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
 
-    <!-- 地质等高线改用原生 Canvas 绘制（零依赖，脚本见 body 末尾） -->
+    <!-- 等高线：已改用原生 Canvas，不再需要 P5.js -->
 
     <!-- ============================================== -->
     <!-- [START] V12 方案：临时背景接力 + 自毁机制 -->
@@ -468,10 +468,7 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
     <!-- [START] 封面遮罩层 HTML -->
     <!-- 路径保持原样 -->
     <div id="splash-overlay" onclick="enterSite()">
-        <img src="https://i.ibb.co/s9xV5BPf/1.webp"
-             alt="Click to Enter"
-             width="2289" height="1393"
-             fetchpriority="high" decoding="async">
+        <img src="https://img.juntaoyang.site/%E4%BD%A0%E5%BE%88%E9%9A%BE%E7%9C%8B%E8%A7%81....png" alt="Click to Enter">
         <div class="enter-text">Enter Site</div>
     </div>
     <!-- [END] 封面遮罩层 HTML -->
@@ -961,205 +958,182 @@ _W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":
 <!-- [END] 封面遮罩层控制脚本 -->
 
 <!-- ============================================== -->
-<!-- [START] Geology Script (原生 Canvas 重写版 - 移植 p5 noise，零依赖) -->
+<!-- [START] Geology Script (原生 Canvas + 内联 Perlin noise，零依赖) -->
 <script>
-(function () {
-  // ===== 移植自 p5.js 的 Perlin noise，保证线条形态与原版逐项一致 =====
-  const PERLIN_YWRAPB = 4;
-  const PERLIN_YWRAP = 1 << PERLIN_YWRAPB;
-  const PERLIN_ZWRAPB = 8;
-  const PERLIN_ZWRAP = 1 << PERLIN_ZWRAPB;
-  const PERLIN_SIZE = 4095;
-  const perlin_octaves = 4;        // p5 默认 octave 数
-  const perlin_amp_falloff = 0.5;  // p5 默认振幅衰减
-  const scaled_cosine = i => 0.5 * (1.0 - Math.cos(i * Math.PI));
-  let perlin = null;
-
-  function noise(x, y, z) {
-    if (perlin == null) {
-      perlin = new Array(PERLIN_SIZE + 1);
-      for (let i = 0; i < PERLIN_SIZE + 1; i++) perlin[i] = Math.random();
-    }
-    if (x < 0) x = -x;
-    if (y < 0) y = -y;
-    if (z < 0) z = -z;
-    let xi = Math.floor(x), yi = Math.floor(y), zi = Math.floor(z);
-    let xf = x - xi, yf = y - yi, zf = z - zi;
-    let rxf, ryf, r = 0, ampl = 0.5, n1, n2, n3;
-    for (let o = 0; o < perlin_octaves; o++) {
-      let of = xi + (yi << PERLIN_YWRAPB) + (zi << PERLIN_ZWRAPB);
-      rxf = scaled_cosine(xf);
-      ryf = scaled_cosine(yf);
-      n1 = perlin[of & PERLIN_SIZE];
-      n1 += rxf * (perlin[(of + 1) & PERLIN_SIZE] - n1);
-      n2 = perlin[(of + PERLIN_YWRAP) & PERLIN_SIZE];
-      n2 += rxf * (perlin[(of + PERLIN_YWRAP + 1) & PERLIN_SIZE] - n2);
-      n1 += ryf * (n2 - n1);
-      of += PERLIN_ZWRAP;
-      n2 = perlin[of & PERLIN_SIZE];
-      n2 += rxf * (perlin[(of + 1) & PERLIN_SIZE] - n2);
-      n3 = perlin[(of + PERLIN_YWRAP) & PERLIN_SIZE];
-      n3 += rxf * (perlin[(of + PERLIN_YWRAP + 1) & PERLIN_SIZE] - n3);
-      n2 += ryf * (n3 - n2);
-      n1 += scaled_cosine(zf) * (n2 - n1);
-      r += n1 * ampl;
-      ampl *= perlin_amp_falloff;
-      xi <<= 1; xf *= 2; yi <<= 1; yf *= 2; zi <<= 1; zf *= 2;
-      if (xf >= 1.0) { xi++; xf--; }
-      if (yf >= 1.0) { yi++; yf--; }
-      if (zf >= 1.0) { zi++; zf--; }
-    }
-    return r;
-  }
-
-  // p5 的 map() 等价实现
-  function mapVal(n, start1, stop1, start2, stop2) {
-    return ((n - start1) / (stop1 - start1)) * (stop2 - start2) + start2;
-  }
-
-  // ===== 等高线绘制参数（与原版一致）=====
-  const REZ = 8;
-  const ACCENT = '58, 75, 92'; // #3A4B5C 深岩蓝
-  const numIsolines = 90;      // 极高密度
-
-  let container, canvas, ctx;
-  let cols, rows, field = [];
-  let cssW = 0, cssH = 0;
-
-  function setup() {
-    container = document.getElementById('geology-layer');
-    if (!container) return;
-    cssW = container.offsetWidth;
-    cssH = container.offsetHeight;
-    if (cssW === 0 || cssH === 0) return; // 移动端 display:none，跳过绘制（与原版行为一致）
-
-    canvas = document.createElement('canvas');
-    container.appendChild(canvas);
-    ctx = canvas.getContext('2d');
-
-    sizeCanvas();
-    generateGeology();
-  }
-
-  function sizeCanvas() {
-    // 复刻 p5 默认 pixelDensity = devicePixelRatio，保证 retina 屏上线条同样锐利
-    const dpr = Math.max(1, window.devicePixelRatio || 1);
-    canvas.width = Math.floor(cssW * dpr);
-    canvas.height = Math.floor(cssH * dpr);
-    canvas.style.width = cssW + 'px';
-    canvas.style.height = cssH + 'px';
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    ctx.lineJoin = 'round'; // 对应 strokeJoin(ROUND)
-    ctx.lineCap = 'round';  // 对应 p5 默认 strokeCap(ROUND)
-    ctx.lineWidth = 1.4;    // 对应 strokeWeight(1.4)
-
-    cols = 1 + Math.ceil(cssW / REZ);
-    rows = 1 + Math.ceil(cssH / REZ);
-    field = [];
-    for (let i = 0; i < cols; i++) field[i] = new Float32Array(rows);
-  }
-
-  function line(x1, y1, x2, y2) {
-    ctx.beginPath();
-    ctx.moveTo(x1, y1);
-    ctx.lineTo(x2, y2);
-    ctx.stroke();
-  }
-
-  function getState(tl, tr, br, bl, t) {
-    return (tl >= t ? 8 : 0) + (tr >= t ? 4 : 0) + (br >= t ? 2 : 0) + (bl >= t ? 1 : 0);
-  }
-
-  function generateGeology() {
-    // 清空整块画布
-    ctx.save();
-    ctx.setTransform(1, 0, 0, 1, 0, 0);
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.restore();
-
-    // 静态随机偏移：每次刷新不同，但生成后静止（与原版 p.random(100) 一致）
-    const zOff = Math.random() * 100;
-
-    // 生成噪点场
-    for (let i = 0; i < cols; i++) {
-      for (let j = 0; j < rows; j++) {
-        const x = i * REZ;
-        const y = j * REZ;
-        field[i][j] = noise(x * 0.003, y * 0.003, zOff);
-      }
-    }
-
-    // 绘制等高线（marching squares）
-    for (let i = 0; i < cols - 1; i++) {
-      for (let j = 0; j < rows - 1; j++) {
-        const x = i * REZ;
-        const y = j * REZ;
-
-        const valTL = field[i][j];
-        const valTR = field[i + 1][j];
-        const valBR = field[i + 1][j + 1];
-        const valBL = field[i][j + 1];
-
-        const minLvl = Math.floor(Math.min(valTL, valTR, valBR, valBL) * numIsolines);
-        const maxLvl = Math.floor(Math.max(valTL, valTR, valBR, valBL) * numIsolines);
-
-        if (maxLvl > minLvl) {
-          for (let k = minLvl + 1; k <= maxLvl; k++) {
-            const threshold = k / numIsolines;
-
-            // 动态透明度：越靠右越深，左侧淡出（0–40，按 255 制）
-            const alpha = mapVal(i, 0, cols, 0, 40);
-            ctx.strokeStyle = 'rgba(' + ACCENT + ',' + (alpha / 255) + ')';
-
-            const state = getState(valTL, valTR, valBR, valBL, threshold);
-            const a = { x: x + REZ * (threshold - valTL) / (valTR - valTL), y: y };
-            const b = { x: x + REZ, y: y + REZ * (threshold - valTR) / (valBR - valTR) };
-            const c = { x: x + REZ * (threshold - valBL) / (valBR - valBL), y: y + REZ };
-            const d = { x: x, y: y + REZ * (threshold - valTL) / (valBL - valTL) };
-
-            switch (state) {
-              case 1:  line(c.x, c.y, d.x, d.y); break;
-              case 2:  line(b.x, b.y, c.x, c.y); break;
-              case 3:  line(b.x, b.y, d.x, d.y); break;
-              case 4:  line(a.x, a.y, b.x, b.y); break;
-              case 5:  line(a.x, a.y, d.x, d.y); line(b.x, b.y, c.x, c.y); break;
-              case 6:  line(a.x, a.y, c.x, c.y); break;
-              case 7:  line(a.x, a.y, d.x, d.y); break;
-              case 8:  line(a.x, a.y, d.x, d.y); break;
-              case 9:  line(a.x, a.y, c.x, c.y); break;
-              case 10: line(a.x, a.y, b.x, b.y); line(c.x, c.y, d.x, d.y); break;
-              case 11: line(a.x, a.y, b.x, b.y); break;
-              case 12: line(b.x, b.y, d.x, d.y); break;
-              case 13: line(b.x, b.y, c.x, c.y); break;
-              case 14: line(c.x, c.y, d.x, d.y); break;
+(function() {
+    /* ── 轻量 2D Perlin Noise + fBm (多八度，匹配 p5.noise 行为) ── */
+    var Noise = (function() {
+        var perm = new Uint8Array(512);
+        var grad = [[1,1],[-1,1],[1,-1],[-1,-1],[1,0],[-1,0],[0,1],[0,-1]];
+        function seed() {
+            var p = new Uint8Array(256);
+            for (var i = 0; i < 256; i++) p[i] = i;
+            for (var i = 255; i > 0; i--) {
+                var j = Math.floor(Math.random() * (i + 1));
+                var t = p[i]; p[i] = p[j]; p[j] = t;
             }
-          }
+            for (var i = 0; i < 512; i++) perm[i] = p[i & 255];
         }
-      }
+        function fade(t) { return t * t * t * (t * (t * 6 - 15) + 10); }
+        function lerp(a, b, t) { return a + t * (b - a); }
+        function dot(g, x, y) { return g[0] * x + g[1] * y; }
+        function perlin2d(x, y) {
+            var X = Math.floor(x) & 255, Y = Math.floor(y) & 255;
+            x -= Math.floor(x); y -= Math.floor(y);
+            var u = fade(x), v = fade(y);
+            var aa = perm[perm[X] + Y] & 7, ab = perm[perm[X] + Y + 1] & 7;
+            var ba = perm[perm[X + 1] + Y] & 7, bb = perm[perm[X + 1] + Y + 1] & 7;
+            return lerp(
+                lerp(dot(grad[aa], x, y),     dot(grad[ba], x - 1, y), u),
+                lerp(dot(grad[ab], x, y - 1), dot(grad[bb], x - 1, y - 1), u),
+                v
+            );
+        }
+        /* fBm: 4 octaves，与 p5.js 默认 noiseDetail(4, 0.5) 一致 */
+        function fbm(x, y) {
+            var val = 0, amp = 1, freq = 1, maxAmp = 0;
+            for (var o = 0; o < 4; o++) {
+                val += perlin2d(x * freq, y * freq) * amp;
+                maxAmp += amp;
+                amp *= 0.5;
+                freq *= 2;
+            }
+            return (val / maxAmp) * 0.5 + 0.5; // 归一化到 [0, 1]
+        }
+        seed();
+        return { fbm: fbm };
+    })();
+
+    /* ── 配置 ── */
+    var REZ = 12;
+    var NUM_ISOLINES = 40;       // 略微提高密度
+    var NOISE_SCALE = 0.003;
+    var LINE_WIDTH = 1.4;
+    var COLOR_R = 58, COLOR_G = 75, COLOR_B = 92; // #3A4B5C
+    var MAX_ALPHA = 55;          // p5 原版是 40/255；提高到 55 补偿 blend 损失
+
+    var canvas, ctx, cols, rows, field;
+    var container = null;
+    var resizeTimer = null;
+
+    function init() {
+        container = document.getElementById('geology-layer');
+        if (!container) return;
+
+        canvas = document.createElement('canvas');
+        canvas.style.cssText = 'display:block;width:100%;height:100%;';
+        container.appendChild(canvas);
+        ctx = canvas.getContext('2d');
+
+        render();
+
+        /* debounce resize：300ms 内多次 resize 只触发一次重绘 */
+        window.addEventListener('resize', function() {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(render, 300);
+        });
     }
-  }
 
-  // 窗口尺寸变化时重新生成；用 rAF 合并多次触发，最终成像与原版一致
-  let resizeQueued = false;
-  function onResize() {
-    if (!canvas || resizeQueued) return;
-    resizeQueued = true;
-    requestAnimationFrame(function () {
-      resizeQueued = false;
-      cssW = container.offsetWidth;
-      cssH = container.offsetHeight;
-      if (cssW === 0 || cssH === 0) return;
-      sizeCanvas();
-      generateGeology();
-    });
-  }
+    function render() {
+        var w = container.offsetWidth;
+        var h = container.offsetHeight;
+        if (w === 0 || h === 0) return;
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', setup);
-  } else {
-    setup();
-  }
-  window.addEventListener('resize', onResize);
+        var dpr = Math.min(window.devicePixelRatio || 1, 2);
+        canvas.width = w * dpr;
+        canvas.height = h * dpr;
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+        cols = 1 + Math.ceil(w / REZ);
+        rows = 1 + Math.ceil(h / REZ);
+
+        /* ── 生成 noise field ── */
+        field = new Array(cols);
+        for (var i = 0; i < cols; i++) {
+            field[i] = new Float32Array(rows);
+            for (var j = 0; j < rows; j++) {
+                field[i][j] = Noise.fbm(i * REZ * NOISE_SCALE, j * REZ * NOISE_SCALE);
+            }
+        }
+
+        /* ── 按 alpha band 建桶，每桶存一个 flat 坐标数组 ── */
+        var BAND_WIDTH = 20;
+        var numBands = Math.ceil((cols - 1) / BAND_WIDTH);
+        var buckets = new Array(numBands);
+        for (var b = 0; b < numBands; b++) buckets[b] = [];
+
+        /* ── Cell-first Marching Squares + minLvl/maxLvl 剪枝 ── */
+        for (var i = 0; i < cols - 1; i++) {
+            var band = Math.min((i / BAND_WIDTH) | 0, numBands - 1);
+            var buf = buckets[band];
+
+            for (var j = 0; j < rows - 1; j++) {
+                var tl = field[i][j], tr = field[i + 1][j];
+                var br = field[i + 1][j + 1], bl = field[i][j + 1];
+
+                var mn = tl, mx = tl;
+                if (tr < mn) mn = tr; if (tr > mx) mx = tr;
+                if (br < mn) mn = br; if (br > mx) mx = br;
+                if (bl < mn) mn = bl; if (bl > mx) mx = bl;
+
+                var minLvl = (mn * NUM_ISOLINES) | 0;
+                var maxLvl = (mx * NUM_ISOLINES) | 0;
+                if (maxLvl <= minLvl) continue; // ← 大量格子在此跳过
+
+                var x = i * REZ, y = j * REZ;
+
+                for (var k = minLvl + 1; k <= maxLvl; k++) {
+                    var t = k / NUM_ISOLINES;
+                    var state = (tl >= t ? 8 : 0) | (tr >= t ? 4 : 0)
+                              | (br >= t ? 2 : 0) | (bl >= t ? 1 : 0);
+                    if (state === 0 || state === 15) continue;
+
+                    var ax = x + REZ * (t - tl) / (tr - tl), ay = y;
+                    var bx = x + REZ, by = y + REZ * (t - tr) / (br - tr);
+                    var cx = x + REZ * (t - bl) / (br - bl), cy = y + REZ;
+                    var dx = x, dy = y + REZ * (t - tl) / (bl - tl);
+
+                    switch (state) {
+                        case 1: case 14: buf.push(cx,cy,dx,dy); break;
+                        case 2: case 13: buf.push(bx,by,cx,cy); break;
+                        case 3: case 12: buf.push(bx,by,dx,dy); break;
+                        case 4: case 11: buf.push(ax,ay,bx,by); break;
+                        case 6: case 9:  buf.push(ax,ay,cx,cy); break;
+                        case 7: case 8:  buf.push(ax,ay,dx,dy); break;
+                        case 5:  buf.push(ax,ay,dx,dy, bx,by,cx,cy); break;
+                        case 10: buf.push(ax,ay,bx,by, cx,cy,dx,dy); break;
+                    }
+                }
+            }
+        }
+
+        /* ── 按桶批量 stroke：每桶只切一次颜色、stroke 一次 ── */
+        ctx.lineWidth = LINE_WIDTH;
+        ctx.lineJoin = 'round';
+        ctx.clearRect(0, 0, w, h);
+
+        for (var b = 0; b < numBands; b++) {
+            var seg = buckets[b];
+            if (seg.length === 0) continue;
+
+            var midCol = (b + 0.5) * BAND_WIDTH;
+            var alpha = (midCol / cols) * MAX_ALPHA / 255;
+            ctx.strokeStyle = 'rgba(' + COLOR_R + ',' + COLOR_G + ',' + COLOR_B + ',' + alpha.toFixed(3) + ')';
+            ctx.beginPath();
+            for (var s = 0; s < seg.length; s += 4) {
+                ctx.moveTo(seg[s], seg[s + 1]);
+                ctx.lineTo(seg[s + 2], seg[s + 3]);
+            }
+            ctx.stroke();
+        }
+    }
+
+    /* DOM ready 后初始化 */
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
 })();
 </script>
 <!-- [END] Geology Script -->
