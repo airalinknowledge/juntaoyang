@@ -118,6 +118,27 @@
     }
   }
 
+  function addOriginalRemakeAlgorithmicScreening() {
+    var screenings = document.getElementById("screenings");
+    if (!screenings || document.getElementById("original-remake-algorithmic-screening")) {
+      return;
+    }
+
+    var item = document.createElement("div");
+    item.id = "original-remake-algorithmic-screening";
+    item.className = "screening-item";
+
+    if (isChinesePage()) {
+      item.innerHTML =
+        '<em>“原创 / 复刻 / 算法流：三种叙事的边界在哪里”</em>，雪莲·亮点文创园偶得剧场，2026/6/28';
+    } else {
+      item.innerHTML =
+        '<em>Original / Remake / Algorithmic: Where Do the Boundaries Between Three Narrative Modes Lie?</em>, Oude Theatre, Xuelian · Liangdian Cultural and Creative Park, June 28, 2026';
+    }
+
+    screenings.insertBefore(item, screenings.firstChild);
+  }
+
   function addCuratorialProjects() {
     var exhibitions = document.getElementById("exhibitions");
     if (!exhibitions || document.getElementById("curatorial-projects")) {
@@ -157,6 +178,7 @@
     addPekingUniversityProgram();
     addPekingUniversityPresentation();
     addEntropyArtPodcast();
+    addOriginalRemakeAlgorithmicScreening();
     addCuratorialProjects();
   }
 
