@@ -139,6 +139,47 @@
     screenings.insertBefore(item, screenings.firstChild);
   }
 
+  function addAfterimageResidency() {
+    if (document.getElementById("afterimage-residency")) {
+      return;
+    }
+
+    var headings = document.querySelectorAll('.paragraph font[size="5"]');
+    var targetHeading = null;
+    var isChinese = isChinesePage();
+
+    for (var i = 0; i < headings.length; i++) {
+      var text = headings[i].textContent.trim();
+      if ((isChinese && text === "驻留项目") || (!isChinese && text === "Residencies")) {
+        targetHeading = headings[i];
+        break;
+      }
+    }
+
+    if (!targetHeading || !targetHeading.parentElement) {
+      return;
+    }
+
+    var item = document.createElement("div");
+    item.id = "afterimage-residency";
+    item.className = "residency-item";
+
+    if (isChinese) {
+      item.innerHTML =
+        '<em>《剩余影像》（AFTERIMAGE）</em>，T2M 贰场，佛山，中国，策展：光轴、DP LAB&nbsp;&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;&nbsp;2026/7/1 - 8/1';
+    } else {
+      item.innerHTML =
+        '<em>AFTERIMAGE</em>, T2M The Second Mine, Foshan, China, curated by 光轴 and DP LAB&nbsp;&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;&nbsp;July 1–August 1, 2026';
+    }
+
+    var container = targetHeading.parentElement;
+    if (targetHeading.parentElement.firstElementChild === targetHeading && targetHeading.nextSibling) {
+      container.insertBefore(item, targetHeading.nextSibling);
+    } else {
+      container.insertBefore(item, container.children[1] || null);
+    }
+  }
+
   function addCuratorialProjects() {
     var exhibitions = document.getElementById("exhibitions");
     if (!exhibitions || document.getElementById("curatorial-projects")) {
@@ -179,6 +220,7 @@
     addPekingUniversityPresentation();
     addEntropyArtPodcast();
     addOriginalRemakeAlgorithmicScreening();
+    addAfterimageResidency();
     addCuratorialProjects();
   }
 
