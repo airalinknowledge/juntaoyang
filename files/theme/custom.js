@@ -1,9 +1,18 @@
 (function () {
   "use strict";
 
+  function getPageName() {
+    return window.location.pathname.split("/").pop() || "index.html";
+  }
+
   function isChinesePage() {
-    var pageName = window.location.pathname.split("/").pop() || "index.html";
-    return pageName === "guanyu.html";
+    return [
+      "guanyu.html",
+      "chuangzuo.html",
+      "chuban.html",
+      "xiangmu.html",
+      "fabu.html"
+    ].indexOf(getPageName()) !== -1;
   }
 
   function addPekingUniversityProgram() {
@@ -28,16 +37,43 @@
     if (isChinese) {
       item.innerHTML =
         '“西方前沿文论阐释与批判”高级研修班，北京大学艺术学院，2026' +
-        '<div class="faculty-list">主题发言：“物之媒介与媒介之物：自然、地质及其他隐喻”</div>' +
         '<div class="faculty-list">授课教师：朱国华、李洋、吴冠军、蓝江、姜宇辉、夏莹、段吉方、周计武、王嘉军、李修建、李科林、卢文超、张颖、吴娱玉、董树宝、李三达、林云柯</div>';
     } else {
       item.innerHTML =
         'Advanced Seminar, “Frontiers in Western Literary Theory: Interpretation and Critique,” Peking University, School of Arts, 2026' +
-        '<div class="faculty-list">Presentation: “The Media of Things and the Things of Media: Nature, Geology, and Other Metaphors”</div>' +
         '<div class="faculty-list">With: Zhu Guohua, Li Yang, Wu Guanjun, Lan Jiang, Jiang Yuhui, Xia Ying, Duan Jifang, Zhou Jiwu, Wang Jiajun, Li Xiujian, Li Kelin, Lu Wenchao, Zhang Ying, Wu Yuyu, Dong Shubao, Li Sanda, Lin Yunke</div>';
     }
 
     institutes.insertBefore(item, institutes.firstChild);
+  }
+
+  function addPekingUniversityPresentation() {
+    var conferenceSection = document.querySelector(".conference-section");
+    if (!conferenceSection || document.getElementById("pku-media-of-things-presentation")) {
+      return;
+    }
+
+    var isChinese = isChinesePage();
+    var entry = document.createElement("div");
+    entry.id = "pku-media-of-things-presentation";
+    entry.className = "writing-entry";
+
+    if (isChinese) {
+      entry.innerHTML =
+        '<p class="writing-title chinese-title">“物之媒介与媒介之物：自然、地质及其他隐喻” [口头报告]</p>' +
+        '<p class="writing-details">- “西方前沿文论阐释与批判”高级研修班，北京大学艺术学院，北京，中国，2026/7/6 - 7/10</p>';
+    } else {
+      entry.innerHTML =
+        '<p class="writing-title">The Media of Things and the Things of Media: Nature, Geology, and Other Metaphors [Oral Presentation]</p>' +
+        '<p class="writing-details">- Advanced Seminar “Frontiers in Western Literary Theory: Interpretation and Critique,” Peking University, School of Arts, Beijing, China, July 6–10, 2026</p>';
+    }
+
+    var sectionTitle = conferenceSection.querySelector(".writing-section-title");
+    if (sectionTitle && sectionTitle.nextSibling) {
+      conferenceSection.insertBefore(entry, sectionTitle.nextSibling);
+    } else {
+      conferenceSection.appendChild(entry);
+    }
   }
 
   function addCuratorialProjects() {
@@ -75,14 +111,15 @@
     container.insertBefore(gap, exhibitionsSection);
   }
 
-  function initializeHomepageAdditions() {
+  function initializeSiteAdditions() {
     addPekingUniversityProgram();
+    addPekingUniversityPresentation();
     addCuratorialProjects();
   }
 
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", initializeHomepageAdditions);
+    document.addEventListener("DOMContentLoaded", initializeSiteAdditions);
   } else {
-    initializeHomepageAdditions();
+    initializeSiteAdditions();
   }
 })();
