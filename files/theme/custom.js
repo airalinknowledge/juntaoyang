@@ -103,11 +103,11 @@
 
     if (isChinese) {
       entry.innerHTML =
-        '<p class="writing-title talks-list chinese-title"><a href="https://www.ximalaya.com/sound/974974837" target="_blank">“杨君陶｜微观权力与多孔性的表达”</a></p>' +
-        '<p class="writing-details">播客访谈，Entropy Art，主持：Molly，线上，2026</p>';
+        '<p class="writing-title talks-list chinese-title"><a href="https://www.ximalaya.com/sound/974974837" target="_blank">“杨君陶 | 微观权力与多孔性的表达”</a></p>' +
+        '<p class="writing-details">播客访谈，Entropy Art，主持人：Molly，线上，2026</p>';
     } else {
       entry.innerHTML =
-        '<p class="writing-title talks-list"><a href="https://www.ximalaya.com/sound/974974837" target="_blank">Juntao Yang | Expressing Micropower and Porosity</a></p>' +
+        '<p class="writing-title talks-list"><a href="https://www.ximalaya.com/sound/974974837" target="_blank">Juntao Yang | The Expression of Micropower and Porosity</a></p>' +
         '<p class="writing-details">Podcast interview, <em>Entropy Art</em>, hosted by Molly, Online, 2026</p>';
     }
 
