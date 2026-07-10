@@ -1,14 +1,18 @@
 (function () {
   "use strict";
 
+  function isChinesePage() {
+    var pageName = window.location.pathname.split("/").pop() || "index.html";
+    return pageName === "guanyu.html";
+  }
+
   function addPekingUniversityProgram() {
     var institutes = document.getElementById("institutes");
     if (!institutes || document.getElementById("pku-western-theory-program")) {
       return;
     }
 
-    var pageName = window.location.pathname.split("/").pop() || "index.html";
-    var isChinese = pageName === "guanyu.html";
+    var isChinese = isChinesePage();
 
     var heading = institutes.parentElement.querySelector('font[size="5"]');
     if (heading) {
@@ -34,9 +38,49 @@
     institutes.insertBefore(item, institutes.firstChild);
   }
 
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", addPekingUniversityProgram);
-  } else {
+  function addCuratorialProjects() {
+    var exhibitions = document.getElementById("exhibitions");
+    if (!exhibitions || document.getElementById("curatorial-projects")) {
+      return;
+    }
+
+    var isChinese = isChinesePage();
+    var exhibitionsSection = exhibitions.parentElement;
+    var container = exhibitionsSection.parentElement;
+
+    var section = document.createElement("div");
+    section.id = "curatorial-projects";
+    section.className = "paragraph";
+
+    if (isChinese) {
+      section.innerHTML =
+        '<u><font size="5">策展项目</font></u>' +
+        '<div class="exhibition-item curatorial-item"><em>“Silos and Shelters”</em>，Studio 302 Reclaimed，伯克利，美国，2026</div>' +
+        '<div class="exhibition-item curatorial-item"><em>“行星蚀刻，翼装飞行”</em>，Imaginary Z，杭州，中国，2026</div>' +
+        '<div class="exhibition-item curatorial-item"><em>“中国蓝”</em>，武汉大学艺术学院，武汉，中国，2022</div>';
+    } else {
+      section.innerHTML =
+        '<u><font size="5">Curatorial Projects</font></u>' +
+        '<div class="exhibition-item curatorial-item"><em>Silos and Shelters</em>, Studio 302 Reclaimed, Berkeley, USA, 2026</div>' +
+        '<div class="exhibition-item curatorial-item"><em>Planetary Etching, Wingsuit Flying</em>, Imaginary Z, Hangzhou, China, 2026</div>' +
+        '<div class="exhibition-item curatorial-item"><em>China Blue</em>, Wuhan University, School of Arts, Wuhan, China, 2022</div>';
+    }
+
+    var gap = document.createElement("div");
+    gap.className = "section-gap";
+
+    container.insertBefore(section, exhibitionsSection);
+    container.insertBefore(gap, exhibitionsSection);
+  }
+
+  function initializeHomepageAdditions() {
     addPekingUniversityProgram();
+    addCuratorialProjects();
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initializeHomepageAdditions);
+  } else {
+    initializeHomepageAdditions();
   }
 })();
