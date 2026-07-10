@@ -24,11 +24,11 @@
     if (isChinese) {
       item.innerHTML =
         '“西方前沿文论阐释与批判”高级研修班，北京大学艺术学院，2026' +
-        '<div class="faculty-list">结业证书；42课时</div>';
+        '<div class="faculty-list">授课教师：朱国华、李洋、吴冠军、蓝江、姜宇辉、夏莹、段吉方、周计武、王嘉军、李修建、李科林、卢文超、张颖、吴娱玉、董树宝、李三达、林云柯</div>';
     } else {
       item.innerHTML =
-        'Advanced Seminar, “Frontiers in Western Literary Theory: Interpretation and Critique,” School of Arts, Peking University, 2026' +
-        '<div class="faculty-list">Certificate of Completion; 42 contact hours</div>';
+        'Advanced Seminar, “Frontiers in Western Literary Theory: Interpretation and Critique,” Peking University, School of Arts, 2026' +
+        '<div class="faculty-list">With: Zhu Guohua, Li Yang, Wu Guanjun, Lan Jiang, Jiang Yuhui, Xia Ying, Duan Jifang, Zhou Jiwu, Wang Jiajun, Li Xiujian, Li Kelin, Lu Wenchao, Zhang Ying, Wu Yuyu, Dong Shubao, Li Sanda, Lin Yunke</div>';
     }
 
     institutes.insertBefore(item, institutes.firstChild);
