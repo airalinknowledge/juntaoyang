@@ -15,6 +15,22 @@
     ].indexOf(getPageName()) !== -1;
   }
 
+  function updateEnglishBio() {
+    if (getPageName() !== "index.html") {
+      return;
+    }
+
+    var paragraphs = document.querySelectorAll(".main-content-column .paragraph");
+
+    for (var i = 0; i < paragraphs.length; i++) {
+      if (paragraphs[i].textContent.indexOf("Juntao Yang is a scholar, critic, and artist.") !== -1) {
+        paragraphs[i].innerHTML =
+          '<font size="4">Juntao Yang is a scholar, critic, and artist working across media theory, environmental humanities, and queer theory, with contemporary cinema, visual art, and popular culture as primary objects. Yang is concerned with how power operates through material and mediatic processes—often invisibly, at the micro-level—and addresses this through provocative scholarship and, at times, hysterical public writing. Current research theorizes the 2008 Wenchuan earthquake as a deep now: a temporally and politically irreversible withdrawal that seduces, conscripting, shattering, and reconfiguring the conditions from which sovereign subjectivity emerges. Based in Berkeley.</font>';
+        break;
+      }
+    }
+  }
+
   function addPekingUniversityProgram() {
     var institutes = document.getElementById("institutes");
     if (!institutes || document.getElementById("pku-western-theory-program")) {
@@ -216,6 +232,7 @@
   }
 
   function initializeSiteAdditions() {
+    updateEnglishBio();
     addPekingUniversityProgram();
     addPekingUniversityPresentation();
     addEntropyArtPodcast();
