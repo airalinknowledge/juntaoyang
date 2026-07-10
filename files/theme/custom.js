@@ -166,10 +166,10 @@
 
     if (isChinese) {
       item.innerHTML =
-        '<em>《剩余影像》（AFTERIMAGE）</em>，T2M 贰场，佛山，中国，策展：光轴、DP LAB&nbsp;&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;&nbsp;2026/7/1 - 8/1';
+        '<em>“剩余影像（AFTERIMAGE）”</em>，T2M 贰场，佛山，中国，策展：光轴、DP LAB&nbsp;&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;&nbsp;2026/7/1 - 8/1';
     } else {
       item.innerHTML =
-        '<em>AFTERIMAGE</em>, T2M The Second Mine, Foshan, China, curated by 光轴 and DP LAB&nbsp;&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;&nbsp;July 1–August 1, 2026';
+        '<em>AFTERIMAGE</em>, T2M The Second Mine, Foshan, China, curated by AXIS and DP LAB&nbsp;&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;&nbsp;July 1–August 1, 2026';
     }
 
     var container = targetHeading.parentElement;
