@@ -1,281 +1,136 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>所有这些道路 — 杨君陶</title>
   <meta name="description" content="杨君陶作品《所有这些道路》（2026）：灯箱摄影装置，多通道声音。" />
-  <meta name="keywords" content="杨君陶, 所有这些道路, All the Paths, 当代艺术, 灯箱摄影, 多通道声音, 佛山" />
-  <link rel="stylesheet" type="text/css" href="files/main_style.css?1714489767" />
-  <style>
-    :root {
-      --font-serif: Georgia, "Songti SC", SimSun, "Times New Roman", serif;
-      --font-mono: "Courier New", Courier, monospace;
-      --bg-paper: #f4f4f2;
-      --text-ink: #1e1e1e;
-      --text-meta: #5c5c5c;
-      --accent-slate: #3a4b5c;
-      --line-light: #d1d1d1;
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link id="wsite-base-style" rel="stylesheet" type="text/css" href="https://cdn2.editmysite.com/css/sites.css?buildTime=1234" />
+  <link rel="stylesheet" type="text/css" href="https://cdn2.editmysite.com/css/old/fancybox.css?1234" />
+  <link rel="stylesheet" type="text/css" href="https://cdn2.editmysite.com/css/social-icons.css?buildtime=1234" media="screen,projection" />
+  <link rel="stylesheet" type="text/css" href="files/main_style.css?1714489767" title="wsite-theme-css" />
+  <link href="https://cdn2.editmysite.com/fonts/Alike/font.css?2" rel="stylesheet" type="text/css" />
+  <link href="https://cdn2.editmysite.com/fonts/Cardo/font.css?2" rel="stylesheet" type="text/css" />
+  <style type="text/css">
+    .wsite-elements.wsite-not-footer:not(.wsite-header-elements) div.paragraph,
+    #wsite-content div.paragraph,
+    #wsite-content p { font-family: Georgia, "Songti SC", SimSun, serif !important; }
+    .wsite-elements.wsite-not-footer:not(.wsite-header-elements) h2,
+    #wsite-content h2 { font-family: Georgia, "Songti SC", SimSun, serif !important; font-style: normal !important; letter-spacing: 5px !important; }
+    #wsite-title { font-family: "Alike", Georgia, serif !important; }
+    .wsite-menu-default a { font-family: "Cardo", Georgia, serif !important; text-transform: uppercase !important; letter-spacing: 2px !important; }
+    body, #wrapper { background: #f4f4f2 !important; color: #1e1e1e !important; }
+    .main-content-area { max-width: 90%; margin-left: 0; margin-right: 10%; }
+    .all-paths-standard-gallery { line-height: 0; padding: 0; margin: 0; }
+    .all-paths-gallery-cell { float: left; width: 49.95%; margin: 0; }
+    .all-paths-gallery-inner { position: relative; margin: 5px; }
+    .all-paths-gallery-frame { position: relative; width: 100%; padding-bottom: 75%; overflow: hidden; background: #dededb; }
+    .all-paths-gallery-frame a { position: absolute; inset: 0; display: block; }
+    .all-paths-gallery-frame img { display: block; width: 100%; height: 100%; border: 0; object-fit: cover; }
+    .gallery-clear { display: block; clear: both; height: 0; overflow: hidden; }
+    .all-paths-project-note { margin-top: 28px; color: #5c5c5c; }
+    @media screen and (min-width: 767px) {
+      #wsite-content div.paragraph, #wsite-content p { line-height: 33px !important; }
+      #wsite-content h2 { font-size: 100px !important; line-height: 75px !important; }
+      .wsite-menu-default a { font-size: 14px !important; }
     }
-
-    * { box-sizing: border-box; }
-
-    html { background: var(--bg-paper); }
-
-    body {
-      margin: 0;
-      color: var(--text-ink);
-      background: var(--bg-paper);
-      font-family: var(--font-serif);
-      font-size: 16px;
-      line-height: 1.8;
-    }
-
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      opacity: 0.055;
-      z-index: 20;
-      mix-blend-mode: multiply;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.7' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.9'/%3E%3C/svg%3E");
-    }
-
-    .site-shell {
-      width: min(1180px, calc(100% - 48px));
-      margin: 0 auto;
-      position: relative;
-      z-index: 2;
-    }
-
-    .topbar {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      gap: 32px;
-      padding: 36px 0 28px;
-      border-bottom: 1px solid var(--line-light);
-    }
-
-    .identity,
-    .primary-nav,
-    .language-switch {
-      font-size: 13px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-    }
-
-    .identity { white-space: nowrap; }
-
-    .primary-nav {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-      gap: 24px;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    a:hover { color: var(--accent-slate); }
-
-    .primary-nav a[aria-current="page"] {
-      padding-bottom: 4px;
-      border-bottom: 2px solid var(--accent-slate);
-    }
-
-    .language-row {
-      display: flex;
-      justify-content: flex-end;
-      padding-top: 18px;
-    }
-
-    .language-switch a {
-      color: var(--text-meta);
-      border-bottom: 1px solid var(--line-light);
-    }
-
-    main {
-      padding: 80px 0 120px;
-    }
-
-    .artwork-header {
-      display: grid;
-      grid-template-columns: minmax(0, 1.45fr) minmax(260px, 0.55fr);
-      gap: 80px;
-      align-items: start;
-      padding-bottom: 64px;
-      border-bottom: 1px solid var(--line-light);
-    }
-
-    .eyebrow {
-      margin: 0 0 18px;
-      color: var(--text-meta);
-      font-family: var(--font-mono);
-      font-size: 12px;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-    }
-
-    h1 {
-      margin: 0;
-      max-width: 860px;
-      font-size: clamp(52px, 8vw, 112px);
-      line-height: 0.98;
-      font-weight: 400;
-      letter-spacing: -0.045em;
-    }
-
-    .english-title {
-      display: block;
-      margin-top: 22px;
-      color: var(--text-meta);
-      font-size: clamp(24px, 3vw, 42px);
-      line-height: 1.15;
-      letter-spacing: 0;
-    }
-
-    .metadata {
-      margin: 0;
-      padding: 0;
-      list-style: none;
-      border-top: 1px solid var(--text-ink);
-    }
-
-    .metadata li {
-      display: grid;
-      grid-template-columns: 72px 1fr;
-      gap: 18px;
-      padding: 13px 0;
-      border-bottom: 1px solid var(--line-light);
-    }
-
-    .metadata .label {
-      color: var(--text-meta);
-      font-family: var(--font-mono);
-      font-size: 11px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .statement-grid {
-      display: grid;
-      grid-template-columns: minmax(180px, 0.35fr) minmax(0, 1fr);
-      gap: 80px;
-      padding-top: 72px;
-    }
-
-    .section-label {
-      margin: 0;
-      color: var(--text-meta);
-      font-family: var(--font-mono);
-      font-size: 12px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-    }
-
-    .statement {
-      max-width: 780px;
-    }
-
-    .statement p {
-      margin: 0 0 1.45em;
-      font-size: clamp(18px, 2vw, 23px);
-      line-height: 1.95;
-    }
-
-    .statement p:first-child::first-letter {
-      float: left;
-      margin: 0.1em 0.1em 0 0;
-      color: var(--accent-slate);
-      font-size: 4.1em;
-      line-height: 0.72;
-    }
-
-    .project-note {
-      margin-top: 56px;
-      padding-top: 24px;
-      border-top: 1px solid var(--line-light);
-      color: var(--text-meta);
-      font-size: 14px !important;
-    }
-
-    .back-link {
-      display: inline-block;
-      margin-top: 76px;
-      font-family: var(--font-mono);
-      font-size: 12px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      border-bottom: 1px solid var(--line-light);
-    }
-
-    @media (max-width: 760px) {
-      .site-shell { width: min(100% - 30px, 1180px); }
-      .topbar { align-items: flex-start; padding-top: 24px; }
-      .identity { display: none; }
-      .primary-nav { justify-content: flex-start; gap: 14px 18px; }
-      .language-row { justify-content: flex-start; }
-      main { padding-top: 56px; }
-      .artwork-header,
-      .statement-grid { grid-template-columns: 1fr; gap: 42px; }
-      h1 { font-size: clamp(48px, 17vw, 76px); }
-      .metadata { max-width: 520px; }
-      .statement p { font-size: 18px; }
+    @media screen and (max-width: 767px) {
+      .main-content-area { max-width: 100%; margin-left: auto; margin-right: auto; }
+      .all-paths-gallery-cell { width: 100%; }
     }
   </style>
+  <script src="https://cdn2.editmysite.com/js/jquery-1.8.3.min.js"></script>
 </head>
-<body class="wsite-page-artworks">
-  <div class="site-shell">
-    <header class="topbar">
-      <a class="identity" href="guanyu.html">杨君陶</a>
-      <nav class="primary-nav" aria-label="主导航">
-        <a href="guanyu.html">关于</a>
-        <a href="chuangzuo.html" aria-current="page">创作</a>
-        <a href="chuban.html">写作</a>
-        <a href="xiangmu.html">项目</a>
-        <a href="fabu.html">发布</a>
-      </nav>
-    </header>
-
-    <div class="language-row">
-      <div class="language-switch"><a href="all-the-paths.html">English</a> &nbsp;·&nbsp; 中文</div>
-    </div>
-
-    <main>
-      <section class="artwork-header" aria-labelledby="artwork-title">
-        <div>
-          <p class="eyebrow">作品 · 2026</p>
-          <h1 id="artwork-title">所有这些道路<span class="english-title" lang="en">All the Paths</span></h1>
-        </div>
-
-        <ul class="metadata" aria-label="作品信息">
-          <li><span class="label">艺术家</span><span>杨君陶 / Juntao Yang</span></li>
-          <li><span class="label">年份</span><span>2026</span></li>
-          <li><span class="label">媒介</span><span>灯箱摄影装置，多通道声音</span></li>
-          <li><span class="label">尺寸</span><span>尺寸可变</span></li>
+<body class="no-header-page wsite-page-suoyouzhexiedaolu wsite-theme-light">
+<div id="wrapper">
+  <div id="navigation">
+    <div id="navigation-wrap">
+      <div id="nav">
+        <div class="sitename"><span class="wsite-logo"><span class="wsite-title-placeholder">&nbsp;</span></span></div>
+        <ul class="wsite-menu-default">
+          <li class="wsite-menu-item-wrap"><a href="guanyu.html" class="wsite-menu-item">关于</a></li>
+          <li class="wsite-menu-item-wrap"><a href="chuangzuo.html" class="wsite-menu-item">创作</a></li>
+          <li class="wsite-menu-item-wrap"><a href="chuban.html" class="wsite-menu-item">出版</a></li>
+          <li class="wsite-menu-item-wrap"><a href="xiangmu.html" class="wsite-menu-item">项目</a></li>
+          <li class="wsite-menu-item-wrap"><a href="fabu.html" class="wsite-menu-item">发布</a></li>
         </ul>
-      </section>
-
-      <section class="statement-grid" aria-labelledby="statement-heading">
-        <h2 class="section-label" id="statement-heading">作品简介</h2>
-        <div class="statement">
-          <p>作品为 DP LAB × 光轴 AXIS 驻留项目的一部分。该项目驻地研究了中国南方历史悠久的轻工业城市佛山一处陶瓷洁具龙头企业在产业升级后遗留下来的废旧厂区。</p>
-
-          <p>停产后的工厂留下了曾服务于生产的孔洞，以及被意外和时间侵蚀出的裂缝。受控的管道与规范变为难以收编的甬道；被迫撤离在此矛盾地展开为持续的溢出。多种人类与非人类的幽灵力量——水、菌落、空气、锈蚀、根系、光、劳动与记忆——细簌作响，在空间中移动，辨认每一条通径，散落下穿越的迹象。作品试图追踪这些痕迹，将散布于工厂各处的逃逸地带引入装置之中。</p>
-
-          <p class="project-note">作品创作于 DP LAB × 光轴 AXIS 在佛山 T2M 贰场开展的驻留项目。</p>
-        </div>
-      </section>
-
-      <a class="back-link" href="chuangzuo.html">← 返回创作页面</a>
-    </main>
+      </div>
+      <div id="navmobile">
+        <ul class="wsite-menu-default">
+          <li class="wsite-menu-item-wrap"><a href="guanyu.html" class="wsite-menu-item">关于</a></li>
+          <li class="wsite-menu-item-wrap"><a href="chuangzuo.html" class="wsite-menu-item">创作</a></li>
+          <li class="wsite-menu-item-wrap"><a href="chuban.html" class="wsite-menu-item">出版</a></li>
+          <li class="wsite-menu-item-wrap"><a href="xiangmu.html" class="wsite-menu-item">项目</a></li>
+          <li class="wsite-menu-item-wrap"><a href="fabu.html" class="wsite-menu-item">发布</a></li>
+        </ul>
+      </div>
+    </div>
+    <label id="mobile-close" class="hamburger" for="mobile-input"></label>
   </div>
 
-  <script type="text/javascript" src="files/theme/custom.js"></script>
-  <script type="text/javascript" src="files/theme/mobile.js?v=20260807-gallery"></script>
+  <div id="main">
+    <div id="mobile-top">
+      <label id="mobile-open" class="hamburger" for="mobile-input"></label>
+      <div class="sitename"><span class="wsite-logo"><span class="wsite-title-placeholder">&nbsp;</span></span></div>
+    </div>
+
+    <div id="content-wrapper">
+      <div id="wsite-content" class="wsite-elements wsite-not-footer">
+        <div class="wsite-section-wrap">
+          <div class="wsite-section wsite-body-section wsite-custom-background">
+            <div class="wsite-section-content">
+              <div class="container">
+                <div class="wsite-section-elements">
+                  <div><div class="wsite-multicol"><div class="wsite-multicol-table-wrap" style="margin:0 -15px;">
+                    <table class="wsite-multicol-table"><tbody class="wsite-multicol-tbody"><tr class="wsite-multicol-tr">
+                      <td class="wsite-multicol-col" style="width:36.894273127753%; padding:0 15px;">
+                        <div class="paragraph" style="text-align:left;"><font size="3"><u><a href="all-the-paths.html"><font color="#2a2a2a">English</font></a></u>&nbsp;&nbsp;&nbsp;&nbsp;<strong>中文</strong><br />&#8203;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;juntao.yang@columbia.edu</font></div>
+                      </td>
+                      <td class="wsite-multicol-col" style="width:63.105726872247%; padding:0 15px;">
+                        <div class="paragraph" style="text-align:right;"><font size="4"><u><a href="guanyu.html"><font color="#2a2a2a">关于</font></a></u>&nbsp;&nbsp;<u><a href="chuangzuo.html"><font color="#2a2a2a">创作</font></a></u>&nbsp;&nbsp;<u><a href="chuban.html"><font color="#2a2a2a">出版</font></a></u>&nbsp;&nbsp;<u><a href="xiangmu.html"><font color="#2a2a2a">项目</font></a></u>&nbsp;&nbsp;<u><a href="fabu.html"><font color="#2a2a2a">发布</font></a></u></font></div>
+                      </td>
+                    </tr></tbody></table>
+                  </div></div></div>
+
+                  <div class="wsite-spacer" style="height:50px;"></div>
+
+                  <div class="main-content-area">
+                    <h2 class="wsite-content-title">创作</h2>
+
+                    <div class="paragraph"><strong><font size="5">所有这些道路</font></strong><br /><strong><font size="6">&nbsp;</font></strong><br />灯箱摄影装置，多通道声音<br /><em>尺寸可变</em><br />&#8203;2026</div>
+
+                    <div>
+                      <div style="height:30px; overflow:hidden;"></div>
+                      <div id="all-the-paths-gallery" class="imageGallery all-paths-standard-gallery">
+                        <div class="all-paths-gallery-cell"><div class="all-paths-gallery-inner"><div class="all-paths-gallery-frame"><a href="https://ik.imagekit.io/1zgbu3kyg/IMG_20260806_202209.jpg" rel="lightbox[allpaths2026zh]" aria-label="《所有这些道路》展览现场 1"><img src="https://ik.imagekit.io/1zgbu3kyg/IMG_20260806_202209.jpg" alt="《所有这些道路》展览现场 1" loading="eager" decoding="async" /></a></div></div></div>
+                        <div class="all-paths-gallery-cell"><div class="all-paths-gallery-inner"><div class="all-paths-gallery-frame"><a href="https://ik.imagekit.io/1zgbu3kyg/IMG_20260806_202038.jpg" rel="lightbox[allpaths2026zh]" aria-label="《所有这些道路》展览现场 2"><img src="https://ik.imagekit.io/1zgbu3kyg/IMG_20260806_202038.jpg" alt="《所有这些道路》展览现场 2" loading="lazy" decoding="async" /></a></div></div></div>
+                        <div class="all-paths-gallery-cell"><div class="all-paths-gallery-inner"><div class="all-paths-gallery-frame"><a href="https://ik.imagekit.io/1zgbu3kyg/IMG_20260806_202419.jpg" rel="lightbox[allpaths2026zh]" aria-label="《所有这些道路》展览现场 3"><img src="https://ik.imagekit.io/1zgbu3kyg/IMG_20260806_202419.jpg" alt="《所有这些道路》展览现场 3" loading="lazy" decoding="async" /></a></div></div></div>
+                        <div class="all-paths-gallery-cell"><div class="all-paths-gallery-inner"><div class="all-paths-gallery-frame"><a href="https://ik.imagekit.io/1zgbu3kyg/IMG_20260806_231956.jpg" rel="lightbox[allpaths2026zh]" aria-label="《所有这些道路》展览现场 4"><img src="https://ik.imagekit.io/1zgbu3kyg/IMG_20260806_231956.jpg" alt="《所有这些道路》展览现场 4" loading="lazy" decoding="async" /></a></div></div></div>
+                        <div class="all-paths-gallery-cell"><div class="all-paths-gallery-inner"><div class="all-paths-gallery-frame"><a href="https://ik.imagekit.io/1zgbu3kyg/IMG_20260806_202026.jpg" rel="lightbox[allpaths2026zh]" aria-label="《所有这些道路》展览现场 5"><img src="https://ik.imagekit.io/1zgbu3kyg/IMG_20260806_202026.jpg" alt="《所有这些道路》展览现场 5" loading="lazy" decoding="async" /></a></div></div></div>
+                        <div class="all-paths-gallery-cell"><div class="all-paths-gallery-inner"><div class="all-paths-gallery-frame"><a href="https://ik.imagekit.io/1zgbu3kyg/IMG_20260806_202352.jpg" rel="lightbox[allpaths2026zh]" aria-label="《所有这些道路》展览现场 6"><img src="https://ik.imagekit.io/1zgbu3kyg/IMG_20260806_202352.jpg" alt="《所有这些道路》展览现场 6" loading="lazy" decoding="async" /></a></div></div></div>
+                        <div class="all-paths-gallery-cell"><div class="all-paths-gallery-inner"><div class="all-paths-gallery-frame"><a href="https://ik.imagekit.io/1zgbu3kyg/IMG_20260806_202048.jpg" rel="lightbox[allpaths2026zh]" aria-label="《所有这些道路》展览现场 7"><img src="https://ik.imagekit.io/1zgbu3kyg/IMG_20260806_202048.jpg" alt="《所有这些道路》展览现场 7" loading="lazy" decoding="async" /></a></div></div></div>
+                        <div class="all-paths-gallery-cell"><div class="all-paths-gallery-inner"><div class="all-paths-gallery-frame"><a href="https://ik.imagekit.io/1zgbu3kyg/IMG_20260806_202410.jpg" rel="lightbox[allpaths2026zh]" aria-label="《所有这些道路》展览现场 8"><img src="https://ik.imagekit.io/1zgbu3kyg/IMG_20260806_202410.jpg" alt="《所有这些道路》展览现场 8" loading="lazy" decoding="async" /></a></div></div></div>
+                        <div class="all-paths-gallery-cell"><div class="all-paths-gallery-inner"><div class="all-paths-gallery-frame"><a href="https://ik.imagekit.io/1zgbu3kyg/IMG_20260806_231529.jpg" rel="lightbox[allpaths2026zh]" aria-label="《所有这些道路》展览现场 9"><img src="https://ik.imagekit.io/1zgbu3kyg/IMG_20260806_231529.jpg" alt="《所有这些道路》展览现场 9" loading="lazy" decoding="async" /></a></div></div></div>
+                        <span class="gallery-clear"></span>
+                      </div>
+                      <div class="paragraph" style="text-align:center;"><font size="2">展览现场，T2M 贰场，佛山，2026</font></div>
+                    </div>
+
+                    <div class="paragraph"><br /><u><font size="5">简介：</font></u><br />作品为 DP LAB × 光轴 AXIS 驻留项目的一部分。该项目驻地研究了中国南方历史悠久的轻工业城市佛山一处陶瓷洁具龙头企业在产业升级后遗留下来的废旧厂区。<br /><br />停产后的工厂留下了曾服务于生产的孔洞，以及被意外和时间侵蚀出的裂缝。受控的管道与规范变为难以收编的甬道；被迫撤离在此矛盾地展开为持续的溢出。多种人类与非人类的幽灵力量——水、菌落、空气、锈蚀、根系、光、劳动与记忆——细簌作响，在空间中移动，辨认每一条通径，散落下穿越的迹象。作品试图追踪这些痕迹，将散布于工厂各处的逃逸地带引入装置之中。</div>
+                    <div class="paragraph all-paths-project-note"><font size="2">作品创作于 DP LAB × 光轴 AXIS 在佛山 T2M 贰场开展的驻留项目。</font></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript" src="files/theme/plugins.js"></script>
+<script type="text/javascript" src="files/theme/custom.js"></script>
+<script type="text/javascript" src="files/theme/mobile.js?v=20260807-consistent"></script>
 </body>
 </html>
