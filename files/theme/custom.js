@@ -11,7 +11,8 @@
       "chuangzuo.html",
       "chuban.html",
       "xiangmu.html",
-      "fabu.html"
+      "fabu.html",
+      "suoyouzhexiedaolu.html"
     ].indexOf(getPageName()) !== -1;
   }
 
@@ -231,6 +232,79 @@
     container.insertBefore(gap, exhibitionsSection);
   }
 
+  function addAllPathsArtwork() {
+    var pageName = getPageName();
+    if (pageName !== "artworks.html" && pageName !== "chuangzuo.html") {
+      return;
+    }
+
+    var container = document.querySelector(".artworks-container");
+    if (!container || document.getElementById("all-the-paths-artwork")) {
+      return;
+    }
+
+    if (!document.getElementById("all-the-paths-index-style")) {
+      var style = document.createElement("style");
+      style.id = "all-the-paths-index-style";
+      style.textContent =
+        ".all-paths-thumbnail{" +
+          "position:relative;aspect-ratio:4/3;overflow:hidden;background:" +
+          "radial-gradient(circle at 21% 26%,transparent 0 9%,rgba(244,244,242,.92) 9.5% 10.7%,transparent 11.2%)," +
+          "radial-gradient(ellipse at 72% 35%,transparent 0 14%,rgba(244,244,242,.72) 14.5% 15.5%,transparent 16%)," +
+          "radial-gradient(circle at 45% 78%,transparent 0 8%,rgba(244,244,242,.58) 8.5% 9.3%,transparent 9.8%)," +
+          "linear-gradient(142deg,#182027 0%,#3a4b5c 48%,#817b70 100%);" +
+          "box-shadow:0 2px 8px rgba(0,0,0,.12);transition:transform .35s ease,box-shadow .35s ease;" +
+        "}" +
+        ".all-paths-thumbnail:before{" +
+          "content:'';position:absolute;inset:-18%;background:repeating-linear-gradient(102deg,transparent 0 31px,rgba(244,244,242,.12) 32px,transparent 34px);transform:rotate(-7deg);" +
+        "}" +
+        ".all-paths-thumbnail:after{" +
+          "content:'ALL THE PATHS · 2026';position:absolute;left:18px;bottom:14px;color:#f4f4f2;font:11px/1.4 'Courier New',monospace;letter-spacing:.12em;" +
+        "}" +
+        ".artwork-image-new a:hover .all-paths-thumbnail{transform:translateY(-2px);box-shadow:0 7px 18px rgba(0,0,0,.2);}";
+      document.head.appendChild(style);
+    }
+
+    var isChinese = pageName === "chuangzuo.html";
+    var item = document.createElement("div");
+    item.id = "all-the-paths-artwork";
+    item.className = "artwork-item-new reverse-layout";
+
+    if (isChinese) {
+      item.innerHTML =
+        '<div class="artwork-image-new">' +
+          '<a href="suoyouzhexiedaolu.html" target="_blank" aria-label="打开作品《所有这些道路》详情页">' +
+            '<div class="all-paths-thumbnail" role="img" aria-label="《所有这些道路》作品索引图形"></div>' +
+          '</a>' +
+        '</div>' +
+        '<div class="artwork-description-new">' +
+          '<a href="suoyouzhexiedaolu.html" target="_blank">' +
+            '<h3 class="artwork-title-new">所有这些道路 / All the Paths</h3>' +
+            '<p class="artwork-details-new">灯箱摄影装置，多通道声音<br>2026</p>' +
+          '</a>' +
+        '</div>';
+    } else {
+      item.innerHTML =
+        '<div class="artwork-image-new">' +
+          '<a href="all-the-paths.html" target="_blank" aria-label="Open All the Paths artwork page">' +
+            '<div class="all-paths-thumbnail" role="img" aria-label="Graphic index image for All the Paths"></div>' +
+          '</a>' +
+        '</div>' +
+        '<div class="artwork-description-new">' +
+          '<a href="all-the-paths.html" target="_blank">' +
+            '<h3 class="artwork-title-new">All the Paths</h3>' +
+            '<p class="artwork-details-new">Lightbox Photography Installation, Multichannel Sound<br>2026</p>' +
+          '</a>' +
+        '</div>';
+    }
+
+    var divider = document.createElement("hr");
+    divider.className = "decorative-hr";
+
+    container.insertBefore(divider, container.firstChild);
+    container.insertBefore(item, divider);
+  }
+
   function initializeSiteAdditions() {
     updateEnglishBio();
     addPekingUniversityProgram();
@@ -239,6 +313,7 @@
     addOriginalRemakeAlgorithmicScreening();
     addAfterimageResidency();
     addCuratorialProjects();
+    addAllPathsArtwork();
   }
 
   if (document.readyState === "loading") {
