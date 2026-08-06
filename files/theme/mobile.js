@@ -10,17 +10,17 @@
   }
 
   var imagePaths = [
-    "https://ik.imagekit.io/1zgbu3kyg/IMG_20260806_202209.jpg",
-    "https://ik.imagekit.io/1zgbu3kyg/IMG_20260806_202038.jpg",
-    "https://ik.imagekit.io/1zgbu3kyg/IMG_20260806_202419.jpg",
-    "https://ik.imagekit.io/1zgbu3kyg/IMG_20260806_231956.jpg",
-    "https://ik.imagekit.io/1zgbu3kyg/IMG_20260806_202026.jpg",
-    "https://ik.imagekit.io/1zgbu3kyg/IMG_20260806_202352.jpg",
-    "https://ik.imagekit.io/1zgbu3kyg/IMG_20260806_202048.jpg",
-    "https://ik.imagekit.io/1zgbu3kyg/IMG_20260806_202410.jpg",
-    "https://ik.imagekit.io/1zgbu3kyg/IMG_20260806_231529.jpg"
+    "https://ik.imagekit.io/1zgbu3kyg/IMG_20260806_202209.jpg?tr=w-1600,q-82,f-auto",
+    "https://ik.imagekit.io/1zgbu3kyg/IMG_20260806_202038.jpg?tr=w-1200,q-82,f-auto",
+    "https://ik.imagekit.io/1zgbu3kyg/IMG_20260806_202419.jpg?tr=w-1200,q-82,f-auto",
+    "https://ik.imagekit.io/1zgbu3kyg/IMG_20260806_231956.jpg?tr=w-1200,q-82,f-auto",
+    "https://ik.imagekit.io/1zgbu3kyg/IMG_20260806_202026.jpg?tr=w-1200,q-82,f-auto",
+    "https://ik.imagekit.io/1zgbu3kyg/IMG_20260806_202352.jpg?tr=w-1600,q-82,f-auto",
+    "https://ik.imagekit.io/1zgbu3kyg/IMG_20260806_202048.jpg?tr=w-1200,q-82,f-auto",
+    "https://ik.imagekit.io/1zgbu3kyg/IMG_20260806_202410.jpg?tr=w-1200,q-82,f-auto",
+    "https://ik.imagekit.io/1zgbu3kyg/IMG_20260806_231529.jpg?tr=w-1200,q-82,f-auto"
   ];
-  var coverImage = imagePaths[0];
+  var coverImage = "uploads/all-the-paths-cover.jpg";
 
   function installStyles() {
     if (document.getElementById("all-the-paths-photo-style")) {
