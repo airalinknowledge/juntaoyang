@@ -9,7 +9,18 @@
     return;
   }
 
-  var imagePath = "uploads/all-the-paths-cover.jpg";
+  var imagePaths = [
+    "https://ik.imagekit.io/1zgbu3kyg/IMG_20260806_202209.jpg",
+    "https://ik.imagekit.io/1zgbu3kyg/IMG_20260806_202038.jpg",
+    "https://ik.imagekit.io/1zgbu3kyg/IMG_20260806_202419.jpg",
+    "https://ik.imagekit.io/1zgbu3kyg/IMG_20260806_231956.jpg",
+    "https://ik.imagekit.io/1zgbu3kyg/IMG_20260806_202026.jpg",
+    "https://ik.imagekit.io/1zgbu3kyg/IMG_20260806_202352.jpg",
+    "https://ik.imagekit.io/1zgbu3kyg/IMG_20260806_202048.jpg",
+    "https://ik.imagekit.io/1zgbu3kyg/IMG_20260806_202410.jpg",
+    "https://ik.imagekit.io/1zgbu3kyg/IMG_20260806_231529.jpg"
+  ];
+  var coverImage = imagePaths[0];
 
   function installStyles() {
     if (document.getElementById("all-the-paths-photo-style")) {
@@ -19,33 +30,70 @@
     var style = document.createElement("style");
     style.id = "all-the-paths-photo-style";
     style.textContent =
-      ".all-paths-source-photography{" +
+      ".all-paths-gallery{" +
         "margin:56px 0 0;padding:0;border:0;" +
       "}" +
-      ".all-paths-source-photography img{" +
-        "display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;" +
+      ".all-paths-gallery-featured," +
+      ".all-paths-gallery-item{" +
+        "margin:0;padding:0;break-inside:avoid;" +
+      "}" +
+      ".all-paths-gallery-featured{" +
+        "margin-bottom:18px;" +
+      "}" +
+      ".all-paths-gallery-grid{" +
+        "columns:2 320px;column-gap:18px;" +
+      "}" +
+      ".all-paths-gallery-item{" +
+        "margin-bottom:18px;" +
+      "}" +
+      ".all-paths-gallery img{" +
+        "display:block;width:100%;height:auto;background:#ececea;" +
         "box-shadow:0 2px 12px rgba(0,0,0,.12);" +
       "}" +
-      ".all-paths-source-photography figcaption{" +
-        "margin-top:12px;color:#5c5c5c;font:11px/1.6 'Courier New',Courier,monospace;" +
+      ".all-paths-gallery-caption{" +
+        "margin:12px 0 0;color:#5c5c5c;font:11px/1.6 'Courier New',Courier,monospace;" +
         "letter-spacing:.06em;text-transform:uppercase;" +
       "}" +
       ".all-paths-thumbnail.has-photo{" +
-        "background-image:linear-gradient(180deg,rgba(0,0,0,.04),rgba(0,0,0,.34)),url('" + imagePath + "')!important;" +
+        "background-image:linear-gradient(180deg,rgba(0,0,0,.04),rgba(0,0,0,.34)),url('" + coverImage + "')!important;" +
         "background-size:cover!important;background-position:center!important;" +
       "}" +
       ".all-paths-thumbnail.has-photo:before{" +
         "inset:0!important;transform:none!important;background:linear-gradient(115deg,transparent 35%,rgba(255,255,255,.10) 50%,transparent 65%)!important;" +
       "}" +
       "@media(max-width:760px){" +
-        ".all-paths-source-photography{margin-top:40px;}" +
-        ".all-paths-source-photography figcaption{font-size:10px;}" +
+        ".all-paths-gallery{margin-top:40px;}" +
+        ".all-paths-gallery-grid{columns:1;}" +
+        ".all-paths-gallery-featured,.all-paths-gallery-item{margin-bottom:14px;}" +
+        ".all-paths-gallery-caption{font-size:10px;margin-top:10px;}" +
       "}";
     document.head.appendChild(style);
   }
 
-  function addDetailImage() {
-    if (detailPages.indexOf(pageName) === -1 || document.getElementById("all-paths-source-photography")) {
+  function makeGalleryImage(src, index, isChinese) {
+    var figure = document.createElement("figure");
+    figure.className = index === 0
+      ? "all-paths-gallery-featured"
+      : "all-paths-gallery-item";
+
+    var image = document.createElement("img");
+    image.src = src;
+    image.alt = isChinese
+      ? "《所有这些道路》作品现场图 " + (index + 1)
+      : "Installation view of All the Paths, image " + (index + 1);
+    image.loading = index === 0 ? "eager" : "lazy";
+    image.decoding = "async";
+
+    if (index === 0) {
+      image.setAttribute("fetchpriority", "high");
+    }
+
+    figure.appendChild(image);
+    return figure;
+  }
+
+  function addDetailGallery() {
+    if (detailPages.indexOf(pageName) === -1 || document.getElementById("all-paths-gallery")) {
       return;
     }
 
@@ -55,26 +103,33 @@
     }
 
     var isChinese = pageName === "suoyouzhexiedaolu.html";
-    var figure = document.createElement("figure");
-    figure.id = "all-paths-source-photography";
-    figure.className = "all-paths-source-photography";
+    var gallery = document.createElement("section");
+    gallery.id = "all-paths-gallery";
+    gallery.className = "all-paths-gallery";
+    gallery.setAttribute(
+      "aria-label",
+      isChinese ? "《所有这些道路》作品图集" : "All the Paths artwork gallery"
+    );
 
-    var image = document.createElement("img");
-    image.src = imagePath;
-    image.alt = isChinese
-      ? "佛山废旧厂区中被锈蚀、植物与时间重新占据的孔洞"
-      : "Openings in the disused Foshan factory, reoccupied by corrosion, vegetation, and time";
-    image.loading = "eager";
-    image.decoding = "async";
+    gallery.appendChild(makeGalleryImage(imagePaths[0], 0, isChinese));
 
-    var caption = document.createElement("figcaption");
+    var grid = document.createElement("div");
+    grid.className = "all-paths-gallery-grid";
+
+    for (var i = 1; i < imagePaths.length; i++) {
+      grid.appendChild(makeGalleryImage(imagePaths[i], i, isChinese));
+    }
+
+    gallery.appendChild(grid);
+
+    var caption = document.createElement("p");
+    caption.className = "all-paths-gallery-caption";
     caption.textContent = isChinese
-      ? "源摄影：佛山废旧厂区中的生产孔洞与时间侵蚀出的通径，2026"
-      : "Source photographs: production openings and time-worn passages in the disused Foshan factory, 2026";
+      ? "《所有这些道路》展览现场，T2M 贰场，佛山，2026"
+      : "Installation views, All the Paths, T2M The Second Mine, Foshan, 2026";
+    gallery.appendChild(caption);
 
-    figure.appendChild(image);
-    figure.appendChild(caption);
-    header.parentNode.insertBefore(figure, header.nextSibling);
+    header.parentNode.insertBefore(gallery, header.nextSibling);
   }
 
   function replaceIndexArtwork() {
@@ -88,15 +143,15 @@
       thumbnail.setAttribute(
         "aria-label",
         pageName === "chuangzuo.html"
-          ? "《所有这些道路》的厂区孔洞摄影"
-          : "Factory-aperture photography from All the Paths"
+          ? "《所有这些道路》作品现场图"
+          : "Installation view from All the Paths"
       );
     }
   }
 
   function initialize() {
     installStyles();
-    addDetailImage();
+    addDetailGallery();
     replaceIndexArtwork();
   }
 
