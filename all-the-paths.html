@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>All the Paths — Juntao Yang</title>
+  <meta name="description" content="All the Paths (2026), a lightbox photography installation with multichannel sound by Juntao Yang." />
+  <meta name="keywords" content="Juntao Yang, All the Paths, contemporary art, lightbox photography, multichannel sound, Foshan" />
+  <link rel="stylesheet" type="text/css" href="files/main_style.css?1714489767" />
+  <style>
+    :root {
+      --font-serif: Georgia, "Songti SC", SimSun, "Times New Roman", serif;
+      --font-mono: "Courier New", Courier, monospace;
+      --bg-paper: #f4f4f2;
+      --text-ink: #1e1e1e;
+      --text-meta: #5c5c5c;
+      --accent-slate: #3a4b5c;
+      --line-light: #d1d1d1;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { background: var(--bg-paper); }
+
+    body {
+      margin: 0;
+      color: var(--text-ink);
+      background: var(--bg-paper);
+      font-family: var(--font-serif);
+      font-size: 16px;
+      line-height: 1.8;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.055;
+      z-index: 20;
+      mix-blend-mode: multiply;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.7' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.9'/%3E%3C/svg%3E");
+    }
+
+    .site-shell {
+      width: min(1180px, calc(100% - 48px));
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 32px;
+      padding: 36px 0 28px;
+      border-bottom: 1px solid var(--line-light);
+    }
+
+    .identity,
+    .primary-nav,
+    .language-switch {
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .identity { white-space: nowrap; }
+
+    .primary-nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 24px;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    a:hover { color: var(--accent-slate); }
+
+    .primary-nav a[aria-current="page"] {
+      padding-bottom: 4px;
+      border-bottom: 2px solid var(--accent-slate);
+    }
+
+    .language-row {
+      display: flex;
+      justify-content: flex-end;
+      padding-top: 18px;
+    }
+
+    .language-switch a {
+      color: var(--text-meta);
+      border-bottom: 1px solid var(--line-light);
+    }
+
+    main {
+      padding: 80px 0 120px;
+    }
+
+    .artwork-header {
+      display: grid;
+      grid-template-columns: minmax(0, 1.45fr) minmax(260px, 0.55fr);
+      gap: 80px;
+      align-items: start;
+      padding-bottom: 64px;
+      border-bottom: 1px solid var(--line-light);
+    }
+
+    .eyebrow {
+      margin: 0 0 18px;
+      color: var(--text-meta);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 860px;
+      font-size: clamp(52px, 8vw, 112px);
+      line-height: 0.94;
+      font-weight: 400;
+      letter-spacing: -0.045em;
+    }
+
+    .chinese-title {
+      display: block;
+      margin-top: 22px;
+      color: var(--text-meta);
+      font-size: clamp(24px, 3vw, 42px);
+      line-height: 1.15;
+      letter-spacing: 0.05em;
+    }
+
+    .metadata {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      border-top: 1px solid var(--text-ink);
+    }
+
+    .metadata li {
+      display: grid;
+      grid-template-columns: 92px 1fr;
+      gap: 18px;
+      padding: 13px 0;
+      border-bottom: 1px solid var(--line-light);
+    }
+
+    .metadata .label {
+      color: var(--text-meta);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .statement-grid {
+      display: grid;
+      grid-template-columns: minmax(180px, 0.35fr) minmax(0, 1fr);
+      gap: 80px;
+      padding-top: 72px;
+    }
+
+    .section-label {
+      margin: 0;
+      color: var(--text-meta);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .statement {
+      max-width: 780px;
+    }
+
+    .statement p {
+      margin: 0 0 1.45em;
+      font-size: clamp(18px, 2vw, 23px);
+      line-height: 1.75;
+    }
+
+    .statement p:first-child::first-letter {
+      float: left;
+      margin: 0.09em 0.1em 0 0;
+      color: var(--accent-slate);
+      font-size: 4.4em;
+      line-height: 0.72;
+    }
+
+    .project-note {
+      margin-top: 56px;
+      padding-top: 24px;
+      border-top: 1px solid var(--line-light);
+      color: var(--text-meta);
+      font-size: 14px;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 76px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--line-light);
+    }
+
+    @media (max-width: 760px) {
+      .site-shell { width: min(100% - 30px, 1180px); }
+      .topbar { align-items: flex-start; padding-top: 24px; }
+      .identity { display: none; }
+      .primary-nav { justify-content: flex-start; gap: 14px 18px; }
+      .language-row { justify-content: flex-start; }
+      main { padding-top: 56px; }
+      .artwork-header,
+      .statement-grid { grid-template-columns: 1fr; gap: 42px; }
+      h1 { font-size: clamp(48px, 18vw, 76px); }
+      .metadata { max-width: 520px; }
+      .statement p { font-size: 18px; }
+    }
+  </style>
+</head>
+<body class="wsite-page-artworks">
+  <div class="site-shell">
+    <header class="topbar">
+      <a class="identity" href="index.html">Juntao Yang</a>
+      <nav class="primary-nav" aria-label="Primary navigation">
+        <a href="index.html">About</a>
+        <a href="artworks.html" aria-current="page">Artworks</a>
+        <a href="writings.html">Writings</a>
+        <a href="projects.html">Projects</a>
+        <a href="posts.html">Posts</a>
+      </nav>
+    </header>
+
+    <div class="language-row">
+      <div class="language-switch">English &nbsp;·&nbsp; <a href="suoyouzhexiedaolu.html">中文</a></div>
+    </div>
+
+    <main>
+      <section class="artwork-header" aria-labelledby="artwork-title">
+        <div>
+          <p class="eyebrow">Artwork · 2026</p>
+          <h1 id="artwork-title">All the Paths<span class="chinese-title" lang="zh-CN">所有这些道路</span></h1>
+        </div>
+
+        <ul class="metadata" aria-label="Artwork details">
+          <li><span class="label">Artist</span><span>Juntao Yang / 杨君陶</span></li>
+          <li><span class="label">Year</span><span>2026</span></li>
+          <li><span class="label">Medium</span><span>Lightbox photography installation, multichannel sound</span></li>
+          <li><span class="label">Dimensions</span><span>Variable</span></li>
+        </ul>
+      </section>
+
+      <section class="statement-grid" aria-labelledby="statement-heading">
+        <h2 class="section-label" id="statement-heading">Statement</h2>
+        <div class="statement">
+          <p>This work was developed as part of a DP LAB × AXIS residency based in a disused factory complex in Foshan, a historic center of light industry in southern China. The site was left behind when a leading ceramic sanitary-ware manufacturer upgraded and relocated its operations.</p>
+
+          <p>The shuttered factory retains openings that once served production, alongside fissures worn into its surfaces by accident and time. Controlled pipelines and production protocols have become passageways that resist recapture. Forced withdrawal paradoxically unfolds here as a continuous overflow: spectral forces, human and nonhuman—water, microbial colonies, air, corrosion, root systems, light, labor, and memory—rustle through the space, feeling out each route and leaving scattered evidence of passage. The work traces these marks, drawing zones of escape dispersed throughout the factory into the installation.</p>
+
+          <p class="project-note">Developed as part of the DP LAB × AXIS residency project at T2M The Second Mine, Foshan, China.</p>
+        </div>
+      </section>
+
+      <a class="back-link" href="artworks.html">← Back to artworks</a>
+    </main>
+  </div>
+
+  <script type="text/javascript" src="files/theme/custom.js"></script>
+  <script type="text/javascript" src="files/theme/mobile.js"></script>
+</body>
+</html>
