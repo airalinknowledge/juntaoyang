@@ -51,7 +51,7 @@
     "doc-right-4 doc-offset-small"
   ];
 
-  var coverImage = "uploads/all-the-paths-cover.jpg";
+  var coverImage = "https://ik.imagekit.io/1zgbu3kyg/IMG_20260806_231529.jpg?updatedAt=1786045396315";
 
   var introEnglish = [
     "This work was developed as part of a DP LAB × AXIS residency based in a disused factory complex in Foshan, a historic center of light industry in southern China. The site was left behind when a leading ceramic sanitary-ware manufacturer upgraded and relocated its operations.",
