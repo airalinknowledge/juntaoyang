@@ -1,1009 +1,164 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-	<head>
-		<title>关于 - 杨君陶 | Juntao Yang</title>
-        <meta name="description" content="Juntao Yang is a scholar, critic, and artist." />
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-        <link rel="icon" type="image/png" href="/favicon.png">
-        <link rel="icon" type="image/x-icon" href="/favicon.ico">
-
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
-
-        <style>
-            /* 1. 遮罩层默认状态：隐藏 */
-            #splash-overlay {
-                display: none; 
-                position: fixed;
-                top: 0; left: 0; width: 100vw; height: 100vh;
-                background-color: #000000; /* 遮罩层本身的黑底 */
-                z-index: 999999;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                cursor: pointer;
-            }
-
-            /* 2. 离场动画 */
-            #splash-overlay.fading-out {
-                display: flex !important; /* 动画期间保持 flex 布局 */
-                opacity: 0;
-                visibility: hidden;
-                pointer-events: none;
-                /* 2.5秒缓慢淡出 */
-                transition: opacity 2.5s ease, visibility 2.5s ease;
-            }
-
-            /* 图片与文字样式 */
-            #splash-overlay img {
-                max-width: 85%; max-height: 80vh; width: auto; height: auto; object-fit: contain;
-                transition: transform 2.5s cubic-bezier(0.19, 1, 0.22, 1);
-            }
-            #splash-overlay:hover img { transform: scale(1.02); opacity: 0.95; }
-            .enter-text {
-                margin-top: 30px; font-family: "Georgia", "Songti SC", serif; font-size: 13px; letter-spacing: 4px;
-                text-transform: uppercase; color: #b0b0b0; opacity: 0.6;
-                animation: pulse 3s infinite ease-in-out;
-            }
-            @keyframes pulse { 0% { opacity: 0.3; } 50% { opacity: 0.8; } 100% { opacity: 0.3; } }
-        </style>
-
-        <script>
-            (function() {
-                var hasVisited = sessionStorage.getItem('splashVisited') === 'true';
-                
-                if (!hasVisited) {
-                    document.write('<style id="splash-temp-bg">html { background-color: #000 !important; }</style>');
-                    document.write('<style>#splash-overlay { display: flex !important; }</style>');
-
-                    requestAnimationFrame(function() {
-                        requestAnimationFrame(function() {
-                            var tempBg = document.getElementById('splash-temp-bg');
-                            if (tempBg) tempBg.parentNode.removeChild(tempBg);
-                        });
-                    });
-                }
-            })();
-        </script>
-        <link id="wsite-base-style" rel="stylesheet" type="text/css" href="http://cdn2.editmysite.com/css/sites.css?buildTime=1234" />
-        <link rel="stylesheet" type="text/css" href="http://cdn2.editmysite.com/css/old/fancybox.css?1234" />
-        <link rel="stylesheet" type="text/css" href="http://cdn2.editmysite.com/css/social-icons.css?buildtime=1234" media="screen,projection" />
-        <link rel="stylesheet" type="text/css" href="files/main_style.css?1714489767" title="wsite-theme-css" />
-        
-        <link href='http://cdn2.editmysite.com/fonts/Maven_Pro/font.css?2' rel='stylesheet' type='text/css' />
-        <link href='http://cdn2.editmysite.com/fonts/Alike/font.css?2' rel='stylesheet' type='text/css' />
-        <link href='http://cdn2.editmysite.com/fonts/Cardo/font.css?2' rel='stylesheet' type='text/css' />
-        <link href='http://cdn2.editmysite.com/fonts/Amaranth/font.css?2' rel='stylesheet' type='text/css' />
-        <link href='http://cdn2.editmysite.com/fonts/Cabin/font.css?2' rel='stylesheet' type='text/css' />
-
-<style>
-    /* --- 0. 变量定义 --- */
-    :root {
-        --font-serif: "Georgia", "Songti SC", "SimSun", "Times New Roman", serif;
-        --font-mono: "Courier New", "Courier", monospace;
-        
-        --bg-paper: #f4f4f2;    /* 米白 */
-        --text-ink: #1e1e1e;    /* 极深灰 */
-        --text-meta: #5c5c5c;   /* 中灰 */
-        
-        /* 深岩蓝 / 普鲁士蓝 */
-        --accent-slate: #3A4B5C; 
-        
-        --line-light: #d1d1d1;
-    }
-
-    /* --- 1. 全局字体与背景重置 --- */
-    body, #wrapper {
-        font-family: var(--font-serif) !important;
-        background-color: var(--bg-paper) !important;
-        background-image: none !important; 
-        color: var(--text-ink) !important;
-    }
-
-    /* [核心修改 1] 磨砂层提权与减淡 */
-    .noise-overlay {
-        position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-        opacity: 0.09; 
-        pointer-events: none;
-        z-index: 50; /* 最顶层 */
-        mix-blend-mode: multiply; 
-    }
-
-    /* [核心修改 2] 地质层提权与可见性 */
-    #geology-layer {
-        position: fixed;
-        top: 0;
-        right: 0;
-        width: 45vw; /* 占据右侧约 45% */
-        height: 100vh;
-        z-index: 40; /* 仅次于磨砂层 */
-        pointer-events: none;
-        opacity: 0.8; 
-        mix-blend-mode: multiply; 
-        /* CSS遮罩：让线条在左侧柔和消失 */
-        mask-image: linear-gradient(to right, transparent 0%, black 60%);
-        -webkit-mask-image: linear-gradient(to right, transparent 0%, black 60%);
-    }
-
-    /* 移动端隐藏等高线，保证阅读清晰 */
-    @media (max-width: 768px) {
-        #geology-layer { display: none; }
-    }
-
-    /* --- 2. 文本样式升级 --- */
-    .paragraph, p, div {
-        font-family: var(--font-serif) !important;
-        line-height: 1.8 !important;
-        font-size: 16px !important;
-    }
-
-    /* 标题：安静、学术 */
-    h2, .wsite-content-title {
-        font-family: var(--font-serif) !important;
-        font-weight: normal !important;
-        letter-spacing: 2px !important;
-        text-transform: uppercase !important;
-        margin-bottom: 2rem !important;
-        border-bottom: 1px solid var(--line-light); 
-        padding-bottom: 10px;
-        color: var(--text-ink) !important;
-    }
-
-    /* --- 3. 布局与间距 --- */
-    .main-content-area {
-        width: 98% !important;
-        max-width: 900px !important; 
-        margin: 0 auto !important; 
-    }
-
-    /* 控制板块间距 */
-    .section-gap {
-        height: 50px !important; 
-        width: 100%;
-        clear: both;
-        display: block; 
-    }
-
-    /* 板块标题 (Education, Awards, etc) */
-    .paragraph font[size="5"] { 
-        font-family: var(--font-serif) !important;
-        font-size: 18px !important; 
-        font-weight: bold;
-        letter-spacing: 2px;
-        border-bottom: none !important;
-        text-decoration: none !important; 
-        display: block;
-        margin-top: 40px !important; 
-        margin-bottom: 10px !important;
-        color: var(--accent-slate); 
-        opacity: 0.9;
-    }
-    
-    .paragraph u { text-decoration: none !important; }
-
-    /* --- 4. 列表一致性 --- */
-    .conference-item, 
-    .exhibition-item, 
-    .film-festival-item, 
-    .screening-item,
-    .award-item,
-    .residency-item,
-    .teaching-item,
-    .talk-item,
-    .institute-item,
-    .coverage-item
-    {
-        font-family: var(--font-serif) !important;
-        padding: 0 !important; 
-        margin-bottom: 0px !important;
-        border: none !important;
-        background: none !important;
-        margin-top: 8px !important;
-        display: block;
-        color: var(--text-ink) !important;
-    }
-
-    /* Institutes 特殊样式 */
-    .institute-item {
-        margin-bottom: 16px !important;
-    }
-    .faculty-list {
-        font-size: 0.85em !important;
-        color: var(--text-meta) !important;
-        margin-top: 2px !important;
-        line-height: 1.4 !important;
-        opacity: 0.8;
-        padding-left: 20px !important; /* 增加缩进 */
-    }
-
-    /* Coverage 特殊样式 */
-    .coverage-type {
-        color: var(--text-meta);
-        font-style: italic;
-        font-size: 0.95em;
-    }
-
-    /* 链接样式 */
-    .main-content-column a {
-        color: var(--text-ink) !important;
-        text-decoration: none !important;
-        border-bottom: 1px solid rgba(58, 75, 92, 0.2); 
-        transition: all 0.3s ease;
-    }
-
-    .main-content-column a:hover {
-        color: var(--accent-slate) !important; 
-        border-bottom-color: var(--accent-slate); 
-        background: transparent !important; 
-    }
-    
-    /* 强调/作品名样式 */
-    .conference-item em, .exhibition-item em, .award-item em, .residency-item em, .talk-item em, .teaching-item em, .institute-item em, .coverage-item em {
-        font-family: var(--font-serif) !important;
-        color: var(--text-ink);
-        font-style: italic; 
-    }
-
-    /* 展开按钮 */
-    .toggle-btn {
-        font-family: var(--font-serif) !important;
-        font-size: 13px !important;
-        color: var(--text-meta) !important;
-        letter-spacing: 1px;
-        border: none;
-        padding: 10px 0;
-        background: transparent;
-        cursor: pointer;
-        text-decoration: underline !important;
-        text-underline-offset: 4px;
-        margin-top: 10px;
-        display: inline-block;
-        opacity: 0.7;
-    }
-    
-    .toggle-btn:hover {
-        color: var(--accent-slate) !important;
-        opacity: 1;
-    }
-    
-    /* 导航栏 */
-    .wsite-menu-default a {
-        font-family: var(--font-serif) !important; 
-        font-size: 14px !important;
-        letter-spacing: 2px !important;
-        color: var(--text-meta) !important;
-        transition: color 0.3s ease;
-    }
-    .wsite-menu-default a:hover, #active a {
-        color: var(--accent-slate) !important;
-        background: transparent !important;
-        border-bottom: 2px solid var(--accent-slate); 
-    }
-
-</style>
-<style type='text/css'>
-/* Weebly 基础保留样式 */
-.wsite-elements.wsite-not-footer:not(.wsite-header-elements) div.paragraph, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) p, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-block .product-title, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-description, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .wsite-form-field label, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .wsite-form-field label, #wsite-content div.paragraph, #wsite-content p, #wsite-content .product-block .product-title, #wsite-content .product-description, #wsite-content .wsite-form-field label, #wsite-content .wsite-form-field label, .blog-sidebar div.paragraph, .blog-sidebar p, .blog-sidebar .wsite-form-field label, .blog-sidebar .wsite-form-field label {font-family:"Georgia" !important;}
-#wsite-content div.paragraph, #wsite-content p, #wsite-content .product-block .product-title, #wsite-content .product-description, #wsite-content .wsite-form-field label, #wsite-content .wsite-form-field label, .blog-sidebar div.paragraph, .blog-sidebar p, .blog-sidebar .wsite-form-field label, .blog-sidebar .wsite-form-field label {}
-.wsite-elements.wsite-footer div.paragraph, .wsite-elements.wsite-footer p, .wsite-elements.wsite-footer .product-block .product-title, .wsite-elements.wsite-footer .product-description, .wsite-elements.wsite-footer .wsite-form-field label, .wsite-elements.wsite-footer .wsite-form-field label{}
-.wsite-elements.wsite-not-footer:not(.wsite-header-elements) h2, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-long .product-title, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-large .product-title, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-small .product-title, #wsite-content h2, #wsite-content .product-long .product-title, #wsite-content .product-large .product-title, #wsite-content .product-small .product-title, .blog-sidebar h2 {font-size:100px !important;line-height:75px !important;}
-#wsite-content h2, #wsite-content .product-long .product-title, #wsite-content .product-large .product-title, #wsite-content .product-small .product-title, .blog-sidebar h2 {}
-.wsite-elements.wsite-footer h2, .wsite-elements.wsite-footer .product-long .product-title, .wsite-elements.wsite-footer .product-large .product-title, .wsite-elements.wsite-footer .product-small .product-title{}
-#wsite-title {font-family:"Alike" !important;text-transform:  none !important;letter-spacing: -1px !important;}
-.wsite-menu-default a {font-family:"Cardo" !important;text-transform:  uppercase !important;letter-spacing: 2px !important;}
-.wsite-menu a {}
-.wsite-image div, .wsite-caption {font-family:"Amaranth" !important;}
-.galleryCaptionInnerText {}
-.fancybox-title {}
-.wslide-caption-text {}
-.wsite-phone {}
-.wsite-headline,.wsite-header-section .wsite-content-title {font-family:"Cabin" !important;}
-.wsite-headline-paragraph,.wsite-header-section .paragraph {}
-.wsite-button-inner {}
-.wsite-not-footer blockquote {}
-.wsite-footer blockquote {}
-.blog-header h2 a {}
-#wsite-content h2.wsite-product-title {}
-.wsite-product .wsite-product-price a {}
-@media screen and (min-width: 767px) {.wsite-elements.wsite-not-footer:not(.wsite-header-elements) div.paragraph, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) p, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-block .product-title, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-description, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .wsite-form-field label, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .wsite-form-field label, #wsite-content div.paragraph, #wsite-content p, #wsite-content .product-block .product-title, #wsite-content .product-description, #wsite-content .wsite-form-field label, #wsite-content .wsite-form-field label, .blog-sidebar div.paragraph, .blog-sidebar p, .blog-sidebar .wsite-form-field label, .blog-sidebar .wsite-form-field label {line-height:33px !important;}
-#wsite-content div.paragraph, #wsite-content p, #wsite-content .product-block .product-title, #wsite-content .product-description, #wsite-content .wsite-form-field label, #wsite-content .wsite-form-field label, .blog-sidebar div.paragraph, .blog-sidebar p, .blog-sidebar .wsite-form-field label, .blog-sidebar .wsite-form-field label {}
-.wsite-elements.wsite-footer div.paragraph, .wsite-elements.wsite-footer p, .wsite-elements.wsite-footer .product-block .product-title, .wsite-elements.wsite-footer .product-description, .wsite-elements.wsite-footer .wsite-form-field label, .wsite-elements.wsite-footer .wsite-form-field label{}
-.wsite-elements.wsite-not-footer:not(.wsite-header-elements) h2, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-long .product-title, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-large .product-title, .wsite-elements.wsite-not-footer:not(.wsite-header-elements) .product-small .product-title, #wsite-content h2, #wsite-content .product-long .product-title, #wsite-content .product-large .product-title, #wsite-content .product-small .product-title, .blog-sidebar h2 {font-size:100px !important;line-height:75px !important;}
-#wsite-content h2, #wsite-content .product-long .product-title, #wsite-content .product-large .product-title, #wsite-content .product-small .product-title, .blog-sidebar h2 {}
-.wsite-elements.wsite-footer h2, .wsite-elements.wsite-footer .product-long .product-title, .wsite-elements.wsite-footer .product-large .product-title, .wsite-elements.wsite-footer .product-small .product-title{}
-#wsite-title {font-size:23px !important;}
-.wsite-menu-default a {font-size:14px !important;}
-.wsite-menu a {}
-.wsite-image div, .wsite-caption {}
-.galleryCaptionInnerText {}
-.fancybox-title {}
-.wslide-caption-text {}
-.wsite-phone {}
-.wsite-headline,.wsite-header-section .wsite-content-title {}
-.wsite-headline-paragraph,.wsite-header-section .paragraph {}
-.wsite-button-inner {}
-.wsite-not-footer blockquote {}
-.wsite-footer blockquote {}
-.blog-header h2 a {}
-#wsite-content h2.wsite-product-title {}
-.wsite-product .wsite-product-price a {}
-}
-</style>
-<style>
-    .main-content-area {
-        width: 98% !important; 
-        max-width: 100% !important; 
-        margin-left: 0 !important;
-        margin-right: 0 !important; 
-        padding-right: 2% !important; 
-        box-sizing: border-box !important; 
-    }
-
-    @media screen and (max-width: 767px) {
-        .main-content-area {
-            width: 100% !important;
-            padding-right: 10px !important;
-        }
-    }
-
-.main-content-column a,
-.main-content-column a:visited,
-.main-content-column a:hover,
-.main-content-column a:active {
-  color: inherit !important;
-}
-
-.main-content-column a * { color: inherit !important; }
-.main-content-column font[color] { color: inherit !important; }
-
-.main-content-column a {
-  text-decoration: underline;
-  text-underline-offset: 2px;
-}
-.main-content-column a:hover { text-decoration-thickness: 2px; }
-
-/* 展开/收缩按钮美化 */
-.toggle-btn {
-    background: none;
-    border: none;
-    padding: 10px 0;
-    margin-top: 5px;
-    font-family: "Georgia", serif;
-    font-size: 16px;
-    color: #666;
-    cursor: pointer;
-    text-decoration: underline;
-    text-underline-offset: 4px;
-    transition: color 0.3s ease, opacity 0.3s ease;
-    outline: none;
-}
-
-.toggle-btn:hover {
-    color: #000;
-    opacity: 0.8;
-}
-
-/* 板块间距控制 */
-.section-gap {
-    height: 10px; 
-    width: 100%;
-    clear: both;
-}
-</style>
-<style>
-    /* 覆盖背景 */
-    .wsite-background {background-image: none !important; background-color: #f9f9f7 !important;}
-    body.wsite-background {background-attachment: fixed !important;}
-</style>
-
-		<script src='files/templateArtifacts.js?1714489756'></script>
-<script>
-var STATIC_BASE = '//cdn1.editmysite.com/';
-var ASSETS_BASE = '//cdn2.editmysite.com/';
-var STYLE_PREFIX = 'wsite';
-</script>
-<script src='https://cdn2.editmysite.com/js/jquery-1.8.3.min.js'></script>
-
-<script type="text/javascript" src="http://cdn2.editmysite.com/js/lang/zh/stl.js?buildTime=1234&"></script>
-<script src="http://cdn2.editmysite.com/js/site/main.js?buildTime=1234"></script><script type="text/javascript">
-		function initCustomerAccountsModels() {
-					(function(){_W.setup_rpc({"url":"\/ajax\/api\/JsonRPC\/CustomerAccounts\/","actions":{"CustomerAccounts":[{"name":"login","len":2,"multiple":false,"standalone":false},{"name":"logout","len":0,"multiple":false,"standalone":false},{"name":"getSessionDetails","len":0,"multiple":false,"standalone":false},{"name":"getAccountDetails","len":0,"multiple":false,"standalone":false},{"name":"getOrders","len":0,"multiple":false,"standalone":false},{"name":"register","len":4,"multiple":false,"standalone":false},{"name":"emailExists","len":1,"multiple":false,"standalone":false},{"name":"passwordReset","len":1,"multiple":false,"standalone":false},{"name":"passwordUpdate","len":3,"multiple":false,"standalone":false},{"name":"validateSession","len":1,"multiple":false,"standalone":false}]},"namespace":"_W.CustomerAccounts.RPC"});
-_W.setup_model_rpc({"rpc_namespace":"_W.CustomerAccounts.RPC","model_namespace":"_W.CustomerAccounts.BackboneModelData","collection_namespace":"_W.CustomerAccounts.BackboneCollectionData","bootstrap_namespace":"_W.CustomerAccounts.BackboneBootstrap","models":{"CustomerAccounts":{"_class":"CustomerAccounts.Model.CustomerAccounts","defaults":null,"validation":null,"types":null,"idAttribute":null,"keydefs":null}},"collections":{"CustomerAccounts":{"_class":"CustomerAccounts.Collection.CustomerAccounts"}},"bootstrap":[]});
-})();
-		}
-		if(document.createEvent && document.addEventListener) {
-			var initEvt = document.createEvent('Event');
-			initEvt.initEvent('customerAccountsModelsInitialized', true, false);
-			document.dispatchEvent(initEvt);
-		} else if(document.documentElement.initCustomerAccountsModels === 0){
-			document.documentElement.initCustomerAccountsModels++
-		}
-		</script>
-		<script type="text/javascript"> _W = _W || {}; _W.securePrefix='UNSET'; </script><script>_W = _W || {};
-			_W.customerLocale = "en_US";
-			_W.storeName = null;
-			_W.isCheckoutReskin = false;
-			_W.storeCountry = "HK";
-			_W.storeCurrency = "HKD";
-			_W.storeEuPrivacyPolicyUrl = "";
-			com_currentSite = "713576850827693055";
-			com_userID = "148137552";</script><script type="text/javascript">_W.configDomain = "www.weebly.com";</script><script>_W.relinquish && _W.relinquish()</script>
-<script type="text/javascript" src="http://cdn2.editmysite.com/js/lang/zh/stl.js?buildTime=1234&"></script><script> _W.themePlugins = [];</script><script type="text/javascript"> _W.recaptchaUrl = "https://www.google.com/recaptcha/api.js"; </script><script type="text/javascript"></script>
-		
-		
-	</head>
-	<body class="no-header-page  wsite-page-bencaogongtonghuxi wsite-theme-light">
-    
-    <div id="geology-layer"></div>
-
-    <div class="noise-overlay"></div>
-
-    <div id="splash-overlay" onclick="enterSite()">
-        <img src="https://img.juntaoyang.site/%E4%BD%A0%E5%BE%88%E9%9A%BE%E7%9C%8B%E8%A7%81....png" alt="Click to Enter">
-        <div class="enter-text">点击进入 | Enter Site</div>
-    </div>
-    <div id="wrapper">
-
-	<div id="navigation">
-    <div id="navigation-wrap">
-  	 	<div id="nav">
-	      <div class="sitename"><span class="wsite-logo">
-            <span class="wsite-title-placeholder">&nbsp;</span><span style="display:none">
-            <span style="display:none">&nbsp;</span>
-            </span>
-            </span></div>
-				<ul class="wsite-menu-default">
-						<li id="active" class="wsite-menu-item-wrap">
-							<a href="guanyu.html" class="wsite-menu-item">关于</a>
-						</li>
-						<li id="pg444862601486980856" class="wsite-menu-item-wrap">
-							<a href="chuangzuo.html" class="wsite-menu-item">创作</a>
-						</li>
-						<li id="pg864040464600617228" class="wsite-menu-item-wrap">
-							<a href="chuban.html" class="wsite-menu-item">出版</a>
-						</li>
-						<li id="pg361237216236019909" class="wsite-menu-item-wrap">
-							<a href="xiangmu.html" class="wsite-menu-item">项目</a>
-						</li>
-						<li id="pg497557010409593207" class="wsite-menu-item-wrap">
-							<a href="fabu.html" class="wsite-menu-item">发布</a>
-						</li>
-				</ul>
-			</div>
-   	 	<div id="navmobile"><ul class="wsite-menu-default">
-		<li id="pg356461667194310790" class="wsite-menu-item-wrap">
-			<a href="guanyu.html" class="wsite-menu-item">关于</a>
-		</li>
-		<li id="pg444862601486980856" class="wsite-menu-item-wrap">
-			<a href="chuangzuo.html" class="wsite-menu-item">创作</a>
-		</li>
-		<li id="pg864040464600617228" class="wsite-menu-item-wrap">
-			<a href="chuban.html" class="wsite-menu-item">出版</a>
-		</li>
-		<li id="pg361237216236019909" class="wsite-menu-item-wrap">
-			<a href="xiangmu.html" class="wsite-menu-item">项目</a>
-		</li>
-		<li id="pg497557010409593207" class="wsite-menu-item-wrap">
-			<a href="fabu.html" class="wsite-menu-item">发布</a>
-		</li>
-</ul>
-</div>
-    </div>
-		<label id="mobile-close" class="hamburger" for="mobile-input"></label>
-	</div>
-
-  <div id="main">
-
-    <div id="mobile-top">
-			<label id="mobile-open" class="hamburger" for="mobile-input"></label>
-      <div class="sitename"><span class="wsite-logo">
-        <span class="wsite-title-placeholder">&nbsp;</span><span style="display:none">
-        <span style="display:none">&nbsp;</span>
-        </span>
-      </span></div>
-    </div>
-
-  	<div id="content-wrapper">
-      <div id="wsite-content" class="wsite-elements wsite-not-footer">
-	<div class="wsite-section-wrap">
-	<div class="wsite-section wsite-body-section wsite-background-22 wsite-custom-background"  >
-		<div class="wsite-section-content">
-        <div class="container">
-			<div class="wsite-section-elements">
-				<div><div class="wsite-multicol"><div class="wsite-multicol-table-wrap" style="margin:0 -15px;">
-	<table class="wsite-multicol-table">
-		<tbody class="wsite-multicol-tbody">
-			<tr class="wsite-multicol-tr">
-				<td class="wsite-multicol-col" style="width:36.894273127753%; padding:0 15px;">
-					
-						
-
-<div class="paragraph" style="text-align:left;"><font size="3"><strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</strong><u><a href="index.html"><font color="#2a2a2a">English</font></a></u>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<strong>&#20013;&#25991;</strong><br />&#8203;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;juntao.yang@columbia.edu</font></div>
-
-
-					
-				</td>				<td class="wsite-multicol-col" style="width:63.105726872247%; padding:0 15px;">
-					
-						
-
-<div class="paragraph" style="text-align:right;"><font size="4"><strong><font color="#2a2a2a">&#20851;&#20110;</font></strong><font color="#2a2a2a">&nbsp; &nbsp;</font><u><a href="chuangzuo.html"><font color="#2a2a2a">&#21019;&#20316;</font></a></u><font color="#2a2a2a">&nbsp; &nbsp;</font><u><a href="chuban.html"><font color="#2a2a2a">&#20986;&#29256;</font></a></u><font color="#2a2a2a">&nbsp; &nbsp;</font><u><a href="xiangmu.html"><font color="#2a2a2a">&#39033;&#30446;</font></a></u>&nbsp; &nbsp;<u><a href="fabu.html"><font color="#2a2a2a">发布</font></a></u></font></div>
-
-
-					
-				</td>			</tr>
-		</tbody>
-	</table>
-</div></div></div>
-
-<div><div style="height: 10px; overflow: hidden; width: 100%;"></div>
-<hr class="styled-hr" style="width:100%;"></hr>
-<div style="height: 40px; overflow: hidden; width: 100%;"></div></div>
-
-<div class="main-content-column main-content-area">
-<div class="paragraph">杨君陶是一位学者、批评家和艺术家，工作横跨媒介理论、环境人文与酷儿理论，并以当代电影、视觉艺术和流行文化为主要研究对象。杨君陶关注权力如何通过物质与媒介过程运作——往往不可见地发生于微观层面——并以具有挑衅性的学术研究，以及有时歇斯底里的公共写作，回应这一问题。目前的研究将2008年汶川地震理论化为一种“深层当下”：一种在时间与政治上不可逆的撤回，它诱惑、征召、击碎并重组主权主体性得以涌现的条件。现居伯克利。<br /><br /></div>
-
-<div class="section-gap"></div>
-
-<div class="paragraph" style="text-align:left;"><font size="5"><u>教育</u></font>
-<div class="award-item">加州大学伯克利分校，电影与媒介研究哲学博士，美国，至今</div>
-<div class="award-item">哥伦比亚大学，电影与媒介研究（新兴媒介研究）文学硕士，美国，2024-2026</div>
-<div class="award-item">武汉大学，戏剧影视文学文学学士，中国，2020-2024</div>
-</div>
-
-<div class="section-gap"></div>
-
-<div class="paragraph">
-<u><font size="5">研习班与工作坊</font></u>
-<div id="institutes">
-    <div id="pku-western-theory-program" class="institute-item">
-        “西方前沿文论阐释与批判”高级研修班，北京大学艺术学院，2026
-        <div class="faculty-list">授课教师：朱国华、李洋、吴冠军、蓝江、姜宇辉、夏莹、段吉方、周计武、王嘉军、李修建、李科林、卢文超、张颖、吴娱玉、董树宝、李三达、林云柯</div>
-    </div>
-    <div class="institute-item">
-        暑期研习班，“媒介美学 VII：被排斥的媒介”，西北大学传播学院，2025
-        <div class="faculty-list">合作导师：Michael B. Gillespie, Cait McKinney, Kartik Nair, Genevieve Yue, Michael Metzger, Dilip Gaonkar</div>
-    </div>
-    <div class="institute-item">
-        暑期研习班，“华语电影：历史、方法与生态”，厦门大学电影学院，2024    
-        <div class="faculty-list">合作导师：焦雄屏, 罗卡, 李道新, 罗岗, 吴国坤, 井迎瑞, 许维贤, 张吉安</div>
-    </div>
-    <div class="institute-item">
-        创意营，“创造力发生器”（第八期），许燎源当代艺术设计博物馆，2024
-        <div class="faculty-list">合作导师：许燎源</div>
-    </div>
-</div>
-</div>
-
-<div class="section-gap"></div>
-
-<div class="paragraph"><u><font size="5">奖项与荣誉</font></u>
-<div id="awards">
-<div class="award-item">城市/地理/建筑兴趣小组旅行奖，电影与媒体研究学会 (SCMS)，2026</div>
-<div class="award-item">PAMLA Graduate Student Scholarship, Pacific Ancient and Modern Language Association 2025 Conference, 2025</div>
-<div class="award-item">“将来式”单元最佳短片奖 & 最佳剪辑奖，授予《轻巧而冷淡的对谈：大西洋，算法与可见性》，未完成式 · 福建师大传播学院建院二十周年短片交流展, 2024</div>
-<div class="award-item">一等奖，首届“中国东部传媒艺术优秀学术论文奖”，2024</div>
-<div class="award-item">三等奖，第六届“光祈杯”全国高校艺术学科论文比赛，2024</div>
-<div class="award-item">会议论文三等奖，第五届中国 - 东盟高校研究生艺术学论坛，2024</div>
-<div class="award-item">电影与媒介研究项目奖学金，哥伦比亚大学艺术学院，2024</div>
-<div class="award-item">优秀学员荣誉，“华语电影：历史、方法与生态”暑期学校，厦门大学电影学院，2024</div>
-<div class="award-item">全额住宿奖学金，Duemila30 International Film Festival，2024</div>
-<div class="award-item">最佳实验电影（Kurt Kren’s Scratched Glasses），授予《轻巧而冷淡的对谈：大西洋，算法与可见性》，International Film Festival of Audiovisual Theory Students，2023</div>
-<div class="award-item">最佳实验电影提名，授予《轻巧而冷淡的对谈：大西洋，算法与可见性》，宁波短片节，2023</div>
-<div class="award-item">荣誉提及，授予《轻巧而冷淡的对谈：大西洋，算法与可见性》，Varsity Film Expo，2023</div>
-</div>
-</div>
-
-<div class="section-gap"></div>
-
-<div id="curatorial-projects" class="paragraph"><u><font size="5">策展项目</font></u>
-<div class="exhibition-item curatorial-item"><em>“Silos and Shelters”</em>，Studio 302 Reclaimed，伯克利，美国，2026</div>
-<div class="exhibition-item curatorial-item"><em>“行星蚀刻，翼装飞行”</em>，Imaginary Z，杭州，中国，2026</div>
-<div class="exhibition-item curatorial-item"><em>“中国蓝”</em>，武汉大学艺术学院，武汉，中国，2022</div>
-</div>
-
-<div class="section-gap"></div>
-
-<div class="paragraph"><u><font size="5">展览（部分）</font></u>
-<div id="exhibitions">
- <div class="exhibition-item">“大断裂：未来末世考古学”，中心美术馆，杭州，中国，2025</div>
- <div class="exhibition-item">“镜中城市：AIGC未来影像的创生叙事”，澳门科技大学数字创新与人文教育研究中心，澳门，中国，2025</div>
- <div class="exhibition-item">“注记、索居、或作废的，布朗肖透过此起彼伏的并进线隔空投送”，牯岭路画廊，南京，中国，2024</div>
- <div class="exhibition-item">“当我们感应：群体仪式的身体与共鸣记忆”，锐角画廊，广州，中国，2024</div>
- <div class="exhibition-item">“Synthetic Wilderness”，John Molly Gallery，纽约，美国，2024</div>
- <div class="exhibition-item">“平行交集”，在美术馆，太原，中国，2024</div>
- <div class="exhibition-item">“神明超市 · 中篇： 环象拈阄”，棠美术馆 · Project Z 褶空间，东莞，中国，2024</div>
- <div class="exhibition-item">“以退为进”，一树Arbre，深圳，中国，2024</div>
- <div class="exhibition-item">“无法归类”，新桥美术馆，上海，中国，2024</div>
- <div class="exhibition-item">“被叙述的，作为他者的自身”，aolab实验画廊，上海，中国，2024</div>
- <div class="exhibition-item">“流动生景”，河 · 美术馆，沈阳，中国，2024</div>
- <div class="exhibition-item">“局部战争”，SNAP艺术中心，上海，中国，2024</div>
- <div class="exhibition-item">“缝补自然”，空山美术馆，杭州，中国，2024</div>
- <div class="exhibition-item">“南京D9驻留计划：融合共生”，D9艺术街区，南京，中国，2024</div>
- <div class="exhibition-item">“Within Iceless Age”，theBlanc，纽约，美国，2024</div>
- <div class="exhibition-item">“Immersion”，Lockwood Annexe 5，伦敦大学金史密斯学院，伦敦，英国，2024</div>
- <div class="exhibition-item">“寂静地”，东升里13号，苏州，中国，2024</div>
- <div class="exhibition-item">“存储的无形”，GOOGOL，线上（由“ New Art City ”提供支持），2024</div>
- <div class="exhibition-item">“感觉的逻辑”，象牙门画廊，上海，中国，2024</div>
- <div class="exhibition-item">“语言巴别塔”，Art Lift 艺术升降梯艺术空间，沈阳，中国，2024</div>
- <div class="exhibition-item">“向未来”，原子空间，中国（深圳）国际文化产业博览交易会 龙湖CC创意街区分会场 “SeeDliNG” 数苗创意节，深圳，中国，2024</div>
- <div class="exhibition-item">“时空之境”，青岛市美术馆，青岛，中国，2024</div>
- <div class="exhibition-item">“Wuer · 玩 · 概念展”，InnovArt艺术空间，琶洲，中国，2024</div>
- <div class="exhibition-item">“代码重构：AIGC时代的艺术探索”，鲁迅美术学院美术馆，沈阳，中国, 2024</div>
- <div class="exhibition-item">“猎奇屋——web3、元宇宙、AIGC时代的艺术探索”，前行美术馆，长沙，中国，2023</div>
- <div class="exhibition-item">“候鸟300”，阿那亚戏剧节，秦皇岛，中国，2023</div>
- <div class="exhibition-item">“生长之境”，列石画廊，景德镇，中国，2023</div>
- <div class="exhibition-item">“世人何以唤我？——仪式、神话与艺术灵媒”，798CUBE，北京，中国，2023</div>
- <div class="exhibition-item">“深港文化月潮流艺术节”，金啤坊艺术街区，深圳，中国，2023</div>
- <div class="exhibition-item">“轻巧与冷淡的对谈：能动性与科技”，Imaginary Z，杭州，中国，2023</div>
- <div class="exhibition-item">“植物生成影像”，武汉影像艺术中心，武汉，中国，2023</div>
- <div class="exhibition-item">“水流之下：城市地表水系中隐藏的世界”，合作空间，沈阳，中国，2023</div>
- <div class="exhibition-item">“Doves and Magpies Sharing a Nest”，The Forge Art Gallery，伦敦，英国，2023</div>
- <div class="exhibition-item">“AI &amp; NI”，4C Gallery，洛杉矶，美国，2023</div>
-</div>
-<button id="toggle-exhibitions" class="toggle-btn">展开更多</button>
-</div>
-
-
-<div class="section-gap"></div>
-
-<div class="paragraph"><u><font size="5">电影节（部分）</font></u>
-<div id="film-festivals">
-<div class="film-festival-item">FESTIVAL ANGAELICA, 美国, 2025 —— 官方入选</div>
-<div class="film-festival-item">Kuala Lumpur International Film Awards, 吉隆坡, 马来西亚, 2025 —— 官方入选</div>
-<div class="film-festival-item">天空青草青年电影短片艺术交流展, 成都, 中国, 2024 —— 官方入选</div>
-<div class="film-festival-item">未完成式 · 福建师大传播学院建院二十周年短片交流展, 福州, 中国, 2024 —— “将来式”单元最佳短片奖 & 最佳剪辑奖</div>
-<div class="film-festival-item">MUST华语青年电影节暨金鸡影展（澳门站）, 澳门, 中国, 2024 —— 官方入选</div>
-<div class="film-festival-item">British University International Students Film Festival, 新开罗, 埃及, 2024 —— 官方入选</div>
-<div class="film-festival-item">La Sur Real Film Festival, 柏林, 德国, 2024 —— 官方入选</div>
-<div class="film-festival-item">源点西部电影展, 西安, 中国, 2024 —— 官方入选</div>
-<div class="film-festival-item">北京国际电影节 · 北京大学生电影节, 北京, 中国, 2024 —— 官方入选</div>
-<div class="film-festival-item">Duemila30 International Film Festival, 米兰, 意大利, 2024 —— 官方入选</div>
-<div class="film-festival-item">Frome International Climate Film Festival, 弗罗姆, 英国, 2024 —— 官方入选</div>
-<div class="film-festival-item">International Film Festival of Audiovisual Theory Students, 布拉格, 捷克, 2023 —— 最佳实验电影（Kurt Kren’s Scratched Glasses）</div>
-<div class="film-festival-item">Varsity Film Expo, 内罗毕, 肯尼亚, 2023 —— 荣誉提及</div>
-<div class="film-festival-item">International Alternative Media Film Festival, 墨西哥城, 墨西哥, 2023 —— 官方入选</div>
-<div class="film-festival-item">AIU Kuwait International Film Festival, 杰赫拉, 科威特, 2023 —— 官方入选</div>
-<div class="film-festival-item">宁波短片节, 宁波, 中国, 2023 —— 最佳实验短片提名</div>
-<div class="film-festival-item">西影·春光青年电影展, 西安, 中国, 2023 —— 官方入选</div>
-<div class="film-festival-item">HiShorts! 厦门短片周, 厦门, 中国, 2023 —— 官方入选</div>
-</div>
-<button id="toggle-film-festivals" class="toggle-btn">展开更多</button>
-</div>
-
-
-<div class="section-gap"></div>
-
-<div class="paragraph"><u><font size="5">放映（部分）</font></u>
-<div id="screenings">
-
-<div id="original-remake-algorithmic-screening" class="screening-item"><em>“原创 / 复刻 / 算法流：三种叙事的边界在哪里”</em>，雪莲·亮点文创园偶得剧场，2026/6/28</div>
-
-<div class="screening-item"><em><u><a href="https://mp.weixin.qq.com/s/ULUygKP3VUmnpL2YeE5Dpg">电影镇第56期放映活动“系统惯性”</a></u></em>，@411，杭州，中国，2025</div>
-
-<div class="screening-item"><em><u><a href="https://www.lakesidefilmfestival.com/films2025/la-sur-real-shorts">Curated Short Film Program, La Sur Real: Edition IV</a></u></em>，Lakeside Film Festival，柏林，德国, 2025</div>
-
-<div class="screening-item"><em><u><a href="https://www.instagram.com/reel/DIhTOWRpmfN/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank"><font color="#2a2a2a">"Memorias ocultas: territorios y cuerpos que gritan", "Entre los seres y la tierra, fuego"Seis cortometrajes</font></a></em></u>，哥伦比亚国立大学艺术学院，波哥大，哥伦比亚，2025</div>
-
-<div class="screening-item"><em><u><a href="https://mp.weixin.qq.com/s/pQrMXlqDrw24a1HtoL9JzQ" target="_blank"><font color="#2a2a2a">“多屏影像”短片主题展映</font></a></em></u>，中国美术学院，杭州，中国，2025</div>
-
- <div class="screening-item"><em><u><a href="https://mp.weixin.qq.com/s/2eJPbRy5onttHqb3tvY00Q" target="_blank"><font color="#2a2a2a">武汉大学研究生学术科技节 “失真的想象力：电影注解下的技术反思”</font></a></em></u>，武汉大学艺术学院，武汉，中国，2024</div>
-
- <div class="screening-item"><em><u><a href="https://mp.weixin.qq.com/s/Ap6ifFvuRDjMwyRNi-s6Cw" target="_blank"><font color="#2a2a2a">实验短片展映之夜</font></a></em></u>，三角洲 The Delta INST + GODOWN，杭州，中国，2024</div>
-
- <div class="screening-item"><em><u><a href="https://mp.weixin.qq.com/s/2m4KOOK_9bZTcjshwPC73Q" target="_blank">ONED先锋影像展全国巡展</a></u></em>，兰州 / 苏州 / 上海 / 天津 / 阳朔 / 宜昌 / 成都，中国，2024</div>
-
- <div class="screening-item"><em><u><a href="https://mp.weixin.qq.com/s/Uw2rS5Uk5JADzRAvFa4KbQ" target="_blank">​​第八届abC艺术书展</a></u></em>，天目里，杭州，中国, 2023</div>
-
- <div class="screening-item"><em><u><a href="https://mp.weixin.qq.com/s/RWMzt2DKmVaVpEY2Rgkxxg" target="_blank">防波堤放映</a></u></em><em>，</em>大理，中国，2023</div>
-
- <div class="screening-item"><em><u><a href="https://mp.weixin.qq.com/s/oAricm9WS5m2XtCShSG4tQ" target="_blank">C-POP实验剧场</a></u></em><em>，</em>北京，中国，2023</div>
-
- <div class="screening-item"><em><u><a href="https://mp.weixin.qq.com/s/NTp_wqKoNgdeY2TsnEd1og" target="_blank">渡口Ferry</a></u></em><em>，</em>成都，中国，2023</div>
-</div>
-<button id="toggle-screenings" class="toggle-btn">展开更多</button>
-</div>
-
-
-<div class="section-gap"></div>
-
-<div class="paragraph"><u><font size="5">驻留项目</font></u>
-<div id="afterimage-residency" class="residency-item"><em>“剩余影像（AFTERIMAGE）”</em>，T2M 贰场，佛山，中国，策展：光轴、DP LAB&nbsp;&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;&nbsp;2026/7 - 2026/8</div>
-<div class="residency-item">东海岸亚裔美国学生联盟 (ECAASU)，远程，美国&nbsp;&nbsp;&nbsp;&nbsp;   | &nbsp;&nbsp;&nbsp;&nbsp;   2025/09 - 2026/05</div>
-<div class="residency-item">南山艺术家社区，&nbsp;重庆，中国&nbsp;&nbsp;&nbsp;&nbsp;   | &nbsp;&nbsp;&nbsp;&nbsp;   2024/5/25 - 2024/6/14</div>
-<div class="residency-item">“候鸟300”，阿那亚戏剧节，秦皇岛，中国&nbsp;&nbsp;&nbsp;&nbsp;   | &nbsp;&nbsp;&nbsp;&nbsp;  2023/6/8 - 2023/6/21</div>
-</div>
-
-<div class="section-gap"></div>
-
-<div class="paragraph"><u><font size="5">教学经历</font></u>
-<div class="teaching-item">讲师（自主设计课程），《媒介理论导论》，Ferryman Education，2026</div>
-<div class="teaching-item">讲师（自主设计课程），“我们的皮囊与大地的肌理：地质学思维，人类世的电影，以及超越人类的想象力” ，Radiance Academy，线上，2024  &nbsp;&nbsp;&nbsp; （<em>高中 & 本科程度，在<u><a href="syllabusCN.html" target="_blank">此处查阅课程大纲</a></u></em> ）</div>
-<div class="teaching-item">助教，《文化研究导论》（主讲：李松教授），武汉大学，2023</div>
-</div>
-
-<div class="section-gap"></div>
-
-<div class="paragraph">
-<u><font size="5">媒体报道</font></u>
-<div id="coverage">
-    <div class="coverage-item">
-        <a href="https://mp.weixin.qq.com/s/NZ5srXRQcjFeuJWVGR5I8g" target="_blank">“环形叙事的断裂节点——「大断裂：末世未来考古学」策展人解纪詹明信逝世一周年”</a>, 吕东其, 中心美术馆, 2025
-    </div>
-    <div class="coverage-item">
-        <a href="https://mp.weixin.qq.com/s/3VLiyiQreCES44Z5HZTDuw" target="_blank">“‘真实’的多棱镜：论分屏影像”</a>, 2025
-    </div>
-    <div class="coverage-item">
-        <a href="https://mp.weixin.qq.com/s/EGSDrLHYYixPOE42EdbodQ" target="_blank">“当我们感应：群体仪式的身体与共鸣记忆”</a>, ARTUNNEL, 2024
-    </div>
-    <div class="coverage-item">
-        <a href="https://mp.weixin.qq.com/s/XgwA910JrW2Ra7zy_YppLQ" target="_blank">“独立艺术家，在南京”</a>, 南京文化生活指南, 2023
-    </div>
-    <div class="coverage-item">
-        <a href="https://www.4cgallery.com/exhibition/4cexhibitionaini" target="_blank">“AI & NI”</a>, 4C Gallery, 2023
-    </div>
-    <div class="coverage-item">
-        <a href="https://mp.weixin.qq.com/s/9OmadKc95DEtzuN7nTyTUg" target="_blank">“西部呼声：点燃我的火”</a>, UCFC, 2023
-    </div>
-    <div class="coverage-item">
-        <a href="https://mp.weixin.qq.com/s/oAricm9WS5m2XtCShSG4tQ" target="_blank">“实验与创造：与三位青年电影人的对话”</a>, 浪潮电影, 2023
-    </div>
-    <div class="coverage-item">
-        <a href="https://mp.weixin.qq.com/s/dzTeXl5zJ7jUB3BTrgDfpQ" target="_blank">“植物生成的影像”</a>, 邵千豪, 武汉影像艺术中心, 2023
-    </div>
-</div>
-</div>
-
-
-<div class="paragraph" style="text-align:center;"><font size="2"><br /><br />All Rights Reserved&nbsp;&nbsp;&copy;&nbsp; Juntao Yang</font></div>
-			</div>
-		</div>
-      </div>
-
-	</div>
-</div>
-
-</div>
-
-  	</div>
-
-  
-
-  </div>
-
-</div>
-		<script type="text/javascript" src="files/theme/plugins.js"></script>
-		<script type="text/javascript" src="files/theme/custom.js"></script>
-		<script type="text/javascript" src="files/theme/mobile.js"></script>
-		<div id="customer-accounts-app"></div>
-		<script src="https://cdn2.editmysite.com/js/site/main-customer-accounts-site.js?buildTime=1234"></script>
-<script>
-$(document).ready(function(){
-    var animSpeed = 600; 
-
-    // 学术活动部分
-    var conferenceItems = $("#conferences .conference-item");
-    if(conferenceItems.length > 10) {
-        conferenceItems.slice(10).hide();
-        $("#toggle-conferences").show().on("click", function(){
-            if($(this).text() === "展开更多"){
-                conferenceItems.slice(10).slideDown(animSpeed, "swing");
-                $(this).text("收起");
-            } else {
-                conferenceItems.slice(10).slideUp(animSpeed, "swing");
-                $(this).text("展开更多");
-            }
-        });
-    } else {
-        $("#toggle-conferences").hide();
-    }
-
-    // 展览部分
-    var exhibitionItems = $("#exhibitions .exhibition-item");
-    if(exhibitionItems.length > 10) {
-        exhibitionItems.slice(10).hide();
-        $("#toggle-exhibitions").show().on("click", function(){
-            if($(this).text() === "展开更多"){
-                exhibitionItems.slice(10).slideDown(animSpeed, "swing");
-                $(this).text("收起");
-            } else {
-                exhibitionItems.slice(10).slideUp(animSpeed, "swing");
-                $(this).text("展开更多");
-            }
-        });
-    } else {
-        $("#toggle-exhibitions").hide();
-    }
-
-    // 电影节部分
-    var filmFestivalItems = $("#film-festivals .film-festival-item");
-    if(filmFestivalItems.length > 10) {
-        filmFestivalItems.slice(10).hide();
-        $("#toggle-film-festivals").show().on("click", function(){
-            if($(this).text() === "展开更多"){
-                filmFestivalItems.slice(10).slideDown(animSpeed, "swing");
-                $(this).text("收起");
-            } else {
-                filmFestivalItems.slice(10).slideUp(animSpeed, "swing");
-                $(this).text("展开更多");
-            }
-        });
-    } else {
-        $("#toggle-film-festivals").hide();
-    }
-
-    // 放映部分
-    var screeningItems = $("#screenings .screening-item");
-    if(screeningItems.length > 10) {
-        screeningItems.slice(10).hide();
-        $("#toggle-screenings").show().on("click", function(){
-            if($(this).text() === "展开更多"){
-                screeningItems.slice(10).slideDown(animSpeed, "swing");
-                $(this).text("收起");
-            } else {
-                screeningItems.slice(10).slideUp(animSpeed, "swing");
-                $(this).text("展开更多");
-            }
-        });
-    } else {
-        $("#toggle-screenings").hide();
-    }
-});
-</script>
-
-<script>
-    function enterSite() {
-        var overlay = document.getElementById('splash-overlay');
-        
-        // 1. 开始淡出动画
-        overlay.classList.add('fading-out');
-        
-        // 2. 标记已访问 (中英文全站共享)
-        sessionStorage.setItem('splashVisited', 'true');
-        
-        // 3. 安全检查
-        var tempBg = document.getElementById('splash-temp-bg');
-        if (tempBg) tempBg.parentNode.removeChild(tempBg);
-
-        // 4. 动画结束后隐藏 DOM
-        setTimeout(function(){
-            overlay.style.display = 'none';
-        }, 2600);
-    }
-    
-    // BFCache 兼容
-    window.addEventListener('pageshow', function(e) {
-        if (e.persisted && sessionStorage.getItem('splashVisited') === 'true') {
-            var overlay = document.getElementById('splash-overlay');
-            if (overlay) overlay.style.display = 'none';
-            
-            var tempBg = document.getElementById('splash-temp-bg');
-            if (tempBg) tempBg.parentNode.removeChild(tempBg);
-        }
-    });
-</script>
-<script>
-    new p5(function(p) {
-        let cols, rows;
-        let field = [];
-        const REZ = 8; // 分辨率
-        const ACCENT_COLOR = p.color(58, 75, 92); // #3A4B5C 深岩蓝
-        
-        p.setup = function() {
-            let container = document.getElementById('geology-layer');
-            let w = container.offsetWidth;
-            let h = container.offsetHeight;
-            let cnv = p.createCanvas(w, h);
-            cnv.parent('geology-layer');
-            
-            // [关键优化] 停止循环，只渲染一次！彻底释放CPU
-            p.noLoop();
-            
-            p.cols = 1 + Math.ceil(w / REZ);
-            p.rows = 1 + Math.ceil(h / REZ);
-            
-            for (let i = 0; i < p.cols; i++) {
-                field[i] = new Float32Array(p.rows);
-            }
-            
-            p.strokeJoin(p.ROUND);
-            p.noFill();
-            
-            // 执行一次性绘制
-            generateGeology();
-        };
-
-        function generateGeology() {
-            p.clear();
-            
-            // 静态的随机偏移量，每次刷新都不一样，但生成后静止
-            let zOff = p.random(100); 
-
-            // 生成噪点场
-            for (let i = 0; i < p.cols; i++) {
-                for (let j = 0; j < p.rows; j++) {
-                    let x = i * REZ;
-                    let y = j * REZ;
-                    // 放大比例，让线条更舒缓
-                    let val = p.noise(x * 0.003, y * 0.003, zOff);
-                    field[i][j] = val;
-                }
-            }
-
-            // 绘制等高线
-            p.strokeWeight(1.4); // 线条粗细
-            let numIsolines = 90; // 极高密度
-            
-            for (let i = 0; i < p.cols - 1; i++) {
-                for (let j = 0; j < p.rows - 1; j++) {
-                    let x = i * REZ;
-                    let y = j * REZ;
-                    
-                    let valTL = field[i][j];
-                    let valTR = field[i+1][j];
-                    let valBR = field[i+1][j+1];
-                    let valBL = field[i][j+1];
-
-                    let minLvl = Math.floor(Math.min(valTL, valTR, valBR, valBL) * numIsolines);
-                    let maxLvl = Math.floor(Math.max(valTL, valTR, valBR, valBL) * numIsolines);
-
-                    if (maxLvl > minLvl) {
-                        for (let k = minLvl + 1; k <= maxLvl; k++) {
-                            let threshold = k / numIsolines;
-                            
-                            // 动态透明度：越靠右越深，左侧淡出
-                            let alpha = p.map(i, 0, p.cols, 0, 40); 
-                            ACCENT_COLOR.setAlpha(alpha);
-                            p.stroke(ACCENT_COLOR);
-
-                            let state = getState(valTL, valTR, valBR, valBL, threshold);
-                            let a = p.createVector(x + REZ * (threshold - valTL) / (valTR - valTL), y);
-                            let b = p.createVector(x + REZ, y + REZ * (threshold - valTR) / (valBR - valTR));
-                            let c = p.createVector(x + REZ * (threshold - valBL) / (valBR - valBL), y + REZ);
-                            let d = p.createVector(x, y + REZ * (threshold - valTL) / (valBL - valTL));
-
-                            switch (state) {
-                                case 1:  drawLine(c, d); break;
-                                case 2:  drawLine(b, c); break;
-                                case 3:  drawLine(b, d); break;
-                                case 4:  drawLine(a, b); break;
-                                case 5:  drawLine(a, d); drawLine(b, c); break;
-                                case 6:  drawLine(a, c); break;
-                                case 7:  drawLine(a, d); break;
-                                case 8:  drawLine(a, d); break;
-                                case 9:  drawLine(a, c); break;
-                                case 10: drawLine(a, b); drawLine(c, d); break;
-                                case 11: drawLine(a, b); break;
-                                case 12: drawLine(b, d); break;
-                                case 13: drawLine(b, c); break;
-                                case 14: drawLine(c, d); break;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
-        function getState(tl, tr, br, bl, t) {
-            return (tl >= t ? 8 : 0) + (tr >= t ? 4 : 0) + (br >= t ? 2 : 0) + (bl >= t ? 1 : 0);
-        }
-
-        function drawLine(v1, v2) {
-            p.line(v1.x, v1.y, v2.x, v2.y);
-        }
-
-        p.windowResized = function() {
-            let container = document.getElementById('geology-layer');
-            p.resizeCanvas(container.offsetWidth, container.offsetHeight);
-            p.cols = 1 + Math.ceil(p.width / REZ);
-            p.rows = 1 + Math.ceil(p.height / REZ);
-            for (let i = 0; i < p.cols; i++) {
-                field[i] = new Float32Array(p.rows);
-            }
-            generateGeology();
-        };
-    });
-</script>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>关于 — 杨君陶 | Juntao Yang</title>
+  <meta name="description" content="杨君陶是一位学者、批评家和艺术家。">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link href="https://cdn2.editmysite.com/fonts/Cardo/font.css?2" rel="stylesheet">
+  <link rel="stylesheet" href="files/theme/about-static.css?20260808">
+  <script>try{if(sessionStorage.getItem('splashVisited')==='true')document.documentElement.classList.add('splash-seen')}catch(e){}</script>
+</head>
+<body class="about-static-page">
+<div id="splash-overlay" role="button" tabindex="0" aria-label="进入网站"><img src="https://i.ibb.co/s9xV5BPf/1.webp" alt="" width="2289" height="1393" fetchpriority="high" decoding="async"><div class="splash-enter">Enter Site</div></div>
+<div class="about-geology" aria-hidden="true"></div><div class="about-noise" aria-hidden="true"></div>
+<nav id="about-navigation" aria-label="Site"><div class="nav-wrap"><ul><li class="active"><a href="guanyu.html">关于</a></li><li><a href="chuangzuo.html">创作</a></li><li><a href="chuban.html">出版</a></li><li><a href="xiangmu.html">项目</a></li><li><a href="fabu.html">发布</a></li></ul></div></nav>
+<div id="about-main"><div class="about-page">
+  <nav class="about-mobile-nav" aria-label="Site"><a href="guanyu.html">关于</a><a href="chuangzuo.html">创作</a><a href="chuban.html">出版</a><a href="xiangmu.html">项目</a><a href="fabu.html">发布</a></nav>
+  <header class="about-utility"><div><div class="about-language"><a href="index.html">English</a><span class="active">中文</span></div><a class="about-email" href="mailto:info@juntaoyang.site">info@juntaoyang.site</a></div><nav class="about-topnav" aria-label="Sections"><a class="active" href="guanyu.html">关于</a><a href="chuangzuo.html">创作</a><a href="chuban.html">出版</a><a href="xiangmu.html">项目</a><a href="fabu.html">发布</a></nav></header>
+  <div class="about-rule"></div>
+  <main class="about-content">
+    <div class="about-bio">杨君陶是一位学者、批评家和艺术家，工作横跨媒介理论、环境人文与酷儿理论，并以当代电影、视觉艺术和流行文化为主要研究对象。杨君陶关注权力如何通过物质与媒介过程运作——往往不可见地发生于微观层面——并以具有挑衅性的学术研究，以及有时歇斯底里的公共写作，回应这一问题。目前的研究将2008年汶川地震理论化为一种“深层当下”：一种在时间与政治上不可逆的撤回，它诱惑、征召、击碎并重组主权主体性得以涌现的条件。现居伯克利。</div>
+
+    <section class="about-section"><h2 class="about-section-title">教育</h2>
+      <div class="about-item">加州大学伯克利分校，电影与媒介研究哲学博士，美国，2026–至今</div>
+      <div class="about-item">哥伦比亚大学，电影与媒介研究（新兴媒介研究）文学硕士，美国，2024–2026</div>
+      <div class="about-item">武汉大学，戏剧影视文学文学学士，中国，2020–2024</div>
+    </section><div class="about-separator"></div>
+
+    <section class="about-section"><h2 class="about-section-title">研习班与工作坊</h2>
+      <div class="about-item">“西方前沿文论阐释与批判”高级研修班，北京大学艺术学院，2026<div class="about-sub">授课教师：朱国华、李洋、吴冠军、蓝江、姜宇辉、夏莹、段吉方、周计武、王嘉军、李修建、李科林、卢文超、张颖、吴娱玉、董树宝、李三达、林云柯</div></div>
+      <div class="about-item">暑期研习班，“媒介美学 VII：被排斥的媒介”，西北大学传播学院，2025<div class="about-sub">合作导师：Michael B. Gillespie, Cait McKinney, Kartik Nair, Genevieve Yue, Michael Metzger, Dilip Gaonkar</div></div>
+      <div class="about-item">暑期研习班，“华语电影：历史、方法与生态”，厦门大学电影学院，2024<div class="about-sub">合作导师：焦雄屏、罗卡、李道新、罗岗、吴国坤、井迎瑞、许维贤、张吉安</div></div>
+      <div class="about-item">创意营，“创造力发生器”（第八期），许燎源当代艺术设计博物馆，2024<div class="about-sub">合作导师：许燎源</div></div>
+    </section><div class="about-separator"></div>
+
+    <section class="about-section"><h2 class="about-section-title">奖项与荣誉</h2>
+      <div class="about-item">城市/地理/建筑兴趣小组旅行奖，电影与媒体研究学会（SCMS），2026</div>
+      <div class="about-item">PAMLA Graduate Student Scholarship, Pacific Ancient and Modern Language Association 2025 Conference, 2025</div>
+      <div class="about-item">“将来式”单元最佳短片奖 &amp; 最佳剪辑奖，授予《轻巧而冷淡的对谈：大西洋，算法与可见性》，未完成式 · 福建师大传播学院建院二十周年短片交流展，2024</div>
+      <div class="about-item">一等奖，首届“中国东部传媒艺术优秀学术论文奖”，2024</div>
+      <div class="about-item">三等奖，第六届“光祈杯”全国高校艺术学科论文比赛，2024</div>
+      <div class="about-item">会议论文三等奖，第五届中国 - 东盟高校研究生艺术学论坛，2024</div>
+      <div class="about-item">电影与媒介研究项目奖学金，哥伦比亚大学艺术学院，2024</div>
+      <div class="about-item">优秀学员荣誉，“华语电影：历史、方法与生态”暑期学校，厦门大学电影学院，2024</div>
+      <div class="about-item">全额住宿奖学金，Duemila30 International Film Festival，2024</div>
+      <div class="about-item">最佳实验电影（Kurt Kren’s Scratched Glasses），授予《轻巧而冷淡的对谈：大西洋，算法与可见性》，International Film Festival of Audiovisual Theory Students，2023</div>
+      <div class="about-item">最佳实验电影提名，授予《轻巧而冷淡的对谈：大西洋，算法与可见性》，宁波短片节，2023</div>
+      <div class="about-item">荣誉提及，授予《轻巧而冷淡的对谈：大西洋，算法与可见性》，Varsity Film Expo，2023</div>
+    </section><div class="about-separator"></div>
+
+    <section class="about-section"><h2 class="about-section-title">策展项目</h2>
+      <div class="about-item"><em>“Silos and Shelters”</em>，Studio 302 Reclaimed，伯克利，美国，2026</div>
+      <div class="about-item"><em>“行星蚀刻，翼装飞行”</em>，Imaginary Z，杭州，中国，2026</div>
+      <div class="about-item"><em>“中国蓝”</em>，武汉大学艺术学院，武汉，中国，2022</div>
+    </section><div class="about-separator"></div>
+
+    <section class="about-section"><h2 class="about-section-title">展览（部分）</h2>
+      <div class="about-item">“大断裂：未来末世考古学”，中心美术馆，杭州，中国，2025</div>
+      <div class="about-item">“镜中城市：AIGC未来影像的创生叙事”，澳门科技大学数字创新与人文教育研究中心，澳门，中国，2025</div>
+      <div class="about-item">“注记、索居、或作废的，布朗肖透过此起彼伏的并进线隔空投送”，牯岭路画廊，南京，中国，2024</div>
+      <div class="about-item">“当我们感应：群体仪式的身体与共鸣记忆”，锐角画廊，广州，中国，2024</div>
+      <div class="about-item">“Synthetic Wilderness”，John Molly Gallery，纽约，美国，2024</div>
+      <div class="about-item">“平行交集”，在美术馆，太原，中国，2024</div>
+      <div class="about-item">“神明超市 · 中篇：环象拈阄”，棠美术馆 · Project Z 褶空间，东莞，中国，2024</div>
+      <div class="about-item">“以退为进”，一树Arbre，深圳，中国，2024</div>
+      <div class="about-item">“无法归类”，新桥美术馆，上海，中国，2024</div>
+      <div class="about-item">“被叙述的，作为他者的自身”，aolab实验画廊，上海，中国，2024</div>
+      <details class="more-list"><summary>展开更多</summary>
+        <div class="about-item">“流动生景”，河 · 美术馆，沈阳，中国，2024</div>
+        <div class="about-item">“局部战争”，SNAP艺术中心，上海，中国，2024</div>
+        <div class="about-item">“缝补自然”，空山美术馆，杭州，中国，2024</div>
+        <div class="about-item">“南京D9驻留计划：融合共生”，D9艺术街区，南京，中国，2024</div>
+        <div class="about-item">“Within Iceless Age”，theBlanc，纽约，美国，2024</div>
+        <div class="about-item">“Immersion”，Lockwood Annexe 5，伦敦大学金史密斯学院，伦敦，英国，2024</div>
+        <div class="about-item">“寂静地”，东升里13号，苏州，中国，2024</div>
+        <div class="about-item">“存储的无形”，GOOGOL，线上（由 New Art City 提供支持），2024</div>
+        <div class="about-item">“感觉的逻辑”，象牙门画廊，上海，中国，2024</div>
+        <div class="about-item">“语言巴别塔”，Art Lift 艺术升降梯艺术空间，沈阳，中国，2024</div>
+        <div class="about-item">“向未来”，原子空间，中国（深圳）国际文化产业博览交易会龙湖CC创意街区分会场 “SeeDliNG” 数苗创意节，深圳，中国，2024</div>
+        <div class="about-item">“时空之境”，青岛市美术馆，青岛，中国，2024</div>
+        <div class="about-item">“Wuer · 玩 · 概念展”，InnovArt艺术空间，琶洲，中国，2024</div>
+        <div class="about-item">“代码重构：AIGC时代的艺术探索”，鲁迅美术学院美术馆，沈阳，中国，2024</div>
+        <div class="about-item">“猎奇屋——web3、元宇宙、AIGC时代的艺术探索”，前行美术馆，长沙，中国，2023</div>
+        <div class="about-item">“候鸟300”，阿那亚戏剧节，秦皇岛，中国，2023</div>
+        <div class="about-item">“生长之境”，列石画廊，景德镇，中国，2023</div>
+        <div class="about-item">“世人何以唤我？——仪式、神话与艺术灵媒”，798CUBE，北京，中国，2023</div>
+        <div class="about-item">“深港文化月潮流艺术节”，金啤坊艺术街区，深圳，中国，2023</div>
+        <div class="about-item">“轻巧与冷淡的对谈：能动性与科技”，Imaginary Z，杭州，中国，2023</div>
+        <div class="about-item">“植物生成影像”，武汉影像艺术中心，武汉，中国，2023</div>
+        <div class="about-item">“水流之下：城市地表水系中隐藏的世界”，合作空间，沈阳，中国，2023</div>
+        <div class="about-item">“Doves and Magpies Sharing a Nest”，The Forge Art Gallery，伦敦，英国，2023</div>
+        <div class="about-item">“AI &amp; NI”，4C Gallery，洛杉矶，美国，2023</div>
+      </details>
+    </section><div class="about-separator"></div>
+
+    <section class="about-section"><h2 class="about-section-title">电影节（部分）</h2>
+      <div class="about-item">FESTIVAL ANGAELICA，美国，2025 —— 官方入选</div>
+      <div class="about-item">Kuala Lumpur International Film Awards，吉隆坡，马来西亚，2025 —— 官方入选</div>
+      <div class="about-item">天空青草青年电影短片艺术交流展，成都，中国，2024 —— 官方入选</div>
+      <div class="about-item">未完成式 · 福建师大传播学院建院二十周年短片交流展，福州，中国，2024 —— “将来式”单元最佳短片奖 &amp; 最佳剪辑奖</div>
+      <div class="about-item">MUST华语青年电影节暨金鸡影展（澳门站），澳门，中国，2024 —— 官方入选</div>
+      <div class="about-item">British University International Students Film Festival，新开罗，埃及，2024 —— 官方入选</div>
+      <div class="about-item">La Sur Real Film Festival，柏林，德国，2024 —— 官方入选</div>
+      <div class="about-item">源点西部电影展，西安，中国，2024 —— 官方入选</div>
+      <div class="about-item">北京国际电影节 · 北京大学生电影节，北京，中国，2024 —— 官方入选</div>
+      <div class="about-item">Duemila30 International Film Festival，米兰，意大利，2024 —— 官方入选</div>
+      <details class="more-list"><summary>展开更多</summary>
+        <div class="about-item">Frome International Climate Film Festival，弗罗姆，英国，2024 —— 官方入选</div>
+        <div class="about-item">International Film Festival of Audiovisual Theory Students，布拉格，捷克，2023 —— 最佳实验电影（Kurt Kren’s Scratched Glasses）</div>
+        <div class="about-item">Varsity Film Expo，内罗毕，肯尼亚，2023 —— 荣誉提及</div>
+        <div class="about-item">International Alternative Media Film Festival，墨西哥城，墨西哥，2023 —— 官方入选</div>
+        <div class="about-item">AIU Kuwait International Film Festival，杰赫拉，科威特，2023 —— 官方入选</div>
+        <div class="about-item">宁波短片节，宁波，中国，2023 —— 最佳实验短片提名</div>
+        <div class="about-item">西影·春光青年电影展，西安，中国，2023 —— 官方入选</div>
+        <div class="about-item">HiShorts! 厦门短片周，厦门，中国，2023 —— 官方入选</div>
+      </details>
+    </section><div class="about-separator"></div>
+
+    <section class="about-section"><h2 class="about-section-title">放映（部分）</h2>
+      <div class="about-item"><em>“原创 / 复刻 / 算法流：三种叙事的边界在哪里”</em>，雪莲·亮点文创园偶得剧场，2026/6/28</div>
+      <div class="about-item"><a href="https://mp.weixin.qq.com/s/ULUygKP3VUmnpL2YeE5Dpg" target="_blank" rel="noopener">电影镇第56期放映活动“系统惯性”</a>，@411，杭州，中国，2025</div>
+      <div class="about-item"><a href="https://www.lakesidefilmfestival.com/films2025/la-sur-real-shorts" target="_blank" rel="noopener">Curated Short Film Program, La Sur Real: Edition IV</a>，Lakeside Film Festival，柏林，德国，2025</div>
+      <div class="about-item"><a href="https://www.instagram.com/reel/DIhTOWRpmfN/" target="_blank" rel="noopener">“Memorias ocultas: territorios y cuerpos que gritan”, “Entre los seres y la tierra, fuego” Seis cortometrajes</a>，哥伦比亚国立大学艺术学院，波哥大，哥伦比亚，2025</div>
+      <div class="about-item"><a href="https://mp.weixin.qq.com/s/pQrMXlqDrw24a1HtoL9JzQ" target="_blank" rel="noopener">“多屏影像”短片主题展映</a>，中国美术学院，杭州，中国，2025</div>
+      <div class="about-item"><a href="https://mp.weixin.qq.com/s/2eJPbRy5onttHqb3tvY00Q" target="_blank" rel="noopener">武汉大学研究生学术科技节“失真的想象力：电影注解下的技术反思”</a>，武汉大学艺术学院，武汉，中国，2024</div>
+      <div class="about-item"><a href="https://mp.weixin.qq.com/s/Ap6ifFvuRDjMwyRNi-s6Cw" target="_blank" rel="noopener">实验短片展映之夜</a>，三角洲 The Delta INST + GODOWN，杭州，中国，2024</div>
+      <div class="about-item"><a href="https://mp.weixin.qq.com/s/2m4KOOK_9bZTcjshwPC73Q" target="_blank" rel="noopener">ONED先锋影像展全国巡展</a>，兰州 / 苏州 / 上海 / 天津 / 阳朔 / 宜昌 / 成都，中国，2024</div>
+      <div class="about-item"><a href="https://mp.weixin.qq.com/s/Uw2rS5Uk5JADzRAvFa4KbQ" target="_blank" rel="noopener">第八届abC艺术书展</a>，天目里，杭州，中国，2023</div>
+      <div class="about-item"><a href="https://mp.weixin.qq.com/s/RWMzt2DKmVaVpEY2Rgkxxg" target="_blank" rel="noopener">防波堤放映</a>，大理，中国，2023</div>
+      <div class="about-item"><a href="https://mp.weixin.qq.com/s/oAricm9WS5m2XtCShSG4tQ" target="_blank" rel="noopener">C-POP实验剧场</a>，北京，中国，2023</div>
+      <div class="about-item"><a href="https://mp.weixin.qq.com/s/NTp_wqKoNgdeY2TsnEd1og" target="_blank" rel="noopener">渡口Ferry</a>，成都，中国，2023</div>
+    </section><div class="about-separator"></div>
+
+    <section class="about-section"><h2 class="about-section-title">驻留项目</h2>
+      <div class="about-item"><em>“剩余影像（AFTERIMAGE）”</em>，T2M 贰场，佛山，中国，策展：光轴、DP LAB &nbsp;|&nbsp; 2026/7–2026/8</div>
+      <div class="about-item">东海岸亚裔美国学生联盟（ECAASU），远程，美国 &nbsp;|&nbsp; 2025/09–2026/05</div>
+      <div class="about-item">南山艺术家社区，重庆，中国 &nbsp;|&nbsp; 2024/5/25–2024/6/14</div>
+      <div class="about-item">“候鸟300”，阿那亚戏剧节，秦皇岛，中国 &nbsp;|&nbsp; 2023/6/8–2023/6/21</div>
+    </section><div class="about-separator"></div>
+
+    <section class="about-section"><h2 class="about-section-title">教学经历</h2>
+      <div class="about-item">讲师（自主设计课程），《媒介理论导论》，Ferryman Education，2026</div>
+      <div class="about-item">讲师（自主设计课程），“我们的皮囊与大地的肌理：地质学思维，人类世的电影，以及超越人类的想象力”，Radiance Academy，线上，2024（高中 &amp; 本科程度，<a href="syllabusCN.html" target="_blank" rel="noopener">课程大纲</a>）</div>
+      <div class="about-item">助教，《文化研究导论》（主讲：李松教授），武汉大学，2023</div>
+    </section><div class="about-separator"></div>
+
+    <section class="about-section"><h2 class="about-section-title">媒体报道</h2>
+      <div class="about-item"><a href="https://mp.weixin.qq.com/s/NZ5srXRQcjFeuJWVGR5I8g" target="_blank" rel="noopener">“环形叙事的断裂节点——「大断裂：末世未来考古学」策展人解纪詹明信逝世一周年”</a>，吕东其，中心美术馆，2025</div>
+      <div class="about-item"><a href="https://mp.weixin.qq.com/s/3VLiyiQreCES44Z5HZTDuw" target="_blank" rel="noopener">“‘真实’的多棱镜：论分屏影像”</a>，2025</div>
+      <div class="about-item"><a href="https://mp.weixin.qq.com/s/EGSDrLHYYixPOE42EdbodQ" target="_blank" rel="noopener">“当我们感应：群体仪式的身体与共鸣记忆”</a>，ARTUNNEL，2024</div>
+      <div class="about-item"><a href="https://mp.weixin.qq.com/s/XgwA910JrW2Ra7zy_YppLQ" target="_blank" rel="noopener">“独立艺术家，在南京”</a>，南京文化生活指南，2023</div>
+      <div class="about-item"><a href="https://www.4cgallery.com/exhibition/4cexhibitionaini" target="_blank" rel="noopener">“AI &amp; NI”</a>，4C Gallery，2023</div>
+      <div class="about-item"><a href="https://mp.weixin.qq.com/s/9OmadKc95DEtzuN7nTyTUg" target="_blank" rel="noopener">“西部呼声：点燃我的火”</a>，UCFC，2023</div>
+      <div class="about-item"><a href="https://mp.weixin.qq.com/s/oAricm9WS5m2XtCShSG4tQ" target="_blank" rel="noopener">“实验与创造：与三位青年电影人的对话”</a>，浪潮电影，2023</div>
+      <div class="about-item"><a href="https://mp.weixin.qq.com/s/dzTeXl5zJ7jUB3BTrgDfpQ" target="_blank" rel="noopener">“植物生成的影像”</a>，邵千豪，武汉影像艺术中心，2023</div>
+    </section>
+    <footer class="about-footer">All Rights Reserved © Juntao Yang</footer>
+  </main>
+</div></div>
+<script>(function(){var o=document.getElementById('splash-overlay');function enter(){try{sessionStorage.setItem('splashVisited','true')}catch(e){}document.documentElement.classList.add('splash-seen');if(o)o.classList.add('is-leaving')}if(o){o.addEventListener('click',enter);o.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();enter()}})}})();</script>
 </body>
 </html>
