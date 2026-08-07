@@ -1,1 +1,163 @@
-(function(){"use strict";var p=location.pathname.split('/').pop()||'index.html',pages=['the-weight-lost.html','you-can-hardly-see.html','naked-wounds-and-the-abandoned.html','light-and-cold-conversation-atlantic-algorithmic-and-visibility.html','herbary-co-respiration.html','all-the-paths.html','suoyouzhexiedaolu.html'];if(pages.indexOf(p)<0)return;function go(){if(!document.body||document.getElementById('artwork-shell-style'))return;document.body.classList.add('unified-artwork-page');var s=document.createElement('style');s.id='artwork-shell-style';s.textContent=`html,body.unified-artwork-page,body.unified-artwork-page #wrapper,body.unified-artwork-page #main,body.unified-artwork-page #content-wrapper,body.unified-artwork-page .wsite-section,body.unified-artwork-page .wsite-section-content,body.unified-artwork-page .wsite-custom-background{background:#f4f4f2!important;background-image:none!important;color:#1e1e1e!important}body.unified-artwork-page{font-family:Georgia,"Songti SC",SimSun,"Times New Roman",serif!important}body.unified-artwork-page #wsite-content,body.unified-artwork-page .wsite-section-wrap,body.unified-artwork-page .wsite-section,body.unified-artwork-page .wsite-section-content,body.unified-artwork-page .wsite-section-elements{display:block!important;height:auto!important;min-height:0!important;vertical-align:top!important;position:relative!important;top:auto!important;bottom:auto!important;transform:none!important}body.unified-artwork-page .wsite-section-wrap{margin-top:0!important}body.unified-artwork-page #main{left:0!important;padding:40px 40px 40px 245px!important;vertical-align:top!important}body.unified-artwork-page .container{width:100%!important;max-width:none!important;margin:0!important;padding:40px!important;box-sizing:border-box!important}body.unified-artwork-page .main-content-area{width:98%!important;max-width:900px!important;margin:0 auto!important;padding:0!important}body.unified-artwork-page .paragraph,body.unified-artwork-page #wsite-content p,body.unified-artwork-page #wsite-content div.paragraph{font-family:Georgia,"Songti SC",SimSun,"Times New Roman",serif!important;color:#1e1e1e!important;font-size:16px!important;line-height:1.8!important}body.unified-artwork-page #wsite-content h2.wsite-content-title,body.unified-artwork-page .wsite-content-title{font-family:Georgia,"Songti SC",SimSun,"Times New Roman",serif!important;color:#1e1e1e!important;font-style:normal!important;font-weight:normal!important;text-transform:uppercase!important;letter-spacing:2px!important;font-size:100px!important;line-height:75px!important;margin:0 0 2rem!important;padding:0!important;border:0!important}body.unified-artwork-page a,body.unified-artwork-page a:visited{color:#1e1e1e!important;text-decoration:none!important}body.unified-artwork-page a:hover{color:#3A4B5C!important}body.unified-artwork-page .paragraph u{text-decoration:none!important}body.unified-artwork-page .wsite-menu-default a{font-family:"Cardo",Georgia,serif!important;font-size:14px!important;line-height:1.35!important;letter-spacing:2px!important;text-transform:uppercase!important;color:#5c5c5c!important;background:transparent!important}body.unified-artwork-page .wsite-menu-default a:hover,body.unified-artwork-page #active>a,body.unified-artwork-page #active a{color:#3A4B5C!important;background:transparent!important;border-bottom:2px solid #3A4B5C!important}body.unified-artwork-page img.wsite-image,body.unified-artwork-page .galleryImageBorder,body.unified-artwork-page .wsite-image img,body.unified-artwork-page .imageGallery img{border:0!important;padding:0!important;box-shadow:none!important;background:transparent!important}@media(max-width:991px){body.unified-artwork-page #main{padding:20px 40px 40px!important}body.unified-artwork-page .container{padding:40px 20px!important}body.unified-artwork-page .main-content-area{width:100%!important;max-width:900px!important}body.unified-artwork-page #wsite-content h2.wsite-content-title,body.unified-artwork-page .wsite-content-title{font-size:62px!important;line-height:1!important}}@media(max-width:767px){body.unified-artwork-page #main,body.unified-artwork-page .container{padding:20px!important}body.unified-artwork-page .main-content-area{max-width:100%!important}body.unified-artwork-page #wsite-content h2.wsite-content-title,body.unified-artwork-page .wsite-content-title{font-size:46px!important;line-height:1!important;letter-spacing:1px!important}body.unified-artwork-page .paragraph,body.unified-artwork-page #wsite-content p,body.unified-artwork-page #wsite-content div.paragraph{font-size:15px!important;line-height:1.75!important}}`;document.head.appendChild(s)}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',go);else go()})();
+(function () {
+  "use strict";
+
+  var page = window.location.pathname.split("/").pop() || "index.html";
+  var artworkPages = [
+    "the-weight-lost.html",
+    "you-can-hardly-see.html",
+    "naked-wounds-and-the-abandoned.html",
+    "light-and-cold-conversation-atlantic-algorithmic-and-visibility.html",
+    "herbary-co-respiration.html",
+    "all-the-paths.html",
+    "suoyouzhexiedaolu.html"
+  ];
+
+  if (artworkPages.indexOf(page) === -1) return;
+
+  function installShell() {
+    if (!document.body || document.getElementById("artwork-shell-style")) return;
+
+    document.body.classList.add("unified-artwork-page");
+
+    var style = document.createElement("style");
+    style.id = "artwork-shell-style";
+    style.textContent = `
+      html,
+      body.unified-artwork-page,
+      body.unified-artwork-page #wrapper,
+      body.unified-artwork-page #main,
+      body.unified-artwork-page #content-wrapper,
+      body.unified-artwork-page .wsite-section,
+      body.unified-artwork-page .wsite-section-content,
+      body.unified-artwork-page .wsite-custom-background {
+        background-color: #f4f4f2 !important;
+        background-image: none !important;
+        color: #1e1e1e !important;
+      }
+
+      body.unified-artwork-page {
+        font-family: Georgia, "Songti SC", SimSun, "Times New Roman", serif !important;
+      }
+
+      body.unified-artwork-page .main-content-area {
+        width: 98% !important;
+        max-width: 900px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+      }
+
+      body.unified-artwork-page .paragraph,
+      body.unified-artwork-page #wsite-content p,
+      body.unified-artwork-page #wsite-content div.paragraph {
+        font-family: Georgia, "Songti SC", SimSun, "Times New Roman", serif !important;
+        color: #1e1e1e !important;
+        font-size: 16px !important;
+        line-height: 1.8 !important;
+      }
+
+      body.unified-artwork-page #wsite-content h2.wsite-content-title,
+      body.unified-artwork-page .wsite-content-title {
+        font-family: Georgia, "Songti SC", SimSun, "Times New Roman", serif !important;
+        color: #1e1e1e !important;
+        font-style: normal !important;
+        font-weight: normal !important;
+        text-transform: uppercase !important;
+        letter-spacing: 2px !important;
+        font-size: 100px !important;
+        line-height: 75px !important;
+        margin-bottom: 2rem !important;
+        padding-bottom: 0 !important;
+        border: 0 !important;
+      }
+
+      body.unified-artwork-page a,
+      body.unified-artwork-page a:visited {
+        color: #1e1e1e !important;
+        text-decoration: none !important;
+      }
+
+      body.unified-artwork-page a:hover {
+        color: #3A4B5C !important;
+      }
+
+      body.unified-artwork-page .paragraph u {
+        text-decoration: none !important;
+      }
+
+      body.unified-artwork-page .wsite-menu-default a {
+        font-family: "Cardo", Georgia, serif !important;
+        font-size: 14px !important;
+        letter-spacing: 2px !important;
+        text-transform: uppercase !important;
+        color: #5c5c5c !important;
+        background: transparent !important;
+      }
+
+      body.unified-artwork-page .wsite-menu-default a:hover,
+      body.unified-artwork-page #active > a,
+      body.unified-artwork-page #active a {
+        color: #3A4B5C !important;
+        background: transparent !important;
+        border-bottom: 2px solid #3A4B5C !important;
+      }
+
+      body.unified-artwork-page img.wsite-image,
+      body.unified-artwork-page .galleryImageBorder,
+      body.unified-artwork-page .wsite-image img,
+      body.unified-artwork-page .imageGallery img {
+        border: 0 !important;
+        padding: 0 !important;
+        box-shadow: none !important;
+        background: transparent !important;
+      }
+
+      body.unified-artwork-page .wsite-caption,
+      body.unified-artwork-page .galleryCaptionInnerText,
+      body.unified-artwork-page .fancybox-title {
+        font-family: Georgia, "Songti SC", SimSun, "Times New Roman", serif !important;
+        color: #5c5c5c !important;
+      }
+
+      @media screen and (max-width: 991px) {
+        body.unified-artwork-page .main-content-area {
+          width: 100% !important;
+          max-width: 900px !important;
+        }
+
+        body.unified-artwork-page #wsite-content h2.wsite-content-title,
+        body.unified-artwork-page .wsite-content-title {
+          font-size: 62px !important;
+          line-height: 1 !important;
+        }
+      }
+
+      @media screen and (max-width: 767px) {
+        body.unified-artwork-page .main-content-area {
+          max-width: 100% !important;
+        }
+
+        body.unified-artwork-page #wsite-content h2.wsite-content-title,
+        body.unified-artwork-page .wsite-content-title {
+          font-size: 46px !important;
+          line-height: 1 !important;
+          letter-spacing: 1px !important;
+        }
+
+        body.unified-artwork-page .paragraph,
+        body.unified-artwork-page #wsite-content p,
+        body.unified-artwork-page #wsite-content div.paragraph {
+          font-size: 15px !important;
+          line-height: 1.75 !important;
+        }
+      }
+    `;
+
+    document.head.appendChild(style);
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", installShell);
+  } else {
+    installShell();
+  }
+})();
