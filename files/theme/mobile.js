@@ -54,12 +54,8 @@
         "margin:12px 0 0;color:#5c5c5c;font:11px/1.6 'Courier New',Courier,monospace;" +
         "letter-spacing:.06em;text-transform:uppercase;" +
       "}" +
-      ".all-paths-thumbnail.has-photo{" +
-        "background-image:linear-gradient(180deg,rgba(0,0,0,.04),rgba(0,0,0,.34)),url('" + coverImage + "')!important;" +
-        "background-size:cover!important;background-position:center!important;" +
-      "}" +
-      ".all-paths-thumbnail.has-photo:before{" +
-        "inset:0!important;transform:none!important;background:linear-gradient(115deg,transparent 35%,rgba(255,255,255,.10) 50%,transparent 65%)!important;" +
+      ".all-paths-index-cover{" +
+        "display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;" +
       "}" +
       "@media(max-width:760px){" +
         ".all-paths-gallery{margin-top:40px;}" +
@@ -132,26 +128,78 @@
     header.parentNode.insertBefore(gallery, header.nextSibling);
   }
 
+  function ensureIndexArtwork() {
+    if (indexPages.indexOf(pageName) === -1 || document.getElementById("all-the-paths-artwork")) {
+      return;
+    }
+
+    var container = document.querySelector(".artworks-container");
+    if (!container) {
+      return;
+    }
+
+    var isChinese = pageName === "chuangzuo.html";
+    var item = document.createElement("div");
+    item.id = "all-the-paths-artwork";
+    item.className = "artwork-item-new reverse-layout";
+
+    if (isChinese) {
+      item.innerHTML =
+        '<div class="artwork-image-new">' +
+          '<a href="suoyouzhexiedaolu.html" target="_blank">' +
+            '<img class="all-paths-index-cover" src="' + coverImage + '" alt="《所有这些道路》展览现场">' +
+          '</a>' +
+        '</div>' +
+        '<div class="artwork-description-new">' +
+          '<a href="suoyouzhexiedaolu.html" target="_blank">' +
+            '<h3 class="artwork-title-new">所有这些道路 / All the Paths</h3>' +
+            '<p class="artwork-details-new">灯箱摄影装置，多通道声音<br>2026</p>' +
+          '</a>' +
+        '</div>';
+    } else {
+      item.innerHTML =
+        '<div class="artwork-image-new">' +
+          '<a href="all-the-paths.html" target="_blank">' +
+            '<img class="all-paths-index-cover" src="' + coverImage + '" alt="All the Paths installation view">' +
+          '</a>' +
+        '</div>' +
+        '<div class="artwork-description-new">' +
+          '<a href="all-the-paths.html" target="_blank">' +
+            '<h3 class="artwork-title-new">All the Paths</h3>' +
+            '<p class="artwork-details-new">Lightbox Photography Installation, Multichannel Sound<br>2026</p>' +
+          '</a>' +
+        '</div>';
+    }
+
+    var divider = document.createElement("hr");
+    divider.className = "decorative-hr";
+    container.insertBefore(divider, container.firstChild);
+    container.insertBefore(item, divider);
+  }
+
   function replaceIndexArtwork() {
     if (indexPages.indexOf(pageName) === -1) {
       return;
     }
 
     var thumbnail = document.querySelector("#all-the-paths-artwork .all-paths-thumbnail");
-    if (thumbnail) {
-      thumbnail.classList.add("has-photo");
-      thumbnail.setAttribute(
-        "aria-label",
-        pageName === "chuangzuo.html"
-          ? "《所有这些道路》作品现场图"
-          : "Installation view from All the Paths"
-      );
+    if (!thumbnail) {
+      return;
     }
+
+    var image = document.createElement("img");
+    image.className = "all-paths-index-cover";
+    image.src = coverImage;
+    image.alt = pageName === "chuangzuo.html"
+      ? "《所有这些道路》展览现场"
+      : "All the Paths installation view";
+    thumbnail.parentNode.replaceChild(image, thumbnail);
   }
 
   function initialize() {
     installStyles();
     addDetailGallery();
+    ensureIndexArtwork();
     replaceIndexArtwork();
   }
 
