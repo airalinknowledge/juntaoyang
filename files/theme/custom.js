@@ -19,8 +19,7 @@
     }
   }
 
-  function init() {
-    replaceContactEmail(document.body);
+  function watchFutureNodes() {
     if (!document.body || typeof MutationObserver === "undefined") return;
     var observer = new MutationObserver(function (mutations) {
       for (var i = 0; i < mutations.length; i++) {
@@ -34,6 +33,9 @@
     observer.observe(document.body, {childList:true, subtree:true});
   }
 
-  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
-  else init();
+  // Legacy Weebly pages load this script immediately before </body>, so their
+  // existing DOM is already available here. Replace the address at once rather
+  // than waiting for DOMContentLoaded, then watch only genuinely later nodes.
+  replaceContactEmail(document.body);
+  watchFutureNodes();
 })();
