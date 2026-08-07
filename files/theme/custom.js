@@ -381,3 +381,26 @@
     initializeEmailReplacement();
   }
 })();
+
+(function () {
+  "use strict";
+
+  var page = window.location.pathname.split("/").pop() || "index.html";
+  var artworkPages = [
+    "the-weight-lost.html",
+    "you-can-hardly-see.html",
+    "naked-wounds-and-the-abandoned.html",
+    "light-and-cold-conversation-atlantic-algorithmic-and-visibility.html",
+    "herbary-co-respiration.html",
+    "all-the-paths.html",
+    "suoyouzhexiedaolu.html"
+  ];
+
+  if (artworkPages.indexOf(page) === -1 || document.getElementById("artwork-shell-loader")) return;
+
+  var script = document.createElement("script");
+  script.id = "artwork-shell-loader";
+  script.src = "files/theme/artwork-shell.js?v=20260807-1705";
+  script.async = false;
+  document.head.appendChild(script);
+})();
