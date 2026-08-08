@@ -22,7 +22,18 @@
     "https://ik.imagekit.io/1zgbu3kyg/IMG_20260807_155823_zqaCSoz0G.jpg"
   ];
 
+  var moreIndexes = [2, 4, 6, 7, 9, 10, 12, 13, 14, 17];
   var zh = (document.documentElement.lang || "").toLowerCase().indexOf("zh") === 0;
+
+  function transformed(url, width, quality) {
+    return url + (url.indexOf("?") === -1 ? "?" : "&") + "tr=w-" + (width || 2200) + ",q-" + (quality || 90) + ",f-auto";
+  }
+
+  function preload(index) {
+    var img = new Image();
+    img.src = transformed(images[(index + images.length) % images.length], 1800, 88);
+  }
+
   var overlay = document.createElement("div");
   overlay.className = "ap-lightbox";
   overlay.setAttribute("role", "dialog");
@@ -46,22 +57,13 @@
 
   caption.textContent = zh ? "T2M 贰场，佛山，2026" : "T2M The Second Mine, Foshan, 2026";
 
-  function transformed(url) {
-    return url + (url.indexOf("?") === -1 ? "?" : "&") + "tr=w-2200,q-90,f-auto";
-  }
-
-  function preload(index) {
-    var img = new Image();
-    img.src = transformed(images[(index + images.length) % images.length]);
-  }
-
   function show(index) {
     current = (index + images.length) % images.length;
     var original = images[current];
     stageImage.dataset.original = original;
     stageImage.dataset.fallbackDone = "0";
     stageImage.alt = zh ? "《所有这些道路》现场图 " + (current + 1) : "All the Paths installation view " + (current + 1);
-    stageImage.src = transformed(original);
+    stageImage.src = transformed(original, 2200, 90);
     count.textContent = (current + 1) + " / " + images.length;
     preload(current + 1);
     preload(current - 1);
@@ -102,10 +104,7 @@
   closeButton.addEventListener("click", close);
   overlay.querySelector(".ap-lightbox-next").addEventListener("click", next);
   overlay.querySelector(".ap-lightbox-prev").addEventListener("click", prev);
-
-  overlay.addEventListener("click", function (event) {
-    if (event.target === overlay) close();
-  });
+  overlay.addEventListener("click", function (event) { if (event.target === overlay) close(); });
 
   document.addEventListener("keydown", function (event) {
     if (overlay.hidden) return;
@@ -117,7 +116,6 @@
   overlay.addEventListener("touchstart", function (event) {
     if (event.touches && event.touches.length === 1) touchStartX = event.touches[0].clientX;
   }, {passive:true});
-
   overlay.addEventListener("touchend", function (event) {
     if (touchStartX === null || !event.changedTouches || !event.changedTouches.length) return;
     var delta = event.changedTouches[0].clientX - touchStartX;
@@ -125,4 +123,50 @@
     if (Math.abs(delta) < 45) return;
     if (delta < 0) next(); else prev();
   }, {passive:true});
+
+  var inline = document.querySelector("[data-ap-inline-carousel]");
+  if (inline) {
+    var inlineStage = inline.querySelector(".ap-inline-stage");
+    var inlineImage = inline.querySelector(".ap-inline-image");
+    var inlineCount = inline.querySelector(".ap-inline-count");
+    var inlinePrev = inline.querySelector(".ap-inline-prev");
+    var inlineNext = inline.querySelector(".ap-inline-next");
+    var inlineCurrent = 0;
+    var inlineTouchStartX = null;
+
+    function renderInline(position) {
+      inlineCurrent = (position + moreIndexes.length) % moreIndexes.length;
+      var imageIndex = moreIndexes[inlineCurrent];
+      var original = images[imageIndex];
+      inlineStage.setAttribute("data-ap-index", String(imageIndex));
+      inlineImage.dataset.original = original;
+      inlineImage.dataset.fallbackDone = "0";
+      inlineImage.alt = zh ? "《所有这些道路》更多现场图 " + (inlineCurrent + 1) : "More All the Paths installation views " + (inlineCurrent + 1);
+      inlineImage.src = transformed(original, 1800, 88);
+      inlineCount.textContent = (inlineCurrent + 1) + " / " + moreIndexes.length;
+      preload(moreIndexes[(inlineCurrent + 1) % moreIndexes.length]);
+    }
+
+    inlineImage.addEventListener("error", function () {
+      if (inlineImage.dataset.fallbackDone === "1") return;
+      inlineImage.dataset.fallbackDone = "1";
+      inlineImage.src = inlineImage.dataset.original;
+    });
+
+    inlinePrev.addEventListener("click", function () { renderInline(inlineCurrent - 1); });
+    inlineNext.addEventListener("click", function () { renderInline(inlineCurrent + 1); });
+
+    inline.addEventListener("touchstart", function (event) {
+      if (event.touches && event.touches.length === 1) inlineTouchStartX = event.touches[0].clientX;
+    }, {passive:true});
+    inline.addEventListener("touchend", function (event) {
+      if (inlineTouchStartX === null || !event.changedTouches || !event.changedTouches.length) return;
+      var delta = event.changedTouches[0].clientX - inlineTouchStartX;
+      inlineTouchStartX = null;
+      if (Math.abs(delta) < 45) return;
+      if (delta < 0) renderInline(inlineCurrent + 1); else renderInline(inlineCurrent - 1);
+    }, {passive:true});
+
+    renderInline(0);
+  }
 })();
