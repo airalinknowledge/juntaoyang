@@ -1,5 +1,16 @@
 (function () {
   "use strict";
+  if (!document.getElementById("all-paths-geology-loader")) {
+    var geologyScript = document.createElement("script");
+    geologyScript.id = "all-paths-geology-loader";
+    geologyScript.src = "files/theme/geology-contours.js?20260808-original";
+    geologyScript.async = true;
+    document.head.appendChild(geologyScript);
+  }
+})();
+
+(function () {
+  "use strict";
 
   var images = [
     "https://ik.imagekit.io/1zgbu3kyg/IMG_20260806_202209.jpg",
