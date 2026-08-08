@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc">
+<title id="title">Dallas: Techniques of Anti-Urbanism</title><desc id="desc">Abstract poster of hollow towers, divided plains, and illuminated underground corridors.</desc>
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#15181a"/><stop offset="0.56" stop-color="#343535"/><stop offset="1" stop-color="#756b5d"/></linearGradient>
+  <linearGradient id="tunnel" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a69983" stop-opacity=".08"/><stop offset="1" stop-color="#dbc49b" stop-opacity=".38"/></linearGradient>
+  <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency=".7" numOctaves="4" seed="29"/><feColorMatrix values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 .14 0"/></filter>
+</defs>
+<rect width="1200" height="800" fill="url(#bg)"/>
+<path d="M0 210 L1200 188" stroke="#d9cdb9" stroke-width="2" stroke-opacity=".18"/>
+<path d="M0 268 L1200 241" stroke="#d9cdb9" stroke-width="4" stroke-opacity=".11"/>
+<path d="M0 330 L1200 294" stroke="#d9cdb9" stroke-width="2" stroke-opacity=".2"/>
+<g fill="#15181a" fill-opacity=".86" stroke="#a69983" stroke-opacity=".24">
+  <path d="M120 155H270V560H120Z"/><path d="M300 92H462V560H300Z"/><path d="M496 184H650V560H496Z"/><path d="M687 118H856V560H687Z"/><path d="M890 70H1074V560H890Z"/>
+</g>
+<g fill="none" stroke="#d9cdb9" stroke-opacity=".22">
+  <path d="M138 214H252M138 268H252M138 322H252M138 376H252"/>
+  <path d="M320 167H442M320 225H442M320 283H442M320 341H442"/>
+  <path d="M516 240H630M516 294H630M516 348H630M516 402H630"/>
+  <path d="M707 184H836M707 244H836M707 304H836M707 364H836"/>
+  <path d="M910 142H1054M910 205H1054M910 268H1054M910 331H1054"/>
+</g>
+<path d="M0 555H1200V800H0Z" fill="#101214"/>
+<path d="M0 608 C240 578 388 635 610 604 S950 648 1200 598 V800H0Z" fill="url(#tunnel)"/>
+<path d="M0 610 C240 580 388 637 610 606 S950 650 1200 600" fill="none" stroke="#dbc49b" stroke-width="3" stroke-opacity=".56"/>
+<path d="M122 705H1078" stroke="#dbc49b" stroke-width="2" stroke-opacity=".35"/>
+<path d="M240 560V752M450 560V752M660 560V752M870 560V752" stroke="#dbc49b" stroke-width="3" stroke-opacity=".22"/>
+<path d="M1035 22L996 555" stroke="#dbc49b" stroke-width="8" stroke-opacity=".62"/>
+<path d="M1051 22L1012 555" stroke="#15181a" stroke-width="3"/>
+<rect x="54" y="48" width="7" height="126" fill="#c5a878"/>
+<text x="78" y="80" font-size="20" letter-spacing="5" font-family="Georgia, serif" fill="#eee6da" opacity=".88">JUNTAO YANG · POSTS</text>
+<text x="78" y="116" font-size="15" letter-spacing="3" font-family="Georgia, serif" fill="#eee6da" opacity=".62">2026-03-29 · DALLAS</text>
+<text x="78" y="500" font-size="48" font-family="Georgia, serif" fill="#eee6da">Dallas: Techniques of Anti-Urbanism</text>
+<text x="78" y="742" font-size="17" letter-spacing="4" font-family="Georgia, serif" fill="#eee6da" opacity=".58">NOW / ALWAYS / BECOMING</text>
+<rect width="1200" height="800" filter="url(#grain)" opacity=".5"/>
+</svg>
