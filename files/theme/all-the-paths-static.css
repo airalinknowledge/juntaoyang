@@ -36,8 +36,8 @@ body.all-paths-static-page #main{min-height:100vh;box-sizing:border-box}
 /* Inline documentation carousel. No section heading: the images remain the visual transition. */
 .ap-more-images{display:block;margin-top:2px}
 .ap-inline-carousel{position:relative;width:min(980px,100%);margin:0 auto;background:var(--panel);overflow:hidden}
-.ap-inline-stage{appearance:none;display:grid;place-items:center;width:100%;aspect-ratio:16/10;margin:0;padding:0;border:0;background:var(--panel);cursor:zoom-in;overflow:hidden}
-.ap-inline-stage img{display:block;max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;background:transparent;transition:opacity .18s ease}
+.ap-inline-stage{appearance:none;display:flex;align-items:center;justify-content:center;width:100%;aspect-ratio:16/10;margin:0;padding:0;border:0;background:var(--panel);cursor:zoom-in;overflow:hidden;text-align:center}
+.ap-inline-stage img{display:block;max-width:100%;max-height:100%;width:auto;height:auto;margin:auto;object-fit:contain;object-position:center center;background:transparent;transition:opacity .18s ease}
 .ap-inline-stage:hover img,.ap-inline-stage:focus-visible img{opacity:.92}
 .ap-inline-stage:focus-visible{outline:1px solid var(--accent);outline-offset:-1px}
 .ap-inline-prev,.ap-inline-next{appearance:none;position:absolute;top:50%;transform:translateY(-50%);z-index:2;width:48px;height:72px;border:0;background:rgba(244,244,242,.82);color:#333;font:38px/1 Arial,sans-serif;font-weight:300;cursor:pointer;opacity:.78;transition:opacity .18s ease,background .18s ease}
