@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc">
+<title id="title">Austin: We Must Become Bats</title><desc id="desc">Abstract geological poster with layered contours and a structural fault.</desc>
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#251d1c"/><stop offset="1" stop-color="#755443"/></linearGradient>
+  <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency=".75" numOctaves="3" seed="24"/><feColorMatrix values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 .12 0"/></filter>
+  <clipPath id="left"><path d="M0 0H335L265 800H0Z"/></clipPath>
+</defs>
+<rect width="1200" height="800" fill="url(#bg)"/>
+<circle cx="-547" cy="-154" r="49" fill="#d4a07a" opacity=".18"/>
+<path d="M-40 70 C 230 47, 430 90, 720 64 S 1030 118, 1260 60" fill="none" stroke="#d4a07a" stroke-opacity="0.15" stroke-width="2"/><path d="M-40 152 C 230 115, 430 186, 720 146 S 1030 186, 1260 142" fill="none" stroke="#e4d6c7" stroke-opacity="0.22999999999999998" stroke-width="3"/><path d="M-40 234 C 230 190, 430 275, 720 228 S 1030 261, 1260 224" fill="none" stroke="#d4a07a" stroke-opacity="0.31" stroke-width="4"/><path d="M-40 316 C 230 269, 430 360, 720 310 S 1030 340, 1260 306" fill="none" stroke="#e4d6c7" stroke-opacity="0.15" stroke-width="2"/><path d="M-40 398 C 230 349, 430 444, 720 392 S 1030 420, 1260 388" fill="none" stroke="#d4a07a" stroke-opacity="0.22999999999999998" stroke-width="3"/><path d="M-40 480 C 230 430, 430 527, 720 474 S 1030 501, 1260 470" fill="none" stroke="#e4d6c7" stroke-opacity="0.31" stroke-width="4"/><path d="M-40 562 C 230 512, 430 609, 720 556 S 1030 583, 1260 552" fill="none" stroke="#d4a07a" stroke-opacity="0.15" stroke-width="2"/><path d="M-40 644 C 230 610, 430 675, 720 638 S 1030 681, 1260 634" fill="none" stroke="#e4d6c7" stroke-opacity="0.22999999999999998" stroke-width="3"/><path d="M-40 726 C 230 700, 430 749, 720 720 S 1030 771, 1260 716" fill="none" stroke="#d4a07a" stroke-opacity="0.31" stroke-width="4"/>
+<g clip-path="url(#left)" transform="translate(-18 8)"><path d="M-40 70 C 230 47, 430 90, 720 64 S 1030 118, 1260 60" fill="none" stroke="#d4a07a" stroke-opacity="0.15" stroke-width="2"/><path d="M-40 152 C 230 115, 430 186, 720 146 S 1030 186, 1260 142" fill="none" stroke="#e4d6c7" stroke-opacity="0.22999999999999998" stroke-width="3"/><path d="M-40 234 C 230 190, 430 275, 720 228 S 1030 261, 1260 224" fill="none" stroke="#d4a07a" stroke-opacity="0.31" stroke-width="4"/><path d="M-40 316 C 230 269, 430 360, 720 310 S 1030 340, 1260 306" fill="none" stroke="#e4d6c7" stroke-opacity="0.15" stroke-width="2"/><path d="M-40 398 C 230 349, 430 444, 720 392 S 1030 420, 1260 388" fill="none" stroke="#d4a07a" stroke-opacity="0.22999999999999998" stroke-width="3"/><path d="M-40 480 C 230 430, 430 527, 720 474 S 1030 501, 1260 470" fill="none" stroke="#e4d6c7" stroke-opacity="0.31" stroke-width="4"/><path d="M-40 562 C 230 512, 430 609, 720 556 S 1030 583, 1260 552" fill="none" stroke="#d4a07a" stroke-opacity="0.15" stroke-width="2"/><path d="M-40 644 C 230 610, 430 675, 720 638 S 1030 681, 1260 634" fill="none" stroke="#e4d6c7" stroke-opacity="0.22999999999999998" stroke-width="3"/><path d="M-40 726 C 230 700, 430 749, 720 720 S 1030 771, 1260 716" fill="none" stroke="#d4a07a" stroke-opacity="0.31" stroke-width="4"/></g>
+<path d="M335 -20 L265 820" stroke="#d4a07a" stroke-width="7" stroke-opacity=".72"/>
+<path d="M353 -20 L283 820" stroke="#251d1c" stroke-width="2" stroke-opacity=".85"/>
+<rect x="54" y="48" width="7" height="126" fill="#d4a07a"/>
+<text x="78" y="80" font-size="20" letter-spacing="5" font-family="Georgia, serif" fill="#e4d6c7" opacity=".88">JUNTAO YANG · POSTS</text>
+<text x="78" y="116" font-size="15" letter-spacing="3" font-family="Georgia, serif" fill="#e4d6c7" opacity=".62">2026-03-23 · AUSTIN</text>
+<text x="78" y="520" font-size="48" font-family="Georgia, serif" fill="#e4d6c7">Austin: We Must Become Bats</text>
+<rect width="1200" height="800" filter="url(#grain)" opacity=".45"/>
+</svg>
+
