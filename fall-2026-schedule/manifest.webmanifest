@@ -1,0 +1,14 @@
+{
+  "name": "Fall 2026 Course Schedule",
+  "short_name": "秋季课表",
+  "description": "Fall 2026 course schedule",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#f8fafc",
+  "theme_color": "#f8fafc",
+  "icons": [
+    {"src":"./icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}
+  ]
+}
