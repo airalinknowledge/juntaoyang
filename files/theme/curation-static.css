@@ -6,3 +6,9 @@
 .curation-body{width:min(900px,100%);margin:0 auto}.curation-entry{display:grid;grid-template-columns:120px minmax(0,1fr);gap:34px;align-items:start}.curation-year{padding-top:7px;color:var(--muted);font-family:var(--nav);font-size:13px;letter-spacing:.12em}.curation-entry h3{margin:0 0 13px;font-size:30px;line-height:1.2;font-weight:400}.curation-entry p{margin:0;color:#3a3a3a;font-size:15.5px;line-height:1.75}.curation-rule{height:1px;background:var(--line);margin:48px 0 48px 154px}
 @media(max-width:991px){.curation-geology{display:none}#curation-navigation{display:none}#curation-main{padding:24px 28px 80px}.curation-page{width:100%}.curation-mobile-nav{display:flex;flex-wrap:wrap;gap:8px 18px;margin:0 0 34px;font-family:var(--nav);font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}.curation-utility{margin-bottom:52px}.curation-title{font-size:72px;margin-bottom:72px}}
 @media(max-width:700px){#curation-main{padding:18px 18px 60px}.curation-mobile-nav{margin-bottom:28px}.curation-utility{display:block;margin-bottom:44px;font-size:14px}.curation-topnav{display:none}.curation-title{font-size:48px;line-height:.92;margin-bottom:52px}.curation-entry{grid-template-columns:1fr;gap:10px}.curation-year{padding-top:0}.curation-entry h3{font-size:25px}.curation-entry p{font-size:15px}.curation-rule{margin:38px 0}}
+
+.curation-project-with-poster{display:grid;grid-template-columns:104px minmax(0,1fr);gap:28px;align-items:start}
+.curation-index-poster{display:block;width:104px;overflow:hidden;background:#e7e6e2}
+.curation-index-poster img{display:block;width:100%;height:auto;transition:opacity .18s ease}
+.curation-index-poster:hover img{opacity:.82}
+@media(max-width:700px){.curation-project-with-poster{grid-template-columns:86px minmax(0,1fr);gap:18px}.curation-index-poster{width:86px}}
