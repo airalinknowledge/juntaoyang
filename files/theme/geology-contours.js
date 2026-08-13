@@ -25,7 +25,7 @@
 
   function ensureLayer() {
     var layer = document.querySelector(
-      "#geology-layer, #site-geology-layer, .about-geology, .artworks-geology, .writings-geology, .projects-geology, .posts-geology"
+      "#geology-layer, #site-geology-layer, .about-geology, .artworks-geology, .writings-geology, .projects-geology, .posts-geology, .curation-geology, .pe-geology, .detail-geology, .review-geology"
     );
 
     if (!layer) {
@@ -41,7 +41,7 @@
       style = document.createElement("style");
       style.id = "site-geology-runtime-style";
       style.textContent =
-        "@media(max-width:768px){#site-geology-layer,#geology-layer,.about-geology,.artworks-geology,.writings-geology,.projects-geology,.posts-geology{display:none!important;}}" +
+        "@media(max-width:768px){#site-geology-layer,#geology-layer,.about-geology,.artworks-geology,.writings-geology,.projects-geology,.posts-geology,.curation-geology,.pe-geology,.detail-geology,.review-geology{display:none!important;}}" +
         "body.all-paths-static-page #wrapper{background:transparent!important;position:relative;z-index:2;}" +
         "body.all-paths-static-page #main{background:transparent!important;}" +
         "body.all-paths-static-page{background:#f4f4f2!important;}";
