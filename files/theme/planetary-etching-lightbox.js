@@ -13,7 +13,7 @@ var images=[
 "https://ik.imagekit.io/1zgbu3kyg/IMG_20260530_174156.jpg",
 "https://ik.imagekit.io/1zgbu3kyg/IMG_20260606_162719.jpg"
 ];
-var moreIndexes=[1,2,3,4,5,6,7,8,9,10],zh=(document.documentElement.lang||"").toLowerCase().indexOf("zh")===0;
+var moreIndexes=[9,5,2,3,1,6,4,7,8,10],zh=(document.documentElement.lang||"").toLowerCase().indexOf("zh")===0;
 function transformed(url,width,quality){return url+(url.indexOf("?")===-1?"?":"&")+"tr=w-"+(width||2200)+",q-"+(quality||90)+",f-auto";}
 function preload(index){var img=new Image();img.src=transformed(images[(index+images.length)%images.length],1800,88);}
 var overlay=document.createElement("div");overlay.className="pe-lightbox";overlay.setAttribute("role","dialog");overlay.setAttribute("aria-modal","true");overlay.setAttribute("aria-label",zh?"展览图片轮播":"Exhibition image carousel");overlay.hidden=true;
