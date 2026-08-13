@@ -12,3 +12,12 @@
 .curation-index-poster img{display:block;width:100%;height:auto;transition:opacity .18s ease}
 .curation-index-poster:hover img{opacity:.82}
 @media(max-width:700px){.curation-project-with-poster{grid-template-columns:86px minmax(0,1fr);gap:18px}.curation-index-poster{width:86px}}
+
+/* Directory chronology: date belongs to each project record */
+.curation-entry{display:block}
+.curation-rule{margin:56px 0}
+.curation-project-with-poster{grid-template-columns:160px minmax(0,1fr);gap:36px}
+.curation-index-poster{width:160px}
+.curation-project-copy{min-width:0}
+.curation-entry .curation-date{margin:0 0 7px;color:var(--muted);font-size:14.5px;line-height:1.55}
+@media(max-width:700px){.curation-entry{display:block}.curation-project-with-poster{grid-template-columns:112px minmax(0,1fr);gap:20px}.curation-index-poster{width:112px}.curation-rule{margin:42px 0}.curation-entry .curation-date{font-size:14px}}
